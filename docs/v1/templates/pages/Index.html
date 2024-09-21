@@ -1,0 +1,14 @@
+{% extends 'pages/base.html' %}
+
+{% block head %}
+    <title>IndexPage</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock %}
+
+
+
+
+{% block body %}
+    <h1>hello world</h1>
+    <script src="{{ url_for('static', filename='javascript/Index.js') }}"></script>
+{% endblock %}
