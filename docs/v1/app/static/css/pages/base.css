@@ -1,0 +1,34 @@
+/* @font-face {
+    font-family: 'Montserrat-ExtraLight';
+    src: url('../fonts/Montserrat/static/Montserrat-ExtraLight.ttf');
+}
+@font-face {
+    font-family: 'Montserrat-Light';
+    src: url('../fonts/Montserrat/static/Montserrat-Light.ttf');
+} */
+@font-face {
+    font-family: 'Josefin Sans';
+    src: url({{ url_for('static', filename='fonts/Josefin_Sans/static/JosefinSans-Regular.ttf'}});
+}
+/* @font-face {
+    font-family: 'Montserrat-Medium';
+    src: url('../fonts/Montserrat/static/Montserrat-Medium.ttf');
+}
+@font-face {
+    font-family: 'Montserrat-SemiBold';
+    src: url('../fonts/Montserrat/static/Montserrat-SemiBold.ttf');
+}
+@font-face {
+    font-family: 'Montserrat-Bold';
+    src: url('../fonts/Montserrat/static/Montserrat-Bold.ttf');
+}
+@font-face {
+    font-family: 'Montserrat-ExtraBold';
+    src: url('../fonts/Montserrat/static/Montserrat-ExtraBold.ttf');
+} */
+
+* {
+	font-family: 'Josefin Sans';
+	padding: 0;
+	margin: 0;
+}
