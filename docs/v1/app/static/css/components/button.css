@@ -30,10 +30,8 @@
     display: flex;
     align-items: center;
     cursor: pointer;
-    /* Вказує, що елементи активні */
 }
 
-/* Hover ефект для всіх елементів всередині контейнера */
 .button-container:hover .inner_button,
 .button-container:hover .plus-icon,
 .button-container:hover .button-circle {
@@ -42,7 +40,6 @@
     border-color: #3C4D76;
 }
 
-/* Active ефект для всіх елементів */
 .button-container:active .inner_button,
 .button-container:active .plus-icon,
 .button-container:active .button-circle {
