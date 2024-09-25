@@ -1,0 +1,47 @@
+.Global-Button{
+    padding: 30px 5px;
+}
+
+.global_button{
+    background-color: #F6F6F6;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.13);
+    width: max-content;
+    padding: 4px 20px;
+	cursor: pointer;
+    border: none;
+}
+
+.global_button:hover{
+    background-color: #E4E4E4;
+    transition: 0.3s;
+}
+
+.global_button:active{
+    background-color: #D4D4D4;
+    border: 0.5px solid #A7A4A4;
+    transition: 0s;
+}
+
+
+
+body.dark-theme .global_button {
+	background-color: #000000;
+}
+body.dark-theme .global_button p {
+	color: #FFFFFF;
+}
+
+
+
+body.dark-theme .global_button:hover{
+	background-color: #6A6969;
+    transition: 0.3s;
+}
+
+
+body.dark-theme .global_button:active{
+	background-color: #888787;
+    border: 0.5px solid #545252;
+    transition: 0s;
+}
+
