@@ -1,0 +1,73 @@
+/* LOGOUT NORMAKL */
+.logout_button{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    width: fit-content;
+    background-color: inherit;
+    border: none;
+} 
+.exit_img path{
+    stroke: #1D1B20;
+}
+.logout_button p{
+    font-size: 16px;
+    padding: 0 8px;
+    color: #1D1B20;
+}
+
+/* LOGOUT HOVER */
+
+.logout_button:hover p {
+    color: #7E7E7E; 
+    transition: 0.3s;
+}
+.logout_button:hover .exit_img path{
+    stroke: #7E7E7E;
+    transition: 0.3s;
+}
+
+/* LOGOUT ATICVE */
+
+.logout_button:active p{
+    color: #000000;
+    border-bottom: 1px solid black;
+    transition: 0s;
+}
+.logout_button:active .exit_img path{
+    stroke: #000000;
+    transition: 0s;
+}
+
+/* LOGOUT NORMAL DARK */
+
+body.dark-theme .logout_button p{
+    color: #8A8A8A;
+}
+body.dark-theme .exit_img path{
+    stroke: #8A8A8A;
+}
+
+/* LOGOUT HOVER DARK */
+
+body.dark-theme .logout_button:hover p{
+    color: #C9C8C8;
+    transition: 0.3s;
+}
+body.dark-theme .logout_button:hover .exit_img path{
+    stroke: #C9C8C8;
+    transition: 0.3s;
+}
+
+/* LOGGOUT ACTIVE DARK */
+
+body.dark-theme .logout_button:active p{
+    color: #FFFFFF;
+    border-bottom: 1px solid rgb(255, 255, 255);
+    transition: 0s;
+}
+body.dark-theme .logout_button:active .exit_img path{
+    stroke: #FFFFFF;
+    transition: 0s;
+}
