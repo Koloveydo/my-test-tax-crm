@@ -1,50 +1,66 @@
-.inner_button {
+.inner_plus_button {
     text-decoration: none;
     color: #1F60B3;
     font-size: 18px;
     font-family: Josefin-sans;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
-.button-circle {
+.plus_button_circle {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 22.5px;
     height: 22.5px;
-    border: 2px solid #1F60B3;
-    border-radius: 50%;
-    background-color: #D9D9D9;
     margin-right: 15px;
     box-sizing: border-box;
     font-weight: bold;
-    transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
-.plus-icon {
-    fill: #1F60B3;
-    transition: fill 0.3s ease;
+.plus_button_circle svg {
+    transition: all 0.3s ease;
+    color: #1F60B3;
 }
 
-.button-container {
+.plus_button_container {
     display: flex;
     align-items: center;
     cursor: pointer;
+    background-color: inherit;
+    border: none;
+    transform: scale(3) translateX(100px);
 }
 
-.button-container:hover .inner_button,
-.button-container:hover .plus-icon,
-.button-container:hover .button-circle {
+/* .plus_button_hover*/
+.plus_button_container:hover .inner_plus_button,
+.plus_button_container:hover .plus_button_circle,
+.plus_button_container:hover .plus_button_circle svg {
     color: #3C4D76;
-    fill: #3C4D76;
-    border-color: #3C4D76;
 }
 
-.button-container:active .inner_button,
-.button-container:active .plus-icon,
-.button-container:active .button-circle {
+/* .plus_button_active*/
+.plus_button_container:active .inner_plus_button,
+.plus_button_container:active .plus_button_circle,
+.plus_button_container:active .plus_button_circle svg {
     color: #B4BBCB;
-    fill: #B4BBCB;
-    border-color: #B4BBCB;
-    background-color: #fefeff;
+}
+
+/* .plus_button_normal.dark-theme*/
+body.dark-theme .inner_plus_button,
+body.dark-theme .plus_button_circle svg {
+    color: #236BC9;
+}
+
+/* .plus_button_hover.dark-theme*/
+body.dark-theme .plus_button_container:hover .inner_plus_button,
+body.dark-theme .plus_button_container:hover .plus_button_circle,
+body.dark-theme .plus_button_container:hover .plus_button_circle svg {
+    color: #84ADE2;
+}
+
+/* .plus_button_active.dark-theme*/
+body.dark-theme .plus_button_container:active .inner_plus_button,
+body.dark-theme .plus_button_container:active .plus_button_circle,
+body.dark-theme .plus_button_container:active .plus_button_circle svg {
+    color: #074697;
 }
