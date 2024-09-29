@@ -5,6 +5,7 @@
     font-family: Josefin-sans;
     transition: all 0.3s ease;
 }
+
 .plus_button_circle {
     display: flex;
     align-items: center;
@@ -15,24 +16,51 @@
     box-sizing: border-box;
     font-weight: bold;
 }
+
 .plus_button_circle svg {
     transition: all 0.3s ease;
     color: #1F60B3;
 }
+
 .plus_button_container {
     display: flex;
     align-items: center;
     cursor: pointer;
     background-color: inherit;
     border: none;
-
     transform: scale(3) translateX(100px);
 }
+
+/* .plus_button_hover*/
 .plus_button_container:hover .inner_plus_button,
+.plus_button_container:hover .plus_button_circle,
 .plus_button_container:hover .plus_button_circle svg {
     color: #3C4D76;
 }
+
+/* .plus_button_active*/
 .plus_button_container:active .inner_plus_button,
+.plus_button_container:active .plus_button_circle,
 .plus_button_container:active .plus_button_circle svg {
     color: #B4BBCB;
+}
+
+/* .plus_button_normal.dark-theme*/
+body.dark-theme .inner_plus_button,
+body.dark-theme .plus_button_circle svg {
+    color: #236BC9;
+}
+
+/* .plus_button_hover.dark-theme*/
+body.dark-theme .plus_button_container:hover .inner_plus_button,
+body.dark-theme .plus_button_container:hover .plus_button_circle,
+body.dark-theme .plus_button_container:hover .plus_button_circle svg {
+    color: #84ADE2;
+}
+
+/* .plus_button_active.dark-theme*/
+body.dark-theme .plus_button_container:active .inner_plus_button,
+body.dark-theme .plus_button_container:active .plus_button_circle,
+body.dark-theme .plus_button_container:active .plus_button_circle svg {
+    color: #074697;
 }
