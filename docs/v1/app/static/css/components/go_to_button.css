@@ -1,0 +1,86 @@
+.go_to_button,
+.inner_go_to_button {
+    margin:3px;
+    display: inline-block;
+    padding: 0px 0px;
+    background: none;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    background:none;
+    cursor: pointer;
+    font-weight: bolder;
+    transition: color 0.2s ease;
+}
+
+.go_to_button .icon path,
+.inner_go_to_button .icon path {
+    fill: rgb(0, 0, 0);
+    transition: fill 0.2s ease;
+}
+
+
+.go_to_button:hover,
+.inner_go_to_button:hover {
+    color: #1F60B3;
+}
+
+.go_to_button:hover .icon path,
+.inner_go_to_button:hover .icon path {
+    fill: #1F60B3;
+}
+
+.inner_go_to_button:active {
+    color: #3C4D76;
+    border-bottom: 1px solid #3C4D76;
+    padding-bottom: 1px;
+    position: relative;
+}
+
+.go_to_button:active .icon path,
+.inner_go_to_button:active .icon path {
+    fill: #3C4D76;
+}
+
+body.dark-theme .inner_go_to_button,
+body.dark-theme .go_to_button{
+    margin:3px;
+    display: inline-block;
+    padding: 0px 0px;
+    background: none;
+    color: #8A8A8A;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-weight: bolder;
+    transition: color 0.2s ease;
+}
+body.dark-theme .go_to_button .icon path,
+body.dark-theme .inner_go_to_button .icon path {
+    fill: #8A8A8A;
+    transition: fill 0.2s ease;
+
+}
+body.dark-theme .go_to_button:hover,
+body.dark-theme .inner_go_to_button:hover {
+    color: #C9C8C8;
+}
+body.dark-theme .go_to_button:hover .icon path,
+body.dark-theme .inner_go_to_button:hover .icon path {
+    fill: #C9C8C8;
+}
+
+body.dark-theme .inner_go_to_button:active {
+    color: #FFFFFF;
+    border-bottom: 1px solid rgb(255, 255, 255);
+    padding-bottom: 1px; 
+    position: relative;
+    transition: 0.2s ease;
+}
+body.dark-theme .go_to_button:active .icon path,
+body.dark-theme .inner_go_to_button:active .icon path {
+    fill: #FFFFFF;
+}
