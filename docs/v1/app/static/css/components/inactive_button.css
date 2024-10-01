@@ -10,7 +10,7 @@
     padding: 10px 120px;
     margin-top: 15px;
     margin-left: 20px;
-    font-size: 14px;
+    font-size: 18px;
     width: max-content;
     border-radius: 3px;
     opacity: 0.6;
@@ -19,14 +19,14 @@
 }
 
 .inner_change_password {
-    color: #C7C7C7;
+    color: black;
 }
 
 body.dark-theme .change_password_Label {
-    background-color: #656565;
+    background-color: #626262;
     opacity: 0.4;
 }
 
 body.dark-theme .inner_change_password {
-    color: #FFF;
+    color: #CECECE;
 }
