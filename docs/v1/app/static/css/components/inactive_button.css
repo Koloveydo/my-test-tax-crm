@@ -18,7 +18,7 @@
 }
 
 .inner_inactive {
-    color: #eeeeeb;
+    color: #C7C7C7;
 }
 
 body.dark-theme .inactive_label {
@@ -27,5 +27,5 @@ body.dark-theme .inactive_label {
 }
 
 body.dark-theme .inner_inactive {
-    color: #c7c7c5;
+    color: #C7C7C7;
 }
