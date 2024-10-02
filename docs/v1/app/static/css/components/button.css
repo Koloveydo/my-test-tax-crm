@@ -1,0 +1,50 @@
+.inner_button {
+    text-decoration: none;
+    color: #1F60B3;
+    font-size: 18px;
+    font-family: Josefin-sans;
+    transition: color 0.3s ease;
+}
+
+.button-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22.5px;
+    height: 22.5px;
+    border: 2px solid #1F60B3;
+    border-radius: 50%;
+    background-color: #D9D9D9;
+    margin-right: 15px;
+    box-sizing: border-box;
+    font-weight: bold;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.plus-icon {
+    fill: #1F60B3;
+    transition: fill 0.3s ease;
+}
+
+.button-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.button-container:hover .inner_button,
+.button-container:hover .plus-icon,
+.button-container:hover .button-circle {
+    color: #3C4D76;
+    fill: #3C4D76;
+    border-color: #3C4D76;
+}
+
+.button-container:active .inner_button,
+.button-container:active .plus-icon,
+.button-container:active .button-circle {
+    color: #B4BBCB;
+    fill: #B4BBCB;
+    border-color: #B4BBCB;
+    background-color: #fefeff;
+}
