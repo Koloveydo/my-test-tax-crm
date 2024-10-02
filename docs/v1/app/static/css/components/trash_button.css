@@ -44,6 +44,7 @@
 .trash_icon:active {
     border-color: #7E7E7E;
     fill: #6C6C6C;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.18);
 }
 
 .trash_button_circle:active .trash_icon path {
