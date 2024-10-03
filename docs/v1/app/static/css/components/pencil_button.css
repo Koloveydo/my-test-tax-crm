@@ -1,4 +1,4 @@
-.trash_button_circle {
+.pencil_button_circle {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -13,7 +13,7 @@
     background-color: #FFF;
 }
 
-.trash_icon {
+.pencil_icon {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -21,71 +21,65 @@
 
 /* Hover effect of button */
 
-.trash_button_circle:hover {
+.pencil_button_circle:hover {
     border-radius: 50%;
     box-sizing: border-box;
     background-color: #EEEEEE;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.18);
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.35);
     border: 1px solid #FFFFFF;
 }
 
-.trash_icon:hover {
+.pencil_icon:hover {
     border-color: #6C6C6C;
 }
 
-.trash_button_circle:hover .trash_icon path {
+.pencil_button_circle:hover .pencil_icon path {
     fill: #6C6C6C;
     /* При наведенні на коло, колір змінює й іконка*/
 }
 
 /* Active effect of button */
 
-.trash_button_circle:active {
+.pencil_button_circle:active {
     border-color: #7E7E7E;
     fill: #6C6C6C;
 }
 
-.trash_icon:active {
-    border-color: #7E7E7E;
-    fill: #515151;
+.pencil_button_circle:active .pencil_icon path {
+    fill: #888787;
 }
 
-.trash_button_circle:active .trash_icon path {
-    fill: #515151;
-}
+/* dark-theme .pencil_button_normal*/
 
-/* dark-theme .trash_button_normal*/
-
-body.dark-theme .trash_icon path {
+body.dark-theme .pencil_icon path {
     fill: #DFDEDE;
 }
 
-body.dark-theme .trash_button_circle {
+body.dark-theme .pencil_button_circle {
     background-color: transparent;
 }
 
-/* dark-theme .trash_button_hover*/
+/* dark-theme .pencil_button_hover*/
 
-body.dark-theme .trash_button_circle:hover {
+body.dark-theme .pencil_button_circle:hover {
     background-color: #626262;
-    border: 1px solid #1E1E1E;
-    box-shadow: 0px 2px 4px rgba(255, 255, 255, 0.3);
+    border: 1px solid #909090;
+    box-shadow: 0px 4px 5px rgba(255, 255, 255, 0.35);
 }
 
-body.dark-theme .trash_button_circle:hover .trash_icon path {
+body.dark-theme .pencil_button_circle:hover .pencil_icon path {
     fill: #CECECE;
     /* При наведенні на коло, колір змінює й іконка*/
 }
 
-/* dark-theme .trash_buttonn_active.*/
-body.dark-theme .trash_button_circle:active .trash_icon path {
+/* dark-theme .pencil_buttonn_active.*/
+body.dark-theme .pencil_button_circle:active .pencil_icon path {
     fill: #F6F6F6;
     stroke: none;
     border: 1px solid #C0BFBF;
 }
 
-body.dark-theme .trash_button_circle:active {
+body.dark-theme .pencil_button_circle:active {
     background-color: #626262;
     border-color: #C0BFBF;
-    box-shadow: 0px 2px 2px rgba(255, 255, 255, 0.3);
 }
