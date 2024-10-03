@@ -1,0 +1,57 @@
+.filter_button_content {
+  margin-top: 15px;
+  cursor: pointer;
+  width: 100px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  border: none;
+  font-size: 15px;
+  background-color: #e9e7e7;
+}
+.text_button {
+  font-weight: bold;
+  color: #6C6C6C;
+}
+.filter_icon {
+padding-right: 25px;
+  width: 20px;
+  height: 15px;
+}
+.filter_button_content:hover,
+.filter_button_content:hover .text_button,
+.filter_button_content:hover .filter_icon path{
+    background-color: #C3C3C3;
+    color: #706F6F;
+    fill:#706F6F;
+}
+.filter_button_content:active,
+.filter_button_content:active .text_button,
+.filter_button_content:active .filter_icon path{
+    background-color: #6e6d6d;
+    color: #9f9e9e;
+    fill:#9f9e9e;
+}
+body.dark-theme .filter_button_content,
+body.dark-theme .text_button,
+body.dark-theme .filter_icon path{
+    fill:#AEAEAE;
+    background-color: #3C3C3C;
+    color: #AEAEAE;
+}
+body.dark-theme .filter_button_content:hover,
+body.dark-theme .filter_button_content:hover .text_button,
+body.dark-theme .filter_button_content:hover .filter_icon path{
+    background-color: #676767;
+    color: #CECECE;
+    fill:#CECECE;
+}
+body.dark-theme .filter_button_content:active,
+body.dark-theme .filter_button_content:active .text_button,
+body.dark-theme .filter_button_content:active .filter_icon path{
+    background-color: #161515;
+    color: #C7C6C6;
+    fill:#C7C6C6;
+}
