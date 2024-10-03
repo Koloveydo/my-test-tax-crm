@@ -21,11 +21,13 @@
     background-color: #EEEEEE;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.18);
     border: 1px solid #FFFFFF;
+    transition: 0.3s;
 }
 .trash_button_circle:active,
 .trash_button_circle:active .trash_icon path {
     border: 1px solid #7E7E7E;
     fill: #515151;
+    transition: 0s;
 }
 body.dark-theme .trash_icon path,
 body.dark-theme .trash_button_circle {
@@ -37,9 +39,11 @@ body.dark-theme .trash_button_circle:hover .trash_icon path {
     fill: #CECECE;
     border: 1px solid #1E1E1E;
     box-shadow: 0px 2px 4px rgba(255, 255, 255, 0.3);
+    transition: 0.3s;
 }
 body.dark-theme .trash_button_circle:active .trash_icon path,
 body.dark-theme .trash_button_circle:active {
     fill: #F6F6F6;
     border: 1px solid #C0BFBF;
+    transition: 0s;
 }

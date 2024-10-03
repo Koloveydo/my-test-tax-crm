@@ -21,11 +21,13 @@
     background-color: #EEEEEE;
     box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.35);
     border: 1px solid #FFFFFF;
+    transition: 0.3s;
 }
 .edit_button_circle:active,
 .edit_button_circle:active .edit_icon path {
     fill: #888787;
     border: 1px solid #7E7E7E;
+    transition: 0s;
 }
 body.dark-theme .edit_icon path,
 body.dark-theme .edit_button_circle {
@@ -37,9 +39,11 @@ body.dark-theme .edit_button_circle:hover .edit_icon path {
     background-color: #626262;
     border: 1px solid #909090;
     box-shadow: 0px 4px 5px rgba(255, 255, 255, 0.35);
+    transition: 0.3s;
 }
 body.dark-theme .edit_button_circle:active .edit_icon path,
 body.dark-theme .edit_button_circle:active {
     fill: #F6F6F6;
     border: 1px solid #C0BFBF;
+    transition: 0s;
 }
