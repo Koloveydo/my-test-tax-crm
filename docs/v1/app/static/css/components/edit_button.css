@@ -1,4 +1,4 @@
-.pencil_button_circle {
+.edit_button_circle {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -11,41 +11,41 @@
     border-radius: 50%;
 }
 
-.pencil_icon {
+.edit_icon {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.pencil_button_circle:hover,
-.pencil_button_circle:hover .pencil_icon path {
+.edit_button_circle:hover,
+.edit_button_circle:hover .edit_icon path {
     fill: #6C6C6C;
     background-color: #EEEEEE;
     box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.35);
     border: 1px solid #FFFFFF;
 }
 
-.pencil_button_circle:active,
-.pencil_button_circle:active .pencil_icon path {
+.edit_button_circle:active,
+.edit_button_circle:active .edit_icon path {
     fill: #888787;
     border: 1px solid #7E7E7E;
 }
 
-body.dark-theme .pencil_icon path,
-body.dark-theme .pencil_button_circle {
+body.dark-theme .edit_icon path,
+body.dark-theme .edit_button_circle {
     fill: #DFDEDE;
 }
 
-body.dark-theme .pencil_button_circle:hover,
-body.dark-theme .pencil_button_circle:hover .pencil_icon path {
+body.dark-theme .edit_button_circle:hover,
+body.dark-theme .edit_button_circle:hover .edit_icon path {
     fill: #CECECE;
     background-color: #626262;
     border: 1px solid #909090;
     box-shadow: 0px 4px 5px rgba(255, 255, 255, 0.35);
 }
 
-body.dark-theme .pencil_button_circle:active .pencil_icon path,
-body.dark-theme .pencil_button_circle:active {
+body.dark-theme .edit_button_circle:active .edit_icon path,
+body.dark-theme .edit_button_circle:active {
     fill: #F6F6F6;
     border: 1px solid #C0BFBF;
 }
