@@ -1,5 +1,4 @@
 .filter_button_content {
-<<<<<<< HEAD
     margin-top: 15px;
     cursor: pointer;
     width: 100px;
@@ -60,65 +59,3 @@
       fill:#cfcece;
       transition: 0s;
   }
-=======
-  margin-top: 15px;
-  cursor: pointer;
-  width: 100px;
-  height: 38px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 5px;
-  border: none;
-  font-size: 15px;
-  background-color: #e9e7e7;
-}
-.text_button {
-  font-weight: bold;
-  color: #6C6C6C;
-}
-.filter_icon {
-padding-right: 25px;
-  width: 20px;
-  height: 15px;
-}
-.filter_button_content:hover,
-.filter_button_content:hover .text_button,
-.filter_button_content:hover .filter_icon path{
-    background-color: #e4e3e3;
-    color: #8C8C8C;
-    fill:#8C8C8C;
-    transition: 0.3s;
-}
-.filter_button_content:active,
-.filter_button_content:active .text_button,
-.filter_button_content:active .filter_icon path{
-  background-color: #D4D4D4;
-  color: #706F6F;
-  fill:#706F6F;
-    transition: 0s;
-}
-body.dark-theme .filter_button_content,
-body.dark-theme .text_button,
-body.dark-theme .filter_icon path{
-    fill:#cfcece;
-    background-color: #383838;
-    color: #cfcece;
-}
-body.dark-theme .filter_button_content:hover,
-body.dark-theme .filter_button_content:hover .text_button,
-body.dark-theme .filter_button_content:hover .filter_icon path{
-    background-color: #515151;
-    color: #CECECE;
-    fill:#CECECE;
-    transition: 0.3s;
-}
-body.dark-theme .filter_button_content:active,
-body.dark-theme .filter_button_content:active .text_button,
-body.dark-theme .filter_button_content:active .filter_icon path{
-    background-color: #3c3c3c;
-    color: #cfcece;
-    fill:#cfcece;
-    transition: 0s;
-}
->>>>>>> 69227db70fc095cf24defc94f4de9f439b7c023a
