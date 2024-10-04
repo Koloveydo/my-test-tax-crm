@@ -5,6 +5,8 @@
     align-items: center;
     width: fit-content;
     gap: 20px;
+    border: none;
+    background-color: transparent;
 } 
 .exit_img path{
     stroke: #1D1B20;
