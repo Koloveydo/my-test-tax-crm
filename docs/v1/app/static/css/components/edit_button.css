@@ -21,6 +21,7 @@
     background-color: #EEEEEE;
     box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.35);
     border: 1px solid #FFFFFF;
+    
 }
 .edit_button_circle:active,
 .edit_button_circle:active .edit_icon path {
