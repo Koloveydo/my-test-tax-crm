@@ -1,0 +1,96 @@
+.color_picker {
+    width: 32px;
+    height: 32px;
+    background:none;
+    border-color:transparent;
+    align-items: center;
+}
+
+
+.hex_text {
+    background:none;
+    border:none;
+    font-weight: bold;
+    font-size: 18px;
+    width: 65px;
+    outline:none;
+    cursor:pointer;
+    color:black
+}
+
+.pen_img {
+    fill:black;
+}
+
+.inner_change_color_button {
+    box-sizing: border-box;
+    border: none;
+    display: flex;           
+    justify-content: space-between;  
+    align-items: center;  
+    box-shadow: 0 0 4px 0 rgb(0 0 0 / 25%);
+    width: 185px;
+    height: 38px;
+    background-color: #F6F6F6;
+    cursor: pointer;
+}
+
+.color_picker_img {
+    margin-top: 9px;
+    margin-left: 7px;
+}
+
+.inner_change_color_button:hover {
+    background-color: #E4E4E4;
+    box-shadow: 0 4px 4px 0 rgb(0 0 0 / 13%);
+    transition: 0.3s ease;
+}
+
+.inner_change_color_button:active {
+    background-color: #E4E4E4;
+    box-shadow: 0 4px 4px 0 rgb(0 0 0 / 25%);
+	border:  1px solid #A7A4A4;
+    transition: 0s;
+}
+
+body.dark-theme .inner_change_color_button {
+    background-color: #7E7E7E ;
+    box-shadow: 0 0 4px 0 rgb(0 0 0 / 25%);
+}
+
+body.dark-theme .pen_img {
+    fill: #ffffff;
+}
+
+body.dark-theme .hex_text {
+    color: #ffffff;
+}
+
+body.dark-theme .inner_change_color_button:hover {
+    background-color: #858585 ;
+    box-shadow: 0 4px 4px 0 rgb(0 0 0 / 13%);
+    transition: 0.3s ease;
+}
+
+body.dark-theme .pen_img:hover {
+    fill: #ffffff;
+}
+
+body.dark-theme .hex_text:hover {
+    color: #ffffff;
+}
+
+body.dark-theme .inner_change_color_button:active {
+    background-color: #959595 ;
+    box-shadow: 0 4px 4px 0 rgb(0 0 0 / 25%);
+	border:  1px solid #494949;
+    transition: 0s;
+}
+
+body.dark-theme .pen_img:active {
+    fill: #ffffff;
+}
+
+body.dark-theme .hex_text:active {
+    color: #ffffff;
+}

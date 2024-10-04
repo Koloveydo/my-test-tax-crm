@@ -1,0 +1,53 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/change_color_button.css') }}">
+<div class="change_color_button">
+    <button type="button" class="inner_change_color_button" id="color_button">
+        <input type="color" class="color_picker" id="color_picker" value="#F26666" aria-label="Обрати колір" hidden>
+        <svg class="color_picker_img" id="color_picker_img" width="36" height="36" viewBox="0 0 36 36" fill="F26666" xmlns="http://www.w3.org/2000/svg">
+            <g filter="url(#filter0_d_393_1213)">
+            <path d="M32 14C32 21.732 25.732 28 18 28C10.268 28 4 21.732 4 14C4 6.26801 10.268 0 18 0C25.732 0 32 6.26801 32 14Z" id="cpi_path">
+            <path d="M31.95 14C31.95 21.7044 25.7044 27.95 18 27.95C10.2956 27.95 4.05 21.7044 4.05 14C4.05 6.29563 10.2956 0.05 18 0.05C25.7044 0.05 31.95 6.29563 31.95 14Z" stroke="black" stroke-width="0.1"/>
+            </g>
+            <defs>
+            <filter id="filter0_d_393_1213" x="0" y="0" width="36" height="36" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+            <feOffset dy="4"/>
+            <feGaussianBlur stdDeviation="2"/>
+            <feComposite in2="hardAlpha" operator="out"/>
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0"/>
+            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_393_1213"/>
+            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_393_1213" result="shape"/>
+            </filter>
+            </defs>
+            </svg>
+        <input type="text" class="hex_text" max-length=7 id="hex_value" readonly>
+        <svg width="35" height="35" class="pen_img" viewBox="0 0 35 35" xmlns="http://www.w3.org/2000/svg">
+            <path d="M23.6879 8C22.8376 8 21.9873 8.32238 21.3429 8.96708L10.8549 19.4541C10.6559 19.6531 10.5102 19.9006 10.4329 20.1722L9.02715 25.0946C8.99248 25.2164 8.99099 25.3453 9.02282 25.4678C9.05464 25.5904 9.11864 25.7023 9.20819 25.7918C9.29774 25.8814 9.40959 25.9454 9.53216 25.9772C9.65474 26.009 9.78359 26.0075 9.90539 25.9728L14.8287 24.5671L14.8296 24.5662C15.0995 24.4886 15.3464 24.3447 15.5459 24.1451L26.033 13.6572C27.3223 12.3678 27.3223 10.2564 26.033 8.96708C25.3886 8.32238 24.5383 8 23.6879 8ZM23.6879 9.41314C24.1716 9.41314 24.6546 9.59951 25.027 9.9721H25.028C25.7742 10.7183 25.7742 11.9059 25.028 12.6522L24.109 13.5711L21.4289 10.8911L22.3479 9.9721C22.7203 9.59951 23.2043 9.41314 23.6879 9.41314ZM20.4239 11.8961L23.104 14.5761L14.54 23.1401C14.5122 23.1677 14.477 23.1888 14.4373 23.2002L10.7448 24.2552L11.7998 20.5618V20.5609C11.8106 20.5227 11.8305 20.4885 11.8599 20.4591L20.4239 11.8961Z"/>
+         </svg>
+
+         <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const color_button = document.getElementById('color_button');
+                const color_picker = document.getElementById('color_picker');
+                const hex_value = document.getElementById('hex_value');
+                const cpi_path = document.getElementById('cpi_path');
+            
+                hex_value.value = color_picker.value;
+                cpi_path.setAttribute('fill', hex_value.value);
+            
+                color_button.addEventListener('click', function() {
+                    color_picker.click();
+                });
+            
+                color_picker.addEventListener('input', function() {
+                    hex_value.value = color_picker.value;
+                    cpi_path.setAttribute('fill', hex_value.value);
+                });
+            });
+            </script>
+
+</button>
+
+</div>
+
+
