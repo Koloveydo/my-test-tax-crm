@@ -3,6 +3,7 @@ border:none;
 stroke:#494949;
 background-color: transparent;
 cursor:pointer;
+stroke-linecap: round;
 }
 .close_button:hover{
     stroke:#6C6C6C;
