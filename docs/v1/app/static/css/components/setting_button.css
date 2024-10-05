@@ -12,15 +12,11 @@
     height: 60px;
     background-color: #FFFFFF;
 }
-
 .setting_icon {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
-/* Hover effect of button */
-
 .setting_button_circle:hover {
     border-radius: 50%;
     box-sizing: border-box;
@@ -28,66 +24,43 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.18);
     border: 1px solid #FFFFFF;
 }
-
-.setting_icon:hover {
+.setting_icon:hover,
+.setting_button_circle:hover .trash_icon path {
     border-color: #6C6C6C;
 }
-
-.setting_button_circle:hover .trash_icon path {
-    fill: #6C6C6C;
-    /* При наведенні на коло, колір змінює й іконка*/
-}
-
-/* Active effect of button */
-
 .setting_button_circle:active {
     border-color: #7E7E7E;
     fill: #6C6C6C;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.18);
 }
-
 .setting_icon:active {
     border-color: #7E7E7E;
     fill: #6C6C6C;
 }
-
 .setting_button_circle:active .trash_icon path {
     fill: #6C6C6C;
     stroke: #515151;
 }
-
-/* dark-theme .trash_button_normal*/
-
 body.dark-theme .setting_icon path {
     fill: #DFDEDE;
 }
-
 body.dark-theme .setting_button_circle {
     background-color: transparent;
 }
-
-/* dark-theme .trash_button_hover*/
-
 body.dark-theme .setting_button_circle:hover {
     background-color: #626262;
-    border: 1px solid #1E1E1E;
-    box-shadow: 0px 2px 4px rgba(255, 255, 255, 0.3);
+    border: 1px solid #909090;
+    box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.25);
 }
-
 body.dark-theme .setting_button_circle:hover .trash_icon path {
     fill: #CECECE;
-    /* При наведенні на коло, колір змінює й іконка*/
 }
-
-/* dark-theme .trash_buttonn_active.*/
 body.dark-theme .setting_button_circle:active .trash_icon path {
     fill: #F6F6F6;
     stroke: none;
     border: 1px solid #C0BFBF;
 }
-
 body.dark-theme .setting_button_circle:active {
-    background-color: #626262;
-    border-color: #C0BFBF;
-    box-shadow: 0px 2px 2px rgba(255, 255, 255, 0.3);
+    border-color: transparent;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
