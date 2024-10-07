@@ -1,4 +1,5 @@
-from flask import Flask, render_template, jsonify, redirect, flash, session
+from flask import Flask, render_template, jsonify, redirect, flash, ses
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.secret_key = 'Asdasd@E!d121'
