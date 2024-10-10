@@ -42,7 +42,7 @@
 /* .plus_button_normal.dark-theme*/
 body.dark-theme .inner_plus_button,
 body.dark-theme .plus_button_circle svg {
-  color: #236bc9;
+  color: #2b6ec7;
 }
 /* .plus_button_hover.dark-theme*/
 body.dark-theme .plus_button_container:hover .inner_plus_button,
@@ -54,5 +54,5 @@ body.dark-theme .plus_button_container:hover .plus_button_circle svg {
 body.dark-theme .plus_button_container:active .inner_plus_button,
 body.dark-theme .plus_button_container:active .plus_button_circle,
 body.dark-theme .plus_button_container:active .plus_button_circle svg {
-  color: #074697;
+  color: #275ca0;
 }
