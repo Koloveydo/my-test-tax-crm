@@ -14,7 +14,7 @@ class User(db.Model):
     datetime_update = db.Column(db.DateTime, onupdate=datetime.utcnow) 
     datetime_create = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)  
     user_details = db.relationship('UserDetails', backref='user')
-
+    
     def __repr__(self):
         return f"<User {self.id}, {self.user_basic_details} >"
    
