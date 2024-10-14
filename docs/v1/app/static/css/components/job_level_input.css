@@ -1,0 +1,72 @@
+.job_level_input{
+    padding: 50px;
+}
+.job_level_input_container{
+    width: 450px;
+    display: flex;
+    align-items: center;
+    padding: 10px 40px;
+    justify-content: space-between;
+    gap: 30px;
+    border: 1px solid #C5C1C1;
+    border-radius: 10px;
+}
+label {
+    display: flex;
+    gap: 10px;
+    cursor: pointer;
+}
+
+label:hover .job_level_input_txt,
+.job_level_input_container input[type="radio"]:hover {
+    color: #7c7c7c;
+    transition: .3s;
+}
+
+label:active{
+    scale: 1.1;
+    transition: 0;
+}
+label:active .job_level_input_txt{
+    color: #525252;
+}
+
+.job_level_input_txt{
+    color: #696969;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.job_level_input_container input[type="radio"] {
+    cursor: pointer;
+    appearance: none;
+    height: 12px;
+    width: 12px;
+    background-color: transparent;
+    border: 1px solid #7D7C7C;
+    border-radius: 50%;
+}
+.job_level_input_container input[type="radio"]:checked {
+    background-color: #6FA8FF;
+    border-color: #7D7C7C;
+    transition: .3s;
+}
+
+body.dark-theme .job_level_input_container{
+    border: 1px solid #C5C1C1;
+    background-color: #3E3E3E;
+}
+body.dark-theme .job_level_input_txt{
+    color: #A8A8A8;
+}
+
+body.dark-theme label:hover .job_level_input_txt,
+.job_level_input_container input[type="radio"]:hover {
+    color: #b6b6b6;
+    transition: .3s;
+}
+
+body.dark-theme label:active .job_level_input_txt{
+    color: #d3d3d3;
+    transition: 0s;
+}
