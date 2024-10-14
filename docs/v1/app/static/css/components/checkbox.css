@@ -1,0 +1,50 @@
+.checkbox_container {
+    width: 35px;
+    height: 35px;
+}
+.unchecked {
+    display: block; 
+    width: 35px; 
+    height: 35px; 
+    border: 1px solid #000000;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.checked {
+    display: none;
+    width: 35px; 
+    height: 35px; 
+    border: 1px solid #000000;
+    background-color: #000000;
+    position: relative;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.left-line {
+    position: absolute; 
+    top: 14px; 
+    left: 10px; 
+    width: 2px; 
+    height: 12px; 
+    color:#ffffff;
+    background-color: #ffffff;    
+    border-radius: 2px;
+    transform: rotate(-45deg);
+}
+
+.right-line {
+    position: absolute; 
+    top: 16px; 
+    left: 11px; 
+    width: 21px; 
+    height: 2px; 
+    color:#ffffff;
+    background-color: #ffffff;    
+    border-radius: 2px;
+    transform: rotate(-45deg);
+}
+
+/*python C:\Users\Admin\Desktop\extra-db\tax-crm\docs\v1\app\app.py  
+/*127.0.0.1
