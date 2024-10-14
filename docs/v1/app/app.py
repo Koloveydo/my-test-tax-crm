@@ -5,8 +5,7 @@ from models import db, User, UserDetails, Lead, LeadDetails, Activity, ActivityD
 app = Flask(__name__)
 app.secret_key = 'Asdasd@E!d121'
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Vladkondrun1210@localhost:3306/Data_base'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:0000@localhost:3306/tax_crm'
 db.init_app(app)
 
 with app.app_context():
@@ -21,9 +20,20 @@ def components_view():
 def base_view():
     return render_template('pages/base.html')
 
-# @app.route('/plus_button')
-# def plus_button_view():
-#     return render_template('components/plus_button.html')
+@app.route('/create-user')
+def create_user_view():
+    ### create all for user model and user model
+    ### print some informations of user
+    
+    ### create all for Lead model and Lead model
+    ### print some informations of Lead
+    
+    ### ...
+    ### ...
+    
+    
+    return render_template('pages/components.html')
+
 
 if __name__ == "__main__":
     app.run(debug=True, port=8080, host='0.0.0.0')  

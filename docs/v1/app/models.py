@@ -1,10 +1,11 @@
-from flask import Flask, render_template, jsonify, redirect, flash, session
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy 
 from datetime import datetime
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Vladkondrun1210@localhost:3306/Data_base'
-app.secret_key = 'Asdasd@E!d121'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:0000@localhost:3306/tax_crm'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
 db = SQLAlchemy(app)
 
 class User(db.Model): 
@@ -37,7 +38,6 @@ class UserDetails(db.Model):
 class Lead(db.Model):
     __tablename__ = 'lead'
     id = db.Column(db.Integer, primary_key=True)
-    first_name = db.Column(db.String(40))
     lead_details = db.Column(db.Integer, db.ForeignKey('lead_details.id'), nullable=False)
     datetime_update = db.Column(db.DateTime, onupdate=datetime.utcnow) 
     datetime_create = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
@@ -48,19 +48,19 @@ class Lead(db.Model):
 
 class LeadDetails(db.Model):
     __tablename__ = 'lead_details'
-    id = db.Column(db.Integer, primary_key=True)
-    first_name = db.Column(db.String(40))
-    organization = db.Column(db.String(100))
-    email = db.Column(db.String(40), unique=True)
-    phone_number = db.Column(db.String(14))
-    address = db.Column(db.String(50))
-    url_image = db.Column(db.Text)
-    comments = db.Column(db.Text)
+    
+    id              = db.Column(db.Integer, primary_key=True)
+    first_name      = db.Column(db.String(40))           
+    organization    = db.Column(db.String(100))
+    email           = db.Column(db.String(40), unique=True)
+    phone_number    = db.Column(db.String(14))
+    address         = db.Column(db.String(50))
+    url_image       = db.Column(db.Text)
+    comments        = db.Column(db.Text)
     datetime_update = db.Column(db.DateTime, onupdate=datetime.utcnow) 
     datetime_create = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
 
-    def __repr__(self):
-        return f"<LeadDetails {self.id}, {self.first_name}, {self.email}, {self.organization}, {self.phone_number}, {self.address}>"
+    def __repr__(self): return f"{self.first_name} | {self.email} | {self.organization}"
     
 class Activity(db.Model): 
     __tablename__ = 'activity'
