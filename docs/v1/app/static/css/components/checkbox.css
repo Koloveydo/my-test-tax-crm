@@ -46,5 +46,23 @@
     transform: rotate(-45deg);
 }
 
+body.dark-theme .unchecked {
+    border: 1px solid #ffffff;
+    background-color: #777777;
+}
+
+body.dark-theme .checked { 
+    border: 1px solid #ffffff;
+    background-color: #ffffff;
+}
+
+body.dark-theme .left-line {
+    background-color: #000000; 
+}   
+
+body.dark-theme .right-line {
+    background-color: #000000;    
+}
+
 /*python C:\Users\Admin\Desktop\extra-db\tax-crm\docs\v1\app\app.py  
 /*127.0.0.1
