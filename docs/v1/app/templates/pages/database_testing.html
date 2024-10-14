@@ -1,0 +1,25 @@
+{% extends 'pages/base.html' %}
+
+{% block head %}
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Database</title>
+    </head>
+{% endblock %}
+
+
+{%block body%}
+    <body>
+        <h1>Database-Users</h1>
+        {% if users %}
+            <ul>
+                {% for user in users %}
+                    <li>{{ user.firstname }} {{ user.lastname }} - {{ user.email }} {{ user.job_title }} {{ user.phone }} {{ user.addres }} {{ user.url_image }} Created: {{ user.datetime_create }}, Updated: {{ user.datetime_update }} </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>DATA</p>
+        {% endif %}
+    </body>
+{%endblock%}
