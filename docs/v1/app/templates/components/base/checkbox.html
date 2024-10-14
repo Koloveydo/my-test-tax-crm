@@ -1,5 +1,26 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/checkbox.css') }}">
-<label class="custom_checkbox">
-    <input type="checkbox" name="checkbox">
-    <span class="checkmark"></span>
-</label>
+<div class="checkbox_container" id="checkbox_container" onclick="toggleCheckbox()">
+    <div class="unchecked" id="unchecked"></div>
+    
+    <div class="checked" id="checked">
+        <div class="right-line"></div>
+        <div class="left-line"></div>
+    </div>
+  </div>
+  
+  <script>
+    function toggleCheckbox() {
+      const unchecked = document.getElementById('unchecked');
+      const checked = document.getElementById('checked');
+      
+      if (unchecked.style.display === 'block') {
+        unchecked.style.display = 'none';
+        checked.style.display = 'block';
+      } else {
+        unchecked.style.display = 'block';
+        checked.style.display = 'none';
+      }
+    }
+  </script>
+  
+  

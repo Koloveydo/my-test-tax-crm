@@ -1,156 +1,153 @@
-from flask_sqlalchemy import SQLAlchemy
-db = SQLAlchemy()
+from flask import Flask, render_template, jsonify, redirect, flash, session
+from flask_sqlalchemy import SQLAlchemy 
 from datetime import datetime
 
-class user(db.Model):
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:koloveydo8@localhost:3306/taxcrm'
+app.secret_key = 'Asdasd@E!d121'
+db = SQLAlchemy(app)
+
+class User(db.Model): 
     __tablename__ = 'user'
-    id=db.Column(db.Integer, primary_key=True)
-    user_basic_details=db.Column(db.ForeignKey('user_details.id'), nullable=False)
-    datetime_update = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    datetime_create = db.Column(db.DateTime, nullable=False, default=datetime.utcnow, onupdate=datetime.utcnow)
+    id = db.Column(db.Integer, primary_key=True)
+    user_basic_details = db.Column(db.Integer, db.ForeignKey('user_details.id'), nullable=False)
+    datetime_update = db.Column(db.DateTime, onupdate=datetime.utcnow, nullable=False) 
+    datetime_create = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)  
+    user_details = db.relationship('UserDetails', backref='user')
 
-    user = db.relationship('user', backref='user_detail', lazy=True)
-
-    def __repr__(self):
-        return f"user('{self.id}','{self.user_basic_details}', '{self.datetime_update}')"
-
-class user_details(db.Model):
+    def repr(self):
+        return f"<User {self.id}, {self.user_basic_details} >"
+   
+class UserDetails(db.Model):
     __tablename__ = 'user_details'
-    id=db.Column(db.Integer, primary_key=True)
-    first_name=db.Column(db.String(40), nullable=False)
-    last_name=db.Column(db.String(40), nullable=False)
-    email=db.Column(db.String(40), nullable=False, unique=True)
-    job_title=db.Column(db.String(60))
-    phone_number=db.Column(db.String(14), nullable=False, unique=True)
-    address=db.Column(db.String(50))
-    url_image=db.Column(db.Text)
-    datetime_update = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    datetime_create = db.Column(db.DateTime, nullable=False, default=datetime.utcnow, onupdate=datetime.utcnow)
-    
-    def __repr__(self):
-        return f"user_details('{self.first_name}', '{self.last_name}', '{self.email}', '{self.job_title}', '{self.phone_number}', '{self.url_image}', '{self.datetime_update}')"
+    id = db.Column(db.Integer, primary_key=True)
+    first_name = db.Column(db.String(40))
+    last_name = db.Column(db.String(40))
+    email = db.Column(db.String(40), unique=True)
+    job_title = db.Column(db.String(60))
+    phone_number = db.Column(db.String(14))
+    address = db.Column(db.String(50))
+    url_image = db.Column(db.Text)
+    datetime_update = db.Column(db.DateTime, onupdate=datetime.utcnow, nullable=False) 
+    datetime_create = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
 
-class lead(db.Model):
+    def repr(self):
+        return f"<UserDetails {self.id}, {self.first_name} {self.last_name}, {self.email}, {self.phone_number}>"
+   
+class Lead(db.Model):
     __tablename__ = 'lead'
-    id=db.Column(db.Integer, primary_key=True)
-    first_name=db.Column(db.String(40), nullable=False)
-    lead_details=db.Column(db.ForeignKey('lead_details.id'), nullable=False)
-    datetime_update = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    datetime_create = db.Column(db.DateTime, nullable=False, default=datetime.utcnow, onupdate=datetime.utcnow)
+    id = db.Column(db.Integer, primary_key=True)
+    first_name = db.Column(db.String(40))
+    lead_details = db.Column(db.Integer, db.ForeignKey('lead_details.id'), nullable=False)
+    datetime_update = db.Column(db.DateTime, onupdate=datetime.utcnow, nullable=False) 
+    datetime_create = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
+    lead_details_rel = db.relationship('LeadDetails', backref='lead', uselist=False)
+
+    def repr(self):
+        return f"<Lead {self.id}, {self.first_name}, {self.lead_details}>"
+
+class LeadDetails(db.Model):
+    __tablename__ = 'lead_details'
+    id = db.Column(db.Integer, primary_key=True)
+    first_name = db.Column(db.String(40))
+    organization = db.Column(db.String(100))
+    email = db.Column(db.String(40), unique=True)
+    phone_number = db.Column(db.String(14))
+    address = db.Column(db.String(50))
+    url_image = db.Column(db.Text)
+    comments = db.Column(db.Text)
+    datetime_update = db.Column(db.DateTime, onupdate=datetime.utcnow, nullable=False) 
+    datetime_create = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
+
+    def repr(self):
+        return f"<LeadDetails {self.id}, {self.first_name}, {self.email}, {self.organization}, {self.phone_number}, {self.address}>"
     
-    lead = db.relationship('lead', backref='lead_details', lazy=True)
-
-    def __repr__(self):
-        return f"lead('{self.first_name}', '{self.lead_details}'), '{self.datetime_update}'"
-
-class lead_details(db.Model):
-    __tablename__ = 'leads_details'
-    id=db.Column(db.Integer, primary_key=True)
-    first_name=db.Column(db.String(40), nullable=False)
-    last_name=db.Column(db.String(40), nullable=False)
-    ORGANIZATION=db.Column(db.String(100), nullable=False)
-    email=db.Column(db.String(40), nullable=False, unique=True)
-    phone_number=db.Column(db.String(14), nullable=False, unique=True)
-    address=db.Column(db.String(50))
-    url_image=db.Column(db.Text)
-    comments=db.Column(db.Taxt)
-    datetime_update = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    datetime_create = db.Column(db.DateTime, nullable=False, default=datetime.utcnow, onupdate=datetime.utcnow)
-
-    def __repr__(self):
-        return f"user_details('{self.first_name}', '{self.last_name}', '{self.email}', '{self.job_title}', '{self.phone_number}', '{self.url_image}', '{self.datetime_update}')" 
-
-class activity(db.Model):
+class Activity(db.Model): 
     __tablename__ = 'activity'
-    id=db.Column(db.Integer, primary_key=True)
-    lead_id = db.Column(db.ForeignKey('lead.id'), nullable=False)
-    lead = db.relationship('lead', backref='activities', lazy=True)
+    id = db.Column(db.Integer, primary_key=True)
+    lead_id = db.Column(db.Integer, db.ForeignKey('lead.id'), nullable=False)
+    activity_details_id = db.Column(db.Integer, db.ForeignKey('activity_details.id'), nullable=False)
+    lead = db.relationship('Lead', backref='activities')
+    activity_details = db.relationship('ActivityDetails', backref='activities')
 
-    activity_details_id=db.Column(db.ForeignKey('activity_details.id'), nullable=False)
-    activity_details = db.relationship('activity_details', backref='activities', lazy=True)
+    def repr(self):
+        return f"<Activity {self.id}, {self.lead_id}, {self.activity_details_id}>"
 
-    def __repr__(self):
-        return f"activity('{self.id}', Lead: '{self.lead}', Details: '{self.activity_details}')"
-
-class activity_details(db.Model):
+class ActivityDetails(db.Model):
     __tablename__ = 'activity_details'
-    title = db.Column(db.String(40), nullable=False)
-    activity_type = db.Column(db.String(40), nullable=False)
-    user = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    datetime_update = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    datetime_create = db.Column(db.DateTime, nullable=False, default=datetime.utcnow, onupdate=datetime.utcnow)
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(40))
+    activity_type = db.Column(db.String(40))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    datetime_update = db.Column(db.DateTime, onupdate=datetime.utcnow, nullable=False) 
+    datetime_create = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
+    user = db.relationship('User', backref='activity_details')
 
-    activity_details = db.relationship('activity_details', backref='users', lazy=True)
+    def repr(self):
+        return f"<ActivityDetails {self.id}, {self.title}, {self.activity_type}>"
 
-    def __repr__(self):
-        return f"activite_details('{self.title}', '{self.activity_type}', '{self.user}', '{self.datetime_update}')"
-
-class communication(db.Model):
+class Communication(db.Model):
     __tablename__ = 'communication'
-    id=db.Column(db.Integer, primary_key=True)
-    lead_id = db.Column(db.ForeignKey('lead.id'), nullable=False)
-    lead = db.relationship('lead', backref='communications', lazy=True)
+    id = db.Column(db.Integer, primary_key=True)
+    lead_id = db.Column(db.Integer, db.ForeignKey('lead.id'), nullable=False)
+    communication_details_id = db.Column(db.Integer, db.ForeignKey('communication_details.id'), nullable=False)
+    lead = db.relationship('Lead', backref='communications')
+    communication_details = db.relationship('CommunicationDetails', backref='communications')
 
-    communication_details_id=db.Column(db.ForeignKey('communication_details.id'), nullable=False)
-    communication_details = db.relationship('communication_details', backref='communications', lazy=True)
+    def repr(self):
+        return f"<Communication {self.id}, {self.lead_id}, {self.communication_details_id}>"
 
-    def __repr__(self):
-        return f"activity('{self.id}', Lead: '{self.lead}', Details: '{self.communication_details}')"
-    
-class communication_details(db.Model):
+class CommunicationDetails(db.Model):
     __tablename__ = 'communication_details'
-    id = db.Column(db.Intager, ptimary_key=True)
-    subject = db.Column(db.String(60), nullable=False)
+    id = db.Column(db.Integer, primary_key=True)
+    subject = db.Column(db.String(60))
     text = db.Column(db.Text)
-    user=db.Column(db.ForeignKey('user.id'), nullable=False)
-    datetime_update = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    datetime_create = db.Column(db.DateTime, nullable=False, default=datetime.utcnow, onupdate=datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    datetime_update = db.Column(db.DateTime, onupdate=datetime.utcnow, nullable=False) 
+    datetime_create = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
+    user = db.relationship('User', backref='communication_details')
 
-    communication_details = db.relationship('communication_details', backref='users', lazy=True)
+    def repr(self):
+        return f"<CommunicationDetails {self.id}, {self.subject}, {self.user_id}>"
 
-    def __repr__(self):
-        return f"communication_details('{self.id}', '{self.subject}', '{self.user}', '{self.text}', '{self.datetime_update}')"
-
-class skills(db.Model):
+class Skill(db.Model):
     __tablename__ = 'skills'
     id = db.Column(db.Integer, primary_key=True)
-    lead_id = db.Column(db.ForeignKey('lead.id'), nullable=False)
-    lead = db.relationship('lead', backref='skills', lazy=True)
+    lead_id = db.Column(db.Integer, db.ForeignKey('lead.id'), nullable=False)
+    lead = db.relationship('Lead', backref='skills')
+    skill_details_id = db.Column(db.Integer, db.ForeignKey('skills_details.id'), nullable=False)
+    skill_details = db.relationship('SkillDetails', backref='skills')
 
-    skils_details_id=db.Column(db.ForeignKey('skills_details.id'), nullable=False)
-    skills_details = db.relationship('skills_details', backref='skills', lazy=True)
+    def repr(self):
+        return f"<Skill {self.id}, {self.lead_id}, {self.skill_details_id}>"
 
-    def __repr__(self):
-        return f"activity('{self.id}', Lead: '{self.lead}', Details: '{self.skills_details}')"
-
-class skills_details(db.Model):
+class SkillDetails(db.Model):
     __tablename__ = 'skills_details'
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(60), nullable=False)
-    datetime_update = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    datetime_create = db.Column(db.DateTime, nullable=False, default=datetime.utcnow, onupdate=datetime.utcnow)
+    title = db.Column(db.String(60))
+    datetime_update = db.Column(db.DateTime, onupdate=datetime.utcnow, nullable=False) 
+    datetime_create = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
 
-    def __repr__(self):
-        return f"activity('{self.id}', '{self.title}', '{self.datetime_update}')"
+    def repr(self):
+        return f"<SkillDetails {self.id}, {self.title}>"
 
-class tags(db.Model):
+class Tag(db.Model):
     __tablename__ = 'tags'
     id = db.Column(db.Integer, primary_key=True)
-    lead_id = db.Column(db.ForeignKey('lead.id'), nullable=False)
-    lead = db.relationship('lead', backref='tags', lazy=True)
+    tag_detail_id = db.Column(db.Integer, db.ForeignKey('tags_details.id'), nullable=False)
+    tag_detail = db.relationship('TagDetails', backref='tags')
+    lead_id = db.Column(db.Integer, db.ForeignKey('lead.id'), nullable=False)
+    lead = db.relationship('Lead', backref='tags')
 
-    tags_details_id=db.Column(db.ForeignKey('tags_details.id'), nullable=False)
-    tags_details = db.relationship('tags_details', backref='tags', lazy=True)
+    def repr(self):
+        return f"<Tag {self.id}, {self.tag_detail_id}, {self.lead_id}>"
 
-    def __repr__(self):
-        return f"activity('{self.id}', Lead: '{self.lead}', Details: '{self.tags_details}')"
-    
-class tags_details(db.Model):
+class TagDetails(db.Model):
     __tablename__ = 'tags_details'
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(60), nullable=False)
-    datetime_update = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    datetime_create = db.Column(db.DateTime, nullable=False, default=datetime.utcnow, onupdate=datetime.utcnow)
+    title = db.Column(db.String(60))
+    datetime_update = db.Column(db.DateTime, onupdate=datetime.utcnow, nullable=False) 
+    datetime_create = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
 
-    def __repr__(self):
-        return f"activity('{self.id}', '{self.title}', '{self.datetime_update}')"
+    def repr(self):
+        return f"<TagDetails {self.id}, {self.title}>"
