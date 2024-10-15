@@ -1,0 +1,24 @@
+@ extends 'pages/base.html' %} {% block head %}
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Database</title>
+</head>
+{% endblock %} {%block body%}
+<body>
+  <h1>Database_Users</h1>
+  {% if users %}
+  <ul>
+    {% for user in users %}
+    <li>
+      {{ user.first_name }} {{ user.last_name }} - {{ user.email }} {{
+      user.job_title }} {{ user.phone_number }}
+    </li>
+
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p>DATA</p>
+  {% endif %}
+</body>
+{%endblock%}
