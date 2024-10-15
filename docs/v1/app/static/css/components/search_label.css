@@ -1,0 +1,17 @@
+.box-search {
+    position: relative;
+    height: 38px;
+    width: 196px;
+    display: inline-block;
+    border-radius: 20px;
+    border-color: #000000;
+}
+
+.search-container {
+    position: relative;
+    height: 38px;
+    width: 196px;
+    display: inline-block;
+    border-radius: 20px;
+    border-color: #000000;
+}

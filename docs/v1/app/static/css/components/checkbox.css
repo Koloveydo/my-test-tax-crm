@@ -10,7 +10,7 @@
     cursor: pointer;
 }
 
-.box {
+.box-check {
     margin-left: 2px;
     width: 100%;
     height: 100%;
@@ -46,21 +46,20 @@
     border-radius: 2px;
 }
 
-.mark:checked ~ .box .right-line,
-.mark:checked ~ .box .left-line {
+.mark:checked ~ .box-check .right-line,
+.mark:checked ~ .box-check .left-line {
     opacity: 1;
 }
 
-.mark:checked ~ .box {
+.mark:checked ~ .box-check {
     background-color:#000000;
-    border:
 }
 
-.box:hover {
+.box-check:hover {
     box-shadow: 1px 2px 2px 0px rgba(0,0,0, 0.2);
 }
 
-body.dark-theme .box {
+body.dark-theme .box-check {
     border: 1px solid #ffffff;
     background-color: #7E7E7E;
 }
@@ -70,26 +69,8 @@ body.dark-theme .left-line {
     background-color: #ffffff;
 }
 
-body.dark-theme .box:hover {
+body.dark-theme .box-check:hover {
     box-shadow: 1px 2px 2px 0px rgba(56, 56, 56, 0.2);
-}
-
-/*body.dark-theme .unchecked {
-    border: 1px solid #777777;
-    background-color: #ffffff;
-}
-
-body.dark-theme .checked { 
-    border: 1px solid #ffffff;
-    background-color: #ffffff;
-}
-
-body.dark-theme .left-line {
-    background-color: #000000; 
-}   
-
-body.dark-theme .right-line {
-    background-color: #000000;    
 }
 
 /*python C:\Users\Admin\Desktop\extra-db\tax-crm\docs\v1\app\app.py  
