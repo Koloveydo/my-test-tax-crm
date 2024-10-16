@@ -1,49 +1,76 @@
-.checkbox_container {
+.mark {
+    display: none;
+}
+
+.checkbox-container {
+    position: relative;
     width: 35px;
     height: 35px;
-}
-.unchecked {
-    display: block; 
-    width: 35px; 
-    height: 35px; 
-    border: 1px solid #000000;
-    border-radius: 5px;
+    display: inline-block;
     cursor: pointer;
 }
 
-.checked {
-    display: none;
-    width: 35px; 
-    height: 35px; 
+.box-check {
+    margin-left: 2px;
+    width: 100%;
+    height: 100%;
     border: 1px solid #000000;
-    background-color: #000000;
-    position: relative;
     border-radius: 5px;
-    cursor: pointer;
+    background-color: #ffffff;
+    position: relative;
 }
+
+.right-line, .left-line {
+    position: absolute;
+    background-color: #ffffff;
+    /*transition: opacity 0.2s;*/
+    opacity: 0;
+}
+
 
 .left-line {
-    position: absolute; 
-    top: 14px; 
-    left: 10px; 
-    width: 2px; 
-    height: 12px; 
-    color:#ffffff;
-    background-color: #ffffff;    
-    border-radius: 2px;
+    top: 14px;
+    left: 10px;
+    width: 2px;
+    height: 12px;
     transform: rotate(-45deg);
+    border-radius: 2px;
 }
 
 .right-line {
-    position: absolute; 
-    top: 16px; 
-    left: 11px; 
-    width: 21px; 
-    height: 2px; 
-    color:#ffffff;
-    background-color: #ffffff;    
-    border-radius: 2px;
+    top: 16px;
+    left: 11px;
+    width: 21px;
+    height: 2px;
     transform: rotate(-45deg);
+    border-radius: 2px;
+}
+
+.mark:checked ~ .box-check .right-line,
+.mark:checked ~ .box-check .left-line {
+    opacity: 1;
+}
+
+.mark:checked ~ .box-check {
+    background-color:#000000;
+}
+
+.box-check:hover {
+    box-shadow: 1px 2px 2px 0px rgba(0,0,0, 0.2);
+}
+
+body.dark-theme .box-check {
+    border: 1px solid #ffffff;
+    background-color: #7E7E7E;
+}
+
+body.dark-theme .right-line,
+body.dark-theme .left-line {
+    background-color: #ffffff;
+}
+
+body.dark-theme .box-check:hover {
+    box-shadow: 1px 2px 2px 0px rgba(56, 56, 56, 0.2);
 }
 
 /*python C:\Users\Admin\Desktop\extra-db\tax-crm\docs\v1\app\app.py  
