@@ -26,6 +26,13 @@ def components_view():
 def base_view():
     return render_template('pages/base.html')
 
+# test information for db
+@app.route('/create-user')
+def create_user_view():
+
+    return render_template('pages/components.html')
+
+
 # @app.route('/plus_button')
 # def plus_button_view():
 #     return render_template('components/plus_button.html')
