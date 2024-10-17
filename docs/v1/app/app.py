@@ -4,8 +4,13 @@ from models import db, User, UserDetails, Lead, LeadDetails, Activity, ActivityD
 
 app = Flask(__name__)
 app.secret_key = 'Asdasd@E!d121'
+user = 'root'
+password = 'koloveydo8'
+host = 'localhost'
+port = '3306'
+database = 'tax_crm'
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:koloveydo8@localhost:3306/taxcrm'
+app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{user}:{password}@{host}:{port}/{database}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 
