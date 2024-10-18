@@ -1,0 +1,107 @@
+.dropdown_menu {
+    position: relative;
+    width: 420px;
+    font-size: 15px;
+    margin: 10px;
+}
+
+.dropdown_menu_content {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    padding-left: 10px;
+    cursor: pointer;
+    border-radius: 7px;
+    background-color: #F2F2F2;
+    font-weight: bold;
+    color: #989898;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    justify-content: space-between; 
+    padding-right: 20px;
+    
+}
+body.dark-theme .dropdown_menu_content{
+    background-color: #393939;
+}
+body.dark-theme .dropdown_list {
+    background-color: #393939;
+}
+body.dark-theme .dropdown_list li {
+    background-color: #605F5F;
+    color: #D2D2D2;
+}
+body.dark-theme .dropdown_list li:hover {
+    background-color: #818080;
+}
+body.dark-theme .dropdown_list li:active {
+    background-color: #4B89D9;
+}
+body.dark-theme .dropdown_list .dropdown_title{
+    color: #989898;  
+    background-color: transparent; 
+}
+
+
+
+.dropdown_list {
+    display: none; 
+    top: 100%;
+    left: 0;
+    width: 100%;
+    border:none;
+    border-radius: 8px;
+    background-color: #F2F2F2;
+    margin-top: 5px;
+    list-style: none;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 5px 0; 
+}
+
+.dropdown_list li {
+    font-size: 13px;
+    cursor: pointer;
+    color: #000000;
+    display: flex;
+    align-items: center;
+    border-radius: 2px;
+    background-color:#ECECEC ;
+    width: 380px;
+    margin: 7px;
+    padding-left: 25px; 
+    padding-bottom: 3px;
+    padding-top: 3px;
+}
+.dropdown_list .dropdown_title {
+    font-weight: bold;
+    font-size: 15px;
+    color: #989898;
+    pointer-events: none; /* Щоб не було активності при кліку */
+    background-color: transparent; 
+    margin-top:2px;
+    margin-left:-16px;
+    margin-top:2px;
+    margin-bottom:20px;
+
+    
+}
+.dropdown_list li:hover {
+    background-color: #D1D1D1;
+    
+}
+.dropdown_list li:active{
+    background-color: #4B89D9;
+    color: #FFFFFF;
+} 
+
+.dropdown-icon {
+    transition: scale(3) transform 0.3s ease, padding-left 0.3s ease;
+    font-size:20px;
+}
+
+.rotate {
+    transform: rotate(180deg);
+    font-size:20px;
+}
+.dropdown_menu_content i{
+    font-size: 20px;
+}
