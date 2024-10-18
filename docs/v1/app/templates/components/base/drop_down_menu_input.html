@@ -40,7 +40,9 @@
     dropdownList.querySelectorAll("li").forEach((item) => {
       item.addEventListener("click", function () {
         const selectedText = item.textContent;
+        dropdownContent.style.color = "#989898";
         dropdownContent.childNodes[0].nodeValue = selectedText;
+
         dropdownList.style.display = "none";
         dropdownIcon.classList.remove("rotate");
         dropdownTitleIcon.classList.remove("rotate");
