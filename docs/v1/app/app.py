@@ -4,8 +4,13 @@ from models import db, User, UserDetails, Lead, LeadDetails, Activity, ActivityD
 
 app = Flask(__name__)
 app.secret_key = 'Asdasd@E!d121'
+user = 'root'
+password = 'koloveydo8'
+host = 'localhost'
+port = '3306'
+database = 'taxcrm'
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:koloveydo8@localhost:3306/taxcrm'
+app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{user}:{password}@{host}:{port}/{database}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 
@@ -20,6 +25,13 @@ def components_view():
 @app.route('/base')
 def base_view():
     return render_template('pages/base.html')
+
+# test information for db
+@app.route('/create-user')
+def create_user_view():
+
+    return render_template('pages/components.html')
+
 
 # @app.route('/plus_button')
 # def plus_button_view():
