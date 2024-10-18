@@ -8,7 +8,7 @@ user = 'root'
 password = 'koloveydo8'
 host = 'localhost'
 port = '3306'
-database = 'tax_crm'
+database = 'taxcrm'
 
 app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{user}:{password}@{host}:{port}/{database}'
 app.secret_key = 'Asdasd@E!d121'
