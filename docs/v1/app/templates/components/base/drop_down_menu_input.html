@@ -1,0 +1,62 @@
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+/>
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/components/drop_down_menu_input.css') }}"
+/>
+<div class="dropdown_menu">
+  <div class="dropdown_menu_content">
+    Choose a tag
+    <i class="fa fa-angle-down"></i>
+  </div>
+  <ul class="dropdown_list">
+    <li class="dropdown_title">Choose a tag</li>
+    <li>Tag1</li>
+    <li>Tag2</li>
+    <li>Tag3</li>
+    <li>Tag4</li>
+  </ul>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    /*Отримання елементів з HTML*/ const dropdownContent =
+      document.querySelector(
+        ".dropdown_menu_content"
+      ); /*Пошук та оголошення класів*/
+    const dropdownList = document.querySelector(".dropdown_list");
+    const dropdownIcon = document.querySelector(".dropdown_menu_content i");
+
+    dropdownContent.addEventListener("click", function () {
+      /*Обробник дії на клік */ dropdownList.style.display =
+        /*Перевіряємо, чи список зараз показується або схований*/
+        dropdownList.style.display === "none" ||
+        dropdownList.style.display === ""
+          ? "block"
+          : "none";
+      dropdownIcon.classList.toggle(
+        "rotate"
+      ); /*для повернення стрілки при відкритті та закритті меню*/
+    });
+
+    dropdownList.querySelectorAll("li").forEach((item) => {
+      item.addEventListener("click", function () {
+        const selectedText = item.textContent; /* При виборі замніяє текст*/
+        dropdownContent.childNodes[0].nodeValue =
+          selectedText; /* Оновлення тексту*/
+        dropdownList.style.display = "none"; /* Закриття списку після вибору*/
+        dropdownIcon.classList.remove("rotate"); /*Скидання обертання стрілки*/
+      });
+    });
+
+    document.addEventListener("click", function (event) {
+      if (!dropdownContent.contains(event.target)) {
+        dropdownList.style.display =
+          "none"; /*Закриття списку, при натисканні за межами списку*/
+        dropdownIcon.classList.remove("rotate"); //
+      }
+    });
+  });
+</script>
