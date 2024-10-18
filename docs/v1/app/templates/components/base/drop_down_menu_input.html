@@ -12,7 +12,10 @@
     <i class="fa fa-angle-down"></i>
   </div>
   <ul class="dropdown_list">
-    <li class="dropdown_title">Choose a tag</li>
+    <li class="dropdown_title">
+      Choose a tag
+      <i class="fa fa-angle-down"></i>
+    </li>
     <li>Tag1</li>
     <li>Tag2</li>
     <li>Tag3</li>
@@ -22,40 +25,35 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    /*Отримання елементів з HTML*/ const dropdownContent =
-      document.querySelector(
-        ".dropdown_menu_content"
-      ); /*Пошук та оголошення класів*/
+    const dropdownContent = document.querySelector(".dropdown_menu_content");
     const dropdownList = document.querySelector(".dropdown_list");
     const dropdownIcon = document.querySelector(".dropdown_menu_content i");
+    const dropdownTitleIcon = document.querySelector(".dropdown_title i");
 
     dropdownContent.addEventListener("click", function () {
-      /*Обробник дії на клік */ dropdownList.style.display =
-        /*Перевіряємо, чи список зараз показується або схований*/
-        dropdownList.style.display === "none" ||
-        dropdownList.style.display === ""
-          ? "block"
-          : "none";
-      dropdownIcon.classList.toggle(
-        "rotate"
-      ); /*для повернення стрілки при відкритті та закритті меню*/
+      const isOpen = dropdownList.style.display === "block";
+      dropdownList.style.display = isOpen ? "none" : "block";
+      dropdownIcon.classList.toggle("rotate", !isOpen);
+      dropdownTitleIcon.classList.toggle("rotate", !isOpen);
     });
 
     dropdownList.querySelectorAll("li").forEach((item) => {
       item.addEventListener("click", function () {
-        const selectedText = item.textContent; /* При виборі замніяє текст*/
-        dropdownContent.childNodes[0].nodeValue =
-          selectedText; /* Оновлення тексту*/
-        dropdownList.style.display = "none"; /* Закриття списку після вибору*/
-        dropdownIcon.classList.remove("rotate"); /*Скидання обертання стрілки*/
+        const selectedText = item.textContent;
+        dropdownContent.style.color = "#989898";
+        dropdownContent.childNodes[0].nodeValue = selectedText;
+
+        dropdownList.style.display = "none";
+        dropdownIcon.classList.remove("rotate");
+        dropdownTitleIcon.classList.remove("rotate");
       });
     });
 
     document.addEventListener("click", function (event) {
       if (!dropdownContent.contains(event.target)) {
-        dropdownList.style.display =
-          "none"; /*Закриття списку, при натисканні за межами списку*/
-        dropdownIcon.classList.remove("rotate"); //
+        dropdownList.style.display = "none";
+        dropdownIcon.classList.remove("rotate");
+        dropdownTitleIcon.classList.remove("rotate");
       }
     });
   });
