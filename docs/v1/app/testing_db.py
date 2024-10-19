@@ -37,12 +37,11 @@ with app.app_context():
     db.session.commit()
     print("Lead Aded")
     
-    
-    activity_details = Activity_details(title='Meeting', activity_type='Call', user=user_details_1.id)
+    activity_details = Activity_details(title='Meeting', activity_type='Call', user=user_1.id)
     db.session.add(activity_details)
     
-    activity_details1 = Activity_details(title='Sleeping', activity_type='Rest', user=user_details_2.id)
-    db.session.add(activity_details1)
+    activity_details_1 = Activity_details(title='Sleeping', activity_type='Rest', user=user_1.id)
+    db.session.add(activity_details_1)
     
     db.session.commit()
     print("Activity Details Aded")
@@ -50,7 +49,7 @@ with app.app_context():
     activity_1 = Activity(lead=lead_details_1.id, activity_details=activity_details.id)
     db.session.add(activity_1)
     
-    activity_2 = Activity(lead=lead_details_2.id, activity_details1=activity_details1.id)
+    activity_2 = Activity(lead=lead_details_2.id, activity_details=activity_details_1.id)
     db.session.add(activity_1)
     
     db.session.commit()
