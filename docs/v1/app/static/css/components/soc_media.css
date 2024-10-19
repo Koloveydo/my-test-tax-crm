@@ -4,11 +4,6 @@
     justify-content: space-between;
     height: 162px;
     width: 894px;
-    border: 1px solid #000000;
-}
-body.dark-theme .soc_container {
-    border: 1px solid #DBDADA;
-    background-color:#3C3C3C;
 }
 .soc_left_box {
     height:162px;
@@ -50,14 +45,10 @@ body.dark-theme .soc_container {
     left: 10px;
     color: #7E7E7E;
     border: none;
+    background-color: transparent;
 }
-
 .messenger_text:focus{
     box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.2);
-}
-
-body.dark-theme .messenger_text{
-    background-color:#3C3C3C;
 }
 .messenger_line {
     margin-top: 19px;

@@ -8,7 +8,7 @@ user = 'root'
 password = '0000'
 host = 'localhost'
 port = '3306'
-database = 'tax-crm'
+database = 'tax_crm'
 
 app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{user}:{password}@{host}:{port}/{database}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -24,16 +24,6 @@ def components_view():
 
 @app.route('/base')
 def base_view():
-    return render_template('pages/base.html')
-
-# test information for db
-@app.route('/create-user')
-def create_user_view():
-
-    return render_template('pages/components.html')
-
-@app.route('/base')
-def baseView():
     return render_template('pages/base.html')
 
 @app.route('/users')
