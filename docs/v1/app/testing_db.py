@@ -1,16 +1,95 @@
 from app import app, db
 from models import *
+from datetime import datetime
 
 with app.app_context():
-
-    new_user_details = User_details(firstname='John', lastname='Doe', email='john@email.com', job_title='Manager', phone='1234567890', addres='123 Main St', url_image='https/hshygyawgds')
-    db.session.add(new_user_details)
+    user_details_1 = User_details(firstname='John', lastname='Doe', email='2@email.com', job_title='Manager', phone='1234567890', addres='123 Main St')
+    db.session.add(user_details_1)
     
-    user = User_details(firstname='Jane', lastname='Smith', email='jane@email.com', job_title='Developer', phone='0987654321', addres='456 Second St')
-    db.session.add(user)
-    
-    user1 = User_details(firstname='Obama', lastname='Bumson', email='obama@email.com', job_title='Developer', phone='0987654321', addres='456 Second St')
-    db.session.add(user1)
+    user_details_2 = User_details(firstname='Jane', lastname='Smith', email='1@email.com', job_title='Developer', phone='0987654321', addres='456 Second St')
+    db.session.add(user_details_2)
     
     db.session.commit()
-    print("DATA ADED")
+    print("User Details Aded")
+    
+    user_1 = User(user_basic_details=user_details_1.id)
+    db.session.add(user_1)
+    
+    db.session.commit()
+    print("User Aded")
+    
+    
+    lead_details_1 = Lead_details(firstname='Alice', lastname='Johnson', ORGANIZATION='Company A', email='alice@company.com', phone_number='1234567890', addres='789 Third St')
+    db.session.add(lead_details_1)
+    
+    lead_details_2 = Lead_details(firstname='Bob', lastname='Smith', ORGANIZATION='Company B', email='bob@company.com', phone_number='0987654321', addres='123 Fourth St')
+    db.session.add(lead_details_2)
+    
+    db.session.commit()
+    print("Lead Details Aded")
+    
+    lead_1 = Lead(firstname='Alice', lead_details=lead_details_1.id)
+    db.session.add(lead_1)
+    
+    lead_2 = Lead(firstname='Bob', lead_details=lead_details_2.id)
+    db.session.add(lead_2)
+    
+    db.session.commit()
+    print("Lead Aded")
+    
+    
+    activity_details = Activity_details(title='Meeting', activity_type='Call', user=user_details_1.id)
+    db.session.add(activity_details)
+    
+    activity_details1 = Activity_details(title='Sleeping', activity_type='Rest', user=user_details_2.id)
+    db.session.add(activity_details1)
+    
+    db.session.commit()
+    print("Activity Details Aded")
+    
+    activity_1 = Activity(lead=lead_details_1.id, activity_details=activity_details.id)
+    db.session.add(activity_1)
+    
+    activity_2 = Activity(lead=lead_details_2.id, activity_details1=activity_details1.id)
+    db.session.add(activity_1)
+    
+    db.session.commit()
+    print("Activity Aded")
+    
+    communication_details = Communication_details(subject='Follow up', text='Following up', user=user_details_1.id)
+    db.session.add(communication_details)
+    
+    db.session.commit()
+    print("Communication Details Aded")
+    
+    communication_1 = Communication(lead=lead_1.id, communication_details=communication_details.id)
+    db.session.add(communication_1)
+    
+    db.session.commit()
+    print("Communication Aded")
+    
+    skills_details = Skills_details(title='Python')
+    db.session.add(skills_details)
+    
+    db.session.commit()
+    print("Skills Details Aded")
+    
+    skills_1 = Skills(lead=lead_1.id, skills_details=skills_details.id)
+    db.session.add(skills_1)
+    
+    db.session.commit()
+    print("Skills Aded")
+    
+    tags_details = Tags_details(title='EXPERT')
+    db.session.add(tags_details)
+    
+    db.session.commit()
+    print("Tags Details Aded")
+
+    tags_1 = Tags(lead=lead_1.id, tags_details=tags_details.id)
+    db.session.add(tags_1)
+    
+    db.session.commit()
+    print("Tags Aded")
+    
+    print("ALL  DATA ADED")

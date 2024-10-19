@@ -8,7 +8,6 @@ class User(db.Model):
     
     id = db.Column(db.Integer, primary_key=True)
     user_basic_details = db.Column(db.Integer, db.ForeignKey('user_details.id'), nullable=False)
-    
     datetime_update = db.Column(db.DateTime, onupdate=datetime.utcnow) 
     datetime_create = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)        
    

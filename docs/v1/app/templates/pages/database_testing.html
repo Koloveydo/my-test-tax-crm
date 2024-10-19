@@ -37,7 +37,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for user in users %}
+                        {% for users in users %}
                         <tr>
                             <td>{{ user.firstname }}</td>
                             <td>{{ user.lastname }}</td>
@@ -53,6 +53,84 @@
                     </tbody>
                 </table>
                 
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>firstname</th>
+                            <th>lastname</th>
+                            <th>email</th>
+                            <th>job_title</th>
+                            <th>phone</th>
+                            <th>addres</th>
+                            <th>url_image</th>
+                            <th>datetime_create</th>
+                            <th>datetime_update</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for lead in leads_details %}
+                        <tr>
+                            <td>{{ lead.firstname }}</td>
+                            <td>{{ lead.lastname }}</td>
+                            <td>{{ lead.email }}</td>
+                            <td>{{ lead.job_title }}</td>
+                            <td>{{ lead.phone }}</td>
+                            <td>{{ lead.addres }}</td>
+                            <td>{{ lead.url_image }}</td>
+                            <td>{{ lead.datetime_create }}</td>
+                            <td>{{ lead.datetime_update }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>title</th>
+                            <th>type</th>
+                            <th>datetime_create</th>
+                            <th>datetime_update</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for activity in activities_details %}
+                        <tr>
+                            <td>{{ activity.title }}</td>
+                            <td>{{ activity.activity_type }}</td>
+                            <td>{{ activity.datetime_create }}</td>
+                            <td>{{ activity.datetime_update }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>title</th>
+                            <th>datetime_create</th>
+                            <th>datetime_update</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for skill in skills_details %}
+                        <tr>
+                            <td>{{ activity.title }}</td>
+                            <td>{{ activity.datetime_create }}</td>
+                            <td>{{ activity.datetime_update }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+
+
+                
+
            
         {% else %}
             <p>DATA</p>

@@ -11,7 +11,8 @@
     border: 1px solid #C5C1C1;
     border-radius: 10px;
 }
-label {
+
+.job_level_input_container label {
     display: flex;
     gap: 10px;
     cursor: pointer;
