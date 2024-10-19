@@ -8,7 +8,7 @@ user = 'root'
 password = '0000'
 host = 'localhost'
 port = '3306'
-database = 'tax-crm'
+database = 'tax_crm'
 
 app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{user}:{password}@{host}:{port}/{database}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']  = False
