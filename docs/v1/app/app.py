@@ -32,10 +32,16 @@ def create_user_view():
 
     return render_template('pages/components.html')
 
+@app.route('/base')
+def baseView():
+    return render_template('pages/base.html')
 
-# @app.route('/plus_button')
-# def plus_button_view():
-#     return render_template('components/plus_button.html')
+@app.route('/users')
+def users_view():
+    users = User_details.query.all()
+    return render_template('pages/database_testing.html', users=users)
 
 if __name__ == "__main__":
+    with  app.app_context():
+        db.create_all()
     app.run(debug=True, port=8088, host='0.0.0.0')
