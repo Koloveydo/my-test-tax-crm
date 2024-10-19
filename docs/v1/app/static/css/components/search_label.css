@@ -1,3 +1,8 @@
+.search_container {
+    height:40px;
+    width:200px;
+    cursor:default;
+}
 .box_search {
     position: relative;
     height: 38px;
