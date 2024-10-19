@@ -55,16 +55,14 @@ body.dark-theme .soc_container {
 .messenger_text:focus{
     box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.2);
 }
+
+body.dark-theme .messenger_text{
+    background-color:#3C3C3C;
+}
 .messenger_line {
     margin-top: 19px;
     margin-left: 9px;
     height: 1px;
     width: 371px;
     background-color: #7E7E7E;
-}
-.messenger_text:hover {
-    color:#6c6c6c;
-}
-.messenger_text:active {
-    color:#000000;
 }
