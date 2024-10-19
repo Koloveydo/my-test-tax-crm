@@ -1,5 +1,6 @@
 from flask import Flask, render_template, jsonify, redirect, flash, session
 from models import *
+from testing_db import *
 
 app = Flask(__name__)
 app.secret_key = 'Asdasd@E!d121'
@@ -58,8 +59,11 @@ def users_view():
 
 
 if __name__ == "__main__":
-    with  app.app_context():
+    with app.app_context():
         db.create_all()
+
+    insertToAllTables()
+
     app.run(debug=True, port=8080, host='0.0.0.0')
     
     
