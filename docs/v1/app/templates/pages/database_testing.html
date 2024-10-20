@@ -1,155 +1,138 @@
-{% extends 'pages/base.html' %}
+{% extends 'pages/base.html' %} {% block head %}
+<title>Database</title>
 
-{% block head %}
-    <title>Database</title>
+<style>
+  td,
+  th {
+    border: 1px solid #dadada;
+    padding: 4px 10px;
+    text-align: left;
+  }
+  th {
+    background-color: dimgray;
+    color: #dadada;
+  }
+  table {
+    border-spacing: 0px;
+    margin: 10px 5px 15px;
+  }
+</style>
+{% endblock %} {% block body %}
 
-    <style> 
-        td, th {
-            border: 1px solid #dadada;
-            padding: 4px 10px;
-            text-align: left;
-        }
-        th {
-            background-color: dimgray;
-            color: #dadada;
-        }
-        table {
-            border-spacing: 0px;
-            margin: 10px 5px 15px;
-        }
-    </style>
-{% endblock %}
+<h1>Database-Users</h1>
 
+{% if users_details %}
 
-{% block body %}
+<table>
+  <thead>
+    <tr>
+      <th>firstname</th>
+      <th>lastname</th>
+      <th>email</th>
+      <th>job_title</th>
+      <th>phone</th>
+      <th>addres</th>
+      <th>url_image</th>
+      <th>datetime_create</th>
+      <th>datetime_update</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for user_detail in users_details %}
+    <tr>
+      <td>{{ user_detail.firstname }}</td>
+      <td>{{ user_detail.lastname }}</td>
+      <td>{{ user_detail.email }}</td>
+      <td>{{ user_detail.job_title }}</td>
+      <td>{{ user_detail.phone }}</td>
+      <td>{{ user_detail.addres }}</td>
+      <td>{{ user_detail.url_image }}</td>
+      <td>{{ user_detail.datetime_create }}</td>
+      <td>{{ user_detail.datetime_update }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
 
-    <h1>Database-Users</h1>
+{% else %}
+<p>Data from users_details not found</p>
+{% endif %} {% if leads_details %}
 
-    {% if users_details %}
-    
-        <table>
-            <thead>
-                <tr>
-                    <th>firstname</th>
-                    <th>lastname</th>
-                    <th>email</th>
-                    <th>job_title</th>
-                    <th>phone</th>
-                    <th>addres</th>
-                    <th>url_image</th>
-                    <th>datetime_create</th>
-                    <th>datetime_update</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for user_detail in users_details %}
-                <tr>
-                    <td>{{ user_detail.firstname }}</td>
-                    <td>{{ user_detail.lastname }}</td>
-                    <td>{{ user_detail.email }}</td>
-                    <td>{{ user_detail.job_title }}</td>
-                    <td>{{ user_detail.phone }}</td>
-                    <td>{{ user_detail.addres }}</td>
-                    <td>{{ user_detail.url_image }}</td>
-                    <td>{{ user_detail.datetime_create }}</td>
-                    <td>{{ user_detail.datetime_update }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-            
-    {% else %}
-        <p>Data from users_details not found</p>
-    {% endif %}
+<table>
+  <thead>
+    <tr>
+      <th>firstname</th>
+      <th>lastname</th>
+      <th>email</th>
+      <th>phone</th>
+      <th>addres</th>
+      <th>url_image</th>
+      <th>datetime_create</th>
+      <th>datetime_update</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for lead_detail in leads_details %}
+    <tr>
+      <td>{{ lead_detail.firstname }}</td>
+      <td>{{ lead_detail.lastname }}</td>
+      <td>{{ lead_detail.email }}</td>
+      <td>{{ lead_detail.phone_number }}</td>
+      <td>{{ lead_detail.addres }}</td>
+      <td>{{ lead_detail.url_image }}</td>
+      <td>{{ lead_detail.datetime_create }}</td>
+      <td>{{ lead_detail.datetime_update }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
 
-    {% if leads_details %}
+{% else %}
+<p>Data from leads_details not found</p>
+{% endif %}
 
-        <table>
-            <thead>
-                <tr>
-                    <th>firstname</th>
-                    <th>lastname</th>
-                    <th>email</th>
-                    <th>phone</th>
-                    <th>addres</th>
-                    <th>url_image</th>
-                    <th>datetime_create</th>
-                    <th>datetime_update</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for lead_detail in leads_details %}
-                <tr>
-                    <td>{{ lead_detail.firstname }}</td>
-                    <td>{{ lead_detail.lastname }}</td>
-                    <td>{{ lead_detail.email }}</td>
-                    <td>{{ lead_detail.phone_number }}</td>
-                    <td>{{ lead_detail.addres }}</td>
-                    <td>{{ lead_detail.url_image }}</td>
-                    <td>{{ lead_detail.datetime_create }}</td>
-                    <td>{{ lead_detail.datetime_update }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        
-    {% else %}
-        <p>Data from leads_details not found</p>
-    {% endif %}
+<table>
+  <thead>
+    <tr>
+      <th>title</th>
+      <th>type</th>
+      <th>datetime_create</th>
+      <th>datetime_update</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for activity in activities_details %}
+    <tr>
+      <td>{{ activity.title }}</td>
+      <td>{{ activity.activity_type }}</td>
+      <td>{{ activity.datetime_create }}</td>
+      <td>{{ activity.datetime_update }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>title</th>
-                        <th>type</th>
-                        <th>datetime_create</th>
-                        <th>datetime_update</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for activity in activities_details %}
-                    <tr>
-                        <td>{{ activity.title }}</td>
-                        <td>{{ activity.activity_type }}</td>
-                        <td>{{ activity.datetime_create }}</td>
-                        <td>{{ activity.datetime_update }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+{% if skills_details %}
 
+<table>
+  <thead>
+    <tr>
+      <th>title</th>
+      <th>datetime_create</th>
+      <th>datetime_update</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for skill in skills_details %}
+    <tr>
+      <td>{{ skill.title }}</td>
+      <td>{{ skill.datetime_create }}</td>
+      <td>{{ skill.datetime_update }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
 
-    {% if skills_details %}
-
-        <table>
-            <thead>
-                <tr>
-                    <th>title</th>
-                    <th>datetime_create</th>
-                    <th>datetime_update</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for skill in skills_details %}
-                <tr>
-                    <td>{{ skill.title }}</td>
-                    <td>{{ skill.datetime_create }}</td>
-                    <td>{{ skill.datetime_update }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        
-    {% else %}
-        <p>Data from skills_details not found</p>
-    {% endif %}
-
-
-
-            
-
-        
-    
-
-
-{% endblock %}
+{% else %}
+<p>Data from skills_details not found</p>
+{% endif %} {% endblock %}
