@@ -106,7 +106,6 @@ class Skills(db.Model):
     lead            = db.Column(db.Integer, db.ForeignKey('lead.id'), nullable=False)
     skills_details  = db.Column(db.Integer, db.ForeignKey('skills_details.id'))
         
-
 class Skills_details(db.Model):
     __tablename__   = 'skills_details'
     
@@ -116,8 +115,6 @@ class Skills_details(db.Model):
     datetime_update = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow) 
     datetime_create = db.Column(db.DateTime, default=datetime.utcnow, nullable= False)
   
-    
-
 class Tags(db.Model):
     __tablename__ = 'tags'
     
@@ -125,7 +122,6 @@ class Tags(db.Model):
     lead          = db.Column(db.Integer, db.ForeignKey('lead.id'), nullable=False)
     tags_details  = db.Column(db.Integer, db.ForeignKey('tags_details.id'), nullable=False)
    
-
 class Tags_details(db.Model):
     __tablename__   = 'tags_details'
     
