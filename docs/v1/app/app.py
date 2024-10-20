@@ -32,14 +32,14 @@ def users_view():
     lead = Lead.query.all()
     activity = Activity.query.all()
     communication = Communication.query.all()
-    skils = Skill.query.all()
-    tags = Tag.query.all()
+    skils = Skills.query.all()
+    tags = Tags.query.all()
     
-    users_details = UserDetails.query.all()
-    leads_details = LeadDetails.query.all()
-    activities_details = ActivityDetails.query.all()
-    skills_details = SkillDetails.query.all()
-    tags_details = TagDetails.query.all()
+    users_details = User_details.query.all()
+    leads_details = Lead_details.query.all()
+    activities_details = Activity_details.query.all()
+    skills_details = Skills_details.query.all()
+    tags_details = Tags_details.query.all()
 
     return render_template('pages/database_testing.html', 
                            user=user,

@@ -1,26 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/pages/base.css') }}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/pages/base.css') }}"
+    />
 
+    {% block head %} {% endblock %}
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/users">users</a>
+      </nav>
+    </header>
 
-	{% block head %}
-	{% endblock %}
-</head>
-<body>
+    {% block body %} {% endblock %}
 
-	<header>
-		<nav>
-			<a href="/users">users</a>
-		</nav>
-	</header>
-
-	{% block body %}
-	{% endblock %}
-
-
-	<script src="{{ url_for('static', filename='js/pages/base.js') }}"></script>
-</body>
+    <script src="{{ url_for('static', filename='js/pages/base.js') }}"></script>
+  </body>
 </html>
