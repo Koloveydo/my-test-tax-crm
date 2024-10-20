@@ -11,12 +11,6 @@
     {% block head %} {% endblock %}
   </head>
   <body>
-    <header>
-      <nav>
-        <a href="/users">users</a>
-      </nav>
-    </header>
-
     {% block body %} {% endblock %}
 
     <script src="{{ url_for('static', filename='js/pages/base.js') }}"></script>
