@@ -1,0 +1,32 @@
+.standard_radio_input_block{
+    padding: 50px;
+
+}
+
+.standard_radio_input_content input[type="radio"] {
+    cursor: pointer;
+    appearance: none;
+    height: 18px;
+    width: 18px;
+    background-color: transparent;
+    box-shadow: 0 0px 6px 0 rgb(0 0 0 / 25%);
+    border-radius: 50%;
+}
+.standard_radio_input_content input[type="radio"]:checked {
+    background-color: #78CCD3;
+    transition: .3s;
+}
+
+.standard_radio_input_block label{
+    width: fit-content;
+    margin: 10px;
+}
+
+body.dark-theme .standard_radio_input_content input[type="radio"]{
+    background-color: #afafaf;
+    box-shadow: 0 0px 6px 0 rgba(255, 255, 255, 0.25);
+}
+
+body.dark-theme .standard_radio_input_content input[type="radio"]:checked{
+    background-color: #78CCD3;
+}
