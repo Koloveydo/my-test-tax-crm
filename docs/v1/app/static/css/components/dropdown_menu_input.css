@@ -109,3 +109,7 @@ body.dark-theme .dropdown_list li:not(.dropdown_title):active {
     background-color: #4B89D9;
     color: #FFFFFF;
 }
+body.dark-theme .dropdown_list li.active {
+    background-color: #4B89D9; 
+    color: #FFFFFF; 
+}
