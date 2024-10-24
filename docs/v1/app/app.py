@@ -5,10 +5,10 @@ from models import *
 app = Flask(__name__)
 app.secret_key = 'Asdasd@E!d121'
 user = 'root'
-password = 'koloveydo8'
+password = '0000'
 host = 'localhost'
 port = '3306'
-database = 'taxcrm'
+database = 'tax_crm'
 
 app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{user}:{password}@{host}:{port}/{database}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -26,20 +26,20 @@ def components_view():
 def base_view():
     return render_template('pages/base.html')
 
-# test information for db
 @app.route('/create-user')
 def create_user_view():
 
     return render_template('pages/components.html')
 
-@app.route('/base')
-def baseView():
-    return render_template('pages/base.html')
-
 @app.route('/users')
 def users_view():
     users = User_details.query.all()
     return render_template('pages/database_testing.html', users=users)
+
+@app.route('/main-page')
+def main_page_view():
+
+    return render_template('pages/main_page.html')
 
 if __name__ == "__main__":
     with  app.app_context():
