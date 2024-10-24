@@ -10,6 +10,7 @@ host = 'localhost'
 port = '3306'
 database = 'tax_crm'
 
+
 app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{user}:{password}@{host}:{port}/{database}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
