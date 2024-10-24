@@ -25,7 +25,7 @@
   cursor: pointer;
   background-color: inherit;
   border: none;
-  transform: scale(3) translateX(100px);
+  
 }
 /* .plus_button_hover*/
 .plus_button_container:hover .inner_plus_button,
