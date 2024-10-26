@@ -38,6 +38,7 @@ def users_view():
     users_details = User_details.query.all()
     leads_details = Lead_details.query.all()
     activities_details = Activity_details.query.all()
+    communication_details = Communication_details.query.all()
     skills_details = Skills_details.query.all()
     tags_details = Tags_details.query.all()
 
@@ -51,7 +52,8 @@ def users_view():
                            
                            users_details=users_details, 
                            leads_details=leads_details, 
-                           activities_details=activities_details, 
+                           activities_details=activities_details,
+                           communication_details=communication_details,
                            skills_details=skills_details, 
                            tags_details=tags_details)
 
