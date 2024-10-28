@@ -6,10 +6,10 @@
     font-family: 'Montserrat-Light';
     src: url('../fonts/Montserrat/static/Montserrat-Light.ttf');
 } */
-@font-face {
+/* @font-face {
     font-family: 'Josefin Sans';
     src: url({{ url_for('static', filename='fonts/Josefin_Sans/static/JosefinSans-Regular.ttf'}});
-}
+} */
 /* @font-face {
     font-family: 'Montserrat-Medium';
     src: url('../fonts/Montserrat/static/Montserrat-Medium.ttf');
@@ -31,6 +31,8 @@
 	font-family: 'Josefin Sans';
 	padding: 0;
 	margin: 0;
+    text-decoration: none;
+    list-style: none;
 }
 
 
@@ -42,8 +44,15 @@
     background-color: #F6F6F6;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.09);
     position: fixed;
-    z-index: 999;
+    z-index: 2;
 
+}
+
+.Tablet_logo,
+.Phone_logo,
+.header_menu_button,
+.close_menu{
+    display: none;
 }
 
 .header_content{
@@ -56,6 +65,7 @@
 
 .header_content li{
     list-style: none;
+    position: relative;
 }
 
 .right_header_menu{
@@ -77,13 +87,186 @@
     color: #000000;
 }
 
+.email_svg{
+    color: #000000;
+}
+
+.email_svg:hover{
+    color: #555555;
+    transition: .3s;
+}
+.profile_svg{
+    color: #4B89D9;
+}
+.profile_svg:hover{
+    color: #7ca4d8;
+    transition: .3s;
+}
+
+.fall_down_menu {
+    position: relative;
+    display: inline-block;
+}
+
+.fall_down_menu .fall_down_menu_content,
+.contacts_fall_down_menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%); 
+    text-align: center;
+    background-color: #F6F6F6;
+    min-width: 150px;
+    box-shadow: 0 4px 4px  rgba(0, 0, 0, 0.13);
+    z-index: 1;
+    border-radius: 4px;
+    padding: 20px 0px;
+    border-radius: 5px;
+}
+
+.fall_down_menu_content ul,
+.contacts_fall_down_menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.fall_down_menu_content ul li,
+.contacts_fall_down_menu ul li {
+    padding: 10px;
+}
+
+.fall_down_menu_content ul li a,
+.fall_down_menu .contacts_fall_down_menu ul li a {
+    color: #333;
+    text-decoration: none;
+    display: block;
+}
+
+.phone_menu_content{
+    display: flex;
+    flex-direction: column;
+    background-color: #F6F6F6;
+    width: 30%;
+    height: 110vh;
+    position: absolute;
+    top: 100%;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.13);
+    right: -450px;
+    text-align: center;
+    transition: .5s ease;
+}
+
+.header_menu_button.active {
+    display: none;
+}
+
+.close_menu {
+    display: none; 
+}
+
+.close_menu.active {
+    display: flex; 
+}
+
+.phone_menu_content {
+    display: none; 
+}
+
+.phone_menu_content.active {
+    display: block; 
+}
+
+
+
+.phone_menu_content.active{
+    right: 0;
+    width: 50%;
+}
+
+.phone_menu_content ul li{
+    padding: 25px;
+}
+
+.phone_menu_content a{
+    font-size: 20px;
+    color: #000000;
+}
+
+.phone_menu_content li:hover a{
+    color: #000000;
+    border-bottom: 1px solid #555555;
+    padding: 3px 10px;
+}
+
+
+.fall_down_menu:hover .fall_down_menu_content,
+.fall_down_menu:hover .contacts_fall_down_menu {
+    display: block;
+}
+
 .fall_down_menu:hover .header_arrow{
     transform: rotate(-180deg);
     transition: .5s ease;
-
 }
 
 .header_content li:hover a{
+    cursor: pointer;
     color: #555555;
     transition: .3s;
+}
+
+
+@media (max-width: 1400px){
+    .Dekstop_logo{
+        display: none;
+    }
+    .Tablet_logo{
+        display: flex;
+    }
+}
+
+@media (max-width: 900px){
+    .header_left_menu{
+        gap: 25px;
+    }
+}
+
+
+@media (max-width: 550px){
+    .Dekstop_logo,
+    .Tablet_logo,
+    .dekstop_menu,
+    .header_email_svg{
+        display: none;
+    }
+    .Phone_logo,
+    .header_content,
+    .header_menu_button{
+        display: flex;
+    }
+
+    .header{
+        width: 105vh;
+    }
+
+    .header_left_menu{
+        gap: 30px;
+    }
+
+    .phone_menu_content{
+        right: 100px;
+    }
+}
+
+@media (max-width: 380px){
+    .profile_svg{
+        display: none;
+    }
+
+    .header_left_menu{
+        gap: 15px;
+        padding-right: 20px;
+    }
 }
