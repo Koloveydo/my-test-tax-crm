@@ -1,5 +1,6 @@
 body{
     margin: 0;
+    background-color: #F2F2F2;
 }
 .contacts_page {
     box-sizing: border-box;
@@ -18,27 +19,34 @@ body{
 .header_section {
     display: flex;
     color: #000000;
-    margin-top:46px;
     margin-bottom: 18px;
+    margin-top:46px;
     cursor:pointer;
+    gap: 20px; 
+    white-space: nowrap; 
+    position: relative; 
 }
 
 .section_1 {
     font-size: 18px;
-    width:240px;
+    width:241px;
     text-align: center;
     position: relative;
-    padding-bottom: 5px
 }
+.section_1::after:hover{
+    background-color:#E7E5E5 ;
+}
+
 .section_1::after {
     content: "";
     position: absolute;
     left: 0;
     right: 0;
-    bottom: -12px;
+    bottom: -15px;
     height: 5px;
     background-color: #3BB7FD; 
     width: 100%;
+    margin:0;
 }
 .section_2 {
     font-size: 18px;
@@ -51,17 +59,45 @@ body{
     font-size: 18px;
     text-align: center;
 }
-
 .divider_line {
     border: none;
     height: 1px;
     background-color: #B9B9B9;
+    margin-top: 12px;
+     position: relative; 
+}
+.add_contact_container{
+    display: flex;
+    justify-content:center ;
+    gap: 20px;
+    position: absolute; 
+    margin-left: 1400px;
+    margin-top: -40px;
 }
 .add_contact{
     background-color:#000000 ;
     color:#FFFFFF;
     font-size:20px;
-    padding: 5px;
+    padding: 7px;
     border-radius: 4px;
-
+    display: flex;
+    align-items: center;
+}
+.contact_date{
+    color: #BABABA;
+    display: flex;         
+    justify-content: space-between;
+    margin-top: 40px;
+    margin-left: 95px;
+    margin-right: 95px;
+    font-size: 14px;
+    align-items: center;
+}
+.button_align{
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    padding: 10px; 
+    margin-right: 20px;
+    margin-left: 20px;
 }
