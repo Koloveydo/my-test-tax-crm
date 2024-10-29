@@ -8,8 +8,9 @@
 } */
 @font-face {
     font-family: 'Josefin Sans';
-    src: url({{ url_for('static', filename='fonts/Josefin_Sans/static/JosefinSans-Regular.ttf'}});
+    src: url url_for({{ url_for('static', filename='fonts/Josefin_Sans/static/JosefinSans-Regular.ttf'}});
 }
+
 /* @font-face {
     font-family: 'Montserrat-Medium';
     src: url('../fonts/Montserrat/static/Montserrat-Medium.ttf');
