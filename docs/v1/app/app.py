@@ -21,6 +21,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS']  = False"""
 def componentsView():
     return render_template('pages/components.html')
 
+
 @app.route('/base')
 def baseView():
  " return render_template('pages/base.html')"""
@@ -28,6 +29,7 @@ def baseView():
 @app.route('/')
 def contacts_view():
     return render_template('pages/Contacts_page.html')
+    
 
 if __name__ == "__main__":
  app.run(debug=True, port=8080, host='0.0.0.0')
