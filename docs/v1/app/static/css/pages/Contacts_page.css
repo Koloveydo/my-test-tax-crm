@@ -19,23 +19,29 @@ body {
     margin-bottom: 46px;
 }
 
-.name_section {
+.tabs {
     display: flex;
     color: #000000;
 
     position: relative;
     font-size: 18px;
+
+}
+
+.tabs .active {
+    border-bottom: 5px solid #3BB7FD;
 }
 
 .section_1 {
     cursor: pointer;
-    border-bottom: 5px solid #3BB7FD;
+    /*border-bottom: 5px solid #3BB7FD;*/
     padding-left: 70px;
     text-align: center;
     position: relative;
     padding-left: 70px;
     padding-right: 70px;
     padding-bottom: 15px;
+    text-decoration: none;
 }
 
 
@@ -48,15 +54,10 @@ body {
     padding-left: 70px;
     padding-right: 70px;
     padding-bottom: 15px;
-    border-bottom: 5px solid #F2F2F2;
+
+    text-decoration: none;
 }
 
-.section_1:active,
-.section_2:active,
-.section_3:active {
-    position: relative;
-    border-bottom: 5px solid #3BB7FD;
-}
 
 .divider_line {
     border: none;
@@ -114,4 +115,16 @@ body {
     margin-right: 20px;
     margin-left: 20px;
     margin-top: 40px;
+}
+
+.tab_contents .active_content {
+    display: block;
+}
+
+.tab_contents>div {
+    display: block;
+}
+
+.name_section.active {
+    border-bottom: 5px solid #3BB7FD;
 }
