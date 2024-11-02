@@ -8,7 +8,7 @@
 } */
 @font-face {
     font-family: 'Josefin Sans';
-    src: url({{ url_for('static', filename='fonts/Josefin_Sans/static/JosefinSans-Regular.ttf'}});
+    src: url('../fonts/Josefin_Sans/static/JosefinSans-Regular.ttf');
 }
 /* @font-face {
     font-family: 'Montserrat-Medium';
@@ -28,7 +28,13 @@
 } */
 
 * {
-	font-family: 'Josefin Sans';
+	font-family: 'Josefin Sans', 'Times New Roman', Times, serif;
 	padding: 0;
 	margin: 0;
+}
+
+section.main-page {
+    min-height: 100vh;
+    max-width: 100vw;
+    overflow-x: hidden;
 }

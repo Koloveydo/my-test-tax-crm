@@ -1,0 +1,46 @@
+.edit_button_circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    cursor: pointer;
+    border: none;
+    width: 60px;
+    height: 60px;
+    background-color: transparent;
+    border-radius: 50%;
+}
+.edit_icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.edit_button_circle:hover,
+.edit_button_circle:hover .edit_icon path {
+    fill: #6C6C6C;
+    background-color: #EEEEEE;
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.35);
+    border: 1px solid #FFFFFF;
+    
+}
+.edit_button_circle:active,
+.edit_button_circle:active .edit_icon path {
+    fill: #888787;
+    border: 1px solid #7E7E7E;
+}
+body.dark-theme .edit_icon path,
+body.dark-theme .edit_button_circle {
+    fill: #DFDEDE;
+}
+body.dark-theme .edit_button_circle:hover,
+body.dark-theme .edit_button_circle:hover .edit_icon path {
+    fill: #CECECE;
+    background-color: #626262;
+    border: 1px solid #909090;
+    box-shadow: 0px 4px 5px rgba(255, 255, 255, 0.35);
+}
+body.dark-theme .edit_button_circle:active .edit_icon path,
+body.dark-theme .edit_button_circle:active {
+    fill: #F6F6F6;
+    border: 1px solid #C0BFBF;
+}
