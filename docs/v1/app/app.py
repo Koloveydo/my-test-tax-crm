@@ -40,6 +40,11 @@ def users_view():
 @app.route('/main-page')
 def main_page_view():
 
+    calendar_data = [
+        
+    ]
+    
+    
     return render_template('pages/main_page.html')
 
 if __name__ == "__main__":

@@ -3,14 +3,10 @@
     display: inline-block;
     height: 27px;
     width:27px;
-    margin-top: 38px;
-    margin-left: 5px;
 }
 .info-icon{
     height:27px;
     width: 35px;
-    position:center;
-    margin-top: 2px;
 }
 .helper-text {
     visibility: hidden;
