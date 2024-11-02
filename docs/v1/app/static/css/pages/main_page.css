@@ -1,0 +1,283 @@
+.start_of_main_page {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 135px;
+    background-color: transparent;
+    border: none;
+}
+.greetings{
+    width:730px;
+    height:135px;
+    left:5%;
+}
+.user_small_inf{
+    width: 325px;
+    height:135px;
+    right: 5%;
+}
+.greetings, .user_small_inf{
+    position:relative;
+    background-color:transparent;
+    display:flex;
+    align-items: center;
+}
+
+.daily_img, .start_info{
+    display: flex;
+    position: relative;
+}
+.start_info{
+    flex-direction:column;
+    align-items: center;
+    justify-content: space-between;
+    gap:20px;
+}
+.date_time, .current_status, .greetings_text{
+    position:relative;
+    border:none;
+    cursor:default;
+    width: 450px;
+} 
+.date_time{
+    font-size: 18px;
+    color: rgba(0, 0, 0, 1);
+}
+.greetings_text{
+    font-size: 24px;
+    font-weight: bold;
+    top:5px;
+}
+.current_status{
+    font-size: 18px;
+    color: rgba(0, 0, 0, 0.6);
+}
+.date_time, .current_status, .greetings_text:focus{
+    outline:none;
+}
+.user_small_detail, .user_workandname{
+    display:flex;
+    background-color: transparent;
+    border:none;
+}
+.user_small_inf{
+    width:380px;
+    justify-content: space-between;
+    margin-right: 50px;
+}
+.user_small_detail{
+    width: 310px;
+    flex-direction: column;
+}
+.user_workandname{
+    width:315px;
+    height:30px;
+}
+.user_fullname, .user_work, .organization-text{
+    border:none;
+    text-align: right;
+    cursor:default;
+}
+.user_fullname, .user_work{
+    height:30px;
+    position: relative;
+}
+.user_work{
+    color: rgba(0, 0, 0, 0.6);
+}
+.user_fullname, .user_work:focus, .organization-text{
+    outline: none;
+}
+.user_fullname{
+    width:230px;
+    font-size: 18px;
+    font-weight:normal;
+}
+.user_work{
+    width: 80px;
+    font-size: 14px;
+    font-weight: lighter;
+}
+.organization-text{
+    width:310px;
+    height:24px;
+    color: #1F60B3;
+}
+.circle_flname {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background-color: #EEEEEE;
+    border-radius: 50%;
+    color: #000000;        
+    font-size: 15px;      
+    text-align: center;   
+    line-height: 50px;       
+    font-weight: bold;   
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.09);
+}
+.statistic{
+    width:90%;
+    display: flex;
+    justify-content: space-between;
+    height: 105px;
+    border: none;
+    background-color: #F6F6F6;
+    box-shadow: 0px 4px 2px 0px rgba(0, 0, 0, 0.13);
+    margin-left: 5%;
+    margin-top: 50px;
+}
+.lead_quantity, .unmess_quantity, .task_quantity{
+    display:flex;
+    position:relative;
+    width: 400px;
+}
+.line_statistic{
+    width: 1px;
+    height: 70%;
+    background-color: #000;
+    align-self: center;
+}
+.lead_quantity_text, .lead_quantity_number, .unmess_quantity_text, .unmess_quantity_number, .task_quantity_text, .task_quantity_number{
+    border: none;
+    position: relative;
+    background-color: transparent;
+    font-weight:normal;
+    cursor: default;
+}
+.lead_quantity_text, .lead_quantity_number, .unmess_quantity_text, .unmess_quantity_number, .task_quantity_text, .task_quantity_number:focus{
+    outline:none;
+}
+.lead_quantity_text, .unmess_quantity_text, .task_quantity_text{
+    text-align: right;
+    font-size:18px;
+}
+.unmess_quantity_text{
+    width: 200px;
+}
+.lead_quantity_text{
+    width:100px;
+}
+.task_quantity_text{
+    width:100px;
+}
+.lead_quantity_number, .unmess_quantity_number, .task_quantity_number{
+    width:80px;
+    text-align: center;
+    align-self: center;
+    font-size:36px;
+}
+.lead_quantity_number{
+    margin-left:65px;
+}
+.task_quantity_number{
+    margin-left: 50px;;
+}
+.unmess_quantity_number{
+    margin-left:50px;
+}
+.info_table{
+    height:1200px;
+    width: 90%;
+    display:flex;
+    justify-content: space-between;
+    background-color: transparent;
+    border:none;
+    position: center;
+    margin-left: 5%;
+    margin-top: 30px;
+}
+.leads_table, .calendar_table, .task_table{
+    width: 32%;
+    height: 715px;
+    background-color: #F6F6F6;
+    border:none;
+    position:relative;
+    box-shadow: 0px 4px 2px 0px rgba(0, 0, 0, 0.13);
+}
+.unmess_table{
+    margin-top: 745px;
+    width:90%;
+    height:460px;
+    background-color: #F6F6F6;
+    border:none;
+    position:absolute;
+    box-shadow: 0px 4px 2px 0px rgba(0, 0, 0, 0.13);
+}
+.table_buttons{
+    display: flex;
+    position: relative;
+    justify-content:space-around;
+    align-items: center;
+    height: 10%;
+}
+.leads_table_text, .tasks_table_text, .callendar_table_text, .unmess_table_text{
+    border:none;
+    background-color: transparent;
+    position: relative;
+    font-size: 18px;
+    cursor:default;
+}
+.leads_table_text, .tasks_table_text, .callendar_table_text, .unmess_table_text:focus{
+    outline:none;
+}
+.leads_table_text{
+    width:110px;
+}
+.callendar_table_text{
+    width:70px;
+}
+.tasks_table_text{
+    width:42px;
+}
+.info_table_text:focus{
+    outline: none;
+}
+.table_line{
+    width:100%;
+    height: 1px;
+    background-color:#000000;
+}
+.table_text_info_container{
+    width: 150px;
+    height: 30px;
+    display:flex;
+    position: relative;
+}
+.table_info_container{
+    margin-left: 10px;
+    align-items:center;
+}
+.plus_button_container{
+    align-items: center;
+}
+.current_leads, .current_callendar, .current_tasks, .current_unmess{
+    width:100%;
+    height:85%;
+    position:relative;
+    display:flex;
+}
+.unmess_buttons{
+    width: 100%;
+    height: 15.5%;
+    display: flex;
+    position: relative;
+    justify-content:space-between;
+    align-items: center;
+}
+.unmess_table_text{
+    margin-left: 40px;
+    width: 130px;
+}
+.current_callendar{
+    align-items: center;
+    justify-content: center;
+}
+.callendar-icon{
+    display: flex;
+    position:relative;
+    align-items: center;
+    align-self:center;
+    flex-direction:column;
+}
+

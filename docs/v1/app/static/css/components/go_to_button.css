@@ -3,7 +3,8 @@ body.dark-theme .inner_go_to_button,
 body.dark-theme .go_to_button,
 .go_to_button,
 .inner_go_to_button {
-    margin:3px;
+    margin-top:6px;
+    margin-left:10px;
     display: inline-block;
     padding: 0px 0px;
     background: none;
@@ -15,6 +16,7 @@ body.dark-theme .go_to_button,
     cursor: pointer;
     font-weight: bolder;
     transition: color 0.2s ease;
+    position:relative;
 }
 
 .go_to_button .icon path,
