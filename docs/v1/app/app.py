@@ -28,7 +28,28 @@ def baseView():
     
 @app.route('/')
 def contacts_view():
-    return render_template('pages/Contacts_page.html')
+    contacts = [
+        {'photo': '','name': 'John','surname': 'Doe','organization': 'Company A','email': 'john@example.com','phone': '123-456-7890','skills': ['JavaScript', 'HTML', 'CSS', 'Flask', 'Java']},
+        {'photo': '','name': 'John','surname': 'Doe','organization': 'Company A','email': 'john@example.com','phone': '123-456-7890','skills': ['JavaScript', 'HTML', 'CSS', 'Flask',]},
+        {'photo': '','name': 'John','surname': 'Doe','organization': 'Company A','email': 'john@example.com','phone': '123-456-7890','skills': ['JavaScript', 'HTML', 'CSS',]},
+        {'photo': '','name': 'John','surname': 'Doe','organization': 'Company A','email': 'john@example.com','phone': '123-456-7890','skills': ['JavaScript', 'HTML',]},
+        {'photo': '','name': 'John','surname': 'Doe','organization': 'Company A','email': 'john@example.com','phone': '123-456-7890','skills': ['JavaScript',]},
+    ];
+    leads = [
+        {'photo': '','name': 'John','surname': 'Doe','organization': 'Company A','email': 'john@example.com','phone': '123-456-7890','skills': ['JavaScript', 'HTML', 'CSS',]},
+        {'photo': '','name': 'John','surname': 'Doe','organization': 'Company A','email': 'john@example.com','phone': '123-456-7890','skills': ['JavaScript', 'HTML', 'CSS',]},
+        {'photo': '','name': 'John','surname': 'Doe','organization': 'Company A','email': 'john@example.com','phone': '123-456-7890','skills': ['JavaScript', 'HTML', 'CSS',]},
+    ];
+    
+    all_contacts = contacts + leads
+    
+    data = {
+        "contacts":     contacts,
+        "leads":        leads,
+        "all_contacts": all_contacts,
+    }
+    
+    return render_template('pages/contacts.html', data=data)
     
 
 if __name__ == "__main__":

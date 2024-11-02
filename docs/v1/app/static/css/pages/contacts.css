@@ -1,20 +1,24 @@
-body {
+section#contacts_page {
     margin: 0;
     background-color: #F2F2F2;
+    min-height: 100vh;
 }
-.contacts_page {
-    box-sizing: border-box;
+.contacts_page-inner {
     display: flex;
     flex-direction: column;
-    margin: -15px;
-    padding: 0;
-    font-weight: bold;
 }
 .title_name {
     font-size: 30px;
-    margin-top: 41px;
-    margin-left: 49px;
-    margin-bottom: 46px;
+}
+.head-ct {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+}
+.nav-ct {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 .tabs {
     display: flex;
@@ -25,18 +29,7 @@ body {
 .tabs .active {
     border-bottom: 5px solid #3BB7FD;
 }
-.section_1 {
-    cursor: pointer;
-    padding-left: 70px;
-    text-align: center;
-    position: relative;
-    padding-left: 70px;
-    padding-right: 70px;
-    padding-bottom: 15px;
-    text-decoration: none;
-}
-.section_2,
-.section_3 {
+.head-tab-click {
     cursor: pointer;
     position: relative;
     text-align: center;
@@ -45,23 +38,14 @@ body {
     padding-right: 70px;
     padding-bottom: 15px;
     text-decoration: none;
-}
-.divider_line {
-    border: none;
-    display: block;
-    height: 1px;
-    background-color: #B9B9B9;
-    margin-top: 0px;
-    position: relative;
-    width: 100%;
 }
 .add_contact_container {
     display: flex;
     gap: 20px;
     position: relative;
-    margin-left: 1400px;
-    margin-top: -90px;
     align-items: center;
+    justify-content: flex-end;
+    max-width: 90%;
 }
 .add_contact {
     background-color: #000000;
@@ -107,15 +91,12 @@ body {
 .name_section.active {
     border-bottom: 5px solid #3BB7FD;
 }
-.contact_cards_container {
+.cards_container {
     display: flex;
     flex-direction: column;
-    margin-left: 80px;
-    margin-right: 80px;
     font-size: 13px;
-    height: 88px;
 }
-.contact_card {
+.card-info {
     border-radius: 3px;
     padding: 15px;
     background-color: #FFFFFF;
@@ -124,15 +105,69 @@ body {
     margin-bottom: 18px;
     display: flex;
     align-items: center;
+    gap: 15px;
 }
-.contact_photo {
+.card_photo {
     width: 67px;
     height: 67px;
     background-color: #D9D9D9;
     border-radius: 50%;
     float: left;
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+}
+.card_photo img {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
 .contact_info {
     display: flex;
     margin-right: 15px;
+}
+.col-content-contants {
+    display: none;
+}
+.col-content-contants.active {
+    display: block;
+}
+.contact_data {
+    max-width: min(1920px, calc(100% - 160px));
+    margin: 0 auto;
+    overflow-x: auto;
+}
+.contact_data-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: max-content;
+    min-width: 100%;
+}
+.pre-card-name-column {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.card-name-column {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: auto;
+    margin-left: calc(15px + 15px + 67px - 40px);
+    margin-right: 30px;
+}
+.contact_info p,
+.contact_info .skills {
+    width: 200px;
+    text-wrap: wrap;
+    text-align: center;
+}
+.card-name-column p {
+    width: 200px;
+    text-align: center;
 }
