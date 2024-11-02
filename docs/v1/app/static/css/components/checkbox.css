@@ -56,7 +56,7 @@
 }
 
 .box-check:hover {
-    box-shadow: 1px 2px 2px 0px rgba(0,0,0, 0.2);
+    box-shadow: 1px 3px 2px 0px rgba(0,0,0, 0.2);
 }
 
 body.dark-theme .box-check {
@@ -70,7 +70,7 @@ body.dark-theme .left-line {
 }
 
 body.dark-theme .box-check:hover {
-    box-shadow: 1px 2px 2px 0px rgba(56, 56, 56, 0.063);
+    box-shadow: 1px 3px 2px 0px rgba(56, 56, 56, 0.4);
 }
 
 /*python C:\Users\Admin\Desktop\extra-db\tax-crm\docs\v1\app\app.py

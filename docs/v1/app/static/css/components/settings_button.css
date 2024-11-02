@@ -11,7 +11,7 @@
     height: 55px;
     width: 55px;
     border-radius: 50%;
-    
+    cursor: pointer;
 }
 
 .settings_icon{
