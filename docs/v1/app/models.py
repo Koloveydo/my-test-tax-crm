@@ -34,6 +34,7 @@ class Lead(db.Model):
     firstname       = db.Column(db.String(40))
     lead_details    = db.Column(db.Integer, db.ForeignKey('lead_details.id'), nullable=False)
     
+    
     datetime_update = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow) 
     datetime_create = db.Column(db.DateTime, default= datetime.utcnow, nullable= False)
 
@@ -92,7 +93,7 @@ class Communication_details(db.Model):
     id              = db.Column(db.Integer, primary_key=True)
     subject         = db.Column(db.String(60))
     text            = db.Column(db.Text)
-    user            = db.Column(db.ForeignKey('user.id'), nullable=False)
+    user            = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     
     datetime_update = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow) 
     datetime_create = db.Column(db.DateTime, default=datetime.utcnow, nullable= False)
@@ -127,7 +128,6 @@ class Tags_details(db.Model):
     
     id              = db.Column(db.Integer, primary_key=True)
     title           = db.Column(db.String(60))
-    
     datetime_update = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow) 
     datetime_create = db.Column(db.DateTime, default=datetime.utcnow, nullable= False)
     
