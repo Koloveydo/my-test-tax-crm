@@ -3,12 +3,12 @@ section#contacts_page {
     background-color: #F2F2F2;
     min-height: 100vh;
 }
-body.dark-theme .section#contacts_page{
-    background-color: #262626;
-}
 .contacts_page-inner {
     display: flex;
     flex-direction: column;
+}
+body.dark-theme .contacts_page-inner {
+    background-color: #262626;
 }
 .title_name {
     font-size: 30px;
@@ -32,7 +32,7 @@ body.dark-theme .title_name{
     position: relative;
     font-size: 18px;
 }
-body.dark-them .tabs{
+body.dark-theme .tabs{
     color:#DADADA ;
 }
 .tabs .active {
@@ -55,6 +55,7 @@ body.dark-them .tabs{
     align-items: center;
     justify-content: flex-end;
     max-width: 90%;
+    cursor: pointer;
 }
 .add_contact {
     background-color: #000000;
@@ -64,27 +65,27 @@ body.dark-them .tabs{
     border-radius: 4px;
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
-body.dark-them .add_contact{
+.add_contact_container path:hover {
+    fill: #222222;
+}
+.add_contact:hover{
+    background-color: #101010;
+}
+body.dark-theme .add_contact {
     background-color: #E2E1E1;
     color: #000000;
 }
-.add_contact_container svg:hover {
-    cursor: pointer;
+body.dark-theme .add_contact_container path{
+    fill:#DADADA ;
 }
-.name_contact_data {
-    color: #BABABA;
-    display: flex;
-    justify-content: space-between;
-    margin-top: 30px;
-    margin-bottom: -0px;
-    margin-left: 105px;
-    margin-right: 105px;
-    font-size: 14px;
-    align-items: center;
+body.dark-theme .add_contact:hover{
+    background-color: #bebebe;
+    color: #0e0e0e;
 }
-.name_contact_data svg {
-    cursor: pointer;
+body.dark-theme .add_contact_container path:hover {
+    fill:#c9c8c8 ;
 }
 .button_align {
     display: flex;
@@ -94,6 +95,9 @@ body.dark-them .add_contact{
     margin-right: 20px;
     margin-left: 20px;
     margin-top: 40px;
+}
+.sort-card-btn{
+    cursor: pointer;
 }
 .tab_contents .active_content {
     display: block;
@@ -124,8 +128,8 @@ body.dark-them .add_contact{
     margin-right: auto;
    
 }
-body.dark-them  .card-info {
-background-color:#494949;
+body.dark-theme  .card-info {
+    background-color:#494949;
 }
 .card_photo {
     width: 67px;
@@ -181,7 +185,9 @@ background-color:#494949;
     margin-right: 30px;
     margin-left: auto;
     margin-right: auto;
-    
+}
+body.dark-theme  .card-name-column {
+    color:#BABABA;
 }
 .contact_info p,
 .contact_info .skills {
@@ -194,6 +200,9 @@ background-color:#494949;
     width: 200px;
     text-align: center;
 }
+body.dark-theme .contact_info p{
+    color:#CECECE;
+}
 .skills span{
     padding: 2px 10px 2px 10px;
     background-color: #E5E5E5;
@@ -201,7 +210,7 @@ background-color:#494949;
     color: #5F5F5F;
     height: auto;
 }
-body.dark-them  .skills span{
+body.dark-theme  .skills span{
     background-color:#272727;
     color: #909090;
     }
@@ -209,14 +218,18 @@ body.dark-them  .skills span{
 .hz_line{
     width: 1px;
     position: absolute;
-    height: 99.99px;
+    height: 98px;
     background-color: #DBDBDB;
     margin-left: 1295px;
 }
-body.dark-them  .hz_line{
+body.dark-theme  .hz_line{
     background-color:#B9B9B9;
-    }
+}
 .more_info{
     justify-content: flex-end;
     position: relative;
+    cursor:pointer;
+}
+body.dark-theme .more_info{
+fill:#898888 ;
 }
