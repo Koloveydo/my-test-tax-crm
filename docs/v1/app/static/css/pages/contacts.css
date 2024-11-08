@@ -3,6 +3,9 @@ section#contacts_page {
     background-color: #F2F2F2;
     min-height: 100vh;
 }
+body.dark-theme .section#contacts_page{
+    background-color: #262626;
+}
 .contacts_page-inner {
     display: flex;
     flex-direction: column;
@@ -10,6 +13,9 @@ section#contacts_page {
 .title_name {
     font-size: 30px;
 }
+body.dark-theme .title_name{
+    color:#DADADA ;
+} 
 .head-ct {
     display: flex;
     flex-direction: column;
@@ -25,6 +31,9 @@ section#contacts_page {
     color: #000000;
     position: relative;
     font-size: 18px;
+}
+body.dark-them .tabs{
+    color:#DADADA ;
 }
 .tabs .active {
     border-bottom: 5px solid #3BB7FD;
@@ -55,6 +64,10 @@ section#contacts_page {
     border-radius: 4px;
     display: flex;
     align-items: center;
+}
+body.dark-them .add_contact{
+    background-color: #E2E1E1;
+    color: #000000;
 }
 .add_contact_container svg:hover {
     cursor: pointer;
@@ -106,6 +119,13 @@ section#contacts_page {
     display: flex;
     align-items: center;
     gap: 15px;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
+   
+}
+body.dark-them  .card-info {
+background-color:#494949;
 }
 .card_photo {
     width: 67px;
@@ -150,7 +170,6 @@ section#contacts_page {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
     width: 100%;
 }
 .card-name-column {
@@ -160,6 +179,9 @@ section#contacts_page {
     width: auto;
     margin-left: calc(15px + 15px + 67px - 40px);
     margin-right: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    
 }
 .contact_info p,
 .contact_info .skills {
@@ -167,7 +189,34 @@ section#contacts_page {
     text-wrap: wrap;
     text-align: center;
 }
+
 .card-name-column p {
     width: 200px;
     text-align: center;
+}
+.skills span{
+    padding: 2px 10px 2px 10px;
+    background-color: #E5E5E5;
+    border-radius: 2px;
+    color: #5F5F5F;
+    height: auto;
+}
+body.dark-them  .skills span{
+    background-color:#272727;
+    color: #909090;
+    }
+
+.hz_line{
+    width: 1px;
+    position: absolute;
+    height: 99.99px;
+    background-color: #DBDBDB;
+    margin-left: 1295px;
+}
+body.dark-them  .hz_line{
+    background-color:#B9B9B9;
+    }
+.more_info{
+    justify-content: flex-end;
+    position: relative;
 }
