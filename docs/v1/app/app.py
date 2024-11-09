@@ -20,8 +20,23 @@ db.init_app(app)
 @app.route('/components')
 def componentsView():
     return render_template('pages/components.html')
-    
+
 @app.route('/')
+def user_profile_view():
+    user = {
+        'image': 'https://images.immediate.co.uk/production/volatile/sites/10/2018/02/4f492b22-2d29-4360-80a6-79879487c7b7-e07922e.jpg?quality=90&fit=700,466',
+        'name': 'John','surname': 'Doe',
+        'organization': 'Company A',
+        'email': 'john@example.com',
+        'phone': '123-456-7890',
+        'cur_password': '243514',
+        'personal_number': '65341367814355081',
+        'skills': ['JavaScript', 'HTML', 'CSS', 'Flask', 'Java']
+    }
+
+    return render_template('pages/user_profile.html', user=user)
+ 
+@app.route('/contacts')
 def contacts_view():
     contacts = [
         {'photo': '','name': 'John','surname': 'Doe','organization': 'Company A','email': 'john@example.com','phone': '123-456-7890','skills': ['JavaScript', 'HTML', 'CSS', 'Flask', 'Java']},

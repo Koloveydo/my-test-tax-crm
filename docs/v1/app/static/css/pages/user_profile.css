@@ -1,0 +1,198 @@
+.my_accaunt.active{
+    display: none;
+}
+
+.user_profile_content {
+    padding: 80px 0 0 20px;
+    background-color: #F6F6F6;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.13);
+    align-items: center;
+}
+.user_profile_info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.user_profile_info h1 {
+    font-size: 30px;
+    transition: ease-in-out .3s;
+}
+
+.user_profile_navigation_box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+.user_profile_navigation {
+    display: flex;
+    flex-direction: row;
+    gap: 22px;
+    margin-bottom: 3px;
+}
+.user_profile_navigation p{
+    font-size: 22px;
+    color: #7E7E7E;
+    transition: .3s;
+}
+.user_profile_navigation p:hover{
+    color: #535353;
+    cursor: pointer;
+}
+.user_profile_menu.active{
+    color: #434242;
+    font-weight: 300;
+}
+.blue_helping_nav_bar {
+    display: flex;
+    width: 105px;
+    background-color: #03D1FF;
+    transition: transform 0.5s ease-in-out;
+    height: 3px;
+    margin: 0;
+}
+.user_profile_main{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-top: 50px;
+    gap: 80px;
+}
+
+.user_profile_main_left{
+    padding-top: 30px;
+}
+
+.user_profile_img_box{
+    display: flex;
+    width: 200px;
+    height: 200px;
+    background-color: #D9D9D9;
+    border-radius: 50%;
+    float: left;
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+}
+.user_profile_main_left img{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.accaunt_info,
+.password_info{
+    padding: 30px;
+    background-color: #F6F6F6;
+    border-radius: 5px;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.13);
+    width: 100%;
+    max-width: 750px;
+}
+.accaunt_info h1,
+.password_info h1{
+    margin-bottom: 30px;
+}
+.password_info{
+    margin: 50px 0;
+}
+.user_profile_inputs,
+.user_password_inputs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 10px;
+}
+.form-group {
+    flex: 1 20%; 
+    min-width: 160px;
+}
+.longer-width {
+    flex: 40%;
+    min-width: 280px;
+    
+}
+.full-width {
+    flex: 100%; 
+    width: 100%;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    background-color: #EEEEEE;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.13);
+    border-radius: 4px;
+    font-size: 18px;
+    transition: .5s;
+}
+.form-group input:hover{
+    background-color: #cccccc;
+}
+.form-group input:focus{
+    outline: none;
+    border: 1px solid #7E7E7E;
+    background-color: #dfdfdf;
+}
+
+.form-group .error{
+    margin: 3px;
+    color: red;
+}
+.form-group.error input{
+    border: 1px solid red;
+}
+
+/* DARK THEME */
+body.dark-theme .user_profile_main label{
+    color: #DADADA;
+}
+body.dark-theme .user_profile_main h1{
+    color: #DADADA;
+}
+body.dark-theme .user_profile_info h1{
+    color: #DADADA;
+}
+
+body.dark-theme .accaunt_info,
+body.dark-theme .password_info{
+    background-color: #494949;
+}
+
+body.dark-theme .user_profile_content{
+    background-color: #494949;
+}
+body.dark-theme .user_profile_menu.active{
+    color: #DADADA;
+}
+body.dark-theme .user_profile_navigation p:hover{
+    color: #a3a3a3;
+}
+
+body.dark-theme .form-group input{
+    color: #DADADA;
+    background-color: #494949;
+    border: 1px solid #7E7E7E;
+}
+body.dark-theme .form-group input:focus{
+    color: #bebebe;
+    outline: none;
+    border: 1px solid #7E7E7E;
+    background-color: #333333;
+}
+
+body.dark-theme .form-group.error input{
+    border: 1px solid rgb(255, 73, 73);
+}
+body.dark-theme .error{
+    margin: 3px;
+    color: rgb(255, 73, 73);
+}

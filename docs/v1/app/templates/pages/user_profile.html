@@ -1,0 +1,83 @@
+{% extends 'pages/base.html' %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/pages/user_profile.css')}}" />
+    <title>User_profile</title>
+{% endblock %}
+
+{% block body %} 
+    <!-- PAGE MENU BAR-->
+    <div class="user_profile_content">
+        <div class="user_profile_info">
+            <h1>Settings</h1>
+            <div class="user_profile_navigation_">
+                <div class="user_profile_navigation">
+                    <p class="user_profile_menu active">My account</p>
+                    <p class="user_profile_menu">Company</p>
+                </div>
+                <div class="blue_helping_nav_bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MY ACCAUNT PAGE -->
+    <div class="user_profile_main my_accaunt">
+        <div class="user_profile_main_left">
+            <div class="user_profile_img_box">
+                <img src="{{user.image}}" alt="User Profile Picture">
+            </div>  
+        </div>
+        <div class="user_profile_main_right">
+            <div class="accaunt_info">
+                <h1>Accaunt Info</h1>
+
+                <form class="user_profile_inputs" action="/">
+                    <div class="form-group longer-width">
+                        <label>Full Name</label>
+                        <input type="text" placeholder="{{user.name}}">
+                    </div>
+                    <div class="form-group">
+                        <label>Job Title</label>
+                        <input type="text" placeholder="{{user.organization}}">
+                    </div>
+                    <div class="form-group  longer-width">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="{{user.email}}">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" placeholder="{{user.phone}}">
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Main Personal Number</label>
+                        <input type="tel" placeholder="{{user.personal_number}}">
+                    </div>
+                </form>                
+            </div>
+            <div class="password_info">
+                <h1>Password Info</h1>
+
+                <form class="user_password_inputs" action="/">
+                    <div class="form-group full-width">
+                        <label>CurentPasssword</label>
+                        <input class="old_password" type="text" placeholder="Write your password">
+                        <p class="error"></p>
+                    </div>
+                    <div class="form-group full-width">
+                        <label>New Password</label>
+                        <input class="new_password" type="text" placeholder="Write New Password">
+                        <p class="error"></p>
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Confirm New Password</label>
+                        <input class="confirm_new_pswrd" type="text" placeholder="Confirm New Paswword">
+                        <p class="error"></p>
+                    </div>
+                    <button type="submit">Apply changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- MY ACCAUNT PAGE END -->
+    <script src="{{ url_for('static', filename='js/pages/user_profile.js') }}"></script>
+{% endblock %}
