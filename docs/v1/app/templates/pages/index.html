@@ -30,6 +30,7 @@
             </div>
         </div>
         <!-- Частина на якій знаходиться кількість лідів, тасків і непрочитаних повідомлень-->
+        <!-- Lead Quantity-->
         <div class="statistic">
             <div class="lead_quantity">
                 <input type="text" class="lead_quantity_text" value="LEADS" readonly>
@@ -44,6 +45,7 @@
                 <input type="text" class="lead_quantity_number" value="1" readonly>
             </div>
             <div class="line_statistic"></div>
+            <!-- Unread messages quantity-->
             <div class="unmess_quantity">
                 <input type="text" class="unmess_quantity_text" value="UNREAD MESSAGES" readonly>
                 <div class="info-container">
@@ -57,6 +59,7 @@
                 <input type="text" class="unmess_quantity_number" value="2" readonly>
             </div>
             <div class="line_statistic"></div>
+            <!-- Task quantity-->
             <div class="task_quantity">
                 <input type="text" class="task_quantity_text" value="TASKS" readonly>
                 <div class="info-container">
@@ -99,7 +102,16 @@
                         </button>
                     </div>
                 </div>
-                <div class="current_leads"></div>
+                <div class="current_leads {% if leads %}avalable{% else %}unavalable{% endif %}">
+                    {% if leads %}
+                        {% for item in leads%}
+                        <input type="text" class="current_leads_text" value="{{ leads }}" readonly>
+                        {% endfor %}
+                    {% else %}
+                        <img src="{{ url_for('static', filename='images/lead-icon.png') }}" class="tasks_icon">
+                        <input type="text" class="current_zero_data_text" value="No more leads" readonly>
+                    {% endif %}
+                </div>
                 <button type="button" class="go_to_button">
                     <a href="#" class="inner_go_to_button">
                         <b>Go to inquiries <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="9" height="9" viewBox="0 0 256 256" xml:space="preserve" class="icon"> <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)"> <path d="M 24.25 90 c -0.896 0 -1.792 -0.342 -2.475 -1.025 c -1.367 -1.366 -1.367 -3.583 0 -4.949 L 60.8 45 L 21.775 5.975 c -1.367 -1.367 -1.367 -3.583 0 -4.95 c 1.367 -1.366 3.583 -1.366 4.95 0 l 41.5 41.5 c 1.367 1.366 1.367 3.583 0 4.949 l -41.5 41.5 C 26.042 89.658 25.146 90 24.25 90 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" /> </g> </svg></b>
@@ -131,9 +143,13 @@
                     </div>
                 </div>
                 <div class="current_callendar">
-                    <div class="callendar-icon">
-                        <svg width="109" height="123" viewBox="0 0 109 123" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <g filter="url(#filter0_d_185_296)">     <path d="M4.80951 0H104.81V114.286H4.80951V0Z" fill="url(#pattern0_185_296)" fill-opacity="0.5"         shape-rendering="crispEdges" /> </g> <defs> <filter id="filter0_d_185_296" x="0.809509" y="0" width="108" height="122.286" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"> <feFlood flood-opacity="0" result="BackgroundImageFix" /> <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" /> <feOffset dy="4" /> <feGaussianBlur stdDeviation="2" /> <feComposite in2="hardAlpha" operator="out" /> <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.13 0" /> <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_185_296" /> <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_185_296" result="shape" /> </filter> <pattern id="pattern0_185_296" patternContentUnits="objectBoundingBox" width="1" height="1">     <use xlink:href="#image0_185_296"         transform="matrix(0.0238095 0 0 0.0208333 -0.0714286 0)" /> </pattern> <image id="image0_185_296" width="48" height="48"     xlink:href="data:image/png;base64,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" /> </defs> </svg>
+                    <div class="callendar_icon">
+                        <svg width="109" height="123" viewBox="0 0 109 123" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <g filter="url(#filter0_d_185_296)">     <path d="M4.80951 0H104.81V114.286H4.80951V0Z" fill="url(#pattern0_185_296)" fill-opacity="0.5"         shape-rendering="crispEdges" /> </g> <defs> <filter id="filter0_d_185_296" x="0.809509" y="0" width="108" height="122.286" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"> <feFlood flood-opacity="0" result="BackgroundImageFix" /> <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" /> <feOffset dy="4" /> <feGaussianBlur stdDeviation="2" /> <feComposite in2="hardAlpha" operator="out" /> <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.0 0" /> <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_185_296" /> <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_185_296" result="shape" /> </filter> <pattern id="pattern0_185_296" patternContentUnits="objectBoundingBox" width="1" height="1">     <use xlink:href="#image0_185_296"         transform="matrix(0.0238095 0 0 0.0208333 -0.0714286 0)" /> </pattern> <image id="image0_185_296" width="48" height="48"     xlink:href="data:image/png;base64,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" /> </defs> </svg>
+                        {% if callendar_data %}
+                        <textarea class="callendar_status" readonly>You have things planned today, go to take a look</textarea>
+                        {% else %}
                         <input type="text" class="callendar_status" value="Your callendar is clear" readonly>
+                        {% endif %}
                         <a href="#" class="go_to_callendar">Go to callendar</a>
                     </div>
                 </div>
@@ -162,7 +178,16 @@
                         </button>
                     </div>
                 </div>
-                <div class="current_tasks"></div>
+                <div class="current_tasks">
+                    {% if tasks %}
+                        {% for item in tasks%}
+                            <input type="text" class="current_tasks_text" value="{{ task }}" readonly> 
+                        {% endfor %} 
+                    {% else %}
+                        <img src="{{ url_for('static', filename='images/task-icon.png') }}" class="tasks_icon">
+                        <input type="text" class="current_zero_data_text" value="You don`t have any tasks" readonly>
+                    {% endif %}                       
+                </div>
             </div>
             <!--UNREAD MESSAGES-->
             <div class="unmess_table info_table-card">
@@ -179,7 +204,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="current_unmess"></div>
+                <div class="current_unmess">
+                    {% if unmess %}
+                        {% for item in unmess %}
+                            <input type="text" class="current_unmess_text" value="{{ unmess }}" readonly>
+                        {% endfor %}
+                    {% else %}
+                        <img src="{{ url_for('static', filename='images/mailbox-icon.png') }}" class="tasks_icon">
+                        <input type="text" class="current_zero_data_text" value="You`ve read them all" readonly>
+                    {% endif %}   
+                </div>
             </div>
         </div>
     </div>

@@ -8,7 +8,7 @@ user = 'root'
 password = '0000'
 host = 'localhost'
 port = '3306'
-database = 'tax_crm'
+database = 'tax-crm'
 
 
 app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{user}:{password}@{host}:{port}/{database}'
@@ -37,15 +37,28 @@ def users_view():
     users = User_details.query.all()
     return render_template('pages/database_testing.html', users=users)
 
-@app.route('/main-page')
+@app.route('/index')
 def main_page_view():
 
-    calendar_data = [
-        
+    callendar_data = [
+        {'name':'','photo':''},
+        {'name2':'','photo2':''},
+    ]
+    user = [
+
+    ]
+    tasks = [
+
+    ]
+    unmess = [
+
+    ]
+    leads = [
+        { 'Vadim Romaniyk'}
     ]
     
     
-    return render_template('pages/main_page.html')
+    return render_template('pages/index.html', callendar_data=callendar_data, user=user, tasks=tasks, unmess=unmess, leads=leads)
 
 if __name__ == "__main__":
     with  app.app_context():

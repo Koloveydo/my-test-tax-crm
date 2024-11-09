@@ -6,7 +6,7 @@ section#index-page {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 50px;
+    gap: 22px;
 }
 .start_of_main_page {
     display: flex;
@@ -127,10 +127,12 @@ section#index-page {
     box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.09);
 }
 .statistic{
-    width: 100%;
+    min-width: 300px;
+    min-height:75px;
     display: flex;
     justify-content: space-between;
-    height: 105px;
+    width: 100%;
+    flex-wrap: wrap;
     border: none;
     background-color: #F6F6F6;
     box-shadow: 0px 4px 2px 0px rgba(0, 0, 0, 0.13);
@@ -140,13 +142,28 @@ section#index-page {
     position:relative;
     align-items: center;
     gap: 5px;
-    width: 400px;
+}
+.lead_quantity, .task_quantity{
+    max-width: 400px;
+    min-width: 300px;
+    max-height:75px;
+    flex-basis: calc(100% / 3 - 2px * 2);
+    flex-grow: 1;
+}
+.unmess_quantity{
+    max-width: 400px;
+    min-width: 300px;
+    min-height:75px;
+    flex-basis: calc(100% / 3 - 2px * 2);
+    flex-grow: 1;
 }
 .line_statistic{
     width: 1px;
     height: 70%;
     background-color: #000;
     align-self: center;
+    position:relative;
+    flex-grow: 1;
 }
 .lead_quantity_text, .lead_quantity_number, .unmess_quantity_text, .unmess_quantity_number, .task_quantity_text, .task_quantity_number{
     border: none;
@@ -160,7 +177,8 @@ section#index-page {
 }
 .lead_quantity_text, .unmess_quantity_text, .task_quantity_text{
     text-align: right;
-    font-size:18px;
+    font-size:16px;
+    font-weight: bold;
 }
 .unmess_quantity_text{
     width: 200px;
@@ -260,11 +278,19 @@ section#index-page {
 .plus_button_container{
     align-items: center;
 }
-.current_leads, .current_callendar, .current_tasks, .current_unmess{
+.current_leads.available, .current_callendar, .current_tasks, .current_unmess{
     width:100%;
     position:relative;
     display:flex;
     flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    flex-direction:column;
+}
+.current_leads.unavailable{
+    align-items: left;
+    justify-content: space-between;
+    flex-direction: column;
 }
 .info_table-card {
     min-height: 350px;
@@ -289,15 +315,54 @@ section#index-page {
     margin-left: 40px;
     width: 130px;
 }
-.current_callendar{
-    align-items: center;
-    justify-content: center;
-}
-.callendar-icon{
+.callendar_icon, .tasks_icon{
     display: flex;
     position:relative;
     align-items: center;
     align-self:center;
     flex-direction:column;
 }
+.callendar_status{
+    border: none;
+    background-color: transparent;
+    font-size: 18px;
+    color: #868686;
+    cursor: default;
+    text-align: center;
+    height: auto;
+    resize: none;
+    overflow: hidden;
+}
+.current_zero_data_text{
+    border: none;
+    background-color: transparent;
+    font-size: 18px;
+    color: #868686;
+    cursor: default;
+    text-align: center;
+    width:auto;
+}
+.current_zero_data_text:focus{
+    outline:none;
+}
+.callendar_status:focus{
+    outline: none;
+}
+.go_to_callendar{
+    background-color: transparent;
+    font-size: 18px;
+}
+.current_leads_text{
+    background-color: transparent;
+    border: none;
+    color: #868686;
+    cursor: default;
+    font-size: 18px;
+    width: 100%;
+    text-align: left;
+}
+.currents_leads_text:focus{
+    outline: none;
+}
+
 
