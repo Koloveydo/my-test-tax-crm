@@ -1,9 +1,10 @@
 {% extends 'pages/base.html' %}
 
 {% block head %} 
-	<link rel="stylesheet" href="{{url_for('static',filename='css/pages/contacts.css')}}" />
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/components/filter_button.css') }}" />
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/components/search_label.css') }}" />
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/pages/contacts.css') }}" />
+
 	<title>Contacts_page</title>
 {% endblock %}
 

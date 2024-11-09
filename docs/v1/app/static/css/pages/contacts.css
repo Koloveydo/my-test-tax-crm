@@ -6,20 +6,25 @@ section#contacts_page {
 .contacts_page-inner {
     display: flex;
     flex-direction: column;
+    gap: 25px;
+    padding-top: 100px;
 }
-body.dark-theme .contacts_page-inner {
+body.dark-theme section#contacts_page {
     background-color: #262626;
 }
 .title_name {
     font-size: 30px;
 }
-body.dark-theme .title_name{
-    color:#DADADA ;
-} 
+body.dark-theme .title_name {
+    color: #DADADA;
+}
 .head-ct {
     display: flex;
-    flex-direction: column;
-    padding: 30px;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 90%;
+    margin: 0 auto;
+    max-width: 1920px;
 }
 .nav-ct {
     display: flex;
@@ -31,9 +36,24 @@ body.dark-theme .title_name{
     color: #000000;
     position: relative;
     font-size: 18px;
+    max-width: 1920px;
+    width: 90%;
+    margin: 0 auto;
 }
-body.dark-theme .tabs{
-    color:#DADADA ;
+.all_contact_content {
+    display: flex;
+    flex-direction: column;
+    max-width: 1920px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+
+
+
+
+body.dark-theme .tabs {
+    color: #DADADA;
 }
 .tabs .active {
     border-bottom: 5px solid #3BB7FD;
@@ -70,33 +90,30 @@ body.dark-theme .tabs{
 .add_contact_container path:hover {
     fill: #222222;
 }
-.add_contact:hover{
+.add_contact:hover {
     background-color: #101010;
 }
 body.dark-theme .add_contact {
     background-color: #E2E1E1;
     color: #000000;
 }
-body.dark-theme .add_contact_container path{
-    fill:#DADADA ;
+body.dark-theme .add_contact_container path {
+    fill: #DADADA;
 }
-body.dark-theme .add_contact:hover{
+body.dark-theme .add_contact:hover {
     background-color: #bebebe;
     color: #0e0e0e;
 }
 body.dark-theme .add_contact_container path:hover {
-    fill:#c9c8c8 ;
+    fill: #c9c8c8;
 }
 .button_align {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    margin-right: 20px;
-    margin-left: 20px;
-    margin-top: 40px;
 }
-.sort-card-btn{
+.sort-card-btn {
     cursor: pointer;
 }
 .tab_contents .active_content {
@@ -123,13 +140,9 @@ body.dark-theme .add_contact_container path:hover {
     display: flex;
     align-items: center;
     gap: 15px;
-    justify-content: space-between;
-    margin-left: auto;
-    margin-right: auto;
-   
 }
-body.dark-theme  .card-info {
-    background-color:#494949;
+body.dark-theme .card-info {
+    background-color: #494949;
 }
 .card_photo {
     width: 67px;
@@ -156,11 +169,13 @@ body.dark-theme  .card-info {
     display: none;
 }
 .col-content-contants.active {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    max-width: 1920px;
+    width: auto;
 }
 .contact_data {
-    max-width: min(1920px, calc(100% - 160px));
-    margin: 0 auto;
+    max-width: 100%;
     overflow-x: auto;
 }
 .contact_data-inner {
@@ -183,53 +198,42 @@ body.dark-theme  .card-info {
     width: auto;
     margin-left: calc(15px + 15px + 67px - 40px);
     margin-right: 30px;
-    margin-left: auto;
-    margin-right: auto;
 }
-body.dark-theme  .card-name-column {
-    color:#BABABA;
+body.dark-theme .card-name-column {
+    color: #BABABA;
 }
 .contact_info p,
 .contact_info .skills {
-    width: 200px;
+    width: 290px;
     text-wrap: wrap;
     text-align: center;
 }
-
 .card-name-column p {
-    width: 200px;
+    width: 290px;
     text-align: center;
 }
-body.dark-theme .contact_info p{
-    color:#CECECE;
+body.dark-theme .contact_info p {
+    color: #CECECE;
 }
-.skills span{
+.skills span {
     padding: 2px 10px 2px 10px;
     background-color: #E5E5E5;
     border-radius: 2px;
     color: #5F5F5F;
     height: auto;
 }
-body.dark-theme  .skills span{
-    background-color:#272727;
+body.dark-theme .skills span {
+    background-color: #272727;
     color: #909090;
-    }
-
-.hz_line{
-    width: 1px;
-    position: absolute;
-    height: 98px;
-    background-color: #DBDBDB;
-    margin-left: 1295px;
 }
-body.dark-theme  .hz_line{
-    background-color:#B9B9B9;
-}
-.more_info{
+.more_info {
     justify-content: flex-end;
     position: relative;
-    cursor:pointer;
+    cursor: pointer;
 }
-body.dark-theme .more_info{
-fill:#898888 ;
+body.dark-theme .more_info {
+    fill: #898888;
+}
+.filter_button_content {
+    margin: 0;
 }
