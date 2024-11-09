@@ -3,15 +3,18 @@
 }
 
 .user_profile_content {
-    padding: 80px 0 0 20px;
+    padding: 80px 0 0 0;
     background-color: #F6F6F6;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.13);
-    align-items: center;
 }
 .user_profile_info {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    justify-content: flex-start;
+    width: 90%;
+    margin: 0 auto;
+    max-width: 1920px;
 }
 .user_profile_info h1 {
     font-size: 30px;
@@ -53,12 +56,18 @@
 }
 .user_profile_main{
     display: flex;
-    justify-content: center;
-    width: 100%;
-    padding-top: 50px;
+    justify-content: flex-start;
+    width: 90%;
+    max-width: 1920px;
+    padding-top: 0;
     gap: 80px;
+    margin: 0 auto;
 }
-
+.user_profile_main_right {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
 .user_profile_main_left{
     padding-top: 30px;
 }
@@ -81,15 +90,17 @@
     width: 100%;
     object-fit: cover;
 }
-
+section#setting-page {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
 .accaunt_info,
 .password_info{
     padding: 30px;
     background-color: #F6F6F6;
     border-radius: 5px;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.13);
-    width: 100%;
-    max-width: 750px;
 }
 .accaunt_info h1,
 .password_info h1{
@@ -106,8 +117,7 @@
     padding: 10px;
 }
 .form-group {
-    flex: 1 20%; 
-    min-width: 160px;
+    flex: 1 0 220px; 
 }
 .longer-width {
     flex: 40%;
