@@ -34,7 +34,6 @@ body.dark-theme .title_name {
 .tabs {
     display: flex;
     color: #000000;
-    position: relative;
     font-size: 18px;
     max-width: 1920px;
     width: 90%;
@@ -47,22 +46,20 @@ body.dark-theme .title_name {
     width: 90%;
     margin: 0 auto;
 }
-
-
-
-
-
 body.dark-theme .tabs {
     color: #DADADA;
 }
 .tabs .active {
     border-bottom: 5px solid #3BB7FD;
 }
+.sort-card-btn-for-phone{
+    display: none;
+   
+}
+
 .head-tab-click {
     cursor: pointer;
-    position: relative;
     text-align: center;
-    position: relative;
     padding-left: 70px;
     padding-right: 70px;
     padding-bottom: 15px;
@@ -71,7 +68,6 @@ body.dark-theme .tabs {
 .add_contact_container {
     display: flex;
     gap: 20px;
-    position: relative;
     align-items: center;
     justify-content: flex-end;
     max-width: 90%;
@@ -87,25 +83,39 @@ body.dark-theme .tabs {
     align-items: center;
     cursor: pointer;
 }
-.add_contact_container path:hover {
-    fill: #222222;
-}
 .add_contact:hover {
-    background-color: #101010;
+    background-color:#6A6969 ;
+ }
+.add_contact:active {
+    background-color:#888787 ;
 }
 body.dark-theme .add_contact {
-    background-color: #E2E1E1;
+    background-color: #F6F6F6;
     color: #000000;
 }
-body.dark-theme .add_contact_container path {
-    fill: #DADADA;
-}
 body.dark-theme .add_contact:hover {
-    background-color: #bebebe;
-    color: #0e0e0e;
+    background-color: #E4E4E4;
 }
-body.dark-theme .add_contact_container path:hover {
-    fill: #c9c8c8;
+body.dark-theme .add_contact:active {
+    background-color: #D4D4D4;
+}
+.add_contact_container svg {
+     fill:black;
+  }
+.add_contact_container svg:hover {
+    fill: #6A6969
+   }
+.add_contact_container svg:active {
+    fill:#888787;
+   }
+body.dark-theme .add_contact_container svg {
+    fill: #F6F6F6;
+}
+body.dark-theme .add_contact_container svg:hover {
+    fill: #E4E4E8;
+}
+body.dark-theme .add_contact_container svg:active {
+    fill: #D4D4D4;
 }
 .button_align {
     display: flex;
@@ -140,6 +150,7 @@ body.dark-theme .add_contact_container path:hover {
     display: flex;
     align-items: center;
     gap: 15px;
+    max-width: 1920px;
 }
 body.dark-theme .card-info {
     background-color: #494949;
@@ -163,7 +174,7 @@ body.dark-theme .card-info {
 }
 .contact_info {
     display: flex;
-    margin-right: 15px;
+    
 }
 .col-content-contants {
     display: none;
@@ -227,13 +238,111 @@ body.dark-theme .skills span {
     color: #909090;
 }
 .more_info {
-    justify-content: flex-end;
-    position: relative;
     cursor: pointer;
+    display: flex;
+    
 }
 body.dark-theme .more_info {
     fill: #898888;
 }
 .filter_button_content {
     margin: 0;
+}
+.hz_line{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1px;
+    height: 100px;
+    background-color:#DBDBDB;
+   
+}
+@media (max-width: 1024px){
+
+}
+
+@media (max-width: 480px) {
+.tabs{
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    margin:0 ;
+    white-space: nowrap;
+}
+.head-tab-click {
+    padding-left: 26px;
+    padding-right: 28px;
+}
+.box_search {
+    margin-right: 0px;
+}
+.button_align{
+    display: flex;
+    justify-content: space-between;
+}
+.pre-card-name-column {
+    display: flex;
+    justify-content: flex-end;
+   width: 98%;
+  
+
+}
+.add_contact_container{
+    gap: 5px;
+}
+.add_contact {
+    font-size: 12px;
+    gap: 10px;
+}
+.add_contact_container svg{
+    height: 26px;
+   
+}
+.card-name-column p {
+    display: none;
+    
+    
+}
+.card-name-column .name_column,
+.card-name-column .phone_column {
+    display: block;
+    width: 120px;
+    
+}
+
+.contact_info p {
+    display: none;
+   
+}
+.skills{
+    display: none;
+}
+.contact_info .name_info,
+.contact_info .phone_info{
+    display: block;
+    width: 130px;
+
+}
+.sort-card-btn{
+    display:none; 
+}
+.sort-card-btn-for-phone{
+    display: block;
+}
+.all_contact_content {
+    width: 95%;
+}
+.card-info {
+    padding: 5px 0 0 5px;
+}
+.hz_line{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 5px;
+}
+.more_info{
+    display: flex;
+    justify-content: flex-end;
+    margin-right:15px;
+}
 }
