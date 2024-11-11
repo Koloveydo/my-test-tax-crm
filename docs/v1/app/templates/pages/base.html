@@ -4,11 +4,6 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/pages/base.css') }}">
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/pages/index.css') }}">
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/components/info_container.css') }}">
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/components/go_to_button.css') }}">
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/components/plus_button.css') }}">
-	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 	{% block head %} 
 	{% endblock %}
@@ -19,6 +14,7 @@
 	<header>
 		<nav>
 			<a href="/users">users</a>
+			<a href="/index">main page</a>
 		</nav>
 	</header>
 

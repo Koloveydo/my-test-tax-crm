@@ -159,11 +159,9 @@ section#index-page {
 }
 .line_statistic{
     width: 1px;
-    height: 70%;
-    background-color: #000;
-    align-self: center;
-    position:relative;
-    flex-grow: 1;
+    height: 50px;
+    background: #000;
+    margin: auto;
 }
 .lead_quantity_text, .lead_quantity_number, .unmess_quantity_text, .unmess_quantity_number, .task_quantity_text, .task_quantity_number{
     border: none;
@@ -364,5 +362,3 @@ section#index-page {
 .currents_leads_text:focus{
     outline: none;
 }
-
-
