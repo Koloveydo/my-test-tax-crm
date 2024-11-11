@@ -1,0 +1,32 @@
+.inactive_label {
+    border: none;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fbfbf8;
+    cursor: pointer;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.13);
+    padding: 10px 120px;
+    margin-top: 15px;
+    margin-left: 20px;
+    margin-bottom: 15px;
+    font-size: 18px;
+    width: max-content;
+    border-radius: 3px;
+    opacity: 0.6;
+    font-family: sans-serif;
+}
+
+.inner_inactive {
+    color: #C7C7C7;
+}
+
+body.dark-theme .inactive_label {
+    background-color: #8e8e8c;
+    opacity: 0.4;
+}
+
+body.dark-theme .inner_inactive {
+    color: #C7C7C7;
+}

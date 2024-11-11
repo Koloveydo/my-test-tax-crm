@@ -1,0 +1,45 @@
+.trash_button_circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    cursor: pointer;
+    border: none;
+    width: 60px;
+    height: 60px;
+    background-color: #FFF;
+    border-radius: 50%;
+}
+.trash_icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.trash_button_circle:hover,
+.trash_button_circle:hover .trash_icon path {
+    fill: #6C6C6C;
+    background-color: #EEEEEE;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.18);
+    border: 1px solid #FFFFFF;
+}
+.trash_button_circle:active,
+.trash_button_circle:active .trash_icon path {
+    border: 1px solid #7E7E7E;
+    fill: #515151;
+}
+body.dark-theme .trash_icon path,
+body.dark-theme .trash_button_circle {
+    fill: #DFDEDE;
+}
+body.dark-theme .trash_button_circle:hover,
+body.dark-theme .trash_button_circle:hover .trash_icon path {
+    background-color: #626262;
+    fill: #CECECE;
+    border: 1px solid #1E1E1E;
+    box-shadow: 0px 2px 4px rgba(255, 255, 255, 0.3);
+}
+body.dark-theme .trash_button_circle:active .trash_icon path,
+body.dark-theme .trash_button_circle:active {
+    fill: #F6F6F6;
+    border: 1px solid #C0BFBF;
+}

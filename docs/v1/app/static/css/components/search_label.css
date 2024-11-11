@@ -1,9 +1,6 @@
-.search_container {
-    height:40px;
-    width:200px;
-    cursor:default;
-}
+
 .box_search {
+    margin-right: 50px;
     position: relative;
     height: 38px;
     width: 196px;
@@ -21,6 +18,7 @@
     border: none;
     height: 25px;
     width: 150px;
+    cursor: pointer;
     font-size: 15px;
     font-weight: bold;
     color: #908F8F;
@@ -44,12 +42,9 @@ body.dark-theme .box_search {
     background-color: #3C3C3C;
     border: 1px solid #DBDADA;
 }
-
 body.dark-theme .box_search:hover {
     background-color: #3C3C3C;
 }
-
 body.dark-theme .search{
     background-color: #3C3C3C;
 }
-

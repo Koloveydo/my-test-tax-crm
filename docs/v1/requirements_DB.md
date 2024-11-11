@@ -24,7 +24,6 @@
 
 #### lead
  - PK -- id -- INT
- - _ _ -- first_name -- VARCHAR(40)
  - FK -- lead_details
  - _ _ -- datetime_update -- datetime
  - _ _ -- datetime_create -- datetime
