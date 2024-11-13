@@ -54,9 +54,7 @@ body.dark-theme .tabs {
 }
 .sort-card-btn-for-phone{
     display: none;
-   
 }
-
 .head-tab-click {
     cursor: pointer;
     text-align: center;
@@ -81,9 +79,8 @@ body.dark-theme .tabs {
     border-radius: 4px;
     display: flex;
     align-items: center;
-    cursor: pointer;
 }
-.add_contact:hover {
+.add_contact:hover{
     background-color:#6A6969 ;
  }
 .add_contact:active {
@@ -137,7 +134,7 @@ body.dark-theme .add_contact_container svg:active {
 }
 .cards_container {
     display: flex;
-    flex-direction: column;
+    
     font-size: 13px;
 }
 .card-info {
@@ -149,7 +146,7 @@ body.dark-theme .add_contact_container svg:active {
     margin-bottom: 18px;
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 20px;
     max-width: 1920px;
 }
 body.dark-theme .card-info {
@@ -174,7 +171,6 @@ body.dark-theme .card-info {
 }
 .contact_info {
     display: flex;
-    
 }
 .col-content-contants {
     display: none;
@@ -220,7 +216,7 @@ body.dark-theme .card-name-column {
     text-align: center;
 }
 .card-name-column p {
-    width: 290px;
+    width: 300px;
     text-align: center;
 }
 body.dark-theme .contact_info p {
@@ -237,10 +233,16 @@ body.dark-theme .skills span {
     background-color: #272727;
     color: #909090;
 }
+.more_info svg .hr {
+gap: 10px;
+
+}
+
 .more_info {
     cursor: pointer;
     display: flex;
-    
+    justify-content:space-between;
+   
 }
 body.dark-theme .more_info {
     fill: #898888;
@@ -255,37 +257,41 @@ body.dark-theme .more_info {
     width: 1px;
     height: 100px;
     background-color:#DBDBDB;
-   
 }
-@media (max-width: 1024px){
-
+@media (max-width: 1000px){
+    .tabs{
+        display: flex;
+        align-items: center;
+        font-size: 15px;
+        margin:0 ;
+    }
 }
-
-@media (max-width: 480px) {
-.tabs{
-    display: flex;
-    align-items: center;
-    font-size: 15px;
-    margin:0 ;
-    white-space: nowrap;
+@media (max-width: 740px) {
+    
+.head-tab-click {
+    padding-left: 40px;
+    padding-right: 40px;
+}
+}
+@media (max-width: 600px) {
+.contact_data-inner{
+   width: 98%;
 }
 .head-tab-click {
-    padding-left: 26px;
-    padding-right: 28px;
+    padding-left: 50px;
+    padding-right: 50px;
 }
 .box_search {
     margin-right: 0px;
 }
 .button_align{
     display: flex;
-    justify-content: space-between;
+   
 }
 .pre-card-name-column {
     display: flex;
-    justify-content: flex-end;
-   width: 98%;
-  
-
+    justify-content: space-between;
+   
 }
 .add_contact_container{
     gap: 5px;
@@ -296,23 +302,24 @@ body.dark-theme .more_info {
 }
 .add_contact_container svg{
     height: 26px;
-   
 }
 .card-name-column p {
-    display: none;
-    
-    
+    display: none; 
+}
+.card-name-column{
+    margin-right: 0;
+    font-size: 15px;
+    width: 200px;
 }
 .card-name-column .name_column,
 .card-name-column .phone_column {
     display: block;
-    width: 120px;
-    
+    justify-content: space-between;
+    width: 200px;
 }
-
 .contact_info p {
     display: none;
-   
+    width: max-content;
 }
 .skills{
     display: none;
@@ -320,20 +327,23 @@ body.dark-theme .more_info {
 .contact_info .name_info,
 .contact_info .phone_info{
     display: block;
-    width: 130px;
-
+    width: 100px;
+    margin-right: 0px;
 }
 .sort-card-btn{
     display:none; 
 }
 .sort-card-btn-for-phone{
     display: block;
+    margin-right: 20px;
 }
 .all_contact_content {
     width: 95%;
 }
 .card-info {
     padding: 5px 0 0 5px;
+    display: flex;
+    width:600px;
 }
 .hz_line{
     display: flex;
@@ -343,6 +353,119 @@ body.dark-theme .more_info {
 .more_info{
     display: flex;
     justify-content: flex-end;
-    margin-right:15px;
+    margin-right:30px;
 }
+.tabs{
+    font-size: 12px;
+    width: 100%;
+}
+.card-name-column{
+    font-size: 15px;
+}
+.card_photo{
+    width: 45px;
+    height: 45px;
+}
+.contact_info{
+    font-size: 13px;
+}
+}
+@media (max-width: 500px) {
+    .contact_info{
+    gap: 0px;
+    }
+    .head-tab-click {
+    padding-left: 35px;
+    padding-right: 35px;
+    }
+}
+@media (max-width: 410px) {
+    .head-tab-click {
+    padding-left: 35px;
+    padding-right: 35px;
+}
+    .card_photo {
+    width: 40px;
+    height: 40px;
+}
+    .contact_info{
+        gap: 0px;
+}
+    .card-name-column .name_column, 
+    .card-name-column .phone_column {
+        width:130px;
+}
+    .contact_info .name_info,
+    .contact_info .phone_info {
+        width:100px;
+} 
+    .more_info {
+        margin-right: 60px;
+}
+    .tabs{
+        font-size: 10px;
+}
+.more_info {
+margin-right: 35px;
+}
+}
+@media (max-width: 410px) {
+    .card-info {
+        padding: 5px 0 0 5px;
+        display: flex;
+        justify-content: center;
+
+    }
+    .name_info  {
+        width: 0px;
+    }
+    .contact_info{
+    gap: 0px;
+    }
+    .card-name-column .name_column, 
+    .card-name-column .phone_column {
+        width:120px;
+    }
+    .contact_info .name_info,
+     .contact_info .phone_info {
+        width:120px;
+    }
+    .more_info {
+        margin-right: 60px;
+    }
+    .tabs{
+        font-size: 10px;
+    }
+    .head-tab-click {
+        padding-left: 25px;
+        padding-right:25px;
+}
+}
+
+.tab_button > div {
+    display: none;
+}
+
+.tab_button > div.active {
+    display: block;
+}
+.ads_container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+    margin-left;
+    margin-top: 50px;
+    
+   
+}
+.ads_container img{
+width: 20%;
+height: 50%;
+display: flex;
+flex-direction: row;
+}
+.all_content_contacts{
+    display: flex;
+    flex-direction: row;
 }
