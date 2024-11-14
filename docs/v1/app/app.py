@@ -3,7 +3,7 @@ from models import *
 from testing_db import *
 
 app = Flask(__name__)
-app.secret_key = 'Asdasd@E!d121'
+app.secret_key = 'Asdasd@E!d12'
 
 user = 'root'
 password = '0000'
@@ -57,6 +57,7 @@ def contacts_view():
         {'photo': '','name': 'John','surname': 'Doe','organization': 'Company A','email': 'john@example.com','phone': '123-456-7890','skills': ['JavaScript', 'HTML', 'CSS',]},
         {'photo': '','name': 'John','surname': 'Doe','organization': 'Company A','email': 'john@example.com','phone': '123-456-7890','skills': ['JavaScript', 'HTML', 'CSS',]},
         {'photo': '','name': 'John','surname': 'Doe','organization': 'Company A','email': 'john@example.com','phone': '123-456-7890','skills': ['JavaScript', 'HTML', 'CSS',]},
+    
     ];
     
     all_contacts = contacts + leads
