@@ -1,25 +1,19 @@
-const My_accaunt = document.querySelector('.my_accaunt')
-
 const user_profile_navigation = () => {
     const user_profile_menu = document.querySelectorAll('.user_profile_menu');
     const blueHelpingNavBar = document.querySelector('.blue_helping_nav_bar');
 
     user_profile_menu.forEach(option => {
         option.addEventListener("click", function () {
-            const My_account_option = document.querySelector('.user_profile_menu.active');
+            var activeOption = document.querySelector('.user_profile_menu.active');
 
-            if (option !== My_account_option) {
-                My_account_option.classList.remove('active');
+            if (option !== activeOption) {
+                activeOption.classList.toggle('active');
                 option.classList.toggle('active');
-                
-                blueHelpingNavBar.style.transform = `translateX(${option.offsetLeft + option.offsetWidth / 5 - blueHelpingNavBar.offsetWidth / 1.17}px)`;
+                document.querySelectorAll(".user_profile_main").forEach(page_content => page_content.classList.toggle('active'));
 
-            }
-
-            if (option === My_account_option)
-                console.log("jjj"); {
-                My_accaunt.classList.toggle('active')
-            }
+                var index = parseInt(document.querySelector(".user_profile_main.active").getAttribute("page-index"));
+                blueHelpingNavBar.style.transform = `translateX(calc( ${index - 1} * (100% + 11px)))`;
+            } 
         });
     });
 }
@@ -96,14 +90,6 @@ const checkInputs = () => {
 // old_password.addEventListener('input', checkInputs);
 // new_password.addEventListener('input', checkInputs);
 // confirm_new_passsword.addEventListener('input', checkInputs);
-
-function showInitials() {
-    document.getElementById('profileImage').style.display = 'none';
-    document.getElementById('profileInitials').style.display = 'block';
-
-    const change_photo =  document.querySelector('.change_photto');
-    change_photo.classList.toggle('.noPhoto')
-}
 
 function openPopup() {
     console.log('WorkPOPUP');

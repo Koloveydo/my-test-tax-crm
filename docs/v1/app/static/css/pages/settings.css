@@ -1,7 +1,3 @@
-.my_accaunt.active{
-    display: none;
-}
-
 .user_profile_content {
     padding: 80px 0 0 0;
     background-color: #F6F6F6;
@@ -63,6 +59,12 @@
     gap: 80px;
     margin: 0 auto;
 }
+.user_profile_main {
+    display: none;
+}
+.user_profile_main.active {
+    display: flex;
+}
 .user_profile_main_right {
     flex-grow: 1;
     display: flex;
@@ -94,7 +96,7 @@
     display: flex;
     height: 100%;
     width: 100%;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: 50%; 
 }
 
@@ -122,14 +124,14 @@ section#setting-page {
     flex-direction: column;
     gap: 50px;
 }
-.accaunt_info,
+.account_info,
 .password_info{
     padding: 30px;
     background-color: #F6F6F6;
     border-radius: 5px;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.13);
 }
-.accaunt_info h1,
+.account_info h1,
 .password_info h1{
     margin-bottom: 30px;
 }
@@ -190,7 +192,7 @@ body.dark-theme  .apply_button{
     margin-bottom: 5px;
 }
 .form-group input {
-    width: 100%;
+    width: calc(100% - 16px);
     padding: 8px;
     border: none;
     background-color: #EEEEEE;
@@ -231,7 +233,7 @@ body.dark-theme .user_profile_info h1{
     color: #DADADA;
 }
 
-body.dark-theme .accaunt_info,
+body.dark-theme .account_info,
 body.dark-theme .password_info{
     background-color: #494949;
 }
@@ -362,8 +364,35 @@ body.dark-theme .error{
     .user_profile_main{
         width: 100%;
     }
-    .accaunt_info h1, .password_info h1{
+    .account_info h1, .password_info h1{
         text-align: center;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+    }
+    .longer-width {
+        min-width: auto;   
+    }
+    .account_info, .password_info {
+        padding: 30px 1rem;
+    }
+    .user_profile_inputs, .user_password_inputs {
+        padding: 0;
+        flex-direction: column;
+    }
+    .form-group {
+        flex: 1 0 auto;
+    }
+    .user_profile_main_right {
+        width: 100%;
+    }
+    section#setting-page {
+        gap: 20px;
+    }
+    .user_profile_main_left {
+        padding-top: 0px;
+    }
+    .user_profile_main {
+        gap: 30px;
     }
 }
 

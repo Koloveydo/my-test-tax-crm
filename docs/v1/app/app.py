@@ -24,7 +24,7 @@ def componentsView():
 @app.route('/', methods=['GET', 'POST'])
 def user_profile_view():
     user = {
-        'image': '',
+        'image': 'https://taxcanada.accountants/static/images/base/full_logo.png',
         'name': 'John', 
         'surname': 'Doe',
         'organization': 'Company A',
@@ -32,7 +32,7 @@ def user_profile_view():
         'phone': '123-456-7890',
         'cur_password': '243514',
         'personal_number': '65341367814355081',
-        'skills': ['JavaScript', 'HTML', 'CSS', 'Flask', 'Java']
+        'skills': ['JavaScript', 'HTML', 'CSS', 'Flask', 'Java'],
     }
     
     full_name = user['name'] + ' ' + user['surname']
@@ -42,7 +42,7 @@ def user_profile_view():
         'full_name': full_name
     }
 
-    return render_template('pages/user_profile.html', data=data)
+    return render_template('pages/settings.html', data=data)
  
 @app.route('/contacts')
 def contacts_view():
