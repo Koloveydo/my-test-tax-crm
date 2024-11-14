@@ -368,6 +368,7 @@ section#index-page {
 }
 .current_leads_text, .current_tasks_text{
     padding: 15px 35px;
+    width: calc(100% - 70px);
     color: #868686;
 }
 .current_unmess_text{
@@ -473,8 +474,8 @@ body.dark-theme .unmess_icon_text path{
     }
 }
 @media (max-width: 650px){
-    section#index-page{
-        max-width: min(1920px, 100%);
+    section#index-page {
+        max-width: calc(100% - 50px);
     }
     .index-page-inner{
         gap: 15px;
