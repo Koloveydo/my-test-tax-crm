@@ -2,6 +2,8 @@
 
 {% block head %}
     <link rel="stylesheet" href="{{url_for('static',filename='css/pages/user_profile.css')}}" />
+    
+
     <title>User_profile</title>
 {% endblock %}
 
@@ -27,8 +29,15 @@
     <div class="user_profile_main my_accaunt">
         <div class="user_profile_main_left">
             <div class="user_profile_img_box">
-                <img src="{{ data['user'].image }}" alt="User Profile Picture">
+                <img id="profileImage" src="{{ data['user'].image }}" alt="{{ data['user'].name[0] }}{{ data['user'].surname[0] }}" onerror="showInitials()">
+                <p id="profileInitials" style="display: none;">
+                    {{ data['user'].name[0] }}{{ data['user'].surname[0] }}
+                </p> 
+                <div class="change_photo_container" onclick="openPopup()">
+                    {% include 'components/base/change_photo.html' %}
+                </div>  
             </div>  
+            
         </div>
         <div class="user_profile_main_right">
             <div class="accaunt_info">
@@ -37,7 +46,7 @@
                 <form class="user_profile_inputs" action="/">
                     <div class="form-group longer-width">
                         <label>Full Name</label>
-                        <input type="text" placeholder="Enter your full name" value="{{ data['user'].name }}">
+                        <input type="text" placeholder="Enter your full name" value="{{ data['full_name']}}">
                     </div>
                     <div class="form-group">
                         <label>Job Title</label>
@@ -76,13 +85,38 @@
                         <input class="confirm_new_pswrd" type="password" placeholder="Confirm New Paswword">
                         <p class="error"></p>
                     </div>
-                    <button type="submit">Apply changes</button>
+                    <button class="apply_button" type="submit" >APPLY CHANGES</button>
                 </form>
             </div>
         </div>
     </div>
     <!-- MY ACCAUNT PAGE END -->
+    <div class="background_popup">
+        <div class="popup_container">
+            <div class="your_image_popup">
+                <h1>Upload New Image File</h1>
+                <div class="drop_img_container">
+                    <div class="drop_img_container_txt">
+                        <h1>Drop Your Image Here</h1>
+                        <p>For the best result, upload a 360x360 PNG, JPG or GIF.</p>
+                    </div>
+                    <div class="drop_img_input">
+                        <label for="input-file" id="drop-area">
+                            <div class="drop_img_button">
+                                <p>CHOOSE FILE</p>
+                            </div>
+                            <input type="file" accept="image/*" id="input-file" hidden>
+                        </label>
+                    </div>
+                </div>
+                <div class="bottom_content_popup">
+        
+                </div>
+            </div>
+        </div>
+    </div>
+     
+
 </section>
-    
-    <script src="{{ url_for('static', filename='js/pages/user_profile.js') }}"></script>
+<script src="{{ url_for('static', filename='js/pages/user_profile.js') }}" ></script>
 {% endblock %}

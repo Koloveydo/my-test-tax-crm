@@ -21,12 +21,12 @@ db.init_app(app)
 def componentsView():
     return render_template('pages/components.html')
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def user_profile_view():
-    data = {}
     user = {
-        'image': 'https://images.immediate.co.uk/production/volatile/sites/10/2018/02/4f492b22-2d29-4360-80a6-79879487c7b7-e07922e.jpg?quality=90&fit=700,466',
-        'name': 'John','surname': 'Doe',
+        'image': '',
+        'name': 'John', 
+        'surname': 'Doe',
         'organization': 'Company A',
         'email': 'john@example.com',
         'phone': '123-456-7890',
@@ -34,8 +34,14 @@ def user_profile_view():
         'personal_number': '65341367814355081',
         'skills': ['JavaScript', 'HTML', 'CSS', 'Flask', 'Java']
     }
+    
+    full_name = user['name'] + ' ' + user['surname']
+    
+    data = {
+        'user': user,
+        'full_name': full_name
+    }
 
-    data["user"] = user
     return render_template('pages/user_profile.html', data=data)
  
 @app.route('/contacts')

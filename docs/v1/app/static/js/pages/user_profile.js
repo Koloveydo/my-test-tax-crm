@@ -12,7 +12,7 @@ const user_profile_navigation = () => {
                 My_account_option.classList.remove('active');
                 option.classList.toggle('active');
                 
-                blueHelpingNavBar.style.transform = `translateX(${option.offsetLeft + option.offsetWidth / 1.7 - blueHelpingNavBar.offsetWidth / 1.3}px)`;
+                blueHelpingNavBar.style.transform = `translateX(${option.offsetLeft + option.offsetWidth / 5 - blueHelpingNavBar.offsetWidth / 1.17}px)`;
 
             }
 
@@ -57,6 +57,14 @@ const checkInputs = () => {
     const newPasssword_value = new_password.value.trim();
     const confirm_new_passswordValue = confirm_new_passsword.value.trim();
 
+    const sumbit_btn = document.querySelector('.apply_button');
+
+
+    if (oldpassword_value !== '' && newPasssword_value !== '' && confirm_new_passswordValue !=='') {
+        console.log('kkkk');
+        sumbit_btn.classList.add('succes');
+    } 
+
     if (oldpassword_value === '') {
         setError(old_password, 'Required pass');
     // } else if (oldpassword_value !== oldpassword_value) {
@@ -81,6 +89,44 @@ const checkInputs = () => {
         setError(confirm_new_passsword, 'Not the same as new password');
     } else {
         clearError(confirm_new_passsword);
+        
     }
-    
 };
+
+// old_password.addEventListener('input', checkInputs);
+// new_password.addEventListener('input', checkInputs);
+// confirm_new_passsword.addEventListener('input', checkInputs);
+
+function showInitials() {
+    document.getElementById('profileImage').style.display = 'none';
+    document.getElementById('profileInitials').style.display = 'block';
+
+    const change_photo =  document.querySelector('.change_photto');
+    change_photo.classList.toggle('.noPhoto')
+}
+
+function openPopup() {
+    console.log('WorkPOPUP');
+    document.querySelector('.background_popup').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closePopup() {
+    document.querySelector('.background_popup').classList.remove('active');
+}
+
+// DROPIMAGE
+const imageView =document.querySelector('.drop_img_container');
+const inputFile = document.getElementById('input-file');
+const drop_imageButton = document.querySelector('.drop_img_input')
+const drop_image_txt = document.querySelector('.drop_img_container_txt')
+
+inputFile.addEventListener("change", uploadImage);
+
+function uploadImage(){
+    let imgLink = URL.createObjectURL(inputFile.files[0]);
+    imageView.style.backgroundImage = `url(${imgLink})`;
+    drop_imageButton.style.display = 'none';
+    drop_image_txt.style.display = 'none';
+}
+
