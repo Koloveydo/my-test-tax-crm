@@ -1,9 +1,9 @@
 from flask import Flask, render_template, jsonify, redirect, flash, session
-"""from models import *
-'from testing_db import *"""
+from models import *
+from testing_db import *
 
 app = Flask(__name__)
-"""app.secret_key = 'Asdasd@E!d121
+app.secret_key = 'Asdasd@E!d12'
 
 user = 'root'
 password = '0000'
@@ -12,11 +12,11 @@ port = '3306'
 database = 'tax_crm'
 
 app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{user}:{password}@{host}:{port}/{database}'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS']  = False"""
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS']  = False
 
-"""db.init_app(app)
+db.init_app(app)
 
-@app.route('/')
+
 @app.route('/components')
 def componentsView():
     return render_template('pages/components.html')
@@ -24,7 +24,7 @@ def componentsView():
 
 @app.route('/base')
 def baseView():
- " return render_template('pages/base.html')"""
+    return render_template('pages/base.html')
     
 @app.route('/')
 def contacts_view():
@@ -54,4 +54,4 @@ def contacts_view():
     
 
 if __name__ == "__main__":
- app.run(debug=True, port=8080, host='0.0.0.0')
+    app.run(debug=True, port=8080, host='0.0.0.0')

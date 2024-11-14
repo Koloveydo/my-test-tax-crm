@@ -31,6 +31,26 @@ const toggleActiveCol = () => {
     });
 };
 
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/*       mobile | card more functions      */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+const cardmoreFunctionsOnMobile = () => {
+    const cards = document.querySelectorAll(".cards_container");
+
+    cards.forEach(card => {
+        var more_dunc = card.querySelector(".more_info")
+        more_dunc.addEventListener("click", function () {
+            more_dunc.classList.toggle("active");    
+        })
+    })
+
+}
+
+
+
 document.addEventListener('DOMContentLoaded', function () {
     toggleActiveCol();
+    cardmoreFunctionsOnMobile();
 });
