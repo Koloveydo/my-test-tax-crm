@@ -56,3 +56,8 @@
   body.dark-theme .plus_button_container:active .plus_button_circle svg {
     color: #074697;
   }
+  @media (max-width: 650px){
+    .inner_plus_button{
+      font-size:  14px;
+    }
+  }

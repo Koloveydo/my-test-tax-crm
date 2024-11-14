@@ -1,6 +1,7 @@
 section#index-page {
     max-width: min(1920px, calc(100% - 160px));
     margin: 0 auto;
+    padding-top: 100px;
 }
 .index-page-inner {
     width: 100%;
@@ -12,19 +13,17 @@ section#index-page {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    height: 135px;
+    height: auto;
     background-color: transparent;
     border: none;
 }
 .greetings{
-    width:730px;
-    height:135px;
-    left:5%;
+    width:auto;
+    height:auto;
 }
 .user_small_inf{
-    width: 325px;
-    height:135px;
-    right: 5%;
+    width: auto;
+    height:auto;
 }
 .greetings, .user_small_inf{
     position:relative;
@@ -35,45 +34,55 @@ section#index-page {
 
 .daily_img, .start_info{
     display: flex;
-    position: relative;
+    position: flex;
 }
 .start_info{
+    width: auto;
     flex-direction:column;
-    align-items: center;
+    align-items:start;
     justify-content: space-between;
     gap:20px;
 }
-.date_time, .current_status, .greetings_text{
+.date_time, .current_status, .greetings_text, .greetings_texts{
     position:relative;
     border:none;
     cursor:default;
-    width: 450px;
+    text-align: left;
+    width: 270px;
+    background-color: transparent;
+    white-space: nowrap;
+    overflow: visible;
 } 
+.greetings_texts{
+    display: none;
+}
 .date_time{
     font-size: 18px;
     color: rgba(0, 0, 0, 1);
+    width: 270px;
 }
-.greetings_text{
+.greetings_text, .greetings_texts{
     font-size: 24px;
     font-weight: bold;
     top:5px;
+    resize: none;
 }
 .current_status{
     font-size: 18px;
     color: rgba(0, 0, 0, 0.6);
 }
-.date_time, .current_status, .greetings_text:focus{
+.date_time, .current_status, .greetings_texts, .greetings_text:focus{
     outline:none;
+}
+.user_small_inf{
+    width:380px;
+    justify-content: space-between;
+    background-color: transparent;
 }
 .user_small_detail, .user_workandname{
     display:flex;
     background-color: transparent;
     border:none;
-}
-.user_small_inf{
-    width:380px;
-    justify-content: space-between;
-    margin-right: 50px;
 }
 .user_small_detail{
     width: 310px;
@@ -87,6 +96,7 @@ section#index-page {
     border:none;
     text-align: right;
     cursor:default;
+    background-color: transparent;
 }
 .user_fullname, .user_work{
     height:30px;
@@ -143,17 +153,10 @@ section#index-page {
     align-items: center;
     gap: 5px;
 }
-.lead_quantity, .task_quantity{
+.lead_quantity, .task_quantity, .unmess_quantity{
     max-width: 400px;
-    min-width: 300px;
+    min-width: 200px;
     max-height:75px;
-    flex-basis: calc(100% / 3 - 2px * 2);
-    flex-grow: 1;
-}
-.unmess_quantity{
-    max-width: 400px;
-    min-width: 300px;
-    min-height:75px;
     flex-basis: calc(100% / 3 - 2px * 2);
     flex-grow: 1;
 }
@@ -162,6 +165,7 @@ section#index-page {
     height: 50px;
     background: #000;
     margin: auto;
+    display: block;
 }
 .lead_quantity_text, .lead_quantity_number, .unmess_quantity_text, .unmess_quantity_number, .task_quantity_text, .task_quantity_number{
     border: none;
@@ -188,19 +192,19 @@ section#index-page {
     width:100px;
 }
 .lead_quantity_number, .unmess_quantity_number, .task_quantity_number{
-    width:80px;
+    width:50px;
     text-align: center;
     align-self: center;
     font-size:36px;
 }
 .lead_quantity_number{
-    margin-left:65px;
+    margin-left: min( 50px, calc(10vw - 80px)) ;
 }
 .task_quantity_number{
-    margin-left: 50px;;
+    margin-left: min( 50px, calc(10vw - 80px)) ;
 }
 .unmess_quantity_number{
-    margin-left:50px;
+    margin-left: min( 50px, calc(15vw - 170px));
 }
 .info_table {
     width: 100%;
@@ -230,6 +234,7 @@ section#index-page {
     align-items: center;
     padding: 25px 5px;
     border-bottom: 1px solid #000;
+    margin-bottom: 15px;
 }
 .table_buttons-unmess {
     justify-content: flex-start;
@@ -276,7 +281,7 @@ section#index-page {
 .plus_button_container{
     align-items: center;
 }
-.current_leads.available, .current_callendar, .current_tasks, .current_unmess{
+.current_leads.available, .current_callendar, .current_tasks.available, .current_unmess.available{
     width:100%;
     position:relative;
     display:flex;
@@ -285,7 +290,7 @@ section#index-page {
     justify-content: center;
     flex-direction:column;
 }
-.current_leads.unavailable{
+.current_leads.unavailable, .current_tasks.unavailable, .current_unmess.unavailable{
     align-items: left;
     justify-content: space-between;
     flex-direction: column;
@@ -349,8 +354,10 @@ section#index-page {
 .go_to_callendar{
     background-color: transparent;
     font-size: 18px;
+    text-decoration: underline;
+    padding-top: 10px;
 }
-.current_leads_text{
+.current_leads_text, .current_tasks_text, .current_unmess_text{
     background-color: transparent;
     border: none;
     color: #868686;
@@ -359,6 +366,157 @@ section#index-page {
     width: 100%;
     text-align: left;
 }
-.currents_leads_text:focus{
+.current_leads_text, .current_tasks_text{
+    padding: 15px 35px;
+    color: #868686;
+}
+.current_unmess_text{
+    color:#000000;
+    padding-left: 10px;
+}
+.unmess_icon_text{
+    stroke: #000000;
+}
+.current_tasks_text,.current_unmess_text:focus{
     outline: none;
+}
+.current_leads_text:focus{
+    outline:none;
+}
+.unmess_db_icon_text{
+    display: flex;
+    position: relative;
+    padding: 10px 35px;
+}
+body.dark-theme .current_status{
+    color: rgba(255, 255, 255, 0.6);
+}
+body.dark-theme .user_work{
+    color: rgba(255, 255, 255, 0.6);
+}
+body.dark-theme .circle_flname{
+    background-color: #4A4D53;
+    color: #DDDDDE;
+}
+body.dark-theme .line_statistic{
+    background-color: #DDDDDE;
+}
+body.dark-theme .info_table-card, body.dark-theme .statistic{
+    background-color: #4A4D53 ;
+}
+body.dark-theme .leads_table_text,body.dark-theme .tasks_table_text,body.dark-theme .callendar_table_text,body.dark-theme .unmess_table_text, body.dark-theme .current_unmess_text,
+body.dark-theme .lead_quantity_text,body.dark-theme .lead_quantity_number,body.dark-theme .unmess_quantity_text,body.dark-theme .unmess_quantity_number,body.dark-theme .task_quantity_text,body.dark-theme .task_quantity_number,
+body.dark-theme .user_fullname,body.dark-theme .date_time, body.dark-theme .greetings_text, body.dark-theme .greetings_texts{
+    color: #DDDDDE;
+}
+body.dark-theme .table_buttons{
+    border-bottom: 1px solid #DDDDDE;
+}
+body.dark-theme .unmess_icon_text path{
+    stroke: #DDDDDE;
+}
+@media (max-width: 1100px){
+    .user_small_inf{
+        display: none;
+    }
+}
+@media (max-width: 1000px){
+    .user_small_inf{
+        display: none;
+    }
+    .lead_quantity_text, .task_quantity_text{
+        width: 70px;
+    }
+    .unmess_quantity_text{
+        width: 162px;
+    }
+    .unmess_quantity_number{
+        margin-left: -20px;
+    }
+}
+@media (max-width: 850px) {
+    .statistic {
+        min-width: 300px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .line_statistic {
+        display: none;
+    }
+    .unmess_quantity {
+        width: 220px;
+    }
+    .lead_quantity, .task_quantity {
+        flex-basis: calc(50% - 110px);
+        min-width: 120px;
+        max-width: 200px;
+    }
+}
+@media (max-width: 800px){
+    .statistic{
+        flex-direction: column;
+        align-items: start;
+    }
+    .lead_quantity_number, .task_quantity_number{
+        margin-left: calc(10vw + 115px);
+    }
+    .unmess_quantity_number{
+        margin-left: calc(10vw + 23px);
+    }
+    .user_small_inf{
+        display: none;
+    }
+    .daily_img{
+        width: 230px;
+        height: 110px;
+    }
+}
+@media (max-width: 650px){
+    section#index-page{
+        max-width: min(1920px, 100%);
+    }
+    .index-page-inner{
+        gap: 15px;
+    }
+    .lead_quantity_number, .unmess_quantity_number, .task_quantity_number{
+        font-size: 18px;
+        font-weight:bold;
+    }
+    .lead_quantity_text, .unmess_quantity_text, .task_quantity_text,
+    .leads_table_text, .tasks_table_text, .callendar_table_text, .unmess_table_text,
+    .current_leads_text, .current_tasks_text, .current_unmess_text
+    .current_zero_data_text, .current_unmess_text, .callendar_status, .go_to_callendar{
+        font-size:14px;
+    }
+    .info_table{
+        gap: 15px;
+    }
+}
+@media (max-width: 490px){
+    section#index-page{
+        padding-top: 50px;
+    }
+    .start_of_main_page {
+        display: flex;
+    }
+    .greetings{
+        gap: 18px;
+    }
+    .greetings_text, .greetings_texts{
+        font-size: 18px;
+    }
+    .date_time, .current_status{
+        font-size: 10px;
+    }
+    .date_time{
+        top: 12px;
+    }
+    .current_status{
+        bottom: 5px;
+    }
+    .daily_img{
+        width: 172px;
+        height: 82px;
+    }
 }

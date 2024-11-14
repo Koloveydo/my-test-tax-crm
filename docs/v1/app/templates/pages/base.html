@@ -10,13 +10,9 @@
 </head>
 
 <body>
-
-	<header>
-		<nav>
-			<a href="/users">users</a>
-			<a href="/index">main page</a>
-		</nav>
-	</header>
+	<section class="row-new-component">
+		<div class="inr-ct-st">{% include 'components/base/header.html' %}</div>
+	</section>
 
 		{% block body %} 
 		{% endblock %}
