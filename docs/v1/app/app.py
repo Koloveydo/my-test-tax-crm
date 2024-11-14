@@ -1,14 +1,15 @@
 from flask import Flask, render_template, jsonify, redirect, flash, session
 from flask_sqlalchemy import SQLAlchemy 
 from models import *
+from testing_db import *
 
 app = Flask(__name__)
 app.secret_key = 'Asdasd@E!d121'
 user = 'root'
-password = '0000'
+password = 'koloveydo8'
 host = 'localhost'
 port = '3306'
-database = 'tax_crm'
+database = 'taxcrm'
 
 
 app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{user}:{password}@{host}:{port}/{database}'
@@ -83,4 +84,7 @@ def indexView():
 if __name__ == "__main__":
     with  app.app_context():
         db.create_all()
+
+    insertToAllTables()
+
     app.run(debug=True, port=8088, host='0.0.0.0')
