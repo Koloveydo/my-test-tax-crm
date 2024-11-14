@@ -21,12 +21,30 @@ db.init_app(app)
 def componentsView():
     return render_template('pages/components.html')
 
-
-@app.route('/base')
-def baseView():
-    return render_template('pages/base.html')
+@app.route('/', methods=['GET', 'POST'])
+def user_profile_view():
+    user = {
+        'image': 'https://taxcanada.accountants/static/images/base/full_logo.png',
+        'name': 'John', 
+        'surname': 'Doe',
+        'organization': 'Company A',
+        'email': 'john@example.com',
+        'phone': '123-456-7890',
+        'cur_password': '243514',
+        'personal_number': '65341367814355081',
+        'skills': ['JavaScript', 'HTML', 'CSS', 'Flask', 'Java'],
+    }
     
-@app.route('/')
+    full_name = user['name'] + ' ' + user['surname']
+    
+    data = {
+        'user': user,
+        'full_name': full_name
+    }
+
+    return render_template('pages/settings.html', data=data)
+ 
+@app.route('/contacts')
 def contacts_view():
     contacts = [
         {'photo': '','name': 'John','surname': 'Doe','organization': 'Company A','email': 'john@example.com','phone': '123-456-7890','skills': ['JavaScript', 'HTML', 'CSS', 'Flask', 'Java']},
@@ -54,4 +72,9 @@ def contacts_view():
     
 
 if __name__ == "__main__":
+    with app.app_context():
+        db.create_all()
+
+    insertToAllTables()
+
     app.run(debug=True, port=8080, host='0.0.0.0')
