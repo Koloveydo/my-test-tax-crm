@@ -6,10 +6,10 @@ from testing_db import *
 app = Flask(__name__)
 app.secret_key = 'Asdasd@E!d121'
 user = 'root'
-password = 'koloveydo8'
+password = '0000'
 host = 'localhost'
 port = '3306'
-database = 'taxcrm'
+database = 'tax_crm'
 
 
 app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{user}:{password}@{host}:{port}/{database}'
