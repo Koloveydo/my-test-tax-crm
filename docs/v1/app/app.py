@@ -6,10 +6,10 @@ from testing_db import *
 app = Flask(__name__)
 app.secret_key = 'Asdasd@E!d121'
 user = 'root'
-password = '0000'
+password = 'koloveydo8'
 host = 'localhost'
 port = '3306'
-database = 'tax_crm'
+database = 'taxcrm'
 
 
 app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{user}:{password}@{host}:{port}/{database}'
@@ -43,28 +43,24 @@ def indexView():
         {'name2':'','photo2':''},
     ]
     user = [
-        'Vadim Romaniyk',
-        'Vadim Romaniyk',
-        'Vadim Romaniyk',
-        'Vadim Romaniyk',
+        {'id' : '1','name' :'Vlad', 'surname' : 'Koloveydo', 'work' : 'Developer', 'company' : 'none'},
     ]
     tasks = [
-        'Vadim Romaniyk',
-        'Vadim Romaniyk',
-        'Vadim Romaniyk',
-        'Vadim Romaniyk',
+        {'id' : '1','name' :'Vadim Romaniyk'},
+        {'id' : '2','name' :'Vadim Romaniyk'},
+        {'id' : '3','name' :'Vadim Romaniyk'},
     ]
     unmess = [
-        'Vadim Romaniyk',
-        'Vadim Romaniyk',
-        'Vadim Romaniyk',
-        'Vadim Romaniyk',
+        {'id' : '1','name' :'Vadim Romaniyk', 'sender' : 'Koloveydo'},
+        {'id' : '2','name' :'Vadim Romaniyk', 'sender' : 'Koloveydo'},
+        {'id' : '3','name' :'Vadim Romaniyk', 'sender' : 'Koloveydo'},
+        {'id' : '4','name' :'Vadim Romaniyk', 'sender' : 'Koloveydo'},
     ]
     leads = [
-        'Vadim Romaniyk',
-        'Vadim Romaniyk',
-        'Vadim Romaniyk',
-        'Vadim Romaniyk',
+        {'id' : '1','name' :'Vadim Romaniyk', 'time' : '16.11.2024'},
+        {'id' : '2','name' :'Vadim Romaniyk', 'time' : '16.11.2024'},
+        {'id' : '3','name' :'Vadim Romaniyk', 'time' : '16.11.2024'},
+        {'id' : '4','name' :'Vadim Romaniyk', 'time' : '16.11.2024'},
     ]
     
     data = {

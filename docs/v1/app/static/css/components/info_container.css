@@ -26,7 +26,20 @@
     margin-bottom: 10px;
     font-size: 12px;
 }
-
+@media (max-width: 650px) {
+    .info-container{
+        height: 16px;
+        width: 16px;
+    }
+    .info-image{
+        height: 16px;
+        width: 16px;
+    }
+    .info-icon{
+        height: 16px;
+        width: 16px;
+    }
+}
 @media (max-width: 600px) {
     .helper-text {
         min-width: 85vw;
