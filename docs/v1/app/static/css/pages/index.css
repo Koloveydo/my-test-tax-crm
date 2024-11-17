@@ -128,8 +128,7 @@ section#index-page {
 .organization_text{
     height:24px;
     color: #1F60B3;
-    text-align: right;
-    
+    text-align: right; 
 }
 .circle_flname {
     display: inline-block;
@@ -143,6 +142,23 @@ section#index-page {
     line-height: 50px;       
     font-weight: bold;   
     box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.09);
+}
+.card_photo {
+    width: 50px;
+    height: 50px;
+    background-color: #D9D9D9;
+    border-radius: 50%;
+    float: left;
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+}
+.card_photo img {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
 .statistic{
     min-width: 300px;

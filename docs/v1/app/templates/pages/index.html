@@ -39,7 +39,11 @@
                         <div class="organization_text">{{ data.user[0].company }}</div>
                     {% endif %}
                 </div>
-                <span class="circle_flname">{{ data.user[0].name[0].upper() }}{{ data.user[0].surname[0].upper() }}</span>
+                {% if data.user[0].photo in [None, '', 'none'] %}
+                    <span class="circle_flname">{{ data.user[0].name[0].upper() }}{{ data.user[0].surname[0].upper() }}</span>
+                {% else %}
+                    <img class="card_photo" src="{{ url_for('static', filename=data.user[0].photo) }}">
+                {% endif %}
             </div>
         </div>
         <!-- Частина на якій знаходиться кількість лідів, тасків і непрочитаних повідомлень-->

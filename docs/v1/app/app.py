@@ -43,7 +43,7 @@ def indexView():
         {'name2':'','photo2':''},
     ]
     user = [
-        {'id' : '1','name' :'Vlad', 'surname' : 'Koloveydo', 'work' : 'Developer', 'company' : 'none'},
+        {'id' : '1','name' :'Vlad', 'surname' : 'Koloveydo', 'work' : 'Developer', 'company' : 'none', 'photo' : 'images/avatar.png'},
     ]
     tasks = [
         {'id' : '1','name' :'Vadim Romaniyk'},
