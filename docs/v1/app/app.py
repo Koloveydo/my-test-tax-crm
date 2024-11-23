@@ -22,7 +22,7 @@ def componentsView():
     return render_template('pages/components.html')
 
 @app.route('/', methods=['GET', 'POST'])
-def user_profile_view():
+def settings_view():
     user = {
         'image': '',
         'name': 'John', 
@@ -42,8 +42,12 @@ def user_profile_view():
         'full_name': full_name
     }
 
-    return render_template('pages/user_profile.html', data=data)
- 
+    return render_template('pages/settings.html', data=data)
+
+@app.route('/login')
+def login_view():
+    return render_template('pages/login.html')
+
 @app.route('/contacts')
 def contacts_view():
     contacts = [
@@ -52,12 +56,12 @@ def contacts_view():
         {'photo': '','name': 'John','surname': 'Doe','organization': 'Company A','email': 'john@example.com','phone': '123-456-7890','skills': ['JavaScript', 'HTML', 'CSS',]},
         {'photo': '','name': 'John','surname': 'Doe','organization': 'Company A','email': 'john@example.com','phone': '123-456-7890','skills': ['JavaScript', 'HTML',]},
         {'photo': '','name': 'John','surname': 'Doe','organization': 'Company A','email': 'john@example.com','phone': '123-456-7890','skills': ['JavaScript',]},
-    ];
+    ]
     leads = [
         {'photo': '','name': 'John','surname': 'Doe','organization': 'Company A','email': 'john@example.com','phone': '123-456-7890','skills': ['JavaScript', 'HTML', 'CSS',]},
         {'photo': '','name': 'John','surname': 'Doe','organization': 'Company A','email': 'john@example.com','phone': '123-456-7890','skills': ['JavaScript', 'HTML', 'CSS',]},
         {'photo': '','name': 'John','surname': 'Doe','organization': 'Company A','email': 'john@example.com','phone': '123-456-7890','skills': ['JavaScript', 'HTML', 'CSS',]},
-    ];
+    ]
     
     all_contacts = contacts + leads
     

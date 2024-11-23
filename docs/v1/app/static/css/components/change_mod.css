@@ -51,7 +51,7 @@ body{
     z-index: 5;
 }
 .dark-theme{
-    background-color: #666666;
+    background-color: #262626;
     transition: 0.5s ease-in-out;;
 }
 .dark-theme .change_mode_button{
