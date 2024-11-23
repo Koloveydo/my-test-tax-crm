@@ -6,6 +6,11 @@
     padding: 4px 20px;
     cursor: pointer;
     border: none;
+    height: 28px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom:0px;
 }
 
 .change_photo p {

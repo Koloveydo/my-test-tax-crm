@@ -74,6 +74,20 @@ def indexView():
     
     return render_template('pages/index.html', data=data)
 
+@app.route('/my_profile')
+def my_profile_view():
+
+    user = [
+        {'id' : '1','name' :'Vlad', 'surname' : 'Koloveydo', 'work' : 'Developer', 'company' : 'none', 'email' : 'koloveydo8qazqsxedc@gmail.com', 'photo' : 'images/avatar.png'},
+    ]
+
+    data = {
+        "user": user,
+    }
+
+
+    return render_template('pages/my_profile.html', data=data)
+
 if __name__ == "__main__":
     with  app.app_context():
         db.create_all()

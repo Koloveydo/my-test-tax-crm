@@ -2,12 +2,16 @@ section#index-page {
     max-width: min(1920px, calc(100% - 160px));
     margin: 0 auto;
     padding-top: 100px;
+    overflow: hidden;
 }
 .index-page-inner {
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 22px;
+    min-width: 280px;
+    align-self: center;
+    overflow: hidden;
 }
 .start_of_main_page {
     display: flex;
@@ -438,14 +442,14 @@ body.dark-theme .user_work{
     color: rgba(255, 255, 255, 0.6);
 }
 body.dark-theme .circle_flname{
-    background-color: #494949;
+    background-color: #191B1C;
     color: #DDDDDE;
 }
 body.dark-theme .line_statistic{
     background-color: #DDDDDE;
 }
 body.dark-theme .info_table-card, body.dark-theme .statistic{
-    background-color: #494949 ;
+    background-color: #191B1C ;
 }
 body.dark-theme .leads_table_text,body.dark-theme .tasks_table_text,body.dark-theme .callendar_table_text,body.dark-theme .unmess_table_text, body.dark-theme .current_unmess_text,
 body.dark-theme .lead_quantity_text,body.dark-theme .lead_quantity_number,body.dark-theme .unmess_quantity_text,body.dark-theme .unmess_quantity_number,body.dark-theme .task_quantity_text,body.dark-theme .task_quantity_number,
@@ -584,6 +588,10 @@ body.dark-theme .unmess_icon_text path{
 @media (max-width: 490px){
     section#index-page{
         padding-top: 50px;
+        max-width: 100%;
+    }
+    .statistic{
+        width: 100%;
     }
     .start_of_main_page {
         display: flex;

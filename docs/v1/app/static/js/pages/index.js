@@ -17,7 +17,7 @@ function updateGreetings(){
 		greetingsText = "Good morning,";
 		greetingsTexts = "have a nice day!";
 		document.getElementById("greetings_values").style.display = "block";
-	} else if (hours >= 22 && hours < 24){
+	} else if (hours >= 12 && hours < 18){
 		greetingsText = "Good afternoon,";
 		greetingsTexts = "you're doing great work!";
 		document.getElementById("greetings_values").style.display = "block";
