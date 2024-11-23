@@ -30,8 +30,18 @@
             <div class="user_small_inf">
                 <div class="user_small_detail">
                     <div class="user_workandname">
-                        <div class="user_fullname">{{data.user[0].name}} {{data.user[0].surname}}</div>
-                        <div class="user_work">{{data.user[0].work}}</div>
+                        {% if session %}
+                            {% if "profile_info" in session %}
+                                <div class="user_fullname">{{ session.profile_info.first_name }} {{ session.profile_info.last_name }}</div>
+                                <div class="user_work">{{data.user[0].work}}</div>
+                            {% else %}
+                                <div class="user_fullname">{{data.user[0].name}} {{data.user[0].surname}}</div>
+                                <div class="user_work">{{data.user[0].work}}</div>
+                            {% endif %}
+                        {% else %}
+                            <div class="user_fullname">{{data.user[0].name}} {{data.user[0].surname}}</div>
+                            <div class="user_work">{{data.user[0].work}}</div>
+                        {% endif %}
                     </div>
                     {% if data.user[0].company in [None, '', 'none'] %}
                         <div class="organization_text">Freelancer</div>
@@ -39,10 +49,26 @@
                         <div class="organization_text">{{ data.user[0].company }}</div>
                     {% endif %}
                 </div>
-                {% if data.user[0].photo in [None, '', 'none'] %}
-                    <span class="circle_flname">{{ data.user[0].name[0].upper() }}{{ data.user[0].surname[0].upper() }}</span>
+                {% if session %}
+                    {% if "profile_info" in session %}
+                        {% if session.profile_info.url_image in [None, '', 'none'] %}
+                            <span class="circle_flname">{{ session.profile_info.first_name[0].upper() }}{{ session.profile_info.last_name[0].upper() }}</span>
+                        {% else %}
+                            <img class="card_photo" src="{{ url_for('static', filename=session.profile_info.url_image) }}">
+                        {% endif %}
+                    {% else %}
+                        {% if data.user[0].photo in [None, '', 'none'] %}
+                            <span class="circle_flname">{{ data.user[0].name[0].upper() }}{{ data.user[0].surname[0].upper() }}</span>
+                        {% else %}
+                            <img class="card_photo" src="{{ url_for('static', filename=data.user[0].photo) }}">
+                        {% endif %}
+                    {% endif %}
                 {% else %}
-                    <img class="card_photo" src="{{ url_for('static', filename=data.user[0].photo) }}">
+                    {% if data.user[0].photo in [None, '', 'none'] %}
+                        <span class="circle_flname">{{ data.user[0].name[0].upper() }}{{ data.user[0].surname[0].upper() }}</span>
+                    {% else %}
+                        <img class="card_photo" src="{{ url_for('static', filename=data.user[0].photo) }}">
+                    {% endif %}
                 {% endif %}
             </div>
         </div>

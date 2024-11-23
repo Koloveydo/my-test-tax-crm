@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify, redirect, flash, session
+from flask import Flask, render_template, jsonify, redirect, flash, session, request
 from flask_sqlalchemy import SQLAlchemy 
 from models import *
 from testing_db import *
@@ -16,6 +16,24 @@ app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{user}:{password}@{hos
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 
+@app.context_processor
+def context_all_page():
+    if "login" in session:
+        if session["login"] == True:
+            pass
+
+        else:
+            session["login"] = True 
+            session["profile_info"] = {
+                "first_name": "Влад",
+                "last_name":  "Коловейдо",
+                "url_image":  "none",
+            } 
+            session["lich"] = 0
+    else:
+        session["login"] = False
+        
+    return { "session": session }
 
 @app.route('/components')
 def components_view():
@@ -34,6 +52,16 @@ def create_user_view():
 def users_view():
     users = User_details.query.all()
     return render_template('pages/database_testing.html', users=users)
+
+
+@app.route('/logout')
+def logoutView():
+    if "login" in session:
+        if session["login"] == True:
+            session["login"] = False
+            del session["profile_info"]
+            del session["lich"]
+            
 
 @app.route('/')
 def indexView():
@@ -71,7 +99,6 @@ def indexView():
         "leads": leads,
     }
     
-    
     return render_template('pages/index.html', data=data)
 
 @app.route('/my_profile')
@@ -94,4 +121,4 @@ if __name__ == "__main__":
 
     insertToAllTables()
 
-    app.run(debug=True, port=8088, host='0.0.0.0')
+    app.run(debug=True, port=8080, host='0.0.0.0')
