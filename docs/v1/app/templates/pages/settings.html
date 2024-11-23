@@ -1,0 +1,170 @@
+{% extends 'pages/base.html' %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/pages/settings.css')}}" />
+    
+
+    <title>User_profile</title>
+{% endblock %}
+
+{% block body %} 
+
+
+<section class="setting-page" id="setting-page">
+    <!-- PAGE MENU BAR-->
+    <div class="user_profile_content">
+        <div class="user_profile_info">
+            <h1>Settings</h1>
+            <div class="user_profile_navigation_">
+                <div class="user_profile_navigation">
+                    <p class="user_profile_menu active">My account</p>
+                    <p class="user_profile_menu">Company</p>
+                </div>
+                <div class="blue_helping_nav_bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MY account PAGE -->
+    <div class="user_profile_main active" page-index="1">
+        <div class="user_profile_main_left">
+            <div class="user_profile_img_box">
+                <img id="profileImage" src="{{ data['user'].image }}" alt="{{ data['user'].name[0] }}{{ data['user'].surname[0] }}">
+
+                {% if data['user'].image == '' or data['user'].image == ' ' or data['user'].image == [] or data['user'].image == none %}
+                    <p id="profileInitials">{{ data['user'].name[0] }}{{ data['user'].surname[0] }}</p> 
+                {% endif %}
+
+                <div class="change_photo_container" onclick="openPopup()">
+                    {% include 'components/base/change_photo.html' %}
+                </div>  
+            </div>  
+            
+        </div>
+        <div class="user_profile_main_right">
+            <div class="account_info">
+                <h1>account Info</h1>
+
+                <form class="user_profile_inputs" action="/">
+                    <div class="form-group longer-width">
+                        <label>Full Name</label>
+                        <input type="text" placeholder="Enter your full name" value="{{ data['full_name']}}">
+                    </div>
+                    <div class="form-group">
+                        <label>Job Title</label>
+                        <input type="text" placeholder="Enter your Job Title" value="{{ data['user'].organization }}">
+                    </div>
+                    <div class="form-group  longer-width">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="Enter your email" value="{{ data['user'].email }}">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" placeholder="Enter your Phone Number" value="{{ data['user'].phone }}">
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Main Personal Number</label>
+                        <input type="tel" placeholder="Enter your Main Personal Number" value="{{ data['user'].personal_number }}">
+                    </div>
+                </form>                
+            </div>
+            <div class="password_info">
+                <h1>Password Info</h1>
+
+                <form class="user_password_inputs" action="/">
+                    <div class="form-group full-width">
+                        <label>CurentPasssword</label>
+                        <input class="old_password" type="password" placeholder="Write your password">
+                        <p class="error"></p>
+                    </div>
+                    <div class="form-group full-width">
+                        <label>New Password</label>
+                        <input class="new_password" type="password" placeholder="Write New Password">
+                        <p class="error"></p>
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Confirm New Password</label>
+                        <input class="confirm_new_pswrd" type="password" placeholder="Confirm New Paswword">
+                        <p class="error"></p>
+                    </div>
+                    <button class="apply_button" type="submit" >APPLY CHANGES</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Company PAGE -->
+    <div class="user_profile_main" page-index="2">
+        <div class="user_profile_main_left">
+            <div class="user_profile_img_box">
+                <img id="profileImage" src="{{ data['user'].image }}" alt="{{ data['user'].name[0] }}{{ data['user'].surname[0] }}">
+
+                {% if data['user'].image == '' or data['user'].image == ' ' or data['user'].image == [] or data['user'].image == none %}
+                    <p id="profileInitials">{{ data['user'].name[0] }}{{ data['user'].surname[0] }}</p> 
+                {% endif %}
+
+                <div class="change_photo_container" onclick="openPopup()">
+                    {% include 'components/base/change_photo.html' %}
+                </div>  
+            </div>  
+            
+        </div>
+        <div class="user_profile_main_right">
+            <div class="account_info">
+                <h1>Company Info</h1>
+
+                <form class="user_profile_inputs" action="/">
+                    <div class="form-group longer-width">
+                        <label>Full Name</label>
+                        <input type="text" placeholder="Enter your full name" value="{{ data['full_name']}}">
+                    </div>
+                    <div class="form-group">
+                        <label>Job Title</label>
+                        <input type="text" placeholder="Enter your Job Title" value="{{ data['user'].organization }}">
+                    </div>
+                    <div class="form-group  longer-width">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="Enter your email" value="{{ data['user'].email }}">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" placeholder="Enter your Phone Number" value="{{ data['user'].phone }}">
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Main Personal Number</label>
+                        <input type="tel" placeholder="Enter your Main Personal Number" value="{{ data['user'].personal_number }}">
+                    </div>
+                </form>                
+            </div>
+          
+        </div>
+    </div>
+    <!-- MY account PAGE END -->
+    <div class="background_popup">
+        <div class="popup_container">
+            <div class="your_image_popup">
+                <h1>Upload New Image File</h1>
+                <div class="drop_img_container">
+                    <div class="drop_img_container_txt">
+                        <h1>Drop Your Image Here</h1>
+                        <p>For the best result, upload a 360x360 PNG, JPG or GIF.</p>
+                    </div>
+                    <div class="drop_img_input">
+                        <label for="input-file" id="drop-area">
+                            <div class="drop_img_button">
+                                <p>CHOOSE FILE</p>
+                            </div>
+                            <input type="file" accept="image/*" id="input-file" hidden>
+                        </label>
+                    </div>
+                </div>
+                <div class="bottom_content_popup">
+        
+                </div>
+            </div>
+        </div>
+    </div>
+     
+
+</section>
+<script src="{{ url_for('static', filename='js/pages/settings.js') }}" ></script>
+{% endblock %}

@@ -4,7 +4,7 @@ from models import *
 from testing_db import *
 
 app = Flask(__name__)
-app.secret_key = 'Asdasd@E!d121'
+app.secret_key = 'Asdasd@E!d12'
 user = 'root'
 password = '0000'
 host = 'localhost'
@@ -62,10 +62,9 @@ def logoutView():
             del session["profile_info"]
             del session["lich"]
             
-
+ 
 @app.route('/')
 def indexView():
-
     callendar_data = [
         {'name':'','photo':''},
         {'name2':'','photo2':''},
@@ -84,6 +83,7 @@ def indexView():
         {'id' : '3','name' :'Vadim Romaniyk', 'sender' : 'Koloveydo'},
         {'id' : '4','name' :'Vadim Romaniyk', 'sender' : 'Koloveydo'},
     ]
+
     leads = [
         {'id' : '1','name' :'Vadim Romaniyk', 'time' : '16.11.2024'},
         {'id' : '2','name' :'Vadim Romaniyk', 'time' : '16.11.2024'},

@@ -1,9 +1,9 @@
 .change_photo {
-    background-color: #EEEEEE;
+    transition: .5s;
     border-radius: 21px 3px 21px 21px;
     box-shadow: 0 0 4px 0 rgb(0 0 0 / 25%);
     width: max-content;
-    padding: 4px 20px;
+    padding: 10px 20px;
     cursor: pointer;
     border: none;
     height: 28px;
@@ -19,14 +19,18 @@
 }
 
 .change_photo:hover {
-    background-color: #E4E4E4;
+    background-color: rgba(223, 223, 223, 0.8);
     box-shadow: 0 4px 4px 0 rgb(0 0 0 / 13%);
+    backdrop-filter: blur(4px);
+    
 }
 
 .change_photo:active {
-    background-color: #E4E4E4;
+    background-color: rgba(155, 155, 155, 0.8);
     box-shadow: 0 4px 4px 0 rgb(0 0 0 / 25%);
     border: 1px solid #A7A4A4;
+    backdrop-filter: blur(4px);
+    transition: 0s;
 }
 
 body.dark-theme .change_photo {
