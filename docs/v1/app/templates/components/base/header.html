@@ -35,7 +35,7 @@
 					</li>
 					
 					<li class="fall_down_menu dekstop_menu">
-						<a class="my_profile_link">
+						<a href="{{ url_for('my_profile_view') }}" class="my_profile_link">
 							My profile
 							<svg class="header_arrow" width="12" height="12" viewBox="0 0 12 10" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M6 6.27498L10.6 0.333313L12 2.14165L6 9.89165L0 2.14165L1.4 0.333313L6 6.27498Z" fill="currentColor"/></svg>
 						</a>
@@ -60,8 +60,19 @@
 					</li>
 					<li class="header_profile_svg">
 						<a href="">
-							<svg class="profile_svg" width="40" height="40" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="22.5" cy="22.5" r="22.5" fill="currentColor"/><path d="M12.2805 16.186L16.5645 26.95L15.5745 26.752L19.6425 16.186H21.6765L15.9345 29.794L10.2105 16.186H12.2805ZM26.046 21.424L25.992 22.072L26.226 21.748L31.554 16.186H33.804L28.422 21.766L34.11 29.2H31.896L27.144 22.882L26.046 23.944V29.2H24.282V16.186H26.046V21.424Z" fill="black"/>
-							</svg>
+							{% if session %}
+								{% if "profile_info" in session %}
+									{% if session.profile_info.url_image in [None, '', 'none'] %}
+										<span class="circle_flname">{{ session.profile_info.first_name[0].upper() }}{{ session.profile_info.last_name[0].upper() }}</span>
+									{% else %}
+										<img class="card_photo" src="{{ url_for('static', filename=session.profile_info.url_image) }}">
+									{% endif %}
+								{% else %}
+									<svg class="profile_svg" width="40" height="40" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="22.5" cy="22.5" r="22.5" fill="currentColor"/><path d="M12.2805 16.186L16.5645 26.95L15.5745 26.752L19.6425 16.186H21.6765L15.9345 29.794L10.2105 16.186H12.2805ZM26.046 21.424L25.992 22.072L26.226 21.748L31.554 16.186H33.804L28.422 21.766L34.11 29.2H31.896L27.144 22.882L26.046 23.944V29.2H24.282V16.186H26.046V21.424Z" fill="black"/></svg>
+								{% endif %}
+							{% else %}
+								<svg class="profile_svg" width="40" height="40" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="22.5" cy="22.5" r="22.5" fill="currentColor"/><path d="M12.2805 16.186L16.5645 26.95L15.5745 26.752L19.6425 16.186H21.6765L15.9345 29.794L10.2105 16.186H12.2805ZM26.046 21.424L25.992 22.072L26.226 21.748L31.554 16.186H33.804L28.422 21.766L34.11 29.2H31.896L27.144 22.882L26.046 23.944V29.2H24.282V16.186H26.046V21.424Z" fill="black"/></svg>
+							{% endif %}
 						</a>	
 					</li>
 

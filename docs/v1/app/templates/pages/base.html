@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/pages/base.css') }}" />
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/pages/base.css') }}">
 
 	{% block head %} 
 	{% endblock %}
 </head>
 
 <body>
-
-	{% include 'components/base/header.html' %}
-
-	<section class="main-page">
+	<section class="row-new-component">
+		<div class="inr-ct-st">{% include 'components/base/header.html' %}</div>
+	</section>
 
 		{% block body %} 
 		{% endblock %}

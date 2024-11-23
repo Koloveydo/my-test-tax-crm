@@ -1,3 +1,4 @@
+
 .box_search {
     margin-right: 50px;
     position: relative;
@@ -41,7 +42,9 @@ body.dark-theme .box_search {
     background-color: #3C3C3C;
     border: 1px solid #DBDADA;
 }
-
-body.dark-theme .search {
+body.dark-theme .box_search:hover {
+    background-color: #3C3C3C;
+}
+body.dark-theme .search{
     background-color: #3C3C3C;
 }
