@@ -1,6 +1,7 @@
-from flask import Flask, render_template, jsonify, redirect, flash, session
+from flask import Flask, render_template, jsonify, redirect, flash, session, request
 from models import *
 from testing_db import *
+import json
 
 app = Flask(__name__)
 app.secret_key = 'Asdasd@E!d121'
@@ -56,6 +57,58 @@ def login_view():
     
     data = new_user
     return render_template('pages/login.html', data=data)
+
+
+@app.route('/check-data-register', methods=["GET", "POST"])
+def checkRegisterView():
+    if request.method == "POST":
+        try:
+            data = request.data
+            data_dict = json.loads(data)
+            data_email = data_dict["reg-email"]
+            
+            user_emails = [
+                "test@gmail.com",
+                "test1@gmail.com",
+                "test2@gmail.com",
+                "test3@gmail.com",
+                "test4@gmail.com",
+            ]
+            
+            # перевірка чи email вже був зареєстрований
+            if data_email in user_emails:
+                json_data = {'success': False, 'message': 'email already exist'}
+                return jsonify(json_data), 400
+
+            else:
+                '''
+                    свторити профіль користувача
+                    у БД та запам'ятати всі дані
+                '''
+                '''
+                    якщо все добре, то потрібно
+                    надати користувачеві доступ 
+                    та зробити його сесію активною
+                    (session["login"]=True,...)
+                '''
+                json_data = {'success': True, 'message': 'Working, all exist, all good'}
+                return jsonify(json_data), 200
+            
+        except:
+            json_data = {'success': False, 'message': 'POST method not valid'}
+            return jsonify(json_data), 500
+    else:
+        json_data = {'success': False, 'message': 'method not allowed'}
+        return jsonify(json_data), 405
+   
+
+
+
+@app.route('/check-data-login', methods=["GET", "POST"])
+def checkLoginView():
+    
+    return True
+
 
 @app.route('/contacts')
 def contacts_view():

@@ -51,6 +51,28 @@ const clearError = (element) => {
     });
 };
 
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*		circle progress ob button       */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+const circleAnimateSubmit = (selector) => {
+	if (document.querySelector(selector)) {
+		const btnSubmit = document.querySelector(selector);
+		var old_text = btnSubmit.innerHTML;
+		
+		btnSubmit.innerHTML = `
+			<div class="circle-loader"></div>
+		`;
+		btnSubmit.style.position = "relative";
+		btnSubmit.disabled = true; 	
+
+		setTimeout(() => {
+			btnSubmit.innerHTML = old_text;
+			btnSubmit.disabled = false; 	
+		}, 3000);
+	}
+}
+
 const registerForm = document.querySelector('.login_form');
 const loginForm = document.querySelector('.register form');
 
@@ -67,10 +89,66 @@ const addDynamicValidation = (form) => {
             }
         });
     });
+
+
+    /* ~~~ vadym, valid form submit ~~~ */
+
+    if (form === registerForm) {
+        var fetch_url = "/check-data-register";
+        var formData = {
+            "reg-email": document.getElementById("reg-email").value,
+        };
+        var btnSelector = ".login_page_btn";
+    } else {
+        var fetch_url = "/check-data-login";
+        var formData = {
+            "log-email": document.getElementById("log-email").value,
+            "log-pass": document.getElementById("log-pass").value,
+        };
+        var btnSelector = ".register_btn";
+    }
+   
+   
+    // анімація кнопки після відправки
+    circleAnimateSubmit(btnSelector);
+
+    // Виконуємо запит fetch із .then для обробки результату
+    fetch(fetch_url, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+    })
+    .then((response) => response.json())
+    .then((data) => {
+        if (data.success) { 
+            alert(data.message);
+        } else {
+            var text = data.message;
+
+            if (form.querySelector("p.form-send-error")) {
+				form.querySelector("p.form-send-error").textContent = text;
+				form.querySelector("p.form-send-error").style.display = "block";
+			} else {
+				var error_text = document.createElement('p');
+				error_text.textContent = text;
+				error_text.classList.add("form-send-error");
+				
+				form.insertBefore(error_text, form.firstChild);
+			}
+        }
+    })
+    .catch((error) => {
+        console.error("Error:", error);
+        alert("Виникла помилка при відправленні форми.");
+    });
+	
 };
 
 function validateRegisterForm() {
     const inputs = registerForm.querySelectorAll('.form_group input');
+    var valid = true;
 
     inputs.forEach((input) => {
         const value = input.value.trim();
@@ -81,17 +159,20 @@ function validateRegisterForm() {
             document.querySelectorAll('.eye').forEach(function(element) {
                 element.style.paddingBottom='12px'
             });
-            return; 
+            valid = false; 
         }
         if (input.classList.contains('password_input') && value.length < 8) {
             setError(input, 'Password must be more than 8 symbols!');
-            return;
+            valid = false;
         }
     });
+
+    return valid;
 }
 
 function validateLoginForm() {
     const inputs = loginForm.querySelectorAll('.form_group input');
+    const valid = true;
 
     inputs.forEach((input) => {
         const value = input.value.trim();
@@ -99,23 +180,31 @@ function validateLoginForm() {
 
         if (value === '') {
             setError(input, 'Information Required!');
-            return; 
+            valid = false; 
         }
         if (input.classList.contains('password_input') && value.length < 8) {
             setError(input, 'Password must be more than 8 symbols!');
-            return;
+            valid = false;
         }
     });
+
+    return valid;
 }
 
-registerForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    validateRegisterForm();
-    addDynamicValidation(registerForm);
-});
 
-loginForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    validateLoginForm();
-    addDynamicValidation(loginForm);
-});
+
+document.addEventListener("DOMContentLoaded", function () {
+    registerForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (validateRegisterForm()) {
+            addDynamicValidation(registerForm);
+        }
+    });
+    
+    loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (validateLoginForm()) {
+            addDynamicValidation(loginForm);
+        }
+    });
+})
