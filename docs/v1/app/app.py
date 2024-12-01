@@ -46,7 +46,16 @@ def settings_view():
 
 @app.route('/login')
 def login_view():
-    return render_template('pages/login.html')
+    new_user = {
+        'name': 'Blob', 
+        'surname': 'Kpo',
+        'organization': 'Company B',
+        'email': 'blob@example.com',
+        'phone': '923483-34-22',
+    }
+    
+    data = new_user
+    return render_template('pages/login.html', data=data)
 
 @app.route('/contacts')
 def contacts_view():

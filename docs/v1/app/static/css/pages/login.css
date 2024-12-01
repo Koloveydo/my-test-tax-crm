@@ -1,45 +1,66 @@
+*{
+    text-decoration: none;
+}
 
 header{
     display: none;
 }
 
-.login_page {
+.register,
+.login_page{
+    display: none;
+}
+
+.change_mod_login_register{
+    padding: 20px;
+}
+
+.login_page.active,
+.register.active{
     display: flex;
     flex-direction: column;
-    
     align-items: center;
     gap: 22px;
     min-height: 100vh;
-
-    margin-top: 50px;
+    margin-bottom: 20px;
 }
 
-.login_page_content {
+.login_page_content,
+.register_page_content {
     background: #F6F6F6;
-    padding: 40px;
-    border-radius: 5px;
+    padding: 30px 0 0 0;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 380px;
 }
 
-.login_page .main_txt {
+.login_register_page .main_txt {
     display: flex;
+    flex-direction: column;
+    gap: 5px;
     justify-content: center;
     align-items: center;
     width: 100%;
 }
-.login_page .main_txt p{
+.login_register_page .main_txt .description{
+    font-size: 16px;
+    color: #868686;
+    font-weight: lighter;
+    width: 100%;
+    margin-bottom: 15px;
+}
+.login_register_page .main_txt p{
     font-size: 24px;
     font-weight: bold;
     width: 70%;
     text-align: center;
-    margin-bottom: 32px;
 }
 
-.login_page_content form{
+.login_page_content form,
+.register_page_content form{
     display: flex;
     flex-direction: column;
     gap: 35px;
+    padding: 30px;
 }
 
 .form_group input {
@@ -50,25 +71,138 @@ header{
     border-bottom: 1px solid #868686;
     font-size: 18px;
     font-weight: lighter;
-    color: #868686;
+    color: #242424;
     outline: none;
 }
+.input_content {
+    position: relative;
+    overflow: hidden;
+}
+
+.password_input {
+    width: 100%;
+    padding: 10px;
+    padding-right: 30px;
+    border: 1px solid #868686;
+    font-size: 18px;
+    outline: none;
+}
+
+
+.eye_svg,
+.close_eye_svg {
+    position: absolute;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    right: 10px;
+    bottom: 20%;
+    padding-bottom: 2%;
+}
+
+.close_eye_svg {
+    transform: translateX(100px);
+}
+
+.eye_svg.active {
+    transform: translateX(100px);
+}
+
+.close_eye_svg.active {
+    transform: translateX(0);
+}
+
+
+
 .form_group input:focus {
     border-bottom-color: #414141;
 }
 
-button {
+.error {
+    color: #ff0000;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+
+.login_page_btn,
+.register_btn{
     width: 100%;
     padding: 10px;
     background-color: #000000;
     border: none;
-    border-radius: 4px;
     color: white;
     font-size: 16px;
     cursor: pointer;
     position: relative;
 }
-button:hover {
+.login_page_btn:hover,
+.register_btn:hover{
     background-color: #1d1d1d;
 }
+.login_page_btn:active,
+.register_btn:active{
+    background-color: #000000;
+}       
+.login_option,
+.register_option{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-top: 2px solid #DFDFDF;
+    padding: 10px;
+    height: 100%;
+    margin-top: 35px;
+}
 
+.login_option p,
+.register_option p{
+    font-weight: 100;
+    font-size: 16px;
+}
+.login_option .login_txt,
+.register_option .register_txt{
+    color: #1F60B3;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+}
+.login_option .login_txt:hover,
+.register_option .register_txt:hover{
+    border-bottom: 1px solid #7cadec;
+    color: #5880b4;
+}
+
+.error{
+    color: #ff0000;
+}
+
+body.dark-theme .login_page_content,
+body.dark-theme .register_page_content{
+    background-color: #1a1a1a;
+}
+body.dark-theme .login_register_page .main_txt p{
+    color: #ebebeb;
+}
+body.dark-theme .register_option,
+body.dark-theme .login_option{
+    color: #DCDCDC;
+    border-top: 2px solid #8a8a8a;
+}
+body.dark-theme .login_register_page .form_group input{
+    color: #a1a1a1;
+}
+body.dark-theme .login_register_page .form_group input:focus{
+    border-color: #a1a1a1;
+}
+
+@media screen and (max-width: 450px) {
+    .login_page_content,
+    .register_page_content{
+        width: 100%;
+    }
+}
+@media screen and (max-width: 320px) {
+    .login_register_page .main_txt p{
+        width: 100%;
+    }
+}
