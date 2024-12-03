@@ -25,6 +25,10 @@ header{
     margin-bottom: 20px;
 }
 
+.login_register_page .logo_svg{
+    color: #4e5057;
+}
+
 .login_page_content,
 .register_page_content {
     background: #F6F6F6;
@@ -245,8 +249,6 @@ p.form-send-error {
     border-radius: 12px;
     background-color: rgb(244 67 54 / 34%);
 }
-
-
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 /*		error mess in form submit end        */
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/

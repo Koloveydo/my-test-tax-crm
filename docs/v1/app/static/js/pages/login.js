@@ -97,6 +97,13 @@ const addDynamicValidation = (form) => {
         var fetch_url = "/check-data-register";
         var formData = {
             "reg-email": document.getElementById("reg-email").value,
+            "reg-pass": document.getElementById("reg-pass").value,
+            "reg-name": document.getElementById("reg-name").value,
+            "reg-surname": document.getElementById("reg-surname").value,
+            "reg-organ": document.getElementById("reg-organ").value,
+            "reg-job": document.getElementById("reg-job").value,
+            "reg-phone": document.getElementById("reg-phone").value,
+            "reg-address": document.getElementById("reg-address").value,
         };
         var btnSelector = ".login_page_btn";
     } else {
@@ -123,6 +130,10 @@ const addDynamicValidation = (form) => {
     .then((response) => response.json())
     .then((data) => {
         if (data.success) { 
+            const existingError = form.querySelector("p.form-send-error");
+            if (existingError) {
+                existingError.remove()
+            }
             alert(data.message);
         } else {
             var text = data.message;

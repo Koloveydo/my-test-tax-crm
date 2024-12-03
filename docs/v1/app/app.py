@@ -58,6 +58,11 @@ def login_view():
     data = new_user
     return render_template('pages/login.html', data=data)
 
+users_db = [
+    {"email": "test@gmail.com", "name": "Test User", "password": "password123"},
+    {"email": "test1@gmail.com", "name": "Test User 1", "password": "password123"},
+    {"email": "test2@gmail.com", "name": "Test User 2", "password": "password123"},
+]
 
 @app.route('/check-data-register', methods=["GET", "POST"])
 def checkRegisterView():
@@ -66,18 +71,16 @@ def checkRegisterView():
             data = request.data
             data_dict = json.loads(data)
             data_email = data_dict["reg-email"]
-            
-            user_emails = [
-                "test@gmail.com",
-                "test1@gmail.com",
-                "test2@gmail.com",
-                "test3@gmail.com",
-                "test4@gmail.com",
-            ]
+            data_password = data_dict["reg-pass"]
+            data_name = data_dict["reg-name"]
+            data_surname = data_dict["reg-surname"]
+            data_organ = data_dict["reg-organ"]
+            data_job = data_dict["reg-job"]
+            data_address = data_dict["reg-address"]
             
             # перевірка чи email вже був зареєстрований
-            if data_email in user_emails:
-                json_data = {'success': False, 'message': 'email already exist'}
+            if any(user['email'] == data_email for user in users_db):
+                json_data = {'success': False, 'message': 'Email already exists'}
                 return jsonify(json_data), 400
 
             else:
@@ -85,17 +88,32 @@ def checkRegisterView():
                     свторити профіль користувача
                     у БД та запам'ятати всі дані
                 '''
+                new_user = {
+                    'email' : data_email,
+                    'pass' : data_password,
+                    'name' : data_name,
+                    'surrname' : data_surname,
+                    'organisation' : data_organ,
+                    'job_title' : data_job,
+                    'address' : data_address,
+                }
+                
+                users_db.append(new_user)
+                print(users_db)
                 '''
                     якщо все добре, то потрібно
                     надати користувачеві доступ 
                     та зробити його сесію активною
                     (session["login"]=True,...)
                 '''
+                session["login"] = True
+                
                 json_data = {'success': True, 'message': 'Working, all exist, all good'}
                 return jsonify(json_data), 200
             
         except:
             json_data = {'success': False, 'message': 'POST method not valid'}
+
             return jsonify(json_data), 500
     else:
         json_data = {'success': False, 'message': 'method not allowed'}
@@ -106,8 +124,33 @@ def checkRegisterView():
 
 @app.route('/check-data-login', methods=["GET", "POST"])
 def checkLoginView():
-    
-    return True
+    if request.method == "POST":
+        try:
+            data = request.data
+            data_dict = json.loads(data)
+            
+            data_email = data_dict.get("log-email")
+            data_password = data_dict.get("log-pass")
+            
+            user = next((user for user in users_db if user['email'] == data_email), None)
+            
+            if not user:
+                return jsonify({'success': False, 'message': 'Email not found'}), 404
+            
+            if user['password'] == data_password:
+                session["login"] = True
+                return jsonify({'success': True, 'message': 'Login successful'}), 200
+            else:
+                return jsonify({'success': False, 'message': 'Invalid password'}), 401
+            
+        except Exception as e:
+            print(f"Error: {e}") 
+            return jsonify({'success': False, 'message': 'POST method not valid'}), 500
+    else:
+        return jsonify({'success': False, 'message': 'Method not allowed'}), 405
+
+
+
 
 
 @app.route('/contacts')
