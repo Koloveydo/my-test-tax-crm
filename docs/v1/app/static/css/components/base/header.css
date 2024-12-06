@@ -103,6 +103,7 @@ header {
 .phone_menu_content {
     position: absolute;
     top: 62px;
+    width: 200px;
 	right: 0;
     height: calc(100vh - 62px);
     background-color: #F6F6F6;
@@ -132,18 +133,26 @@ header {
     color: #000000;
     transition: .5s ease;
 }
-.phone_menu_content ul li{
-	padding: 12px 80px;
-}
 .phone_menu_content a{
     font-size: 20px;
     color: #000000;
 }
 .phone_menu_content ul {
     display: flex;
+    padding: 50px 10px;
+    width: 100%;
+    height: 100%;
     flex-direction: column;
-    gap: 10px;
+    justify-content: flex-start;
+    gap: 15%;
 }
+.phone_menu_content ul li{
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: left;
+}
+
 .fall_down_menu:hover .fall_down_menu_content,
 .fall_down_menu:hover .contacts_fall_down_menu, 
 .fall_down_menu:active .fall_down_menu_content,
@@ -170,7 +179,7 @@ body.dark-theme .header,
 body.dark-theme .fall_down_menu_content,
 body.dark-theme .phone_menu_content,
 body.dark-theme .contacts_fall_down_menu{
-    background-color: #4a4d53;
+    background-color: #222222;
 }
 body.dark-theme .right_header_menu li a,
 body.dark-theme .Tablet_logo_svg,
