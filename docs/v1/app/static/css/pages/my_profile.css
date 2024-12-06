@@ -46,6 +46,7 @@ section#my_profile_page {
     height: 200px;
     background-color: #D9D9D9;
     border-radius: 50%;
+    font-weight: 36px;
     float: left;
     display: flex;
     overflow: hidden;
@@ -79,7 +80,7 @@ section#my_profile_page {
 .user_fullname{
     font-weight: bold;
     font-size: 30px;
-    text-shadow: 0px 1px 10px #1e1e1e;
+    text-shadow: 0px 1px 5px #757575;
 }
 .email_text{
     font-size: 18px;
@@ -113,18 +114,31 @@ section#my_profile_page {
     max-width: 1920px;
     width: 90%;
     margin: 0 auto;
-    gap: 150px;
-}
-.tabs .active {
-    border-bottom: 5px solid #3BB7FD;
+    gap: 133px;
 }
 .head_tab_click {
     cursor: pointer;
     text-align: center;
     text-decoration: none;
+    position: relative;
+    border-bottom: none;
 }
-.head_tab_click:hover {
-    text-shadow: 0px 1px 10px #6f6f6f;
+.head_tab_click::after {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background-color: #3BB7FD;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.head_tab_click.active::after {
+    width: 100%;
+    left: 0;
+    transform: translateX(0);
 }
 .change_profile {
     cursor: pointer;
@@ -137,11 +151,12 @@ section#my_profile_page {
     background-color: transparent;
 }
 .changing_popup {
+    margin-top: 50px;
     display: none;
     position: fixed;
     border: none;
-    top: 50%; /* Центрування по вертикалі */
-    left: 50%; /* Центрування по горизонталі */
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
     z-index: 9;
     min-width: 280px;
@@ -151,28 +166,695 @@ section#my_profile_page {
     min-width: 280px;
     width: 100%;
     background-color: #dddddd;
-}
-.changing_container h1{
-    text-align: center;
-    font-size: 30px;
+    border-radius: 10px;
 }
 
 .changing_container input[type=text], .changing_container input[type=password] {
-    width: 100%;
-    padding: 15px;
-    margin: 5px 0 22px 0;
+    width: calc(100% - 15px * 2);
+    margin: 5px 0px 0px 0px;
     border: none;
     background: #f1f1f1;
+    width: calc( 100% - 5px * 2);
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 1px 3px 2px 0px rgba(0,0,0, 0.1);
 }
-  
-  /* When the inputs get focus, do something */
 .changing_container input[type=text]:focus, .changing_container input[type=password]:focus {
     background-color: #ddd;
     outline: none;
 }
-  
-  /* Add some hover effects to buttons */
 .changing_container .btn:hover, .open-button:hover {
     opacity: 1;
 }  
+.changing_text_popup{
+    padding-bottom: 5px;
+    font-size: 16px;
+    margin-left: 5px;
+}
+.edit_and_close{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 15px;
+}
+.close_btn{
+    padding: 5px;
+    margin-top: 3px;
+    cursor: pointer;
+}
+.edit_profile{
+    display: block;
+    font-size: 30px;
+    font-weight: bold;
+    margin-left: calc( 45% - 15px * 2 - 30px);
+}
+.changing_text_container{
+    display: flex;
+    flex-direction: column;
+    padding: 10px 15px 10px 15px;
+}
+.save_popup{
+    width: 100px;
+    height: 30px;
+    margin-left: calc( 50% - 50px);
+    border: none;
+    background-color: #000000;
+    font-size: 16;
+    font-weight: bold;
+    color:#f1f1f1;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+.save_popup:hover{
+    background-color: #4d4d4d;
+}
+.save_popup:active{
+    background-color: #5c5c5c;
+}
+.my_profile_communication{
+    display: flex;
+    padding: 20px 0px 10px 0px;
+    flex-direction: column;
+    background-color: #F0F0F0;
+    margin: 10px 15px 15px 15px;
+    box-shadow: 1px 3px 2px 0px rgba(0,0,0, 0.1);
+}
+.sender_info{
+    display: flex;
+    flex-direction: row;
+    background-color: transparent;
+    justify-content: space-between;
+    padding: 10px 20px 20px 20px;
+}
+.sender_profile{
+    display: flex;
+    flex-direction: row;
+}
+.sender_phone{
+    text-align: center;
+}
+.sender_email{
+    text-align: center;
+}
+.circle_flname2{
+    display: flex;
+    width: 100px;
+    height: 100px;
+    background-color: #EEEEEE;
+    border-radius: 50%;
+    color: #000000;        
+    font-size: 30px;      
+    text-align: center; 
+    align-items: center;  
+    line-height: 50px;       
+    font-weight: bold;   
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.09);
+}
+.circle_flname2 img{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.sender_small_info{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-left: 10px;
+}
+.sender_full_name{
+    width: auto;
+    position: relative;
+    height: auto;
+    font-size: 24px;
+}
+.re_info{
+    width: auto;
+    height: auto;
+    position: relative;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.sender_date{
+    width: auto;
+    position: relative;
+    font-size: 24px;
+    align-self: center;
+}
+.sender_message{
+    display: flex;
+    flex-direction: row;
+}
+.message_info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 20px 20px 20px 20px;
+}
+.profile_action_container{
+    display: flex;
+    align-items: center;
+    justify-content:center; 
+    flex-direction: column;
+}
+.activity_type{
+    width: calc( 80% - 16px - 20px);
+    min-width: 260px;
+    background-color: #F0F0F0;
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
+    flex-direction: row;
+    padding: 10px 10px 10px 10px;
+    border-radius: 15px;
+    margin: 10px 0px 10px 0px;
+}
+.activity_type.col-0{
+    border-left: 16px solid rgb(6, 100, 214);
+}
+.activity_type.col-1{
+    border-left: 16px solid rgb(214, 6, 6);
+}
+.activity_type.col-2{
+    border-left: 16px solid rgb(214, 214, 6);
+}
+.activity_type.col-3{
+    border-left: 16px solid rgb(14, 200, 54);
+}
+.activity_type.col-4{
+    border-left: 16px solid rgb(105, 3, 56);
+}
+.activity_type_name{
+    font-size: 18px;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    width: 150px;
+    text-align: center;
+}
+.activity_type_date{
+    font-size: 18px;
+    color: #656566;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+}
+.circle_flname3{
+    display: flex;
+    width: 60px;
+    height: 60px;
+    background-color: #EEEEEE;
+    border-radius: 50%;
+    color: #000000;        
+    font-size: 30px;      
+    text-align: center; 
+    align-items: center;  
+    line-height: 50px;       
+    font-weight: bold;   
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.09);
+}
+.circle_flname3 img{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+
+}
+.profile_details_container{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+    gap: 20px;
+}
+.name_and_email, .date_and_location, .more_info_container{
+    display: flex;
+    position: relative;
+    min-height: 350px;
+    flex-direction: column;
+    border: none;
+    box-shadow: 1px 3px 2px 0px rgba(0,0,0, 0.2);
+    justify-content: start;
+    background-color: #F0F0F0;
+}
+.full_name_container, .email_container{
+    padding: 10px 10px 10px 10px;
+}
+.name_and_email{
+    flex-basis: calc( 100% / 6 - 40px * 2 );
+    min-width: 280px;
+    flex-grow: 1;
+}
+.date_and_location{
+    flex-basis: calc( 100% / 2 - 40px * 2 );
+    min-width: 280px;
+    flex-grow: 1;
+    align-items: center;
+}
+.more_info_container{
+    flex-basis: calc( 100% / 3 - 40px * 2 );
+    min-width: 280px;
+    flex-grow: 1;
+    align-items: center;
+}
+.full_name_description, .email_description{
+    font-weight: bold;
+    font-size: 18px;
+}
+.full_name, .email_address{
+    font-size: 18px;
+    padding-left: 10px;
+}
+.date_and_location_change{
+    display: flex;
+    flex-direction: row;
+    width: calc( 100% - 40px);
+    justify-content: start;
+    padding: 20px 20px 20px 20px;
+}
+.date_and_location_text{
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 15px;
+}
+.dateloc_container{
+    display: flex;
+    width: 75%;
+    justify-content: space-between;
+    padding: 5px 0px 15px 0px;
+}
+.bir_addr_description{
+    font-size: 18px;
+    width: 35%;
+}
+.bir_addr_info{
+    font-size: 18px;
+    border-bottom: 2px solid #000000;
+    width: 65%;
+    text-align: center;
+}
+.button_container{
+    display: flex;
+    position: relative;
+    align-items: end;
+    justify-content: end;
+    flex-grow: 1;
+    width: 100%;
+}
+.add_address_and_bday{
+    width: 100px;
+    height: 30px;
+    font-size: 18px;
+    background-color: #000000;
+    color: #FFFFFF;
+    margin: 50px 50px 50px 50px;
+    cursor: pointer;
+    border: none;
+}
+.add_address_and_bday:hover{
+    background-color: #4d4d4d;
+}
+.add_address_and_bday:active{
+    background-color: #5c5c5c;
+}
+.more_info_name{
+    font-size: 18px;
+    font-weight: bold;
+    padding: 30px 30px 30px 30px;
+}
+.more_info{
+    width: calc( 100% - 40px );
+    height: 206px;
+    background-color: transparent;
+    border: 2px solid #FFFFFF;
+    border-radius: 5px;
+    resize: none;
+    font-size: 15px;
+}
+.more_info::-webkit-scrollbar {
+    width: 10px;
+}
+.more_info::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    cursor: default;
+}
+.more_info::-webkit-scrollbar-thumb {
+    background-color: #A0A0A0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.more_info::-webkit-scrollbar-thumb:hover {
+    background-color: #8d8d8d;
+}
+.more_info::-webkit-scrollbar-button {
+    display: none;
+}
+.more_info::placeholder{
+    color: #A0A0A0;
+}
+.more_info:focus {
+    outline:none;
+}
+body.dark-theme .more_info::-webkit-scrollbar-track{
+    background-color: #494949;
+}
+body.dark-theme .more_info{
+    background-color: #494949;
+    color:#ffffff;
+}
+.save_more_info{
+    width: 100px;
+    height: 30px;
+    font-size: 18px;
+    background-color: #000000;
+    color: #FFFFFF;
+    margin: 15px 0px 15px 0px;
+    cursor: pointer;
+    border: none;
+}
+.save_more_info:hover{
+    background-color: #4d4d4d;
+}
+.save_more_info:active{
+    background-color: #5c5c5c;
+}
+body.dark-theme .user_fullname{
+    color: #f1f1f1;
+}
+body.dark-theme .head_tab_click{
+    color: #f1f1f1;
+}
+body.dark-theme .add_skills_button{
+    background-color: #494949;
+    color: #f1f1f1;
+}
+body.dark-theme .add_skills_button:hover{
+    background-color: #545454;
+}
+body.dark-theme .add_skills_button:active{
+    background-color: #727272;
+}
+body.dark-theme .sender_full_name{
+    color: #f1f1f1;
+}
+body.dark-theme .re_info{
+    color: #f1f1f1;
+}
+body.dark-theme .sender_date{
+    color:#f1f1f1;
+}
+body.dark-theme .sender_phone{
+    color: #f1f1f1;
+}
+body.dark-theme .sender_email{
+    color: #f1f1f1;
+}
+body.dark-theme .activity_type{
+    background-color: #494949;
+}
+body.dark-theme .activity_type_name{
+    color: #f1f1f1;
+}
+body.dark-theme .activity_type_date{
+    color: #8e8e8e
+}
+body.dark-theme .sender_email2{
+    color: #f1f1f1;
+}
+body.dark-theme .name_and_email{
+    background-color: #494949;
+}
+body.dark-theme .date_and_location{
+    background-color: #494949;
+}
+body.dark-theme .more_info_container{
+    background-color: #494949;
+}
+body.dark-theme .full_name_description{
+    color: #f1f1f1;
+}
+body.dark-theme .full_name{
+    color: #f1f1f1;
+}
+body.dark-theme .email_description{
+    color: #f1f1f1;
+}
+body.dark-theme  .email_address{
+    color: #f1f1f1;
+}
+body.dark-theme .date_and_location_text{
+    color: #f1f1f1;
+}
+body.dark-theme .bir_addr_description{
+    color: #f1f1f1;
+}
+body.dark-theme .bir_addr_info{
+    color: #f1f1f1;
+    border-bottom: 2px solid #f1f1f1;
+}
+body.dark-theme .bir_and_addr_img{
+    fill: #f1f1f1;
+}
+body.dark-theme .more_info_name{
+    color: #f1f1f1;
+}
+body.dark-theme .changing_container{
+    background-color: #3E3E3E;
+}
+body.dark-theme .edit_profile{
+    color: #f1f1f1;
+}
+body.dark-theme .changing_text_popup{
+    color: #f1f1f1;
+}
+body.dark-theme .changing_text_popup{
+    color: #f1f1f1;
+}
+body.dark-theme .changing_input_popup{
+    color: #f1f1f1;
+    background-color: #494949;
+}
+body.dark-theme .changing_input_popup:focus{
+    background-color: #656566;
+}
+@media (max-width:650px){
+    .user_profile_info{
+        gap: 15px;
+    }
+    .start_of_my_profile{
+        align-items: center;
+    }
+    .user_name_and_icon{
+        justify-content: space-around;
+    }
+    .user_fullname{
+        font-size: 21px;
+    }
+    .pen{
+        width: 24px;
+        height: 24px;
+    }
+    .email_text{
+        font-size: 15px;
+    }
+    .add_skills_button{
+        width: 150px;
+        height: 25px;
+        font-size: 15px;
+        align-self: center;
+    }
+    .card_photo{
+        width: 150px;
+        height: 150px;
+    }
+    .tabs{
+        gap:25px;
+    }
+    .tabs h2{
+        font-size: 24px;
+    }
+    .sender_full_name{
+        font-size: 18px;
+    }
+    .re_info{
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+    .sender_date{
+        font-size: 18px;
+    }
+    .circle_flname2{
+        width: 60px;
+        height: 60px;
+    }
+    .message_info{
+        padding: 5px 5px 5px 5px;
+    }
+    .activity_type{
+        padding: 10px 10px 10px 10px;
+        width: calc(100% - 20px - 20px);
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    .activity_type_date{
+        font-size: 15px;
+        text-align: center;
+    }
+    .activity_type_name{
+        font-size: 15px;
+        text-align: center;
+        width:100px;
+    }
+    .circle_flname3{
+        width: 40px;
+        height: 40px;
+    }
+}
+@media (max-width: 400px){
+    .start_of_my_profile{
+        flex-direction: column;
+        margin-left: 0px;
+        margin-top: 0px;
+    }
+    .my_profile_menu{
+        margin-top: 20px;
+    }
+    .tabs{
+        margin-left: 0px;
+        margin-right: 0px;
+        gap: 15px;
+        align-self: center;
+        width: max-content;
+    }
+    .tabs h2{
+        font-size: 18px;
+    }
+    .sender_info{
+        flex-direction: column;
+        padding: 10px 10px 10px 10px;
+    }
+    .sender_profile{
+        justify-content: space-around;
+    }
+    .sender_full_name{
+        text-align: center;
+    }
+    .re_info{
+        text-align: center;
+        margin-bottom: 5px;
+    }
+    .sender_small_info{
+        margin-left: 0px;
+    }
+    .activity_type{
+        flex-direction: column;
+    }
+    .sender_email2{
+        text-align: center;
+    }
+    .circle_flname3{
+        align-self: center;
+        justify-content: center;
+    }
+    .sender_message{
+        flex-direction: column;
+    }
+}
+.skills_popup{
+    position: absolute;
+    align-items: center;
+    width: 200px;
+}
+.skills_container{
+    width: 100%;
+    background-color: #dddddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 10px;
+}
+.checkbox-buttons {
+    display: flex;
+    gap: 10px;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.checkbox-btn {
+    padding: 5px 5px;
+    border: none;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: auto;
+    min-width: 40px;
+    box-shadow: 1px 3px 2px 0px rgba(0,0,0, 0.1);
+}
+.checkbox-btn.active {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #0056b3;
+}
+.checkbox-btn:hover {
+    background-color: #b9b9b9;
+}
+.add_skills_start{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+.add_skills_text{
+    display: flex;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+body.dark-theme .skills_container{
+    background-color: #3E3E3E;
+}
+body.dark-theme .checkbox-btn{
+    background-color: #494949;
+    color: #f1f1f1;
+}
+body.dark-theme .add_skills_text{
+    color: #f1f1f1;
+}
+body.dark-theme .checkbox-btn:hover{
+    background-color: #5d5d5d;
+}
+body.dark-theme .checkbox-btn.active{
+    background-color: #007bff;
+    color: #000000;
+    border-color: #0056b3;
+}
+
+
 

@@ -11,6 +11,8 @@
     left: 50%;
     transform: translateX(-50%);
     bottom:0px;
+    text-align: center;
+    justify-content: center;
 }
 
 .change_photo p {
@@ -39,4 +41,12 @@ body.dark-theme .change_photo {
 
 body.dark-theme .change_photo p {
     color: #CECECE;
+}
+@media (max-width: 650px){
+    .change_photo{
+        padding: 5px 13px;
+    }
+    .change_photo p{
+        font-size: 12px;
+    }
 }
