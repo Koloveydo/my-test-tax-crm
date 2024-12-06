@@ -1,0 +1,66 @@
+.setting_button_circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    margin-right: 15px;
+    margin-left: 15px;
+    cursor: pointer;
+    box-sizing: border-box;
+    border: none;
+    width: 60px;
+    height: 60px;
+    background-color: #FFFFFF;
+}
+.setting_icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.setting_button_circle:hover {
+    border-radius: 50%;
+    box-sizing: border-box;
+    background-color: #EEEEEE;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.18);
+    border: 1px solid #FFFFFF;
+}
+.setting_icon:hover,
+.setting_button_circle:hover .trash_icon path {
+    border-color: #6C6C6C;
+}
+.setting_button_circle:active {
+    border-color: #7E7E7E;
+    fill: #6C6C6C;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.18);
+}
+.setting_icon:active {
+    border-color: #7E7E7E;
+    fill: #6C6C6C;
+}
+.setting_button_circle:active .trash_icon path {
+    fill: #6C6C6C;
+    stroke: #515151;
+}
+body.dark-theme .setting_icon path {
+    fill: #DFDEDE;
+}
+body.dark-theme .setting_button_circle {
+    background-color: transparent;
+}
+body.dark-theme .setting_button_circle:hover {
+    background-color: #626262;
+    border: 1px solid #909090;
+    box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.25);
+}
+body.dark-theme .setting_button_circle:hover .trash_icon path {
+    fill: #CECECE;
+}
+body.dark-theme .setting_button_circle:active .trash_icon path {
+    fill: #F6F6F6;
+    stroke: none;
+    border: 1px solid #C0BFBF;
+}
+body.dark-theme .setting_button_circle:active {
+    border-color: transparent;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}

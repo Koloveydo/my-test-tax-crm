@@ -126,7 +126,6 @@ class Tags(db.Model):
    
 class Tags_details(db.Model):
     __tablename__   = 'tags_details'
-    
     id              = db.Column(db.Integer, primary_key=True)
     title           = db.Column(db.String(60))
     datetime_update = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow) 

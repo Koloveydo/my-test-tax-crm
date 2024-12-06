@@ -6,6 +6,8 @@
     width: fit-content;
     gap: 20px;
     border: none;
+    background-color: transparent;
+    cursor:pointer;
 }
 .exit_img path {
     background-color: transparent;

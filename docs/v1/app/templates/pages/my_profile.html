@@ -1,0 +1,94 @@
+{% extends 'pages/base.html' %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pages/my_profile.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components/change_photo.css') }}">
+{% endblock %}
+
+{% block body%}
+    <section id="my_profile_page" class="my_profile_page">
+        <div class="my_profile_page_inner">
+            <div class="start_of_my_profile">
+                <div class="circle_and_button">
+                    {% if data.user[0].photo in [None, '', 'none'] %}
+                        <span class="circle_flname">{{ data.user[0].name[0].upper() }}{{ data.user[0].surname[0].upper() }}</span>
+                    {% else %}
+                        <img class="card_photo" src="{{ url_for('static', filename=data.user[0].photo) }}">
+                    {% endif %}
+                    <button type="button" class="change_photo" id="change_photo">
+                        <div class="inner_change_photo">
+                            <p>change photo</p>
+                        </div>
+                    </button>
+                </div>
+                <div class="user_profile_info">
+                    <div class="user_name_and_icon">    
+                        <div class="user_fullname">{{data.user[0].name}} {{data.user[0].surname}}</div>
+                        <button class="change_profile" onclick="openForm()">
+                            <svg class="pen" width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M26.25 3.65332C24.9414 3.65332 23.6329 4.14942 22.6412 5.14156L6.50126 21.2801C6.19503 21.5863 5.97075 21.9671 5.85185 22.3852L3.68856 29.9603C3.63521 30.1477 3.6329 30.346 3.68189 30.5347C3.73087 30.7233 3.82935 30.8954 3.96716 31.0332C4.10496 31.171 4.27708 31.2695 4.46572 31.3185C4.65435 31.3675 4.85264 31.3652 5.04008 31.3118L12.6166 29.1485L12.618 29.1471C13.0333 29.0277 13.4132 28.8062 13.7203 28.4991L29.8588 12.3592C31.843 10.375 31.843 7.12571 29.8588 5.14156C28.8671 4.14942 27.5586 3.65332 26.25 3.65332ZM26.25 5.828C26.9943 5.828 27.7376 6.11481 28.3108 6.68819H28.3122C29.4605 7.83654 29.4605 9.66419 28.3122 10.8125L26.898 12.2267L22.7736 8.10238L24.1878 6.68819C24.7609 6.11481 25.5057 5.828 26.25 5.828ZM21.227 9.64901L25.3514 13.7734L12.1722 26.9525C12.1295 26.9949 12.0753 27.0275 12.0142 27.045L6.33179 28.6686L7.95532 22.9848V22.9834C7.97204 22.9246 8.00267 22.8719 8.04789 22.8267L21.227 9.64901Z" fill="#494949"/>
+                            </svg>
+                        </button>
+                    </div>
+                    {% if data.user[0].email in [None, '', 'none'] %}
+                        <div class="email_text">Error</div>
+                    {% else %}
+                        <div class="email_text">{{ data.user[0].email }}</div>
+                    {% endif %}
+                    <button type="button" class="add_skills_button">Add skills</button>
+                </div>
+            </div>
+            <div class="my_profile_menu">
+                <div class="tabs">
+                    <div class="head_tab_click tab-0 active"><h2>Communication</h2></div>
+					<div class="head_tab_click tab-1"><h2>Activity</h2></div>
+					<div class="head_tab_click tab-2"><h2>Details</h2></div>
+                </div>
+                <hr>
+            </div>
+
+            {% if data %}
+
+            {% else %}
+			
+			    <div class="error_data">
+				    <p>Not found <span style="text-decoration: underline;font-weight: bold;">data</span> element in server. </p>
+			    </div>
+
+			{% endif %}
+            <div class="changing_popup" id="change_profile">
+                <form action="/action_page.php" class="changing_container">
+                  <h1>Edit profile</h1>
+              
+                  <div class="Fullname_popup">Fullname</div> 
+                  <input type="text" placeholder="Enter your name" name="fullname" required>
+              
+                  <div class="email_popup">Email adress</div> 
+                  <input type="text" placeholder="Enter your name" name="fullname" required>
+
+                  <div class="phone_popup">Phone number</div> 
+                  <input type="text" placeholder="Enter your name" name="fullname" required>
+
+                  <div class="organization_popup">Organization</div> 
+                  <input type="text" placeholder="Enter your name" name="fullname" required>
+
+                  <div class="job_popup">Job title</div> 
+                  <input type="text" placeholder="Enter your name" name="fullname" required>
+
+                  <div class="mailing_popup">Mailing_adress</div> 
+                  <input type="text" placeholder="Enter your name" name="fullname" required>
+              
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function openForm() {
+          document.getElementById("change_profile").style.display = "block";
+        }
+        
+        function closeForm() {
+          document.getElementById("change_profile").style.display = "none";
+        }
+        </script>
+{% endblock %}

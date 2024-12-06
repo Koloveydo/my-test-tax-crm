@@ -4,17 +4,16 @@ from testing_db import *
 import json
 
 app = Flask(__name__)
-app.secret_key = 'Asdasd@E!d121'
-
+app.secret_key = 'Asdasd@E!d12'
 user = 'root'
 password = '0000'
 host = 'localhost'
 port = '3306'
 database = 'tax_crm'
 
-app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{user}:{password}@{host}:{port}/{database}'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS']  = False
 
+app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{user}:{password}@{host}:{port}/{database}'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 
 
@@ -46,7 +45,16 @@ def before_request():
             
             
 @app.route('/components')
-def componentsView():
+def components_view():
+    return render_template('pages/components.html')
+
+@app.route('/base')
+def base_view():
+    return render_template('pages/base.html')
+
+@app.route('/create-user')
+def create_user_view():
+
     return render_template('pages/components.html')
 
 @app.route('/', methods=['GET', 'POST'])
@@ -66,8 +74,11 @@ def settings_view():
     full_name = user['name'] + ' ' + user['surname']
     
     data = {
-        'user': user,
-        'full_name': full_name
+        "callendar_data": callendar_data,
+        "user": user,
+        "tasks": tasks,
+        "unmess": unmess,
+        "leads": leads,
     }
 
     return render_template('pages/settings.html', data=data)
@@ -198,16 +209,14 @@ def contacts_view():
     all_contacts = contacts + leads
     
     data = {
-        "contacts":     contacts,
-        "leads":        leads,
-        "all_contacts": all_contacts,
+        "user": user,
     }
-    
-    return render_template('pages/contacts.html', data=data)
-    
+
+
+    return render_template('pages/my_profile.html', data=data)
 
 if __name__ == "__main__":
-    with app.app_context():
+    with  app.app_context():
         db.create_all()
 
     insertToAllTables()
