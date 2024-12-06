@@ -134,8 +134,10 @@ const addDynamicValidation = (form) => {
             if (existingError) {
                 existingError.remove()
             }
-            window.location.href = data.url_to_redirect;
-
+           
+            setTimeout(() => {
+                window.location.href = data.url_to_redirect;
+            }, 1500);
         } else {
             var text = data.message;
 
@@ -151,10 +153,10 @@ const addDynamicValidation = (form) => {
 			}
         }
     })
-    .catch((error) => {
-        console.error("Error:", error);
-        alert("Виникла помилка при відправленні форми.");
-    });
+    // .catch((error) => {
+    //     console.error("Error:", error);
+    //     alert("Виникла помилка при відправленні форми.");
+    // });
 	
 };
 

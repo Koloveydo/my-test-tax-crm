@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify, redirect, flash, session, request
+from flask import Flask, render_template, jsonify, redirect, flash, session, request, url_for
 from models import *
 from testing_db import *
 import json
@@ -18,6 +18,33 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS']  = False
 db.init_app(app)
 
 
+
+
+''' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ '''
+'''   check login user before every request start   '''
+''' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ '''
+            
+@app.before_request
+def before_request():
+    if request.endpoint not in ['login_view', 'checkLoginView', 'checkRegisterView'] \
+    and request.endpoint != 'login' \
+    and '/static/' not in request.path:
+        
+        if "login" in session:
+            if session["login"] != True:
+                session["login"] = False
+                return redirect(url_for('login_view'))
+        else:
+            session["login"] = False
+            return redirect(url_for('login_view'))
+
+
+''' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ '''
+'''   check login user before every request end   '''
+''' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ '''
+            
+            
+            
 @app.route('/components')
 def componentsView():
     return render_template('pages/components.html')
@@ -47,16 +74,8 @@ def settings_view():
 
 @app.route('/login')
 def login_view():
-    new_user = {
-        'name': 'Blob', 
-        'surname': 'Kpo',
-        'organization': 'Company B',
-        'email': 'blob@example.com',
-        'phone': '923483-34-22',
-    }
-    
-    data = new_user
-    return render_template('pages/login.html', data=data)
+
+    return render_template('pages/login.html')
 
 
 @app.route('/check-data-register', methods=["GET", "POST"])
@@ -129,31 +148,40 @@ def checkLoginView():
             data_password = data_dict.get("log-pass")
             
             with app.app_context():
-                users_db = User_details.query.all()
+                # user = next((user for user in users_db if user.email == data_email), None)
+                user = User_details.query.filter_by(email=data_email).first()
                 
-                user = next((user for user in users_db if user['email'] == data_email), None)
-            
                 if not user:
-                    return jsonify({'success': False, 'message': 'Email not found'}), 404
-                
-                if user['password'] == data_password:
-                    session["login"] = True
-                    return jsonify({'success': True, 'message': 'Login successful'}), 200
+                    json_data = {'success': False, 'message': 'Email not found'}
+                    return jsonify(json_data), 404
                 else:
-                    return jsonify({'success': False, 'message': 'Invalid password'}), 401
+                    if user.password == data_password:
+                        session["login"] = True
+                        session["user"] = {
+                            "first_name": user.firstname,
+                            "last_name":  user.lastname,
+                            "url_image":  user.url_image,
+                        }
+                        json_data = {'success': True, 'message': 'Login success','url_to_redirect': '/'}
+                        return jsonify(json_data), 200
+                    else:
+                        json_data = {'success': False, 'message': 'Invalid password'}
+                        return jsonify(json_data), 401
             
         except Exception as e:
             print(f"Error: {e}") 
-            return jsonify({'success': False, 'message': 'POST method not valid'}), 500
+            json_data = {'success': False, 'message': 'POST method not valid'}
+            return jsonify(json_data), 500
     else:
-        return jsonify({'success': False, 'message': 'Method not allowed'}), 405
+        json_data = {'success': False, 'message': 'Method not allowed'}
+        return jsonify(json_data), 405
 
 
 
 
 
 @app.route('/contacts')
-def contacts_view():
+def contacts_view(): 
     contacts = [
         {'photo': '','name': 'John','surname': 'Doe','organization': 'Company A','email': 'john@example.com','phone': '123-456-7890','skills': ['JavaScript', 'HTML', 'CSS', 'Flask', 'Java']},
         {'photo': '','name': 'John','surname': 'Doe','organization': 'Company A','email': 'john@example.com','phone': '123-456-7890','skills': ['JavaScript', 'HTML', 'CSS', 'Flask',]},
