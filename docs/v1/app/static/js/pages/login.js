@@ -134,7 +134,8 @@ const addDynamicValidation = (form) => {
             if (existingError) {
                 existingError.remove()
             }
-            alert(data.message);
+            window.location.href = data.url_to_redirect;
+
         } else {
             var text = data.message;
 

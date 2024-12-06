@@ -19,9 +19,9 @@ def insertToAllTables():
 
             db.session.commit()
             
-            user_details_1 = User_details(firstname='John', lastname='Doe', email='2@email.com', job_title='Manager', phone='1234567890', addres='123 Main St')
-            user_details_2 = User_details(firstname='Ja', lastname='Smith', email='1@email.com', job_title='Developer', phone='0987654321', addres='456 Second St')
-            user_details_3 = User_details(firstname='Hik', lastname='Blob', email='3@email.com', job_title='Boss', phone='0967954321', addres='789 Third St')
+            user_details_1 = User_details(firstname='John', lastname='Doe', email='2@email.com', job_title='Manager', phone='1234567890', addres='123 Main St',     password='12345678')
+            user_details_2 = User_details(firstname='Ja', lastname='Smith', email='1@email.com', job_title='Developer', phone='0987654321', addres='456 Second St', password='87654321')
+            user_details_3 = User_details(firstname='Hik', lastname='Blob', email='3@email.com', job_title='Boss', phone='0967954321', addres='789 Third St',       password='13579246')
             
             db.session.add(user_details_1)
             db.session.add(user_details_2)

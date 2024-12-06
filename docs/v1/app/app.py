@@ -58,11 +58,6 @@ def login_view():
     data = new_user
     return render_template('pages/login.html', data=data)
 
-users_db = [
-    {"email": "test@gmail.com", "name": "Test User", "password": "password123"},
-    {"email": "test1@gmail.com", "name": "Test User 1", "password": "password123"},
-    {"email": "test2@gmail.com", "name": "Test User 2", "password": "password123"},
-]
 
 @app.route('/check-data-register', methods=["GET", "POST"])
 def checkRegisterView():
@@ -70,46 +65,47 @@ def checkRegisterView():
         try:
             data = request.data
             data_dict = json.loads(data)
-            data_email = data_dict["reg-email"]
+            
+            data_email    = data_dict["reg-email"]
             data_password = data_dict["reg-pass"]
-            data_name = data_dict["reg-name"]
-            data_surname = data_dict["reg-surname"]
-            data_organ = data_dict["reg-organ"]
-            data_job = data_dict["reg-job"]
-            data_address = data_dict["reg-address"]
+            data_name     = data_dict["reg-name"]
+            data_surname  = data_dict["reg-surname"]
+            data_job      = data_dict["reg-job"]
+            data_address  = data_dict["reg-address"]
+            data_phone    = "000000"
             
             # перевірка чи email вже був зареєстрований
-            if any(user['email'] == data_email for user in users_db):
-                json_data = {'success': False, 'message': 'Email already exists'}
-                return jsonify(json_data), 400
+            with app.app_context():
+                users_db = User_details.query.all()
+                
+                if any(user.email == data_email for user in users_db):
+                    json_data = {'success': False, 'message': 'Email already exists'}
+                    return jsonify(json_data), 400
 
-            else:
-                '''
-                    свторити профіль користувача
-                    у БД та запам'ятати всі дані
-                '''
-                new_user = {
-                    'email' : data_email,
-                    'pass' : data_password,
-                    'name' : data_name,
-                    'surrname' : data_surname,
-                    'organisation' : data_organ,
-                    'job_title' : data_job,
-                    'address' : data_address,
-                }
-                
-                users_db.append(new_user)
-                print(users_db)
-                '''
-                    якщо все добре, то потрібно
-                    надати користувачеві доступ 
-                    та зробити його сесію активною
-                    (session["login"]=True,...)
-                '''
-                session["login"] = True
-                
-                json_data = {'success': True, 'message': 'Working, all exist, all good'}
-                return jsonify(json_data), 200
+                else:
+
+                    new_user_details = User_details(
+                        firstname   = data_name,
+                        lastname    = data_surname,
+                        email       = data_email,
+                        job_title   = data_job,
+                        phone       = data_phone,
+                        addres      = data_address,
+                        url_image   = "",
+                        password    = data_password,
+                    )
+                    db.session.add(new_user_details)
+                    db.session.commit()
+                    
+                    session["login"] = True
+                    session["user"] = {
+                        "first_name": data_name,
+                        "last_name":  data_surname,
+                        "url_image":  "",
+                    }
+                    
+                    json_data = {'success': True, 'message': 'Working, all exist, all good', "url_to_redirect": "/"}
+                    return jsonify(json_data), 200
             
         except:
             json_data = {'success': False, 'message': 'POST method not valid'}
@@ -132,16 +128,19 @@ def checkLoginView():
             data_email = data_dict.get("log-email")
             data_password = data_dict.get("log-pass")
             
-            user = next((user for user in users_db if user['email'] == data_email), None)
+            with app.app_context():
+                users_db = User_details.query.all()
+                
+                user = next((user for user in users_db if user['email'] == data_email), None)
             
-            if not user:
-                return jsonify({'success': False, 'message': 'Email not found'}), 404
-            
-            if user['password'] == data_password:
-                session["login"] = True
-                return jsonify({'success': True, 'message': 'Login successful'}), 200
-            else:
-                return jsonify({'success': False, 'message': 'Invalid password'}), 401
+                if not user:
+                    return jsonify({'success': False, 'message': 'Email not found'}), 404
+                
+                if user['password'] == data_password:
+                    session["login"] = True
+                    return jsonify({'success': True, 'message': 'Login successful'}), 200
+                else:
+                    return jsonify({'success': False, 'message': 'Invalid password'}), 401
             
         except Exception as e:
             print(f"Error: {e}") 
@@ -184,5 +183,6 @@ if __name__ == "__main__":
         db.create_all()
 
     insertToAllTables()
+    
 
     app.run(debug=True, port=8080, host='0.0.0.0')

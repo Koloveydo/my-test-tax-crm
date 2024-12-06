@@ -22,6 +22,7 @@ class User_details(db.Model):
     phone           = db.Column(db.String(14))
     addres          = db.Column(db.String(50))
     url_image       = db.Column(db.Text)
+    password        = db.Column(db.Text)
     
     datetime_update = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow) 
     datetime_create = db.Column(db.DateTime, default= datetime.utcnow, nullable= False)
