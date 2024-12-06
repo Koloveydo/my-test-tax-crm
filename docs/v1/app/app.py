@@ -74,11 +74,11 @@ def settings_view():
     full_name = user['name'] + ' ' + user['surname']
     
     data = {
-        "callendar_data": callendar_data,
+        # "callendar_data": callendar_data,
         "user": user,
-        "tasks": tasks,
-        "unmess": unmess,
-        "leads": leads,
+        # "tasks": tasks,
+        # "unmess": unmess,
+        # "leads": leads,
     }
 
     return render_template('pages/settings.html', data=data)
@@ -191,8 +191,8 @@ def checkLoginView():
 
 
 
-@app.route('/contacts')
-def contacts_view(): 
+@app.route('/profile')
+def my_profile_view(): 
     contacts = [
         {'photo': '','name': 'John','surname': 'Doe','organization': 'Company A','email': 'john@example.com','phone': '123-456-7890','skills': ['JavaScript', 'HTML', 'CSS', 'Flask', 'Java']},
         {'photo': '','name': 'John','surname': 'Doe','organization': 'Company A','email': 'john@example.com','phone': '123-456-7890','skills': ['JavaScript', 'HTML', 'CSS', 'Flask',]},
