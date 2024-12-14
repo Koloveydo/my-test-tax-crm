@@ -6,10 +6,10 @@ from testing_db import *
 app = Flask(__name__)
 app.secret_key = 'Asdasd@E!d12'
 user = 'root'
-password = 'koloveydo8'
+password = '0000'
 host = 'localhost'
 port = '3306'
-database = 'taxcrm'
+database = 'tax_crm'
 
 
 app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{user}:{password}@{host}:{port}/{database}'
@@ -105,7 +105,7 @@ def indexView():
 def my_profile_view():
 
     user = [
-        {'id' : '1','name' :'Vlad', 'surname' : 'Koloveydo', 'work' : 'Developer', 'bdate' : '08.11.2002', 'company' : 'none',  'address' : 'Lviv', 'email' : 'koloveydo8qazqsxedc@gmail.com', 'photo' : 'images/avatar.png'},
+        {'id' : '1','name' :'Vlad', 'surname' : 'Koloveydo', 'work' : 'Developer', 'bdate' : '08.11.2002', 'company' : 'none',  'address' : 'Lviv', 'email' : 'koloveydo8qazqsxedc@gmail.com', 'photo' : 'images/avatar.png' , 'phone' : '', 'emailing' : '', 'skills' : ''},
     ]
 
     sender = [

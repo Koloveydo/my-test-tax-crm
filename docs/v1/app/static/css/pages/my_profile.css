@@ -13,7 +13,14 @@ section#my_profile_page {
     align-self: center;
     overflow: hidden;
     justify-content: space-around;
-    gap: 100px;
+    gap: 5px;
+}
+.profile_section{
+    padding: 20px 20px 20px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: max-content;
 }
 .start_of_my_profile{
     margin-top: 28px;
@@ -183,7 +190,7 @@ section#my_profile_page {
     transform: translate(-50%, -50%);
     z-index: 9;
     min-width: 280px;
-    width: calc(30vw - 40px);
+    width: calc(50vw - 40px);
 }
 .changing_container {
     min-width: 280px;
@@ -191,7 +198,9 @@ section#my_profile_page {
     background-color: #dddddd;
     border-radius: 10px;
 }
-
+.changing_input_popup{
+    cursor: default;
+}
 .changing_container input[type=text], .changing_container input[type=password] {
     width: calc(100% - 15px * 2);
     margin: 5px 0px 0px 0px;
@@ -248,6 +257,33 @@ section#my_profile_page {
     margin-bottom: 15px;
     cursor: pointer;
 }
+.changing_info_container_popup{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.ch_i_con{
+    display: flex;
+    flex-direction: column;
+}
+.change_profile_btn{
+    position: relative;
+    width: 50px;
+    margin-top: 10px;
+    border-color: transparent;
+    border-radius: 5px;
+    box-shadow: 1px 3px 2px 0px rgba(0,0,0, 0.1);
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #F0F0F0;
+}
+.change_profile_btn:hover{
+    background-color: #e3e3e3;
+}
+.change_profile_btn:active{
+    background-color: #a4a4a4;
+}
 .save_popup:hover{
     background-color: #4d4d4d;
 }
@@ -274,6 +310,14 @@ section#my_profile_page {
     justify-content: space-between;
     padding: 10px 20px 20px 20px;
 }
+.section_name{
+    display: block;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: left;
+    padding-left: 30px;
+    margin: 20px 0px 20px 0px;
+}
 .sender_profile{
     display: flex;
     flex-direction: row;
@@ -286,8 +330,8 @@ section#my_profile_page {
 }
 .circle_flname2{
     display: flex;
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     background-color: #EEEEEE;
     border-radius: 50%;
     color: #000000;        
@@ -329,7 +373,7 @@ section#my_profile_page {
 .sender_date{
     width: auto;
     position: relative;
-    font-size: 24px;
+    font-size: 18px;
     align-self: center;
 }
 .sender_message{
@@ -344,10 +388,12 @@ section#my_profile_page {
 }
 .profile_action_container{
     display: flex;
+    align-self: center;
     align-items: center;
-    justify-content:center; 
+    justify-content:left; 
     flex-wrap: wrap;
     height: 100%;
+    padding: 0px 20px 0px 20px;
 }
 .activity_type{
     max-height:80px;
@@ -698,9 +744,14 @@ body.dark-theme .changing_input_popup:focus{
 @media (max-width:650px){
     .my_profile_page_inner{
         flex-direction: column;
+        gap: 20px;
+    }
+    .section_name{
+        display: none;
     }
     .tabs{
         text-align: center;
+        width: auto;
     }
     .tabs h2{
         text-align: center;
@@ -790,6 +841,9 @@ body.dark-theme .changing_input_popup:focus{
         margin-left: 0px;
         margin-top: 0px;
     }
+    .profile_section{
+        padding: 0px 0px 0px 0px;
+    }
     .my_profile_menu{
         margin-top: 20px;
     }
@@ -831,7 +885,11 @@ body.dark-theme .changing_input_popup:focus{
     }
 }
 .skills_popup{
-    position: absolute;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9;
     align-items: center;
     width: 200px;
 }

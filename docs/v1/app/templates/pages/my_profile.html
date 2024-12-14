@@ -68,29 +68,41 @@
                         <svg class="close_btn" onclick="closeForm()" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.2882 2.77338C16.9628 2.44794 16.4351 2.44794 16.1097 2.77338L10.031 8.85204L3.95237 2.77338C3.62694 2.44794 3.0993 2.44794 2.77387 2.77338C2.44842 3.09881 2.44842 3.62645 2.77387 3.95189L8.8525 10.0305L2.77388 16.1091C2.44844 16.4346 2.44844 16.9622 2.77388 17.2877C3.09932 17.6131 3.62696 17.6131 3.95239 17.2877L10.031 11.209L16.1097 17.2877C16.4351 17.6131 16.9628 17.6131 17.2882 17.2877C17.6136 16.9622 17.6136 16.4346 17.2882 16.1092L11.2095 10.0305L17.2882 3.95189C17.6136 3.62645 17.6136 3.09881 17.2882 2.77338Z" fill="#6B6969"/></svg>
                     </div>
                     <hr>
-                    <div class="changing_text_container">
-                        <div class="changing_text_popup">Fullname</div> 
-                        <input class="changing_input_popup" type="text" placeholder="Enter your name" name="fullname" required>
-                    </div>
-                    <div class="changing_text_container">
-                        <div class="changing_text_popup">Email address</div> 
-                        <input class="changing_input_popup" type="text" placeholder="Enter your email" name="email" required>
-                    </div>
-                    <div class="changing_text_container">
-                        <div class="changing_text_popup">Phone number</div> 
-                        <input class="changing_input_popup" type="text" placeholder="Enter your phone number" name="phone" required>
-                    </div>
-                    <div class="changing_text_container">
-                        <div class="changing_text_popup">Organization</div> 
-                        <input class="changing_input_popup" type="text" placeholder="Enter your organization" name="organization" required>
-                    </div>
-                    <div class="changing_text_container">
-                        <div class="changing_text_popup">Job title</div> 
-                        <input class="changing_input_popup" type="text" placeholder="Enter your job title" name="job" required>
-                    </div>
-                    <div class="changing_text_container">
-                        <div class="changing_text_popup">Mailing address</div> 
-                        <input class="changing_input_popup" type="text" placeholder="Enter your mailing address" name="mailing_address" required>
+                    <div class="changing_info_container_popup">
+                        <div class="ch_i_con">
+                            <div class="changing_text_container">
+                                <div class="changing_text_popup">Fullname</div> 
+                                <input class="changing_input_popup" type="text" placeholder="Enter your name" name="fullname" value="{{data.user[0].name}} {{data.user[0].surname}}" readonly>
+                                <button type="button" class="change_profile_btn">+</button>
+                            </div>
+                            <div class="changing_text_container">
+                                <div class="changing_text_popup">Email address</div> 
+                                <input class="changing_input_popup" type="text" placeholder="Enter your email" name="email" value="{{data.user[0].email}}" readonly>
+                                <button type="button" class="change_profile_btn">+</button>
+                            </div>
+                            <div class="changing_text_container">
+                                <div class="changing_text_popup">Phone number</div> 
+                                <input class="changing_input_popup" type="text" placeholder="Enter your phone number" name="phone" value="{{data.user[0].phone}}" readonly>
+                                <button type="button" class="change_profile_btn">+</button>
+                            </div>
+                        </div>
+                        <div class="ch_i_con">
+                            <div class="changing_text_container">
+                                <div class="changing_text_popup">Organization</div> 
+                                <input class="changing_input_popup" type="text" placeholder="Enter your organization" name="organization" value="{{data.user[0].company}}" readonly>
+                                <button type="button" class="change_profile_btn">+</button>
+                            </div>
+                            <div class="changing_text_container">
+                                <div class="changing_text_popup">Job title</div> 
+                                <input class="changing_input_popup" type="text" placeholder="Enter your job title" name="job" value="{{data.user[0].work}}" readonly>
+                                <button type="button" class="change_profile_btn">+</button>
+                            </div>
+                            <div class="changing_text_container">
+                                <div class="changing_text_popup">Mailing address</div> 
+                                <input class="changing_input_popup" type="text" placeholder="Enter your mailing address" name="mailing_address" value="{{data.user[0].emailing}}" readonly>
+                                <button type="button" class="change_profile_btn">+</button>
+                            </div>
+                        </div>
                     </div>
                     <input type="button" class="save_popup" value="SAVE">
                 </form>
@@ -98,6 +110,7 @@
             <div class="my_profile_info_container">
                 {% if session %}
                     <div class="profile_section" id="section-0" style="display: block;">
+                        <div class="section_name">Communication</div>
                         <div class="sender_info">
                             <div class="sender_profile">
                                 {% if "sender" in session %}
@@ -159,6 +172,7 @@
                         <hr>
                     </div>
                     <div class="profile_section" id="section-1" style="display: none">
+                        <div class="section_name">Activity</div>
                         <div class="profile_action_container">
                             <div class="activity_type col-0">
                                 <div class="activity_date_ans_time">
@@ -298,6 +312,7 @@
                         </div>
                     </div>
                     <div class="profile_section" id="section-2" style="display: none">
+                        <div class="section_name">Details</div>
                         <div class="profile_details_container">
                             {% if "user" in session %}   
                                 <div class="name_and_email">
