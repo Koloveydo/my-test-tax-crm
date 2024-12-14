@@ -2,6 +2,10 @@ from flask import Flask, render_template, jsonify, redirect, flash, session, req
 from models import *
 from testing_db import *
 import json
+import mysql.connector
+# pip install mysql
+# pip install mysql-connector-python-rf
+# pip install MySQL-connector-python
 
 app = Flask(__name__)
 app.secret_key = 'Asdasd@E!d12'
@@ -144,7 +148,7 @@ def checkRegisterView():
                     json_data = {'success': True, 'message': 'Working, all exist, all good', "url_to_redirect": "/"}
                     return jsonify(json_data), 200
             
-        except:
+        except Exception as e:
             print("Error:", str(e))
             json_data = {'success': False, 'message': 'An error occurred: ' + str(e)}
 
@@ -229,29 +233,83 @@ def logout_view():
     return redirect(url_for('login_view'))
 
 
+
+''' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ '''
+'''   check DB is exist or create and insert DB start   '''
+''' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ '''
+
+
+def checkDBExist():
+    # Create a connection to the MySQL server
+    conn = mysql.connector.connect(
+        host=host,
+        user=user,
+        password=password,
+        auth_plugin='mysql_native_password'
+    )
+
+    # Create a cursor object to execute SQL statements
+    mycursor = conn.cursor()
+
+    mycursor.execute("SHOW DATABASES")
+    names_db = mycursor.fetchall()
+
+    database_exists = False
+    for name_db in names_db:
+        if database in name_db:
+            database_exists = True
+            break
+    
+    conn.close()
+    return database_exists
+
+def createDefaultDB():
+    # Create a connection to the MySQL server
+    conn = mysql.connector.connect(
+        host=host,
+        user=user,
+        password=password,
+        auth_plugin='mysql_native_password'
+    )
+
+    # Create a cursor object to execute SQL statements
+    mycursor = conn.cursor()
+
+    mycursor.execute("CREATE DATABASE tax_crm")
+    names_db = mycursor.fetchall()
+    conn.close()
+
+
+def is_database_empty():
+    tables_to_check = [User_details, Lead_details]
+    for table in tables_to_check:
+        if not db.session.query(table).first():
+            return True
+    return False
+
+def check_or_create_DB():
+    if not checkDBExist():
+        createDefaultDB()
+        db.create_all()
+        
+    if is_database_empty():
+        print("FILLING DATABASE")
+        insertToAllTables()
+    else:
+        print("DATABASE ALREADY FILLED")
+
+
+
+''' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ '''
+'''   check DB is exist or create and insert DB end   '''
+''' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ '''
+
+
+
 if __name__ == "__main__":
     with app.app_context():
-        try:
-            db.session.query(User_details).first()
-            print("DATABASE ALREADY CREATED")
-        except Exception as e:
-            print("CRRETE DATABASE")
-            db.create_all()
-
-        def is_database_empty():
-            tables_to_check = [User_details, Lead_details]
-            for table in tables_to_check:
-                if not db.session.query(table).first():
-                    return True
-            return False
-
-        if is_database_empty():
-            print("FILLING DATABASE")
-            insertToAllTables()
-        else:
-            print("DATABASE ALREADY FILLED")
-            
-
+       check_or_create_DB()
+        
 
     app.run(debug=True, port=8080, host='0.0.0.0')
 
