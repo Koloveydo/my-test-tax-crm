@@ -74,7 +74,7 @@ def settings_view():
         
         if user:
             user_data = {
-                'image': user.url_image,
+                'url_image': user.url_image,
                 'name': user.firstname,
                 'surname': user.lastname,
                 'organization': user.job_title,
