@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let timer = false;
 
-    for (let i = 0; i < 2; i++) {
+    for (let i = 0; i < change_mode.length; i++) {
         var btn = change_mode[i];
 
         if (!btn.classList.contains("fin")) {

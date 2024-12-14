@@ -96,21 +96,20 @@ const addDynamicValidation = (form) => {
     if (form === registerForm) {
         var fetch_url = "/check-data-register";
         var formData = {
-            "reg-email": document.getElementById("reg-email").value,
-            "reg-pass": document.getElementById("reg-pass").value,
-            "reg-name": document.getElementById("reg-name").value,
-            "reg-surname": document.getElementById("reg-surname").value,
-            "reg-job": document.getElementById("reg-job").value,
-            "reg-phone": document.getElementById("reg-phone").value,
-            "reg-photo": document.getElementById("reg-phone").value,
-            "reg-address": document.getElementById("reg-address").value,
+            "reg-email":    document.getElementById("reg-email").value,
+            "reg-pass":     document.getElementById("reg-pass").value,
+            "reg-name":     document.getElementById("reg-name").value,
+            "reg-surname":  document.getElementById("reg-surname").value,
+            "reg-job":      document.getElementById("reg-job").value,
+            "reg-phone":    document.getElementById("reg-phone").value,
+            "reg-address":  document.getElementById("reg-address").value,
         };
         var btnSelector = ".login_page_btn";
     } else {
         var fetch_url = "/check-data-login";
         var formData = {
             "log-email": document.getElementById("log-email").value,
-            "log-pass": document.getElementById("log-pass").value,
+            "log-pass":  document.getElementById("log-pass").value,
         };
         var btnSelector = ".register_btn";
     }

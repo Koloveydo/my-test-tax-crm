@@ -113,7 +113,6 @@ def checkRegisterView():
             data_job      = data_dict["reg-job"]
             data_address  = data_dict["reg-address"]
             data_phone    = data_dict["reg-phone"]
-            data_photo    = data_dict["reg-photo"]
             
             # перевірка чи email вже був зареєстрований
             with app.app_context():
@@ -132,7 +131,6 @@ def checkRegisterView():
                         job_title   = data_job,
                         phone       = data_phone,
                         addres      = data_address,
-                        url_image   = data_photo,
                         password    = data_password,
                     )
                     db.session.add(new_user_details)
