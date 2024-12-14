@@ -367,3 +367,34 @@ body.dark-theme .contacts_fall_down_menu ul li:hover a {
 	}
 }
 
+
+/* ~~~ vadym changes start ~~~ */
+li.header_profile_svg a:has(img) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 40px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    overflow: hidden;
+}
+li.header_profile_svg a:has(img) img {
+    height: 100%;
+    width: auto;
+}
+.menu_profile {
+    height: 60px;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.menu_profile img {
+    width: 100%;
+    height: auto;
+}
+
+
+/* ~~~ vadym changes end ~~~ */

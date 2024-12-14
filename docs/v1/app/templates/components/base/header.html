@@ -65,7 +65,11 @@
 									{% if session.profile_info.url_image in [None, '', 'none'] %}
 										<span class="circle_flname">{{ session.profile_info.first_name[0].upper() }}{{ session.profile_info.last_name[0].upper() }}</span>
 									{% else %}
-										<img class="card_photo" src="{{ url_for('static', filename=session.profile_info.url_image) }}">
+										{% if "http" in session.profile_info.url_image %}
+											<img class="card_photo" src="{{ session.profile_info.url_image }}">
+										{% else %}
+											<img class="card_photo" src="{{ url_for('static', filename=session.profile_info.url_image) }}">
+										{% endif %}
 									{% endif %}
 								{% else %}
 									<svg class="profile_svg" width="40" height="40" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="22.5" cy="22.5" r="22.5" fill="currentColor"/><path d="M12.2805 16.186L16.5645 26.95L15.5745 26.752L19.6425 16.186H21.6765L15.9345 29.794L10.2105 16.186H12.2805ZM26.046 21.424L25.992 22.072L26.226 21.748L31.554 16.186H33.804L28.422 21.766L34.11 29.2H31.896L27.144 22.882L26.046 23.944V29.2H24.282V16.186H26.046V21.424Z" fill="black"/></svg>
@@ -93,21 +97,29 @@
 						<div class="phone_menu_profile">
 							<div class="content">
 								<div class="menu_profile">
-									{%if "login" in session and session["login"]:%}
-										
-
-										{% if data['user'].image == '' or data['user'].image == ' ' or data['user'].image == [] or data['user'].image == none %}
-                    						<p id="MobileprofileInitials">{{ data['user'].name[0] }}{{ data['user'].surname[0] }}</p> 
-               	 						{% endif %}
-									{%endif%}
+									{% if "login" in session and session.login %}
+										{% if "profile_info" in session %}
+											{% if session.profile_info.url_image in [None, '', 'none'] %}
+												<p id="MobileprofileInitials" >{{ session.profile_info.first_name[0].upper() }}{{ session.profile_info.last_name[0].upper() }}</p>
+											{% else %}
+												{% if "http" in session.profile_info.url_image %}
+													<img class="card_photo" src="{{ session.profile_info.url_image }}">
+												{% else %}
+													<img class="card_photo" src="{{ url_for('static', filename=session.profile_info.url_image) }}">
+												{% endif %}
+											{% endif %}
+										{% else %}
+											<svg class="profile_svg" width="40" height="40" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="22.5" cy="22.5" r="22.5" fill="currentColor"/><path d="M12.2805 16.186L16.5645 26.95L15.5745 26.752L19.6425 16.186H21.6765L15.9345 29.794L10.2105 16.186H12.2805ZM26.046 21.424L25.992 22.072L26.226 21.748L31.554 16.186H33.804L28.422 21.766L34.11 29.2H31.896L27.144 22.882L26.046 23.944V29.2H24.282V16.186H26.046V21.424Z" fill="black"/></svg>
+										{% endif %}
+									{% endif %}
 
 								</div>
 								<div class="txt">
 									<div class="about_txt">
-										{%if "login" in session and session["login"]:%}
-											<p class="name">{{ data['user'].full_name }}</p>
-											<p class="job_title">{{ data['user'].organization }}</p>
-										{%endif%}
+										{% if "login" in session and session.login %}
+											<p class="name">{{ session.profile_info.first_name }} {{ session.profile_info.last_name }}</p>
+											<!-- <p class="job_title">{{ data.user.organization }}</p> -->
+										{% endif %}
 									</div>
 
 									<p class="txcrm_txt">Tax Company</p>

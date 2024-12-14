@@ -47,6 +47,28 @@ def before_request():
 ''' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ '''
             
             
+''' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ '''
+'''   create context processor, with all session data start  '''
+''' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ '''
+
+@app.context_processor
+def utility_processor():    
+    session_data = {
+        "profile_info": {
+            "url_image":  session["user"]["url_image"],
+            "first_name": session["user"]["first_name"],
+            "last_name":  session["user"]["last_name"],
+        },
+        "login": True,
+    }
+
+    return {"session": session_data}
+            
+            
+''' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ '''
+'''   create context processor, with all session data end  '''
+''' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ '''
+
             
 @app.route('/components')
 def components_view():
