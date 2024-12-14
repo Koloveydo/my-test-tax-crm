@@ -7,26 +7,31 @@ section#my_profile_page {
 .my_profile_page_inner {
     width: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 5px;
     min-width: 280px;
     align-self: center;
     overflow: hidden;
+    justify-content: space-around;
+    gap: 100px;
 }
 .start_of_my_profile{
     margin-top: 28px;
     display:flex;
     background-color: transparent;
+    flex-direction: column;
     border:none;
     gap: 20px;
     margin-left: 3%;
 }
 .circle_and_button{
-    display:inline-block;
+    display:flex;
     background-color: transparent;
     border:none;
     width: auto;
     position: relative;
+    align-items: center;
+    justify-content: center;
 }
 .circle_flname {
     display: inline-block;
@@ -47,23 +52,25 @@ section#my_profile_page {
     background-color: #D9D9D9;
     border-radius: 50%;
     font-weight: 36px;
-    float: left;
+    float: center;
     display: flex;
     overflow: hidden;
     justify-content: center;
     align-items: center;
+    align-self: center;
 }
 .card_photo img {
     display: flex;
     height: 100%;
     width: 100%;
     object-fit: cover;
+    align-self: center;
 }
 .user_name_and_icon{
     display:flex;
     position:relative;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content:left;
     width: auto;
     height: auto;
     gap: 5px;
@@ -74,12 +81,12 @@ section#my_profile_page {
     border:none;
     width: auto;
     flex-direction: column;
-    gap: 25px;
+    gap: 15px;
     justify-content: center;
 }
 .user_fullname{
     font-weight: bold;
-    font-size: 30px;
+    font-size: 24px;
     text-shadow: 0px 1px 5px #757575;
 }
 .email_text{
@@ -102,26 +109,36 @@ section#my_profile_page {
     background-color: #888888;
 }
 .my_profile_menu{
-    margin-top: 50px;
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
     width: 100%;
 }
 .tabs {
     display: flex;
-    color: #000000;
+    flex-direction: column;
+    color: #919191;
     font-size: 18px;
     max-width: 1920px;
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
-    gap: 133px;
+    text-align: left;
+    gap: 10px;
+}
+.tabs.active{
+    color: rgb(6, 100, 214);
+}
+.tabs.active::after{
+    color: rgb(6, 100, 214);
 }
 .head_tab_click {
     cursor: pointer;
-    text-align: center;
     text-decoration: none;
     position: relative;
     border-bottom: none;
+}
+.head_tab_click h2.active::after{
+    color: #0664d6;
 }
 .head_tab_click::after {
     content: "";
@@ -133,10 +150,12 @@ section#my_profile_page {
     background-color: #3BB7FD;
     transition: all 0.3s ease;
     transform: translateX(-50%);
+    color: #0664d6;
 }
 
 .head_tab_click.active::after {
     width: 100%;
+    color: #0664d6;
     left: 0;
     transform: translateX(0);
 }
@@ -145,6 +164,10 @@ section#my_profile_page {
     background-color: transparent;
     border: none;
     opacity: 0.8;
+}
+.pen{
+    width: 30px;
+    height: 30px;
 }
 .pen:hover {
     stroke: #3BB7FD;
@@ -231,6 +254,10 @@ section#my_profile_page {
 .save_popup:active{
     background-color: #5c5c5c;
 }
+.my_profile_info_container{
+    width: 100%;
+    height: 100%;
+}
 .my_profile_communication{
     display: flex;
     padding: 20px 0px 10px 0px;
@@ -238,6 +265,7 @@ section#my_profile_page {
     background-color: #F0F0F0;
     margin: 10px 15px 15px 15px;
     box-shadow: 1px 3px 2px 0px rgba(0,0,0, 0.1);
+    height: 100%;
 }
 .sender_info{
     display: flex;
@@ -289,7 +317,7 @@ section#my_profile_page {
     width: auto;
     position: relative;
     height: auto;
-    font-size: 24px;
+    font-size: 18px;
 }
 .re_info{
     width: auto;
@@ -318,11 +346,15 @@ section#my_profile_page {
     display: flex;
     align-items: center;
     justify-content:center; 
-    flex-direction: column;
+    flex-wrap: wrap;
+    height: 100%;
 }
 .activity_type{
-    width: calc( 80% - 16px - 20px);
-    min-width: 260px;
+    max-height:80px;
+    flex-basis: calc(100% / 2 - 100px);
+    flex-grow: 1;
+    max-width: fit-content;
+    min-width: 350px;
     background-color: #F0F0F0;
     display: flex;
     justify-content: space-between;
@@ -330,7 +362,14 @@ section#my_profile_page {
     flex-direction: row;
     padding: 10px 10px 10px 10px;
     border-radius: 15px;
-    margin: 10px 0px 10px 0px;
+    margin: 10px 10px 10px 0px;
+}
+.activity_date_ans_time{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
 }
 .activity_type.col-0{
     border-left: 16px solid rgb(6, 100, 214);
@@ -657,6 +696,18 @@ body.dark-theme .changing_input_popup:focus{
     background-color: #656566;
 }
 @media (max-width:650px){
+    .my_profile_page_inner{
+        flex-direction: column;
+    }
+    .tabs{
+        text-align: center;
+    }
+    .tabs h2{
+        text-align: center;
+    }
+    .tabs h2:active{
+        text-align: center;
+    }
     .user_profile_info{
         gap: 15px;
     }
@@ -688,9 +739,13 @@ body.dark-theme .changing_input_popup:focus{
     }
     .tabs{
         gap:25px;
+        text-align: center;
+        border-width: 220px;
     }
     .tabs h2{
         font-size: 24px;
+        text-align: center;
+        border-width: 220px;
     }
     .sender_full_name{
         font-size: 18px;
@@ -739,14 +794,10 @@ body.dark-theme .changing_input_popup:focus{
         margin-top: 20px;
     }
     .tabs{
-        margin-left: 0px;
-        margin-right: 0px;
         gap: 15px;
         align-self: center;
         width: max-content;
-    }
-    .tabs h2{
-        font-size: 18px;
+        text-align: center;
     }
     .sender_info{
         flex-direction: column;

@@ -53,14 +53,13 @@
                         </form>
                     </div>
                 </div>
-            </div>
-            <div class="my_profile_menu">
-                <div class="tabs">
-                    <div class="head_tab_click tab-0 active" onclick="activateTab(0)"><h2>Communication</h2></div>
-					<div class="head_tab_click tab-1" onclick="activateTab(1)"><h2>Activity</h2></div>
-					<div class="head_tab_click tab-2" onclick="activateTab(2)"><h2>Details</h2></div>
+                <div class="my_profile_menu">
+                    <div class="tabs">
+                        <div class="head_tab_click tab-0 active" onclick="activateTab(0)"><h2>Communication</h2></div>
+                        <div class="head_tab_click tab-1" onclick="activateTab(1)"><h2>Activity</h2></div>
+                        <div class="head_tab_click tab-2" onclick="activateTab(2)"><h2>Details</h2></div>
+                    </div>
                 </div>
-                <hr>
             </div>
             <div class="changing_popup" id="change_profile">
                 <form id="change_form" action="/action_page.php" class="changing_container" onclick="event.stopPropagation()">
@@ -162,8 +161,10 @@
                     <div class="profile_section" id="section-1" style="display: none">
                         <div class="profile_action_container">
                             <div class="activity_type col-0">
-                                <div class="activity_type_name">Project Update</div>
-                                <div class="activity_type_date">{{data.sender[0].date}}</div>
+                                <div class="activity_date_ans_time">
+                                    <div class="activity_type_name">Project Update</div>
+                                    <div class="activity_type_date">{{data.sender[0].date}}</div>
+                                </div>
                                 {% if "sender" in session %}
                                     {% if data.sender[0].photo in [None, '', 'none'] %}
                                         <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
@@ -187,8 +188,10 @@
                                 {% endif %}
                             </div>
                             <div class="activity_type col-1">
-                                <div class="activity_type_name">Create Contact</div>
-                                <div class="activity_type_date">{{data.sender[0].date}}</div>
+                                <div class="activity_date_ans_time">
+                                    <div class="activity_type_name">Create Contact</div>
+                                    <div class="activity_type_date">{{data.sender[0].date}}</div>
+                                </div>
                                 {% if "sender" in session %}
                                     {% if data.sender[0].photo in [None, '', 'none'] %}
                                         <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
@@ -212,8 +215,10 @@
                                 {% endif %}
                             </div>
                             <div class="activity_type col-2">
-                                <div class="activity_type_name">Create Notes</div>
-                                <div class="activity_type_date">{{data.sender[0].date}}</div>
+                                <div class="activity_date_ans_time">
+                                    <div class="activity_type_name">Create Notes</div>
+                                    <div class="activity_type_date">{{data.sender[0].date}}</div>
+                                </div>
                                 {% if "sender" in session %}
                                     {% if data.sender[0].photo in [None, '', 'none'] %}
                                         <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
@@ -237,8 +242,10 @@
                                 {% endif %}
                             </div>
                             <div class="activity_type col-3">
-                                <div class="activity_type_name">Send Message</div>
-                                <div class="activity_type_date">{{data.sender[0].date}}</div>
+                                <div class="activity_date_ans_time">
+                                    <div class="activity_type_name">Send Message</div>
+                                    <div class="activity_type_date">{{data.sender[0].date}}</div>
+                                </div>
                                 {% if "sender" in session %}
                                     {% if data.sender[0].photo in [None, '', 'none'] %}
                                         <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
@@ -262,8 +269,10 @@
                                 {% endif %}
                             </div>
                             <div class="activity_type col-4">
-                                <div class="activity_type_name">Create Community</div>
-                                <div class="activity_type_date">{{data.sender[0].date}}</div>
+                                <div class="activity_date_ans_time">
+                                    <div class="activity_type_name">Create Community</div>
+                                    <div class="activity_type_date">{{data.sender[0].date}}</div>
+                                </div>
                                 {% if "sender" in session %}
                                     {% if data.sender[0].photo in [None, '', 'none'] %}
                                         <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
