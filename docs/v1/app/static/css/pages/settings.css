@@ -77,10 +77,9 @@
     align-items: center;
 }
 
-.user_profile_img_box {
+.user_profile_img_box,
+.menu_profile{
     display: flex;
-    width: 200px;
-    height: 200px;
     background-color: #EEEEEE;
     border-radius: 50%;
     float: left;
@@ -90,6 +89,11 @@
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.09);
     transition: .3s;
     position: relative;
+}
+
+.user_profile_img_box{
+    width: 200px;
+    height: 200px;
 }
 
 .user_profile_img_box img {
@@ -117,6 +121,7 @@
 #profileInitials{
     font-size: 48px;
     font-weight: bold;
+    position: absolute;
 }
 
 section#setting-page {
@@ -402,3 +407,30 @@ body.dark-theme .error{
     }
 }
 
+.Company_page{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.company_content{
+    display: flex;
+    gap: 5%;
+    width: 90%;
+}
+
+.Company_page .left_side{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 30px;
+}
+.Company_page .right_side{
+    width: 20%;
+}
+
+.detail_card{
+    width: 100%;
+    height: 200px;
+    background-color: #d8d8d8;
+    border-radius: 5px;
+}

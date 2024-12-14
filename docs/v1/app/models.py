@@ -22,7 +22,8 @@ class User_details(db.Model):
     phone           = db.Column(db.String(14))
     addres          = db.Column(db.String(50))
     url_image       = db.Column(db.Text)
-    password        = db.Column(db.Text)
+    password        = db.Column(db.String(30))
+    photo           = db.Column(db.String(255))
     
     datetime_update = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow) 
     datetime_create = db.Column(db.DateTime, default= datetime.utcnow, nullable= False)
@@ -52,6 +53,10 @@ class Lead_details(db.Model):
     addres          = db.Column(db.String(50))
     url_image       = db.Column(db.Text)
     comments        = db.Column(db.Text)
+    password        = db.Column(db.String(30))
+    photo           = db.Column(db.String(255))
+
+       
     
     datetime_update = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow) 
     datetime_create = db.Column(db.DateTime, default=datetime.utcnow, nullable= False)
@@ -130,4 +135,6 @@ class Tags_details(db.Model):
     title           = db.Column(db.String(60))
     datetime_update = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow) 
     datetime_create = db.Column(db.DateTime, default=datetime.utcnow, nullable= False)
-    
+
+
+

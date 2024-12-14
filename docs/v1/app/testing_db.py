@@ -19,9 +19,9 @@ def insertToAllTables():
 
             db.session.commit()
             
-            user_details_1 = User_details(firstname='John', lastname='Doe', email='2@email.com', job_title='Manager', phone='1234567890', addres='123 Main St',     password='12345678')
-            user_details_2 = User_details(firstname='Ja', lastname='Smith', email='1@email.com', job_title='Developer', phone='0987654321', addres='456 Second St', password='87654321')
-            user_details_3 = User_details(firstname='Hik', lastname='Blob', email='3@email.com', job_title='Boss', phone='0967954321', addres='789 Third St',       password='13579246')
+            user_details_1 = User_details(photo='https://images.immediate.co.uk/production/volatile/sites/10/2018/02/4f492b22-2d29-4360-80a6-79879487c7b7-e07922e.jpg?quality=90&fit=700,466', firstname='John', lastname='Doe', email='2@email.com', job_title='Manager', phone='1234567890', addres='123 Main St',     password='12345678')
+            user_details_2 = User_details(photo='https://images.immediate.co.uk/production/volatile/sites/10/2018/02/4f492b22-2d29-4360-80a6-79879487c7b7-e07922e.jpg?quality=90&fit=700,466', firstname='Ja', lastname='Smith', email='1@email.com', job_title='Developer', phone='0987654321', addres='456 Second St', password='87654321')
+            user_details_3 = User_details(photo='https://images.immediate.co.uk/production/volatile/sites/10/2018/02/4f492b22-2d29-4360-80a6-79879487c7b7-e07922e.jpg?quality=90&fit=700,466', firstname='Hik', lastname='Blob', email='3@email.com', job_title='Boss', phone='0967954321', addres='789 Third St',       password='13579246')
             
             db.session.add(user_details_1)
             db.session.add(user_details_2)
@@ -37,9 +37,9 @@ def insertToAllTables():
             db.session.add(user_3)
             db.session.commit()
             
-            lead_details_1 = Lead_details(firstname='Alice', lastname='Johnson', ORGANIZATION='Company A', email='alice@company.com', phone_number='1234567890', addres='789 Third St')
-            lead_details_2 = Lead_details(firstname='Bob',   lastname='Smith',   ORGANIZATION='Company B', email='bob@company.com',   phone_number='0987654321', addres='123 Fourth St')
-            lead_details_3 = Lead_details(firstname='Black',   lastname='George',   ORGANIZATION='Company C', email='blacker@company.com',   phone_number='455645674321', addres='564 Fifth St')
+            lead_details_1 = Lead_details(photo='https://images.immediate.co.uk/production/volatile/sites/10/2018/02/4f492b22-2d29-4360-80a6-79879487c7b7-e07922e.jpg?quality=90&fit=700,466', firstname='Alice', lastname='Johnson', ORGANIZATION='Company A', email='alice@company.com', phone_number='1234567890', addres='789 Third St')
+            lead_details_2 = Lead_details(photo='https://images.immediate.co.uk/production/volatile/sites/10/2018/02/4f492b22-2d29-4360-80a6-79879487c7b7-e07922e.jpg?quality=90&fit=700,466', firstname='Bob',   lastname='Smith',   ORGANIZATION='Company B', email='bob@company.com',   phone_number='0987654321', addres='123 Fourth St')
+            lead_details_3 = Lead_details(photo='https://images.immediate.co.uk/production/volatile/sites/10/2018/02/4f492b22-2d29-4360-80a6-79879487c7b7-e07922e.jpg?quality=90&fit=700,466', firstname='Black',   lastname='George',   ORGANIZATION='Company C', email='blacker@company.com',   phone_number='455645674321', addres='564 Fifth St')
 
             db.session.add(lead_details_1)
             db.session.add(lead_details_2)

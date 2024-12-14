@@ -93,50 +93,34 @@
         </div>
     </div>
     <!-- Company PAGE -->
-    <div class="user_profile_main" page-index="2">
-        <div class="user_profile_main_left">
-            <div class="user_profile_img_box">
-                <img id="profileImage" src="{{ data['user'].image }}" alt="{{ data['user'].name[0] }}{{ data['user'].surname[0] }}">
-
-                {% if data['user'].image == '' or data['user'].image == ' ' or data['user'].image == [] or data['user'].image == none %}
-                    <p id="profileInitials">{{ data['user'].name[0] }}{{ data['user'].surname[0] }}</p> 
-                {% endif %}
-
-                <div class="change_photo_container" onclick="openPopup()">
-                    {% include 'components/base/change_photo.html' %}
-                </div>  
-            </div>  
-            
-        </div>
-        <div class="user_profile_main_right">
-            <div class="account_info">
-                <h1>Company Info</h1>
-
-                <form class="user_profile_inputs" action="/">
-                    <div class="form-group longer-width">
-                        <label>Full Name</label>
-                        <input type="text" placeholder="Enter your full name" value="{{ data['full_name']}}">
-                    </div>
-                    <div class="form-group">
-                        <label>Job Title</label>
-                        <input type="text" placeholder="Enter your Job Title" value="{{ data['user'].organization }}">
-                    </div>
-                    <div class="form-group  longer-width">
-                        <label>Email Address</label>
-                        <input type="email" placeholder="Enter your email" value="{{ data['user'].email }}">
-                    </div>
-                    <div class="form-group">
-                        <label>Phone Number</label>
-                        <input type="tel" placeholder="Enter your Phone Number" value="{{ data['user'].phone }}">
-                    </div>
-                    <div class="form-group full-width">
-                        <label>Main Personal Number</label>
-                        <input type="tel" placeholder="Enter your Main Personal Number" value="{{ data['user'].personal_number }}">
-                    </div>
-                </form>                
+    <div class="Company_page">
+        <div class="company_content">
+            <div class="right_side">
+                <p>Company Brend</p>
+                <p>Team</p>
             </div>
-          
+    
+            <div class="left_side">
+                <p>BUILD UPP YOUR PROFFECIONAL PRESENSE</p>
+    
+                <div class="company_details detail_card">
+    
+                </div>
+    
+                <div class="company_smart_film detail_card">
+    
+                </div>
+    
+                <div class="email_signature detail_card">
+    
+                </div>
+    
+                <div class="brand_elements detail_card">
+    
+                </div>
+            </div>
         </div>
+        
     </div>
     <!-- MY account PAGE END -->
     <div class="background_popup">

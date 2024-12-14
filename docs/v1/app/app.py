@@ -59,29 +59,35 @@ def create_user_view():
 
 @app.route('/', methods=['GET', 'POST'])
 def settings_view():
-    user = {
-        'image': 'https://taxcanada.accountants/static/images/base/full_logo.png',
-        'name': 'John', 
-        'surname': 'Doe',
-        'organization': 'Company A',
-        'email': 'john@example.com',
-        'phone': '123-456-7890',
-        'cur_password': '243514',
-        'personal_number': '65341367814355081',
-        'skills': ['JavaScript', 'HTML', 'CSS', 'Flask', 'Java'],
-    }
-    
-    full_name = user['name'] + ' ' + user['surname']
-    
-    data = {
-        # "callendar_data": callendar_data,
-        "user": user,
-        # "tasks": tasks,
-        # "unmess": unmess,
-        # "leads": leads,
-    }
+    if "login" in session and session["login"]:
+        user_session = session["user"]
 
-    return render_template('pages/settings.html', data=data)
+        with app.app_context():
+            user = User_details.query.filter_by(
+                firstname=user_session["first_name"], 
+                lastname=user_session["last_name"]
+            ).first()
+        
+        if user:
+            user_data = {
+                'image': user.url_image,
+                'name': user.firstname,
+                'surname': user.lastname,
+                'organization': user.job_title,
+                'email': user.email,
+                'phone': user.phone,
+                'cur_password': user.password,
+                'personal_number': 'EMPTY', 
+                'full_name' : user.firstname + " " + user.lastname
+            }
+
+            data = {
+                "user": user_data,
+            }
+            return render_template('pages/settings.html', data=data)
+        
+    return redirect(url_for('login_view'))
+
 
 @app.route('/login')
 def login_view():
@@ -102,7 +108,8 @@ def checkRegisterView():
             data_surname  = data_dict["reg-surname"]
             data_job      = data_dict["reg-job"]
             data_address  = data_dict["reg-address"]
-            data_phone    = "000000"
+            data_phone    = data_dict["reg-phone"]
+            data_photo    = data_dict["reg-photo"]
             
             # перевірка чи email вже був зареєстрований
             with app.app_context():
@@ -121,7 +128,7 @@ def checkRegisterView():
                         job_title   = data_job,
                         phone       = data_phone,
                         addres      = data_address,
-                        url_image   = "",
+                        url_image   = data_photo,
                         password    = data_password,
                     )
                     db.session.add(new_user_details)
@@ -138,7 +145,8 @@ def checkRegisterView():
                     return jsonify(json_data), 200
             
         except:
-            json_data = {'success': False, 'message': 'POST method not valid'}
+            print("Error:", str(e))
+            json_data = {'success': False, 'message': 'An error occurred: ' + str(e)}
 
             return jsonify(json_data), 500
     else:
@@ -159,7 +167,6 @@ def checkLoginView():
             data_password = data_dict.get("log-pass")
             
             with app.app_context():
-                # user = next((user for user in users_db if user.email == data_email), None)
                 user = User_details.query.filter_by(email=data_email).first()
                 
                 if not user:
@@ -215,11 +222,36 @@ def my_profile_view():
 
     return render_template('pages/my_profile.html', data=data)
 
-if __name__ == "__main__":
-    with  app.app_context():
-        db.create_all()
+@app.route('/logout')
+def logout_view():
+    session.clear()
+    print("logout succesful")
+    return redirect(url_for('login_view'))
 
-    insertToAllTables()
-    
+
+if __name__ == "__main__":
+    with app.app_context():
+        try:
+            db.session.query(User_details).first()
+            print("DATABASE ALREADY CREATED")
+        except Exception as e:
+            print("CRRETE DATABASE")
+            db.create_all()
+
+        def is_database_empty():
+            tables_to_check = [User_details, Lead_details]
+            for table in tables_to_check:
+                if not db.session.query(table).first():
+                    return True
+            return False
+
+        if is_database_empty():
+            print("FILLING DATABASE")
+            insertToAllTables()
+        else:
+            print("DATABASE ALREADY FILLED")
+            
+
 
     app.run(debug=True, port=8080, host='0.0.0.0')
+
