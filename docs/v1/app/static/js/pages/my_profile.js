@@ -1,3 +1,10 @@
+document.addEventListener('DOMContentLoaded', function () {
+    const profilePage = document.getElementById('my_profile_page');
+
+    document.documentElement.style.overflowY = 'scroll';
+    document.documentElement.style.setProperty('--webkit-scrollbar', 'none');
+});
+
 function openForm() {
     document.getElementById("change_profile").style.display = "block";
 }
@@ -41,4 +48,28 @@ function activateTab(index) {
     if (sections[index]) {
         sections[index].style.display = "block";
     }
+    document.documentElement.style.overflowY = 'scroll';
+    document.documentElement.style.setProperty('--webkit-scrollbar', 'none');
 }
+
+// Знаходимо всі контейнери з класом sender_letter_container
+const containers = document.querySelectorAll('.sender_letter_container');
+
+containers.forEach(container => {
+    container.addEventListener('click', function () {
+        // Отримуємо індекс поточного контейнера
+        const index = [...this.classList].find(cls => cls.startsWith('col-')).split('-')[1];
+
+        // Знаходимо відповідний елемент із класом letter_text_container
+        const textContainer = document.querySelector(`.letter_text_container.col-${index}`);
+        
+        if (textContainer) {
+            // Перемикаємо display між none і block
+            if (textContainer.style.display === 'none') {
+                textContainer.style.display = 'block';
+            } else {
+                textContainer.style.display = 'none';
+            }
+        }
+    });
+});

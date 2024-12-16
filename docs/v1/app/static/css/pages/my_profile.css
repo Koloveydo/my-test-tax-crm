@@ -1,26 +1,28 @@
 section#my_profile_page {
-    max-width: min(1920px, 100%);
+    max-width: min(1920px, calc( 100% - 260px));
     margin: 0 auto;
-    padding-top: 100px;
+    padding-top: 90px;
     overflow: hidden;
+    display: flex;
+    justify-content: space-around;
 }
 .my_profile_page_inner {
     width: 100%;
+    height: auto;
     display: flex;
     flex-direction: row;
     gap: 5px;
     min-width: 280px;
-    align-self: center;
-    overflow: hidden;
-    justify-content: space-around;
-    gap: 5px;
+    justify-content:center;
+    gap: 30px;
 }
 .profile_section{
-    padding: 20px 20px 20px 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     height: max-content;
+    width: 100%;
+    max-width: 707.34px;
 }
 .start_of_my_profile{
     margin-top: 28px;
@@ -29,7 +31,6 @@ section#my_profile_page {
     flex-direction: column;
     border:none;
     gap: 20px;
-    margin-left: 3%;
 }
 .circle_and_button{
     display:flex;
@@ -38,7 +39,7 @@ section#my_profile_page {
     width: auto;
     position: relative;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
 }
 .circle_flname {
     display: inline-block;
@@ -54,8 +55,8 @@ section#my_profile_page {
     box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.09);
 }
 .card_photo {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     background-color: #D9D9D9;
     border-radius: 50%;
     font-weight: 36px;
@@ -88,13 +89,13 @@ section#my_profile_page {
     border:none;
     width: auto;
     flex-direction: column;
-    gap: 15px;
+    gap: 5px;
     justify-content: center;
 }
 .user_fullname{
     font-weight: bold;
     font-size: 24px;
-    text-shadow: 0px 1px 5px #757575;
+    height: 28px;
 }
 .email_text{
     font-size: 18px;
@@ -108,6 +109,7 @@ section#my_profile_page {
     height: 30px;
     background-color: #D9D9D9;
     font-size: 18px;
+    margin-top: 5px;
 }
 .add_skills_button:hover{
     background-color: #afafaf;
@@ -124,13 +126,15 @@ section#my_profile_page {
 .tabs {
     display: flex;
     flex-direction: column;
-    color: #919191;
     font-size: 18px;
     max-width: 1920px;
     width: 100%;
-    margin: 0 auto;
+    margin-top: 20px;
     text-align: left;
-    gap: 10px;
+    gap: 15px;
+}
+.tabs h2{
+    font-size: 24px;
 }
 .tabs.active{
     color: rgb(6, 100, 214);
@@ -143,33 +147,18 @@ section#my_profile_page {
     text-decoration: none;
     position: relative;
     border-bottom: none;
+    color: #919191;
 }
-.head_tab_click h2.active::after{
-    color: #0664d6;
-}
-.head_tab_click::after {
-    content: "";
-    position: absolute;
-    bottom: 0px;
-    left: 50%;
-    width: 0;
-    height: 3px;
-    background-color: #3BB7FD;
-    transition: all 0.3s ease;
-    transform: translateX(-50%);
+.head_tab_click.active{
     color: #0664d6;
 }
 
-.head_tab_click.active::after {
-    width: 100%;
-    color: #0664d6;
-    left: 0;
-    transform: translateX(0);
-}
 .change_profile {
     cursor: pointer;
     background-color: transparent;
     border: none;
+    width: 30px;
+    height: 30px;
     opacity: 0.8;
 }
 .pen{
@@ -291,8 +280,10 @@ section#my_profile_page {
     background-color: #5c5c5c;
 }
 .my_profile_info_container{
-    width: 100%;
-    height: 100%;
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: left;
 }
 .my_profile_communication{
     display: flex;
@@ -303,20 +294,35 @@ section#my_profile_page {
     box-shadow: 1px 3px 2px 0px rgba(0,0,0, 0.1);
     height: 100%;
 }
-.sender_info{
+.letters_container{
     display: flex;
     flex-direction: row;
     background-color: transparent;
-    justify-content: space-between;
-    padding: 10px 20px 20px 20px;
+    padding: 10px 0px 10px 0px;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 655px;
+    height: auto;
+    justify-content: left;
+}
+.sec_name_description{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    margin-left: 20px;
 }
 .section_name{
-    display: block;
     font-size: 30px;
     font-weight: bold;
     text-align: left;
-    padding-left: 30px;
+    width: auto;
     margin: 20px 0px 20px 0px;
+}
+.section_description{
+    width: calc( 100% - 40px);
+    text-align: left;
+    color: #5e5e5e;
 }
 .sender_profile{
     display: flex;
@@ -352,10 +358,30 @@ section#my_profile_page {
 }
 .sender_small_info{
     display: flex;
+    width: 150px;
     position: relative;
-    flex-direction: column;
-    justify-content: space-around;
+    flex-direction: row;
+    justify-content: right;
+    align-items: center;
     margin-left: 10px;
+    gap: 10px;
+    cursor: pointer;
+}
+.sender_full_name_container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.sender_name{
+    font-size: 18px;
+    text-align: right;
+}
+.sender_second_name{
+    font-size: 18px;
+    text-align: right;
+}
+.sender_small_info:hover .sender_popup{
+    display: block;
 }
 .sender_full_name{
     width: auto;
@@ -363,18 +389,27 @@ section#my_profile_page {
     height: auto;
     font-size: 18px;
 }
+.sender_work{
+    width: auto;
+    height: auto;
+    font-size: 16px;
+    color: rgb(6, 100, 214)
+}
 .re_info{
     width: auto;
     height: auto;
     position: relative;
-    font-size: 18px;
-    margin-bottom: 10px;
+    font-size: 16px;
+    color: #919191;
 }
 .sender_date{
     width: auto;
     position: relative;
     font-size: 18px;
     align-self: center;
+    color: #656566;
+    font-weight: bold;
+    text-align: left;
 }
 .sender_message{
     display: flex;
@@ -396,41 +431,76 @@ section#my_profile_page {
     padding: 0px 20px 0px 20px;
 }
 .activity_type{
-    max-height:80px;
-    flex-basis: calc(100% / 2 - 100px);
-    flex-grow: 1;
-    max-width: fit-content;
-    min-width: 350px;
+    width: 100%;
+    height:90px;
     background-color: #F0F0F0;
     display: flex;
     justify-content: space-between;
     align-self: center;
     flex-direction: row;
-    padding: 10px 10px 10px 10px;
+    padding: 10px 20px 10px 20px;
     border-radius: 15px;
-    margin: 10px 10px 10px 0px;
+    margin: 10px 0px 10px 20px;
+}
+.sender_popup{
+    display: none;
+    position: absolute;
+    bottom: 80px;
+    right: 0px;
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 10px;
+    width: 210px;
+    height: auto;
+    z-index: 100;
+}
+.senderform_container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    width: auto;
+    height: auto;
+}
+.sender_popup_info{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 .activity_date_ans_time{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 5px;
+    gap: 10px;
+}
+.activity_description{
+    font-size: 16px;
+    color: #919191;
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 60px;
+    align-self: center;
+    text-align: center;
 }
 .activity_type.col-0{
-    border-left: 16px solid rgb(6, 100, 214);
+    box-shadow: 0px 3px 0px 0px rgb(6, 100, 214);
 }
 .activity_type.col-1{
-    border-left: 16px solid rgb(214, 6, 6);
+    box-shadow: 0px 3px 0px 0px rgb(214, 6, 6);
 }
 .activity_type.col-2{
-    border-left: 16px solid rgb(214, 214, 6);
+    box-shadow: 0px 3px 0px 0px rgb(214, 214, 6);   
 }
 .activity_type.col-3{
-    border-left: 16px solid rgb(14, 200, 54);
+    box-shadow: 0px 3px 0px 0px rgb(14, 200, 54);  
 }
 .activity_type.col-4{
-    border-left: 16px solid rgb(105, 3, 56);
+    box-shadow: 0px 3px 0px 0px rgb(105, 3, 56);  
 }
 .activity_type_name{
     font-size: 18px;
@@ -439,15 +509,20 @@ section#my_profile_page {
     justify-content: center;
     align-self: center;
     width: 150px;
-    text-align: center;
+    text-align: left;
+    color:rgb(6, 100, 214);
 }
 .activity_type_date{
     font-size: 18px;
     color: #656566;
     font-weight: bold;
-    align-items: center;
-    justify-content: center;
-    align-self: center;
+    align-items: start;
+    justify-content: start;
+    align-self: start;
+}
+.to_do{
+    text-align: center;
+    color:#656566;
 }
 .circle_flname3{
     display: flex;
@@ -470,23 +545,59 @@ section#my_profile_page {
     height: 100%;
     width: 100%;
     object-fit: cover;
-
+}
+.circle_flname3:hover .sender_popup{
+    display:block;
 }
 .profile_details_container{
     padding-top: 10px;
     padding-bottom: 10px;
     align-self: center;
     align-items: center;
-    justify-content: center;
     display: flex;
+    justify-content: left;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 90%;
+    width: 100%;
+    max-width: 655px;
     height: auto;
-    margin: 0 auto;
-    gap: 20px;
+    margin: 0;
 }
-.name_and_email, .date_and_location, .more_info_container{
+.sender_letter_container{
+    display: flex;
+    background-color: #F0F0F0;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    align-self: center;
+    border-radius: 15px;
+    width: 100%;
+    height:auto;
+    min-height: 90px;
+    margin: 10px 0px 10px 20px;
+    padding: 10px 20px 10px 20px;
+    box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.09);
+    cursor: pointer;
+}
+.sender_letter_info{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    align-self: center;
+}
+.sender_letter_container:hover{
+    background-color: #c2c2c2;
+}
+.letter_text_container{
+    width: 100%;
+    height: auto;
+    align-items: center;
+    margin-top: 15px;
+}
+.name_and_email, .date_and_location{
     display: flex;
     position: relative;
     min-height: 350px;
@@ -504,143 +615,41 @@ section#my_profile_page {
     min-width: 280px;
     flex-grow: 1;
 }
-.date_and_location{
-    flex-basis: calc( 100% / 2 - 40px * 2 );
-    min-width: 280px;
-    flex-grow: 1;
-    align-items: center;
-}
-.more_info_container{
-    flex-basis: calc( 100% / 3 - 40px * 2 );
-    min-width: 280px;
-    flex-grow: 1;
-    align-items: center;
-}
-.full_name_description, .email_description{
-    font-weight: bold;
-    font-size: 18px;
-}
-.full_name, .email_address{
-    font-size: 18px;
-    padding-left: 10px;
-}
-.date_and_location_change{
+.personal_info_container{
+    background-color: #F0F0F0;
     display: flex;
     flex-direction: row;
-    width: calc( 100% - 40px);
-    justify-content: start;
-    padding: 20px 20px 20px 20px;
-}
-.date_and_location_text{
-    font-size: 18px;
-    font-weight: bold;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 15px;
-}
-.dateloc_container{
-    display: flex;
-    width: 75%;
     justify-content: space-between;
-    padding: 5px 0px 15px 0px;
+    align-items: center;
+    border-radius: 15px;
+    width: 265px;
+    height: 110px;
+    padding: 0px 20px;
+    margin: 10px 0px 10px 20px;
+    box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.09);
 }
-.bir_addr_description{
-    font-size: 18px;
-    width: 35%;
-}
-.bir_addr_info{
-    font-size: 18px;
-    border-bottom: 2px solid #000000;
-    width: 65%;
-    text-align: center;
-}
-.button_container{
+.personal_data_info_container{
     display: flex;
-    position: relative;
-    align-items: end;
-    justify-content: end;
-    flex-grow: 1;
-    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+    padding: 5px 5px 5px 5px;
 }
-.add_address_and_bday{
-    width: 100px;
-    height: 30px;
-    font-size: 18px;
-    background-color: #000000;
-    color: #FFFFFF;
-    margin: 50px 50px 50px 50px;
-    cursor: pointer;
-    border: none;
+.personal_icon{
+    height: 52px;
+    width: auto;
 }
-.add_address_and_bday:hover{
-    background-color: #4d4d4d;
-}
-.add_address_and_bday:active{
-    background-color: #5c5c5c;
-}
-.more_info_name{
+.personal_info_description{
     font-size: 18px;
     font-weight: bold;
-    padding: 30px 30px 30px 30px;
 }
-.more_info{
-    width: calc( 100% - 40px );
-    height: 206px;
-    background-color: transparent;
-    border: 2px solid #FFFFFF;
-    border-radius: 5px;
-    resize: none;
-    font-size: 15px;
-}
-.more_info::-webkit-scrollbar {
-    width: 10px;
-}
-.more_info::-webkit-scrollbar-track {
-    background-color: #f1f1f1;
-    border-radius: 5px;
-    cursor: default;
-}
-.more_info::-webkit-scrollbar-thumb {
-    background-color: #A0A0A0;
-    border-radius: 5px;
-    cursor: pointer;
-}
-.more_info::-webkit-scrollbar-thumb:hover {
-    background-color: #8d8d8d;
-}
-.more_info::-webkit-scrollbar-button {
-    display: none;
-}
-.more_info::placeholder{
-    color: #A0A0A0;
-}
-.more_info:focus {
-    outline:none;
-}
-body.dark-theme .more_info::-webkit-scrollbar-track{
-    background-color: #494949;
-}
-body.dark-theme .more_info{
-    background-color: #494949;
-    color:#ffffff;
-}
-.save_more_info{
-    width: 100px;
-    height: 30px;
-    font-size: 18px;
-    background-color: #000000;
-    color: #FFFFFF;
-    margin: 15px 0px 15px 0px;
-    cursor: pointer;
-    border: none;
-}
-.save_more_info:hover{
-    background-color: #4d4d4d;
-}
-.save_more_info:active{
-    background-color: #5c5c5c;
+.personal_info_data{
+    font-size: 16px;
+    color:#919191;
+    white-space: normal;
+    word-wrap: break-word;
+    width: auto;
+    max-width: 235px;
+    height: 18.4px;
 }
 body.dark-theme .user_fullname{
     color: #f1f1f1;
@@ -741,10 +750,69 @@ body.dark-theme .changing_input_popup{
 body.dark-theme .changing_input_popup:focus{
     background-color: #656566;
 }
-@media (max-width:650px){
+@media (max-width: 1280px){
+    section#my_profile_page {
+        max-width: min(1920px, calc( 100% - 60px));
+    }
+}
+@media (max-width: 1024px){
+    .profile_details_container{
+        align-items: center;
+        justify-content: center;
+    }
+}
+@media (max-width:768px){
+    section#my_profile_page {
+        max-width: min(1920px, 100%);
+    }
     .my_profile_page_inner{
         flex-direction: column;
         gap: 20px;
+    }
+    .my_profile_info_container{
+        justify-content: space-around;
+        align-items: center;
+    }
+    .profile_details_container{
+        align-self: center;
+        max-width: none;
+        gap: 10px;
+    }
+    .personal_info_container{
+        margin: 0px;
+    }
+    .activity_type{
+        margin-left: 0px;
+    }
+    .sender_letter_container{
+        margin-left: 0px;
+    }
+    .letters_container{
+        max-width: none;
+        margin: 0px;
+    }
+    .profile_section{
+        justify-content: space-around;
+        align-items: center;
+    }
+    .section_description{
+        font-size: 14px;
+    }
+    .head_tab_click{
+        font-size: 18px;
+    }
+    .head_tab_click h2{
+        font-size: 18px;
+    }
+    h2{
+        font-size: 18px;
+    }
+    .tabs{
+        font-size: 18px;   
+        gap: 0px; 
+    }
+    .tabs h2{
+        font-size: 18px;
     }
     .section_name{
         display: none;
@@ -752,6 +820,9 @@ body.dark-theme .changing_input_popup:focus{
     .tabs{
         text-align: center;
         width: auto;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
     }
     .tabs h2{
         text-align: center;
@@ -883,6 +954,9 @@ body.dark-theme .changing_input_popup:focus{
     .sender_message{
         flex-direction: column;
     }
+}
+@media (max-width: 280px){
+
 }
 .skills_popup{
     position: fixed;

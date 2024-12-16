@@ -55,9 +55,9 @@
                 </div>
                 <div class="my_profile_menu">
                     <div class="tabs">
-                        <div class="head_tab_click tab-0 active" onclick="activateTab(0)"><h2>Communication</h2></div>
-                        <div class="head_tab_click tab-1" onclick="activateTab(1)"><h2>Activity</h2></div>
-                        <div class="head_tab_click tab-2" onclick="activateTab(2)"><h2>Details</h2></div>
+                        <div class="head_tab_click tab-0 active" onclick="activateTab(0)"><h2>Personal Information</h2></div>
+                        <div class="head_tab_click tab-1" onclick="activateTab(1)"><h2>Communication</h2></div>
+                        <div class="head_tab_click tab-2" onclick="activateTab(2)"><h2>Activity</h2></div>
                     </div>
                 </div>
             </div>
@@ -110,265 +110,561 @@
             <div class="my_profile_info_container">
                 {% if session %}
                     <div class="profile_section" id="section-0" style="display: block;">
-                        <div class="section_name">Communication</div>
-                        <div class="sender_info">
-                            <div class="sender_profile">
-                                {% if "sender" in session %}
-                                    {% if data.sender[0].photo in [None, '', 'none'] %}
-                                        <span class="circle_flname2">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
-                                    {% else %}
-                                        <img class="circle_flname2" src="{{ url_for('static', filename=data.sender[0].photo) }}">
-                                    {% endif %}
-                                    <div class="sender_small_info">
-                                        <div class="sender_full_name">{{data.sender[0].name}} {{data.sender[0].surname}}</div>
-                                        <div class="re_info">Re: {{data.sender[0].re}}</div>
-                                    </div>
-                                {% else %}
-                                    {% if data.sender[0].photo in [None, '', 'none'] %}
-                                        <span class="circle_flname2">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
-                                    {% else %}
-                                        <img class="circle_flname2" src="{{ url_for('static', filename=data.sender[0].photo) }}">
-                                    {% endif %}
-                                    <div class="sender_small_info">
-                                        <div class="sender_full_name">{{data.sender[0].name}} {{data.sender[0].surname}}</div>
-                                        <div class="re_info">Re: {{data.sender[0].re}}</div>
-                                    </div>
-                                {% endif %}
-                            </div>
-                            <div class="sender_date">{{data.sender[0].date}}</div>
+                        <div class="sec_name_description">
+                            <div class="section_name">Personal Information</div>
+                            <div class="section_description">Manage your personal information, including phone number and email address where you can be contacted</div>
                         </div>
-                        <hr>
-                        {% if "sender" in session %}
-                            <div class="sender_message">
-                                {% if data.sender[0].message in [None, '', 'none'] %}
-                                    <div class="message_text">Empty message</div>
-                                {% else %}
-                                    <div class="text_area_box">
-                                        <textarea rows="7" colls="300" name="description" class="text_area_comment" placeholder="Your text here" readonly>{{data.sender[0].message}}</textarea>
+                        <div class="profile_details_container">
+                            {% if "user" in session %}   
+                                <div class="personal_info_container">
+                                    <div class="personal_data_info_container">
+                                        <div class="personal_info_description">Full name</div>
+                                        <div class="personal_info_data">{{data.user[0].name}} {{data.user[0].surname}}</div>
                                     </div>
-                                {% endif %}
-                                <hr>
-                                <div class="message_info">
-                                    <div class="sender_phone">{{data.sender[0].phone}}</div>
-                                    <div class="sender_email">{{data.sender[0].email}}</div>
+                                    <div class="personal_icon"></div>
                                 </div>
-                            </div>
-                        {% else %}
-                            <div class="sender_message">
-                                {% if data.sender[0].message in [None, '', 'none'] %}
-                                    <div class="message_text">Empty message</div>
-                                {% else %}
-                                    <div class="text_area_box">
-                                        <textarea rows="7" colls="300" name="description" class="text_area_comment" readonly>{{data.sender[0].message}}</textarea>
+                                <div class="personal_info_container">
+                                    <div class="personal_info_container">
+                                        <div class="personal_info_description">Email address</div>
+                                        <div class="personal_info_data">{{data.user[0].email}}</div>
                                     </div>
-                                {% endif %}
-                                <hr>
-                                <div class="message_info">
-                                    <div class="sender_phone">{{data.sender[0].phone}}</div>
-                                    <div class="sender_email">{{data.sender[0].email}}</div>
+                                    <div class="personal_icon"></div>
                                 </div>
-                            </div>
-                        {% endif %}
-                        <hr>
+                                <div class="personal_info_container">
+                                    <div class="personal_info_container">
+                                        <div class="personal_info_description">Date of Birth</div>
+                                        <div class="personal_info_data">{{data.user[0].bdate}}</div>
+                                    </div>
+                                    <div class="personal_icon"></div>
+                                </div>
+                                <div class="personal_info_container">
+                                    <div class="personal_info_container">
+                                        <div class="personal_info_description">Address</div>
+                                        <div class="personal_info_data">{{data.user[0].address}}</div>
+                                    </div>
+                                    <div class-="personal_icon"></div>
+                                </div>
+                                <div class="personal_info_container">
+                                    <div class="personal_info_container">
+                                        <div class="personal_info_description">Language</div>
+                                        <div class="personal_info_data">{{data.user[0].language}}</div>
+                                    </div>
+                                    <div class="personal_icon"></div>
+                                </div>
+                            {% else %}
+                                <div class="personal_info_container">
+                                    <div class="personal_data_info_container">
+                                        <div class="personal_info_description">Full name</div>
+                                        <div class="personal_info_data">{{data.user[0].name}} {{data.user[0].surname}}</div>
+                                    </div>
+                                    <div class="personal_icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12C10.9 12 9.95833 11.6083 9.175 10.825C8.39167 10.0417 8 9.1 8 8C8 6.9 8.39167 5.95833 9.175 5.175C9.95833 4.39167 10.9 4 12 4C13.1 4 14.0417 4.39167 14.825 5.175C15.6083 5.95833 16 6.9 16 8C16 9.1 15.6083 10.0417 14.825 10.825C14.0417 11.6083 13.1 12 12 12ZM4 20V17.2C4 16.6333 4.14583 16.1125 4.4375 15.6375C4.72917 15.1625 5.11667 14.8 5.6 14.55C6.63333 14.0333 7.68333 13.6458 8.75 13.3875C9.81667 13.1292 10.9 13 12 13C13.1 13 14.1833 13.1292 15.25 13.3875C16.3167 13.6458 17.3667 14.0333 18.4 14.55C18.8833 14.8 19.2708 15.1625 19.5625 15.6375C19.8542 16.1125 20 16.6333 20 17.2V20H4ZM6 18H18V17.2C18 17.0167 17.9542 16.85 17.8625 16.7C17.7708 16.55 17.65 16.4333 17.5 16.35C16.6 15.9 15.6917 15.5625 14.775 15.3375C13.8583 15.1125 12.9333 15 12 15C11.0667 15 10.1417 15.1125 9.225 15.3375C8.30833 15.5625 7.4 15.9 6.5 16.35C6.35 16.4333 6.22917 16.55 6.1375 16.7C6.04583 16.85 6 17.0167 6 17.2V18ZM12 10C12.55 10 13.0208 9.80417 13.4125 9.4125C13.8042 9.02083 14 8.55 14 8C14 7.45 13.8042 6.97917 13.4125 6.5875C13.0208 6.19583 12.55 6 12 6C11.45 6 10.9792 6.19583 10.5875 6.5875C10.1958 6.97917 10 7.45 10 8C10 8.55 10.1958 9.02083 10.5875 9.4125C10.9792 9.80417 11.45 10 12 10Z" fill="#0664d6"/></svg>
+                                    </div>
+                                </div>
+                                <div class="personal_info_container">
+                                    <div class="personal_data_info_container">
+                                        <div class="personal_info_description">Contactable at</div>
+                                        <div class="personal_info_data">{{data.user[0].email}}</div>
+                                    </div>
+                                    <div class="personal_icon">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.3332 4.99967C18.3332 4.08301 17.5832 3.33301 16.6665 3.33301H3.33317C2.4165 3.33301 1.6665 4.08301 1.6665 4.99967M18.3332 4.99967V14.9997C18.3332 15.9163 17.5832 16.6663 16.6665 16.6663H3.33317C2.4165 16.6663 1.6665 15.9163 1.6665 14.9997V4.99967M18.3332 4.99967L9.99984 10.833L1.6665 4.99967" stroke="#0664d6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    </div>
+                                </div>
+                                <div class="personal_info_container">
+                                    <div class="personal_data_info_container">
+                                        <div class="personal_info_description">Date of Birth</div>
+                                        <div class="personal_info_data">{{data.user[0].bdate}}</div>
+                                    </div>
+                                    <div class="personal_icon">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="20" height="20" fill="transparent"/><path d="M13.3333 1.66699V5.00033M6.66667 1.66699V5.00033M2.5 8.33366H17.5M4.16667 3.33366H15.8333C16.7538 3.33366 17.5 4.07985 17.5 5.00033V16.667C17.5 17.5875 16.7538 18.3337 15.8333 18.3337H4.16667C3.24619 18.3337 2.5 17.5875 2.5 16.667V5.00033C2.5 4.07985 3.24619 3.33366 4.16667 3.33366Z" stroke="#0664d6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    </div>
+                                </div>
+                                <div class="personal_info_container">
+                                    <div class="personal_data_info_container">
+                                        <div class="personal_info_description">Address</div>
+                                        <div class="personal_info_data">{{data.user[0].address}}</div>
+                                    </div>
+                                    <div class="personal_icon">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_1737_461)"><path d="M18.3332 10.0003C18.3332 14.6027 14.6022 18.3337 9.99984 18.3337M18.3332 10.0003C18.3332 5.39795 14.6022 1.66699 9.99984 1.66699M18.3332 10.0003H1.6665M9.99984 18.3337C5.39746 18.3337 1.6665 14.6027 1.6665 10.0003M9.99984 18.3337C12.0842 16.0517 13.2688 13.0903 13.3332 10.0003C13.2688 6.91035 12.0842 3.94895 9.99984 1.66699M9.99984 18.3337C7.91544 16.0517 6.73088 13.0903 6.6665 10.0003C6.73088 6.91035 7.91544 3.94895 9.99984 1.66699M1.6665 10.0003C1.6665 5.39795 5.39746 1.66699 9.99984 1.66699" stroke="#0664d6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_1737_461"><rect width="20" height="20" fill="white"/></clipPath></defs></svg>
+                                    </div>
+                                </div>
+                                <div class="personal_info_container">
+                                    <div class="personal_data_info_container">
+                                        <div class="personal_info_description">Language</div>
+                                        <div class="personal_info_data">{{data.user[0].language}}</div>
+                                    </div>
+                                    <div class="personal_icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22L11 19H4C3.45 19 2.97917 18.8042 2.5875 18.4125C2.19583 18.0208 2 17.55 2 17V4C2 3.45 2.19583 2.97917 2.5875 2.5875C2.97917 2.19583 3.45 2 4 2H10L10.875 5H20C20.5833 5 21.0625 5.1875 21.4375 5.5625C21.8125 5.9375 22 6.41667 22 7V20C22 20.55 21.8125 21.0208 21.4375 21.4125C21.0625 21.8042 20.5833 22 20 22H12ZM7.15 14.6C8.3 14.6 9.24583 14.2292 9.9875 13.4875C10.7292 12.7458 11.1 11.7833 11.1 10.6C11.1 10.4667 11.0958 10.3458 11.0875 10.2375C11.0792 10.1292 11.0583 10.0167 11.025 9.9H7.075V11.45H9.3C9.16667 11.9167 8.9125 12.2792 8.5375 12.5375C8.1625 12.7958 7.70833 12.925 7.175 12.925C6.525 12.925 5.96667 12.6917 5.5 12.225C5.03333 11.7583 4.8 11.1833 4.8 10.5C4.8 9.81667 5.03333 9.24167 5.5 8.775C5.96667 8.30833 6.525 8.075 7.175 8.075C7.475 8.075 7.75833 8.12917 8.025 8.2375C8.29167 8.34583 8.53333 8.50833 8.75 8.725L9.975 7.55C9.625 7.18333 9.20417 6.9 8.7125 6.7C8.22083 6.5 7.7 6.4 7.15 6.4C6.03333 6.4 5.07917 6.79583 4.2875 7.5875C3.49583 8.37917 3.1 9.35 3.1 10.5C3.1 11.65 3.49583 12.6208 4.2875 13.4125C5.07917 14.2042 6.03333 14.6 7.15 14.6ZM13.85 15.1L14.4 14.575C14.1667 14.2917 13.9542 14.0167 13.7625 13.75C13.5708 13.4833 13.3833 13.2 13.2 12.9L13.85 15.1ZM15.1 13.825C15.5667 13.275 15.9208 12.75 16.1625 12.25C16.4042 11.75 16.5667 11.3583 16.65 11.075H12.675L12.975 12.125H13.975C14.1083 12.375 14.2667 12.6458 14.45 12.9375C14.6333 13.2292 14.85 13.525 15.1 13.825ZM13 21H20C20.3 21 20.5417 20.9042 20.725 20.7125C20.9083 20.5208 21 20.2833 21 20V7C21 6.7 20.9083 6.45833 20.725 6.275C20.5417 6.09167 20.3 6 20 6H11.175L12.35 10.05H14.325V9H15.35V10.05H19V11.075H17.725C17.5583 11.7083 17.3083 12.325 16.975 12.925C16.6417 13.525 16.25 14.0833 15.8 14.6L18.525 17.275L17.8 18L15.1 15.3L14.2 16.225L15 19L13 21Z" fill="#0664d6"/></svg>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
                     </div>
                     <div class="profile_section" id="section-1" style="display: none">
-                        <div class="section_name">Activity</div>
-                        <div class="profile_action_container">
-                            <div class="activity_type col-0">
-                                <div class="activity_date_ans_time">
-                                    <div class="activity_type_name">Project Update</div>
-                                    <div class="activity_type_date">{{data.sender[0].date}}</div>
-                                </div>
+                        <div class="sec_name_description">
+                            <div class="section_name">Communication</div>
+                            <div class="section_description">Receive emails from other users, team leads, and directors and reply to them at any time and from anywhere in the world</div>
+                        </div>
+                        <div class="letters_container">
+                            <div class="sender_letter_container col-0">
                                 {% if "sender" in session %}
-                                    {% if data.sender[0].photo in [None, '', 'none'] %}
-                                        <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
-                                    {% else %}
-                                        <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
-                                    {% endif %}
-                                    <div class="sender_small_info">
-                                        <div class="sender_full_name">{{data.sender[0].name}} {{data.sender[0].surname}}</div>
-                                        <div class="re_info">{{data.sender[0].email}}</div>
+                                    <div class="sender_letter_info">
+                                        <div class="sender_date">{{data.sender[0].date}}</div>
+                                        <div class="to_do">Tap to open your message</div>
+                                        <div class="sender_small_info">
+                                            <div class="sender_full_name_container">
+                                                <div class="sender_name">{{data.sender[0].name}}</div>
+                                                <div class="sender_second_name">{{data.sender[0].surname}}</div>
+                                            </div>
+                                            {% if data.sender[0].photo in [None, '', 'none'] %}
+                                                <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
+                                            {% else %}
+                                                <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
+                                            {% endif %}
+                                            <div class="sender_popup">
+                                                <form id="sender_form" action="/action_page.php" class="senderform_container">
+                                                    {% if data.sender[0].photo in [None, '', 'none'] %}   
+                                                        <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
+                                                    {% else %}
+                                                        <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
+                                                    {% endif %}
+                                                    <div class="sender_popup_info">
+                                                        <div class="sender_full_name">{{data.sender[0].name}} {{data.sender[0].surname}}</div>
+                                                        <div class="re_info">{{data.sender[0].email}}</div>
+                                                        <div class="sender_work">{{data.sender[0].work}}</div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="letter_text_container" class="letter_text_container col-0" style="display: none;">
+                                        <div class="text_area_box">
+                                            <textarea rows="7" colls="300" name="description" class="text_area_comment" placeholder="Your text here" readonly>{{data.sender[0].message}}</textarea>
+                                        </div>
                                     </div>
                                 {% else %}
-                                    {% if data.sender[0].photo in [None, '', 'none'] %}
-                                        <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
-                                    {% else %}
-                                        <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
-                                    {% endif %}
-                                    <div class="sender_small_info">
-                                        <div class="sender_full_name">{{data.sender[0].name}} {{data.sender[0].surname}}</div>
-                                        <div class="sender_email2">{{data.sender[0].email}}</div>
+                                    <div class="sender_letter_info">
+                                        <div class="sender_date">{{data.sender[0].date}}</div>
+                                        <div class="to_do">Tap to open your message</div>
+                                        <div class="sender_small_info">
+                                            <div class="sender_full_name_container">
+                                                <div class="sender_name">{{data.sender[0].name}}</div>
+                                                <div class="sender_second_name">{{data.sender[0].surname}}</div>
+                                            </div>
+                                            {% if data.sender[0].photo in [None, '', 'none'] %}
+                                                <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
+                                            {% else %}
+                                                <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
+                                            {% endif %}
+                                            <div class="sender_popup">
+                                                <form id="sender_form" action="/action_page.php" class="senderform_container">
+                                                    {% if data.sender[0].photo in [None, '', 'none'] %}   
+                                                        <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
+                                                    {% else %}
+                                                        <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
+                                                    {% endif %}
+                                                    <div class="sender_popup_info">
+                                                        <div class="sender_full_name">{{data.sender[0].name}} {{data.sender[0].surname}}</div>
+                                                        <div class="re_info">{{data.sender[0].email}}</div>
+                                                        <div class="sender_work">{{data.sender[0].work}}</div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="letter_text_container" class="letter_text_container col-0" style="display: none;">
+                                        <div class="text_area_box">
+                                            <textarea rows="7" colls="300" name="description" class="text_area_comment" placeholder="Your text here" readonly>{{data.sender[0].message}}</textarea>
+                                        </div>
                                     </div>
                                 {% endif %}
                             </div>
-                            <div class="activity_type col-1">
-                                <div class="activity_date_ans_time">
-                                    <div class="activity_type_name">Create Contact</div>
-                                    <div class="activity_type_date">{{data.sender[0].date}}</div>
-                                </div>
+                            <div class="sender_letter_container col-1">
                                 {% if "sender" in session %}
-                                    {% if data.sender[0].photo in [None, '', 'none'] %}
-                                        <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
-                                    {% else %}
-                                        <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
-                                    {% endif %}
-                                    <div class="sender_small_info">
-                                        <div class="sender_full_name">{{data.sender[0].name}} {{data.sender[0].surname}}</div>
-                                        <div class="re_info">{{data.sender[0].email}}</div>
+                                    <div class="sender_letter_info">
+                                        <div class="sender_date">{{data.sender[0].date}}</div>
+                                        <div class="to_do">Tap to open your message</div>
+                                        <div class="sender_small_info">
+                                            <div class="sender_full_name_container">
+                                                <div class="sender_name">{{data.sender[0].name}}</div>
+                                                <div class="sender_second_name">{{data.sender[0].surname}}</div>
+                                            </div>
+                                            {% if data.sender[0].photo in [None, '', 'none'] %}
+                                                <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
+                                            {% else %}
+                                                <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
+                                            {% endif %}
+                                            <div class="sender_popup">
+                                                <form id="sender_form" action="/action_page.php" class="senderform_container">
+                                                    {% if data.sender[0].photo in [None, '', 'none'] %}   
+                                                        <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
+                                                    {% else %}
+                                                        <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
+                                                    {% endif %}
+                                                    <div class="sender_popup_info">
+                                                        <div class="sender_full_name">{{data.sender[0].name}} {{data.sender[0].surname}}</div>
+                                                        <div class="re_info">{{data.sender[0].email}}</div>
+                                                        <div class="sender_work">{{data.sender[0].work}}</div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="letter_text_container" class="letter_text_container col-1" style="display: none;">
+                                        <div class="text_area_box">
+                                            <textarea rows="7" colls="300" name="description" class="text_area_comment" placeholder="Your text here" readonly>{{data.sender[0].message}}</textarea>
+                                        </div>
                                     </div>
                                 {% else %}
-                                    {% if data.sender[0].photo in [None, '', 'none'] %}
-                                        <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
-                                    {% else %}
-                                        <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
-                                    {% endif %}
-                                    <div class="sender_small_info">
-                                        <div class="sender_full_name">{{data.sender[0].name}} {{data.sender[0].surname}}</div>
-                                        <div class="sender_email2">{{data.sender[0].email}}</div>
+                                    <div class="sender_letter_info">
+                                        <div class="sender_date">{{data.sender[0].date}}</div>
+                                        <div class="to_do">Tap to open your message</div>
+                                        <div class="sender_small_info">
+                                            <div class="sender_full_name_container">
+                                                <div class="sender_name">{{data.sender[0].name}}</div>
+                                                <div class="sender_second_name">{{data.sender[0].surname}}</div>
+                                            </div>
+                                            {% if data.sender[0].photo in [None, '', 'none'] %}
+                                                <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
+                                            {% else %}
+                                                <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
+                                            {% endif %}
+                                            <div class="sender_popup">
+                                                <form id="sender_form" action="/action_page.php" class="senderform_container">
+                                                    {% if data.sender[0].photo in [None, '', 'none'] %}   
+                                                        <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
+                                                    {% else %}
+                                                        <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
+                                                    {% endif %}
+                                                    <div class="sender_popup_info">
+                                                        <div class="sender_full_name">{{data.sender[0].name}} {{data.sender[0].surname}}</div>
+                                                        <div class="re_info">{{data.sender[0].email}}</div>
+                                                        <div class="sender_work">{{data.sender[0].work}}</div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
                                     </div>
-                                {% endif %}
-                            </div>
-                            <div class="activity_type col-2">
-                                <div class="activity_date_ans_time">
-                                    <div class="activity_type_name">Create Notes</div>
-                                    <div class="activity_type_date">{{data.sender[0].date}}</div>
-                                </div>
-                                {% if "sender" in session %}
-                                    {% if data.sender[0].photo in [None, '', 'none'] %}
-                                        <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
-                                    {% else %}
-                                        <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
-                                    {% endif %}
-                                    <div class="sender_small_info">
-                                        <div class="sender_full_name">{{data.sender[0].name}} {{data.sender[0].surname}}</div>
-                                        <div class="re_info">{{data.sender[0].email}}</div>
-                                    </div>
-                                {% else %}
-                                    {% if data.sender[0].photo in [None, '', 'none'] %}
-                                        <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
-                                    {% else %}
-                                        <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
-                                    {% endif %}
-                                    <div class="sender_small_info">
-                                        <div class="sender_full_name">{{data.sender[0].name}} {{data.sender[0].surname}}</div>
-                                        <div class="sender_email2">{{data.sender[0].email}}</div>
-                                    </div>
-                                {% endif %}
-                            </div>
-                            <div class="activity_type col-3">
-                                <div class="activity_date_ans_time">
-                                    <div class="activity_type_name">Send Message</div>
-                                    <div class="activity_type_date">{{data.sender[0].date}}</div>
-                                </div>
-                                {% if "sender" in session %}
-                                    {% if data.sender[0].photo in [None, '', 'none'] %}
-                                        <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
-                                    {% else %}
-                                        <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
-                                    {% endif %}
-                                    <div class="sender_small_info">
-                                        <div class="sender_full_name">{{data.sender[0].name}} {{data.sender[0].surname}}</div>
-                                        <div class="sender_email2">{{data.sender[0].email}}</div>
-                                    </div>
-                                {% else %}
-                                    {% if data.sender[0].photo in [None, '', 'none'] %}
-                                        <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
-                                    {% else %}
-                                        <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
-                                    {% endif %}
-                                    <div class="sender_small_info">
-                                        <div class="sender_full_name">{{data.sender[0].name}} {{data.sender[0].surname}}</div>
-                                        <div class="sender_email2">{{data.sender[0].email}}</div>
-                                    </div>
-                                {% endif %}
-                            </div>
-                            <div class="activity_type col-4">
-                                <div class="activity_date_ans_time">
-                                    <div class="activity_type_name">Create Community</div>
-                                    <div class="activity_type_date">{{data.sender[0].date}}</div>
-                                </div>
-                                {% if "sender" in session %}
-                                    {% if data.sender[0].photo in [None, '', 'none'] %}
-                                        <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
-                                    {% else %}
-                                        <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
-                                    {% endif %}
-                                    <div class="sender_small_info">
-                                        <div class="sender_full_name">{{data.sender[0].name}} {{data.sender[0].surname}}</div>
-                                        <div class="re_info">{{data.sender[0].email}}</div>
-                                    </div>
-                                {% else %}
-                                    {% if data.sender[0].photo in [None, '', 'none'] %}
-                                        <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
-                                    {% else %}
-                                        <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
-                                    {% endif %}
-                                    <div class="sender_small_info">
-                                        <div class="sender_full_name">{{data.sender[0].name}} {{data.sender[0].surname}}</div>
-                                        <div class="sender_email2">{{data.sender[0].email}}</div>
+                                    <div id="letter_text_container" class="letter_text_container col-1" style="display: none;">
+                                        <div class="text_area_box">
+                                            <textarea rows="7" colls="300" name="description" class="text_area_comment" placeholder="Your text here" readonly>{{data.sender[0].message}}</textarea>
+                                        </div>
                                     </div>
                                 {% endif %}
                             </div>
                         </div>
                     </div>
                     <div class="profile_section" id="section-2" style="display: none">
-                        <div class="section_name">Details</div>
+                        <div class="sec_name_description">
+                            <div class="section_name">Activity</div>
+                            <div class="section_description">Track and manage your activities, including project updates, new project creations, community creation, and more, all in one place</div>
+                        </div>
                         <div class="profile_details_container">
-                            {% if "user" in session %}   
-                                <div class="name_and_email">
-                                    <div class="full_name_container">
-                                        <div class="full_name_description">Full name</div>
-                                        <div class="full_name">{{data.user[0].name}} {{data.user[0].surname}}</div>
-                                    </div>
-                                    <div class="email_container">
-                                        <div class="email_description">Email address</div>
-                                        <div class="email_address">{{data.user[0].email}}</div>
-                                    </div>
+                            <div class="activity_type col-0">
+                                <div class="activity_date_ans_time">
+                                    <div class="activity_type_date">{{data.sender[0].date}}</div>
+                                    <div class="activity_type_name">Project Update</div>
                                 </div>
-                                <div class="date_and_location">
-                                    <div class="date_and_location_change"></div>
-                                    <div class="date_container"></div>
-                                    <div class="location_container"></div>
+                                {% if "sender" in session %}
+                                    <div class="activity_description">{{data.sender[0].description}}</div>
+                                    <div class="sender_small_info">
+                                        <div class="sender_full_name_container">
+                                            <div class="sender_name">{{data.sender[0].name}}</div>
+                                            <div class="sender_second_name">{{data.sender[0].surname}}</div>
+                                        </div>
+                                        {% if data.sender[0].photo in [None, '', 'none'] %}
+                                            <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
+                                        {% else %}
+                                            <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
+                                        {% endif %}
+                                        <div class="sender_popup">
+                                            <form id="sender_form" action="/action_page.php" class="senderform_container">
+                                                {% if data.sender[0].photo in [None, '', 'none'] %}   
+                                                    <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
+                                                {% else %}
+                                                    <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
+                                                {% endif %}
+                                                <div class="sender_popup_info">
+                                                    <div class="sender_full_name">{{data.sender[0].name}} {{data.sender[0].surname}}</div>
+                                                    <div class="re_info">{{data.sender[0].email}}</div>
+                                                    <div class="sender_work">{{data.sender[0].work}}</div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    <div class="activity_description">{{data.sender[0].description}}</div>
+                                    <div class="sender_small_info">
+                                        <div class="sender_full_name_container">
+                                            <div class="sender_name">{{data.sender[0].name}}</div>
+                                            <div class="sender_second_name">{{data.sender[0].surname}}</div>
+                                        </div>
+                                        {% if data.sender[0].photo in [None, '', 'none'] %}
+                                            <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
+                                        {% else %}
+                                            <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
+                                        {% endif %}
+                                        <div class="sender_popup">
+                                            <form id="sender_form" action="/action_page.php" class="senderform_container">
+                                                {% if data.sender[0].photo in [None, '', 'none'] %}   
+                                                    <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
+                                                {% else %}
+                                                    <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
+                                                    {% endif %}
+                                                <div class="sender_popup_info">
+                                                    <div class="sender_full_name">{{data.sender[0].name}} {{data.sender[0].surname}}</div>
+                                                    <div class="re_info">{{data.sender[0].email}}</div>
+                                                    <div class="sender_work">{{data.sender[0].work}}</div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="activity_type col-1">
+                                <div class="activity_date_ans_time">
+                                    <div class="activity_type_date">{{data.sender[0].date}}</div>
+                                    <div class="activity_type_name">Create Contact</div>
                                 </div>
-                                <div class="more_info_container">
-                                    <div class="more_info_name">Additional information</div>
-                                    <textarea class="more_info" placeholder="Write comment here"></textarea>
+                                {% if "sender" in session %}
+                                    <div class="activity_description">{{data.sender[0].description}}</div>
+                                    <div class="sender_small_info">
+                                        <div class="sender_full_name_container">
+                                            <div class="sender_name">{{data.sender[0].name}}</div>
+                                            <div class="sender_second_name">{{data.sender[0].surname}}</div>
+                                        </div>
+                                        {% if data.sender[0].photo in [None, '', 'none'] %}
+                                            <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
+                                        {% else %}
+                                            <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
+                                        {% endif %}
+                                        <div class="sender_popup">
+                                            <form id="sender_form" action="/action_page.php" class="senderform_container">
+                                                {% if data.sender[0].photo in [None, '', 'none'] %}   
+                                                    <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
+                                                {% else %}
+                                                    <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
+                                                {% endif %}
+                                                <div class="sender_popup_info">
+                                                    <div class="sender_full_name">{{data.sender[0].name}} {{data.sender[0].surname}}</div>
+                                                    <div class="re_info">{{data.sender[0].email}}</div>
+                                                    <div class="sender_work">{{data.sender[0].work}}</div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    <div class="activity_description">{{data.sender[0].description}}</div>
+                                    <div class="sender_small_info">
+                                        <div class="sender_full_name_container">
+                                            <div class="sender_name">{{data.sender[0].name}}</div>
+                                            <div class="sender_second_name">{{data.sender[0].surname}}</div>
+                                        </div>
+                                        {% if data.sender[0].photo in [None, '', 'none'] %}
+                                            <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
+                                        {% else %}
+                                            <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
+                                        {% endif %}
+                                        <div class="sender_popup">
+                                            <form id="sender_form" action="/action_page.php" class="senderform_container">
+                                                {% if data.sender[0].photo in [None, '', 'none'] %}   
+                                                    <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
+                                                {% else %}
+                                                    <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
+                                                    {% endif %}
+                                                <div class="sender_popup_info">
+                                                    <div class="sender_full_name">{{data.sender[0].name}} {{data.sender[0].surname}}</div>
+                                                    <div class="re_info">{{data.sender[0].email}}</div>
+                                                    <div class="sender_work">{{data.sender[0].work}}</div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="activity_type col-2">
+                                <div class="activity_date_ans_time">
+                                    <div class="activity_type_date">{{data.sender[0].date}}</div>
+                                    <div class="activity_type_name">Create Notes</div>
                                 </div>
-                            {% else %}
-                                <div class="name_and_email">
-                                    <div class="full_name_container">
-                                        <div class="full_name_description">Full name</div>
-                                        <div class="full_name">{{data.user[0].name}} {{data.user[0].surname}}</div>
+                                {% if "sender" in session %}
+                                    <div class="activity_description">{{data.sender[0].description}}</div>
+                                    <div class="sender_small_info">
+                                        <div class="sender_full_name_container">
+                                            <div class="sender_name">{{data.sender[0].name}}</div>
+                                            <div class="sender_second_name">{{data.sender[0].surname}}</div>
+                                        </div>
+                                        {% if data.sender[0].photo in [None, '', 'none'] %}
+                                            <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
+                                        {% else %}
+                                            <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
+                                        {% endif %}
+                                        <div class="sender_popup">
+                                            <form id="sender_form" action="/action_page.php" class="senderform_container">
+                                                {% if data.sender[0].photo in [None, '', 'none'] %}   
+                                                    <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
+                                                {% else %}
+                                                    <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
+                                                {% endif %}
+                                                <div class="sender_popup_info">
+                                                    <div class="sender_full_name">{{data.sender[0].name}} {{data.sender[0].surname}}</div>
+                                                    <div class="re_info">{{data.sender[0].email}}</div>
+                                                    <div class="sender_work">{{data.sender[0].work}}</div>
+                                                </div>
+                                            </form>
+                                        </div>
                                     </div>
-                                    <div class="email_container">
-                                        <div class="email_description">Email address</div>
-                                        <div class="email_address">{{data.user[0].email}}</div>
+                                {% else %}
+                                    <div class="activity_description">{{data.sender[0].description}}</div>
+                                    <div class="sender_small_info">
+                                        <div class="sender_full_name_container">
+                                            <div class="sender_name">{{data.sender[0].name}}</div>
+                                            <div class="sender_second_name">{{data.sender[0].surname}}</div>
+                                        </div>
+                                        {% if data.sender[0].photo in [None, '', 'none'] %}
+                                            <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
+                                        {% else %}
+                                            <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
+                                        {% endif %}
+                                        <div class="sender_popup">
+                                            <form id="sender_form" action="/action_page.php" class="senderform_container">
+                                                {% if data.sender[0].photo in [None, '', 'none'] %}   
+                                                    <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
+                                                {% else %}
+                                                    <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
+                                                    {% endif %}
+                                                <div class="sender_popup_info">
+                                                    <div class="sender_full_name">{{data.sender[0].name}} {{data.sender[0].surname}}</div>
+                                                    <div class="re_info">{{data.sender[0].email}}</div>
+                                                    <div class="sender_work">{{data.sender[0].work}}</div>
+                                                </div>
+                                            </form>
+                                        </div>
                                     </div>
+                                {% endif %}
+                            </div>
+                            <div class="activity_type col-3">
+                                <div class="activity_date_ans_time">
+                                    <div class="activity_type_date">{{data.sender[0].date}}</div>
+                                    <div class="activity_type_name">Send Message</div>
                                 </div>
-                                <div class="date_and_location">
-                                    <div class="date_and_location_change">
-                                        <svg class="bir_and_addr_img" width="25" height="25" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_225_1336)"><rect width="31.1516" height="31.9364" fill="transparent"/><path d="M20.7678 2.66113V7.98387M10.384 2.66113V7.98387M3.89404 13.3066H27.2577M6.49001 5.3225H24.6618C26.0955 5.3225 27.2577 6.51404 27.2577 7.98387V26.6135C27.2577 28.0833 26.0955 29.2748 24.6618 29.2748H6.49001C5.0563 29.2748 3.89404 28.0833 3.89404 26.6135V7.98387C3.89404 6.51404 5.0563 5.3225 6.49001 5.3225Z" stroke="#1E1E1E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_225_1336"><rect width="31.1516" height="31.9364" fill="white"/></clipPath></defs>
-                                        </svg>
-                                        <div class="date_and_location_text">Date / Location</div>
+                                {% if "sender" in session %}
+                                    <div class="activity_description">{{data.sender[0].description}}</div>
+                                    <div class="sender_small_info">
+                                        <div class="sender_full_name_container">
+                                            <div class="sender_name">{{data.sender[0].name}}</div>
+                                            <div class="sender_second_name">{{data.sender[0].surname}}</div>
+                                        </div>
+                                        {% if data.sender[0].photo in [None, '', 'none'] %}
+                                            <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
+                                        {% else %}
+                                            <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
+                                        {% endif %}
+                                        <div class="sender_popup">
+                                            <form id="sender_form" action="/action_page.php" class="senderform_container">
+                                                {% if data.sender[0].photo in [None, '', 'none'] %}   
+                                                    <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
+                                                {% else %}
+                                                    <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
+                                                {% endif %}
+                                                <div class="sender_popup_info">
+                                                    <div class="sender_full_name">{{data.sender[0].name}} {{data.sender[0].surname}}</div>
+                                                    <div class="re_info">{{data.sender[0].email}}</div>
+                                                    <div class="sender_work">{{data.sender[0].work}}</div>
+                                                </div>
+                                            </form>
+                                        </div>
                                     </div>
-                                    <div class="dateloc_container">
-                                        <div class="bir_addr_description">Birthday:</div>
-                                        <div class="bir_addr_info">{{data.user[0].bdate}}</div>
+                                {% else %}
+                                    <div class="activity_description">{{data.sender[0].description}}</div>
+                                    <div class="sender_small_info">
+                                        <div class="sender_full_name_container">
+                                            <div class="sender_name">{{data.sender[0].name}}</div>
+                                            <div class="sender_second_name">{{data.sender[0].surname}}</div>
+                                        </div>
+                                        {% if data.sender[0].photo in [None, '', 'none'] %}
+                                            <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
+                                        {% else %}
+                                            <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
+                                        {% endif %}
+                                        <div class="sender_popup">
+                                            <form id="sender_form" action="/action_page.php" class="senderform_container">
+                                                {% if data.sender[0].photo in [None, '', 'none'] %}   
+                                                    <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
+                                                {% else %}
+                                                    <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
+                                                    {% endif %}
+                                                <div class="sender_popup_info">
+                                                    <div class="sender_full_name">{{data.sender[0].name}} {{data.sender[0].surname}}</div>
+                                                    <div class="re_info">{{data.sender[0].email}}</div>
+                                                    <div class="sender_work">{{data.sender[0].work}}</div>
+                                                </div>
+                                            </form>
+                                        </div>
                                     </div>
-                                    <div class="dateloc_container">
-                                        <div class="bir_addr_description">Address:</div>
-                                        <div class="bir_addr_info">{{data.user[0].address}}</div>
-                                    </div>
-                                    <div class="button_container">
-                                        <input type="button" class="add_address_and_bday" value="Change">
-                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="activity_type col-4">
+                                <div class="activity_date_ans_time">
+                                    <div class="activity_type_date">{{data.sender[0].date}}</div>
+                                    <div class="activity_type_name">Create Community</div>
                                 </div>
-                                <div class="more_info_container">
-                                    <div class="more_info_name">Additional information:</div>
-                                    <textarea class="more_info" placeholder="Write comment here"></textarea>
-                                    <input type="button" class="save_more_info" value="Save">
-                                </div>
-                            {% endif %}
+                                {% if "sender" in session %}
+                                    <div class="activity_description">{{data.sender[0].description}}</div>
+                                    <div class="sender_small_info">
+                                        <div class="sender_full_name_container">
+                                            <div class="sender_name">{{data.sender[0].name}}</div>
+                                            <div class="sender_second_name">{{data.sender[0].surname}}</div>
+                                        </div>
+                                        {% if data.sender[0].photo in [None, '', 'none'] %}
+                                            <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
+                                        {% else %}
+                                            <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
+                                        {% endif %}
+                                        <div class="sender_popup">
+                                            <form id="sender_form" action="/action_page.php" class="senderform_container">
+                                                {% if data.sender[0].photo in [None, '', 'none'] %}   
+                                                    <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
+                                                {% else %}
+                                                    <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
+                                                {% endif %}
+                                                <div class="sender_popup_info">
+                                                    <div class="sender_full_name">{{data.sender[0].name}} {{data.sender[0].surname}}</div>
+                                                    <div class="re_info">{{data.sender[0].email}}</div>
+                                                    <div class="sender_work">{{data.sender[0].work}}</div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    <div class="activity_description">{{data.sender[0].description}}</div>
+                                    <div class="sender_small_info">
+                                        <div class="sender_full_name_container">
+                                            <div class="sender_name">{{data.sender[0].name}}</div>
+                                            <div class="sender_second_name">{{data.sender[0].surname}}</div>
+                                        </div>
+                                        {% if data.sender[0].photo in [None, '', 'none'] %}
+                                            <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
+                                        {% else %}
+                                            <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
+                                        {% endif %}
+                                        <div class="sender_popup">
+                                            <form id="sender_form" action="/action_page.php" class="senderform_container">
+                                                {% if data.sender[0].photo in [None, '', 'none'] %}   
+                                                    <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
+                                                {% else %}
+                                                    <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
+                                                    {% endif %}
+                                                <div class="sender_popup_info">
+                                                    <div class="sender_full_name">{{data.sender[0].name}} {{data.sender[0].surname}}</div>
+                                                    <div class="re_info">{{data.sender[0].email}}</div>
+                                                    <div class="sender_work">{{data.sender[0].work}}</div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
                         </div>
                     </div>
                 </div>
