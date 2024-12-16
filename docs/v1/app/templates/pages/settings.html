@@ -29,10 +29,10 @@
     <div class="user_profile_main active" page-index="1">
         <div class="user_profile_main_left">
             <div class="user_profile_img_box">
-                <img id="profileImage" src="{{ data['user'].image }}" alt="{{ data['user'].name[0] }}{{ data['user'].surname[0] }}">
-
-                {% if data['user'].image == '' or data['user'].image == ' ' or data['user'].image == [] or data['user'].image == none %}
-                    <p id="profileInitials">{{ data['user'].name[0] }}{{ data['user'].surname[0] }}</p> 
+                {% if data.user.url_image == '' or data.user.url_image == ' ' or data.user.url_image == [] or data.user.url_image == none %}
+                    <p id="profileInitials">{{ data.user.name[0] }}{{ data.user.surname[0] }}</p> 
+                {% else %}
+                    <img id="profileImage" src="{{ data.user.url_image }}" alt="{{ data.user.name[0] }}{{ data.user.surname[0] }}">
                 {% endif %}
 
                 <div class="change_photo_container" onclick="openPopup()">
@@ -48,23 +48,23 @@
                 <form class="user_profile_inputs" action="/">
                     <div class="form-group longer-width">
                         <label>Full Name</label>
-                        <input type="text" placeholder="Enter your full name" value="{{ data['full_name']}}">
+                        <input type="text" placeholder="Enter your full name" value="{{ data.full_name }}">
                     </div>
                     <div class="form-group">
                         <label>Job Title</label>
-                        <input type="text" placeholder="Enter your Job Title" value="{{ data['user'].organization }}">
+                        <input type="text" placeholder="Enter your Job Title" value="{{ data.user.organization }}">
                     </div>
                     <div class="form-group  longer-width">
                         <label>Email Address</label>
-                        <input type="email" placeholder="Enter your email" value="{{ data['user'].email }}">
+                        <input type="email" placeholder="Enter your email" value="{{ data.user.email }}">
                     </div>
                     <div class="form-group">
                         <label>Phone Number</label>
-                        <input type="tel" placeholder="Enter your Phone Number" value="{{ data['user'].phone }}">
+                        <input type="tel" placeholder="Enter your Phone Number" value="{{ data.user.phone }}">
                     </div>
                     <div class="form-group full-width">
                         <label>Main Personal Number</label>
-                        <input type="tel" placeholder="Enter your Main Personal Number" value="{{ data['user'].personal_number }}">
+                        <input type="tel" placeholder="Enter your Main Personal Number" value="{{ data.user.personal_number }}">
                     </div>
                 </form>                
             </div>
@@ -93,50 +93,95 @@
         </div>
     </div>
     <!-- Company PAGE -->
-    <div class="user_profile_main" page-index="2">
-        <div class="user_profile_main_left">
-            <div class="user_profile_img_box">
-                <img id="profileImage" src="{{ data['user'].image }}" alt="{{ data['user'].name[0] }}{{ data['user'].surname[0] }}">
-
-                {% if data['user'].image == '' or data['user'].image == ' ' or data['user'].image == [] or data['user'].image == none %}
-                    <p id="profileInitials">{{ data['user'].name[0] }}{{ data['user'].surname[0] }}</p> 
-                {% endif %}
-
-                <div class="change_photo_container" onclick="openPopup()">
-                    {% include 'components/base/change_photo.html' %}
-                </div>  
-            </div>  
-            
-        </div>
-        <div class="user_profile_main_right">
-            <div class="account_info">
-                <h1>Company Info</h1>
-
-                <form class="user_profile_inputs" action="/">
-                    <div class="form-group longer-width">
-                        <label>Full Name</label>
-                        <input type="text" placeholder="Enter your full name" value="{{ data['full_name']}}">
-                    </div>
-                    <div class="form-group">
-                        <label>Job Title</label>
-                        <input type="text" placeholder="Enter your Job Title" value="{{ data['user'].organization }}">
-                    </div>
-                    <div class="form-group  longer-width">
-                        <label>Email Address</label>
-                        <input type="email" placeholder="Enter your email" value="{{ data['user'].email }}">
-                    </div>
-                    <div class="form-group">
-                        <label>Phone Number</label>
-                        <input type="tel" placeholder="Enter your Phone Number" value="{{ data['user'].phone }}">
-                    </div>
-                    <div class="form-group full-width">
-                        <label>Main Personal Number</label>
-                        <input type="tel" placeholder="Enter your Main Personal Number" value="{{ data['user'].personal_number }}">
-                    </div>
-                </form>                
+    <div class="user_profile_main Company_page" page-index="2">
+        <div class="company_content">
+            <div class="right_side">
+                <p>Company Brend</p>
+                <p>Team</p>
+                
             </div>
-          
+    
+            <div class="left_side">
+                <p class="company_main_text">BUILD UPP YOUR PROFFECIONAL PRESENSE</p>
+    
+                <div class="company_details detail_card">
+                    <div class="card_content">
+                        <div class="right">
+                            <div class="right_content">
+                                <p class="card_main_txt">Tax Canada</p>
+                                <p class="card_main_txt">Accounting</p>
+                                <p>Tax Canada Accounting</p>
+                            </div>
+                            <svg width="20" height="20" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M23.2497 0.652832C21.9411 0.652832 20.6326 1.14894 19.6409 2.14107L3.50097 18.2796C3.19474 18.5858 2.97046 18.9666 2.85156 19.3847L0.68827 26.9598C0.634919 27.1472 0.632615 27.3455 0.681595 27.5342C0.730576 27.7228 0.829063 27.8949 0.966869 28.0327C1.10467 28.1705 1.27679 28.269 1.46543 28.318C1.65406 28.367 1.85235 28.3647 2.03979 28.3113L9.61629 26.148L9.61771 26.1466C10.033 26.0272 10.4129 25.8057 10.72 25.4986L26.8585 9.35868C28.8427 7.37453 28.8427 4.12523 26.8585 2.14107C25.8668 1.14894 24.5583 0.652832 23.2497 0.652832ZM23.2497 2.82751C23.994 2.82751 24.7373 3.11432 25.3105 3.6877H25.3119C26.4602 4.83605 26.4602 6.66371 25.3119 7.81205L23.8977 9.22624L19.7734 5.10189L21.1875 3.6877C21.7607 3.11432 22.5054 2.82751 23.2497 2.82751ZM18.2267 6.64852L22.3511 10.7729L9.17195 23.952C9.1292 23.9944 9.07506 24.027 9.01387 24.0446L3.3315 25.6681L4.95503 19.9843V19.9829C4.97175 19.9241 5.00238 19.8714 5.0476 19.8262L18.2267 6.64852Z" fill="black"/>
+                                </svg>
+                                
+                        </div>
+
+                        <div class="left">
+                            <div class="column_txt">
+                                <p>Company Type</p>
+                                <p>Bookkepimg / Accounting</p>
+                            </div>
+                            <div class="column_txt">
+                                <p>Company Email</p>
+                                <p>contact@taxcanada.accountant</p>
+                            </div>
+                            <div class="column_txt">
+                                <p>Phone number</p>
+                                <p>(368) 887-4399</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="company_smart_film detail_card">
+                    <div class="card_content">
+                        <div class="right">
+                            <p class="card_main_txt">Company smart film theme</p>
+                            <div class="description_txt">
+                                <p class="description">Save time and automatically apply a default</p>
+                                <p class="description">them to all smart files you start from blank.</p>
+                            </div>
+                            <button class="castomise_company">
+                                <img src="{{ url_for('static', filename='images/colores.png') }}" width="50px" height="34px">
+                                <p>CASTOMIZE COMPANY THEME</p>
+                            </button>
+                        </div>
+
+                        <div class="left">
+                            <p>DEFAULT THEME PREVIEW</p>
+                            <div class="colors">
+                                <div class="white_circle color"></div>
+                                <div class="black_circle color"></div>
+                                <div class="pink_circle color"></div>
+                            </div>
+                            <div class="description_content">
+                                <div class="description_txt">
+                                    <div class="linked_txt">
+                                        <p></p>
+                                        <p></p>
+                                    </div>
+                                    <p></p>
+                                </div>
+                                <button>
+                                    <p>Button</p>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="email_signature detail_card">
+    
+                </div>
+    
+                <div class="brand_elements detail_card">
+    
+                </div>
+            </div>
         </div>
+        
     </div>
     <!-- MY account PAGE END -->
     <div class="background_popup">

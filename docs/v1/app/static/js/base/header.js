@@ -42,3 +42,15 @@ link_button_2.addEventListener('click', function(event) {
         }
     }
 });
+
+function drop_txt_options(event) {
+    // Find the specific `.options_menu` inside the clicked `<li>`
+    const fall_down_txt = event.currentTarget.querySelector(".options_menu");
+
+    // Toggle the 'active' class to show/hide the menu
+    if (fall_down_txt) {
+        fall_down_txt.classList.toggle('active');
+    }
+
+    console.log("work");
+}
