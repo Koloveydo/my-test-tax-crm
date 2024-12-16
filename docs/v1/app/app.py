@@ -50,19 +50,20 @@ def before_request():
 ''' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ '''
 '''   create context processor, with all session data start  '''
 ''' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ '''
+from flask import session
 
 @app.context_processor
-def utility_processor():    
+def utility_processor():
     session_data = {
         "profile_info": {
-            "url_image":  session["user"]["url_image"],
-            "first_name": session["user"]["first_name"],
-            "last_name":  session["user"]["last_name"],
+            "url_image": session["user"]["url_image"] if "user" in session and "url_image" in session["user"] else "",
+            "first_name": session["user"]["first_name"] if "user" in session and "first_name" in session["user"] else "",
+            "last_name": session["user"]["last_name"] if "user" in session and "last_name" in session["user"] else "",
         },
-        "login": True,
+        "login": "user" in session, 
     }
-
     return {"session": session_data}
+
             
             
 ''' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ '''

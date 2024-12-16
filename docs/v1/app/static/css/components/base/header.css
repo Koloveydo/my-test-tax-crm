@@ -214,10 +214,15 @@ header {
 }
 
 .fall_down_options .options_menu.active {
-
     display: flex;
     opacity: 1; 
     pointer-events: auto; 
+}
+.fall_down_arrow{
+    transition: .3s;
+}
+.fall_down_arrow.active{
+    transform: rotate(180deg);
 }
 
 .fall_down_options .options_menu li a{
@@ -295,9 +300,12 @@ body.dark-theme .contacts_fall_down_menu ul li:hover a {
     border-top: 1px solid #9c9c9c;
 }
 
-.phone_menu_logout,
-.phone_menu_logout a{
-    color: #ff0e0e;
+
+.phone_menu_content ul .phone_menu_logout,
+.phone_menu_content ul .phone_menu_logout a,
+body.dark-theme .phone_menu_content .phone_menu_logout svg,
+body.dark-theme .phone_menu_content .phone_menu_logout a{
+    color: #ff3c3c;
 }
 
 @media screen and (max-width: 1400px){
