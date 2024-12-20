@@ -21,6 +21,18 @@ function closeFormSkills() {
     document.getElementById("add_skills").style.display = "none";
 }
 
+function toggleDropdown() {
+    const dropdown = document.getElementById("dropdown");
+    dropdown.style.display = dropdown.style.display === "none" ? "block" : "none";
+}
+
+function updateInput(value) {
+    const input = document.getElementById("field_value");
+    const selectedField = document.getElementById("selected_field");
+    input.value = value;
+    selectedField.value = value;
+}
+
 document.querySelectorAll('.checkbox-btn').forEach(button => {
     button.addEventListener('click', () => {
         button.classList.toggle('active');
@@ -52,23 +64,22 @@ function activateTab(index) {
     document.documentElement.style.setProperty('--webkit-scrollbar', 'none');
 }
 
-// Знаходимо всі контейнери з класом sender_letter_container
 const containers = document.querySelectorAll('.sender_letter_container');
 
 containers.forEach(container => {
     container.addEventListener('click', function () {
-        // Отримуємо індекс поточного контейнера
         const index = [...this.classList].find(cls => cls.startsWith('col-')).split('-')[1];
 
-        // Знаходимо відповідний елемент із класом letter_text_container
         const textContainer = document.querySelector(`.letter_text_container.col-${index}`);
+        const textToDo = document.querySelector(`.to_do.col-${index}`);
         
         if (textContainer) {
-            // Перемикаємо display між none і block
             if (textContainer.style.display === 'none') {
                 textContainer.style.display = 'block';
+                textToDo.style.display = 'none';
             } else {
                 textContainer.style.display = 'none';
+                textToDo.style.display = 'block';
             }
         }
     });

@@ -215,19 +215,29 @@ def indexView():
     
     return render_template('pages/index.html', data=data)
 
-@app.route('/my_profile')
+@app.route('/my_profile', methods=["GET", "POST"])
 def my_profile_view():
-
-    user = [
-        {'id' : '1','name' :'Vlad', 'surname' : 'Koloveydo', 'work' : 'Developer', 'bdate' : '08.11.2002', 'company' : 'none',  'address' : 'Lviv', 'email' : 'koloveydo8qazqsxedc@gmail.com', 'photo' : 'images/avatar.png' , 'phone' : '', 'emailing' : '', 'skills' : '', 'language' : 'Ukrainian'},
-    ]
+    user = User_details.query.filter_by(firstname=session["user"]["first_name"], lastname=session["user"]["last_name"]).first()
+    print(user.email)
+    user_mydetails = {
+        'id':user.id,
+        'firstname':user.firstname,
+        'lastname':user.lastname,
+        'email':user.email,
+        'job_title':user.job_title,
+        'phone':user.phone,
+        'addres':user.addres,
+        'url_image':user.url_image,
+        'datetime_update':user.datetime_update,
+        'datetime_create':user.datetime_create,
+    }
 
     sender = [
         {'id' : '1', 'name' : 'Vadim', 'surname' : 'Romanyuk', 'date' : '30.11.2024', 'work' : 'Team-lead', 'phone' : '0676776767', 'email' : 'vadim@dot.com', 're' : 'Please sign/Tax Company', 'photo' : 'images/sender_picture.png', 'message' : 'Your adaptation is dogshit. Cthulhu is a fictional cosmic entity created by writer H. P. Lovecraft. It was introduced in his short story "The Call of Cthulhu",[2] published by the American pulp magazine Weird Tales in 1928. Considered a Great Old One within the pantheon of Lovecraftian cosmic entities, this creature has since been featured in numerous pop culture references. Lovecraft depicts it as a gigantic entity worshipped by cultists, in the shape of a green octopus, dragon, and a caricature of human form. It is the namesake of the Lovecraft-inspired Cthulhu Mythos.', 'description' : 'Changed logs'}
     ]
 
     data = {
-        "user": user,
+        "user": user_mydetails,
         "sender": sender,
     }
 
@@ -239,4 +249,4 @@ if __name__ == "__main__":
 
     insertToAllTables()
 
-    app.run(debug=True, port=8080, host='0.0.0.0')
+    app.run(debug=True, port=8088, host='0.0.0.0')

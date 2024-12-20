@@ -1,3 +1,6 @@
+body{
+    background-color: #F5F5F7;
+}
 section#my_profile_page {
     max-width: min(1920px, calc( 100% - 260px));
     margin: 0 auto;
@@ -14,7 +17,7 @@ section#my_profile_page {
     gap: 5px;
     min-width: 280px;
     justify-content:center;
-    gap: 30px;
+    gap: 70px;
 }
 .profile_section{
     display: flex;
@@ -55,8 +58,8 @@ section#my_profile_page {
     box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.09);
 }
 .card_photo {
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
     background-color: #D9D9D9;
     border-radius: 50%;
     font-weight: 36px;
@@ -107,12 +110,13 @@ section#my_profile_page {
     cursor: pointer;
     width: 180px;
     height: 30px;
-    background-color: #D9D9D9;
+    background-color: #FFFFFF;
     font-size: 18px;
     margin-top: 5px;
+    box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.09);
 }
 .add_skills_button:hover{
-    background-color: #afafaf;
+    background-color: #cfcfcf;
 }
 .add_skills_button:active{
     background-color: #888888;
@@ -323,6 +327,7 @@ section#my_profile_page {
     width: calc( 100% - 40px);
     text-align: left;
     color: #5e5e5e;
+    font-size: 20px;
 }
 .sender_profile{
     display: flex;
@@ -433,7 +438,7 @@ section#my_profile_page {
 .activity_type{
     width: 100%;
     height:90px;
-    background-color: #F0F0F0;
+    background-color: #FFFFFF;
     display: flex;
     justify-content: space-between;
     align-self: center;
@@ -488,19 +493,19 @@ section#my_profile_page {
     text-align: center;
 }
 .activity_type.col-0{
-    box-shadow: 0px 3px 0px 0px rgb(6, 100, 214);
+    box-shadow: 0px 1px 6px 0px rgba(6, 100, 214, 0.25);
 }
 .activity_type.col-1{
-    box-shadow: 0px 3px 0px 0px rgb(214, 6, 6);
+    box-shadow: 0px 1px 6px 0px rgb(214, 6, 6, 0.25);
 }
 .activity_type.col-2{
-    box-shadow: 0px 3px 0px 0px rgb(214, 214, 6);   
+    box-shadow: 0px 1px 6px 0px rgb(214, 214, 6, 0.25);   
 }
 .activity_type.col-3{
-    box-shadow: 0px 3px 0px 0px rgb(14, 200, 54);  
+    box-shadow: 0px 1px 6px 0px rgb(14, 200, 54, 0.25);  
 }
 .activity_type.col-4{
-    box-shadow: 0px 3px 0px 0px rgb(105, 3, 56);  
+    box-shadow: 0px 1px 6px 0px rgb(105, 3, 56, 0.25);  
 }
 .activity_type_name{
     font-size: 18px;
@@ -521,6 +526,14 @@ section#my_profile_page {
     align-self: start;
 }
 .to_do{
+    width: 200px;
+    display: -webkit-box; /* Для роботи з багаторядковим текстом */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-clamp: 2; /* Кількість видимих рядків */
+    -webkit-line-clamp: 2; /* Для браузерів, які підтримують */
+    max-height: calc(1.2em * 2); /* Залежить від кількості рядків */
     text-align: center;
     color:#656566;
 }
@@ -565,7 +578,7 @@ section#my_profile_page {
 }
 .sender_letter_container{
     display: flex;
-    background-color: #F0F0F0;
+    background-color: #FFFFFF;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
@@ -576,7 +589,7 @@ section#my_profile_page {
     min-height: 90px;
     margin: 10px 0px 10px 20px;
     padding: 10px 20px 10px 20px;
-    box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.09);
+    box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.09);
     cursor: pointer;
 }
 .sender_letter_info{
@@ -589,13 +602,28 @@ section#my_profile_page {
     align-self: center;
 }
 .sender_letter_container:hover{
-    background-color: #c2c2c2;
+    background-color: transparent;
 }
 .letter_text_container{
     width: 100%;
     height: auto;
     align-items: center;
     margin-top: 15px;
+}
+.letter_answer_container{
+    display: flex;
+    width: auto;
+    justify-content: space-between;
+    height: 30px;
+    align-items: center;
+}
+.letter_answer{
+    width: calc(100% - 30px);
+    font-size: 16px;
+    height: 30px;
+}
+.send{
+    cursor: pointer;
 }
 .name_and_email, .date_and_location{
     display: flex;
@@ -616,7 +644,7 @@ section#my_profile_page {
     flex-grow: 1;
 }
 .personal_info_container{
-    background-color: #F0F0F0;
+    background-color: #FFFFFF;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -626,7 +654,7 @@ section#my_profile_page {
     height: 110px;
     padding: 0px 20px;
     margin: 10px 0px 10px 20px;
-    box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.09);
+    box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.09);
 }
 .personal_data_info_container{
     display: flex;

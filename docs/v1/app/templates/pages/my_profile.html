@@ -11,29 +11,29 @@
         <div class="my_profile_page_inner">
             <div class="start_of_my_profile">
                 <div class="circle_and_button">
-                    {% if data.user[0].photo in [None, '', 'none'] %}
-                        <span class="card_photo">{{ data.user[0].name[0].upper() }}{{ data.user[0].surname[0].upper() }}</span>
+                    {% if data.user.url_image in [None, '', 'none'] %}
+                        <span class="card_photo">{{ data.user.firstname[0].upper() }}{{ data.user.lastname[0].upper() }}</span>
                     {% else %}
-                        <img class="card_photo" src="{{ url_for('static', filename=data.user[0].photo) }}">
+                        <img class="card_photo" src="{{ url_for('static', filename=data.user.photo) }}">
                     {% endif %}
                     <button type="button" class="change_photo" id="change_photo">
                         <div class="inner_change_photo">
-                            <p>change photo</p>
+                            <p>change</p>
                         </div>
                     </button>
                 </div>
                 <div class="user_profile_info">
                     <div class="user_name_and_icon">    
-                        <div class="user_fullname">{{data.user[0].name}} {{data.user[0].surname}}</div>
+                        <div class="user_fullname">{{data.user.firstname}} {{data.user.lastname}}</div>
                         <button class="change_profile" onclick="openForm()">
                             <svg class="pen" width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M26.25 3.65332C24.9414 3.65332 23.6329 4.14942 22.6412 5.14156L6.50126 21.2801C6.19503 21.5863 5.97075 21.9671 5.85185 22.3852L3.68856 29.9603C3.63521 30.1477 3.6329 30.346 3.68189 30.5347C3.73087 30.7233 3.82935 30.8954 3.96716 31.0332C4.10496 31.171 4.27708 31.2695 4.46572 31.3185C4.65435 31.3675 4.85264 31.3652 5.04008 31.3118L12.6166 29.1485L12.618 29.1471C13.0333 29.0277 13.4132 28.8062 13.7203 28.4991L29.8588 12.3592C31.843 10.375 31.843 7.12571 29.8588 5.14156C28.8671 4.14942 27.5586 3.65332 26.25 3.65332ZM26.25 5.828C26.9943 5.828 27.7376 6.11481 28.3108 6.68819H28.3122C29.4605 7.83654 29.4605 9.66419 28.3122 10.8125L26.898 12.2267L22.7736 8.10238L24.1878 6.68819C24.7609 6.11481 25.5057 5.828 26.25 5.828ZM21.227 9.64901L25.3514 13.7734L12.1722 26.9525C12.1295 26.9949 12.0753 27.0275 12.0142 27.045L6.33179 28.6686L7.95532 22.9848V22.9834C7.97204 22.9246 8.00267 22.8719 8.04789 22.8267L21.227 9.64901Z" fill="#494949"/>
                             </svg>
                         </button>
                     </div>
-                    {% if data.user[0].email in [None, '', 'none'] %}
+                    {% if data.user.email in [None, '', 'none'] %}
                         <div class="email_text">Error</div>
                     {% else %}
-                        <div class="email_text">{{ data.user[0].email }}</div>
+                        <div class="email_text">{{ data.user.email }}</div>
                     {% endif %}
                     <button type="button" class="add_skills_button" onclick="openFormSkills()">Add skills</button>
                     <div class="skills_popup" id="add_skills" style="display:none">
@@ -62,49 +62,37 @@
                 </div>
             </div>
             <div class="changing_popup" id="change_profile">
-                <form id="change_form" action="/action_page.php" class="changing_container" onclick="event.stopPropagation()">
+                <form id="change_form" action="/update_profile" method="POST" class="changing_container" onclick="event.stopPropagation()">
                     <div class="edit_and_close">
                         <div class="edit_profile">Edit profile</div>
-                        <svg class="close_btn" onclick="closeForm()" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.2882 2.77338C16.9628 2.44794 16.4351 2.44794 16.1097 2.77338L10.031 8.85204L3.95237 2.77338C3.62694 2.44794 3.0993 2.44794 2.77387 2.77338C2.44842 3.09881 2.44842 3.62645 2.77387 3.95189L8.8525 10.0305L2.77388 16.1091C2.44844 16.4346 2.44844 16.9622 2.77388 17.2877C3.09932 17.6131 3.62696 17.6131 3.95239 17.2877L10.031 11.209L16.1097 17.2877C16.4351 17.6131 16.9628 17.6131 17.2882 17.2877C17.6136 16.9622 17.6136 16.4346 17.2882 16.1092L11.2095 10.0305L17.2882 3.95189C17.6136 3.62645 17.6136 3.09881 17.2882 2.77338Z" fill="#6B6969"/></svg>
+                        <svg class="close_btn" onclick="closeForm()" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17.2882 2.77338C16.9628 2.44794 16.4351 2.44794 16.1097 2.77338L10.031 8.85204L3.95237 2.77338C3.62694 2.44794 3.0993 2.44794 2.77387 2.77338C2.44842 3.09881 2.44842 3.62645 2.77387 3.95189L8.8525 10.0305L2.77388 16.1091C2.44844 16.4346 2.44844 16.9622 2.77388 17.2877C3.09932 17.6131 3.62696 17.6131 3.95239 17.2877L10.031 11.209L16.1097 17.2877C16.4351 17.6131 16.9628 17.6131 17.2882 17.2877C17.6136 16.9622 17.6136 16.4346 17.2882 16.1092L11.2095 10.0305L17.2882 3.95189C17.6136 3.62645 17.6136 3.09881 17.2882 2.77338Z" fill="#6B6969"/>
+                        </svg>
                     </div>
                     <hr>
                     <div class="changing_info_container_popup">
-                        <div class="ch_i_con">
-                            <div class="changing_text_container">
-                                <div class="changing_text_popup">Fullname</div> 
-                                <input class="changing_input_popup" type="text" placeholder="Enter your name" name="fullname" value="{{data.user[0].name}} {{data.user[0].surname}}" readonly>
-                                <button type="button" class="change_profile_btn">+</button>
-                            </div>
-                            <div class="changing_text_container">
-                                <div class="changing_text_popup">Email address</div> 
-                                <input class="changing_input_popup" type="text" placeholder="Enter your email" name="email" value="{{data.user[0].email}}" readonly>
-                                <button type="button" class="change_profile_btn">+</button>
-                            </div>
-                            <div class="changing_text_container">
-                                <div class="changing_text_popup">Phone number</div> 
-                                <input class="changing_input_popup" type="text" placeholder="Enter your phone number" name="phone" value="{{data.user[0].phone}}" readonly>
-                                <button type="button" class="change_profile_btn">+</button>
-                            </div>
-                        </div>
-                        <div class="ch_i_con">
-                            <div class="changing_text_container">
-                                <div class="changing_text_popup">Organization</div> 
-                                <input class="changing_input_popup" type="text" placeholder="Enter your organization" name="organization" value="{{data.user[0].company}}" readonly>
-                                <button type="button" class="change_profile_btn">+</button>
-                            </div>
-                            <div class="changing_text_container">
-                                <div class="changing_text_popup">Job title</div> 
-                                <input class="changing_input_popup" type="text" placeholder="Enter your job title" name="job" value="{{data.user[0].work}}" readonly>
-                                <button type="button" class="change_profile_btn">+</button>
-                            </div>
-                            <div class="changing_text_container">
-                                <div class="changing_text_popup">Mailing address</div> 
-                                <input class="changing_input_popup" type="text" placeholder="Enter your mailing address" name="mailing_address" value="{{data.user[0].emailing}}" readonly>
-                                <button type="button" class="change_profile_btn">+</button>
-                            </div>
+                        <button type="button" class="change_profile_btn" onclick="toggleDropdown()">+</button>
+                        <div class="dropdown" id="dropdown" style="display: none;">
+                            <label>
+                                <input type="radio" name="field_to_change" value="{{ data.user.lastname }} {{ data.user.firstname }}" onclick="updateInput('{{ data.user.lastname }} {{ data.user.firstname }}')"> Fullname
+                            </label><br>
+                            <label>
+                                <input type="radio" name="field_to_change" value="{{ data.user.email }}" onclick="updateInput('{{ data.user.email }}')"> Email address
+                            </label><br>
+                            <label>
+                                <input type="radio" name="field_to_change" value="{{ data.user.phone }}" onclick="updateInput('{{ data.user.phone }}')"> Phone number
+                            </label><br>
+                            <label>
+                                <input type="radio" name="field_to_change" value="{{ data.user.job_title }}" onclick="updateInput('{{ data.user.job_title }}')"> Job title
+                            </label><br>
+                            <label>
+                                <input type="radio" name="field_to_change" value="{{ data.user.addres }}" onclick="updateInput('{{ data.user.addres }}')"> Mailing address
+                            </label>
                         </div>
                     </div>
-                    <input type="button" class="save_popup" value="SAVE">
+                    <input type="text" id="field_value" class="profile_input" placeholder="Select field to change" name="updated_value">
+                    <input type="hidden" id="selected_field" name="selected_field">
+                    <input type="submit" class="save_popup" value="SAVE">
                 </form>
             </div>
             <div class="my_profile_info_container">
@@ -119,43 +107,7 @@
                                 <div class="personal_info_container">
                                     <div class="personal_data_info_container">
                                         <div class="personal_info_description">Full name</div>
-                                        <div class="personal_info_data">{{data.user[0].name}} {{data.user[0].surname}}</div>
-                                    </div>
-                                    <div class="personal_icon"></div>
-                                </div>
-                                <div class="personal_info_container">
-                                    <div class="personal_info_container">
-                                        <div class="personal_info_description">Email address</div>
-                                        <div class="personal_info_data">{{data.user[0].email}}</div>
-                                    </div>
-                                    <div class="personal_icon"></div>
-                                </div>
-                                <div class="personal_info_container">
-                                    <div class="personal_info_container">
-                                        <div class="personal_info_description">Date of Birth</div>
-                                        <div class="personal_info_data">{{data.user[0].bdate}}</div>
-                                    </div>
-                                    <div class="personal_icon"></div>
-                                </div>
-                                <div class="personal_info_container">
-                                    <div class="personal_info_container">
-                                        <div class="personal_info_description">Address</div>
-                                        <div class="personal_info_data">{{data.user[0].address}}</div>
-                                    </div>
-                                    <div class-="personal_icon"></div>
-                                </div>
-                                <div class="personal_info_container">
-                                    <div class="personal_info_container">
-                                        <div class="personal_info_description">Language</div>
-                                        <div class="personal_info_data">{{data.user[0].language}}</div>
-                                    </div>
-                                    <div class="personal_icon"></div>
-                                </div>
-                            {% else %}
-                                <div class="personal_info_container">
-                                    <div class="personal_data_info_container">
-                                        <div class="personal_info_description">Full name</div>
-                                        <div class="personal_info_data">{{data.user[0].name}} {{data.user[0].surname}}</div>
+                                        <div class="personal_info_data">{{data.user.lastname}} {{data.user.firstname}}</div>
                                     </div>
                                     <div class="personal_icon">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12C10.9 12 9.95833 11.6083 9.175 10.825C8.39167 10.0417 8 9.1 8 8C8 6.9 8.39167 5.95833 9.175 5.175C9.95833 4.39167 10.9 4 12 4C13.1 4 14.0417 4.39167 14.825 5.175C15.6083 5.95833 16 6.9 16 8C16 9.1 15.6083 10.0417 14.825 10.825C14.0417 11.6083 13.1 12 12 12ZM4 20V17.2C4 16.6333 4.14583 16.1125 4.4375 15.6375C4.72917 15.1625 5.11667 14.8 5.6 14.55C6.63333 14.0333 7.68333 13.6458 8.75 13.3875C9.81667 13.1292 10.9 13 12 13C13.1 13 14.1833 13.1292 15.25 13.3875C16.3167 13.6458 17.3667 14.0333 18.4 14.55C18.8833 14.8 19.2708 15.1625 19.5625 15.6375C19.8542 16.1125 20 16.6333 20 17.2V20H4ZM6 18H18V17.2C18 17.0167 17.9542 16.85 17.8625 16.7C17.7708 16.55 17.65 16.4333 17.5 16.35C16.6 15.9 15.6917 15.5625 14.775 15.3375C13.8583 15.1125 12.9333 15 12 15C11.0667 15 10.1417 15.1125 9.225 15.3375C8.30833 15.5625 7.4 15.9 6.5 16.35C6.35 16.4333 6.22917 16.55 6.1375 16.7C6.04583 16.85 6 17.0167 6 17.2V18ZM12 10C12.55 10 13.0208 9.80417 13.4125 9.4125C13.8042 9.02083 14 8.55 14 8C14 7.45 13.8042 6.97917 13.4125 6.5875C13.0208 6.19583 12.55 6 12 6C11.45 6 10.9792 6.19583 10.5875 6.5875C10.1958 6.97917 10 7.45 10 8C10 8.55 10.1958 9.02083 10.5875 9.4125C10.9792 9.80417 11.45 10 12 10Z" fill="#0664d6"/></svg>
@@ -163,26 +115,26 @@
                                 </div>
                                 <div class="personal_info_container">
                                     <div class="personal_data_info_container">
-                                        <div class="personal_info_description">Contactable at</div>
-                                        <div class="personal_info_data">{{data.user[0].email}}</div>
+                                        <div class="personal_info_description">Email address</div>
+                                        <div class="personal_info_data">{{data.user.email}}</div>
                                     </div>
                                     <div class="personal_icon">
-                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.3332 4.99967C18.3332 4.08301 17.5832 3.33301 16.6665 3.33301H3.33317C2.4165 3.33301 1.6665 4.08301 1.6665 4.99967M18.3332 4.99967V14.9997C18.3332 15.9163 17.5832 16.6663 16.6665 16.6663H3.33317C2.4165 16.6663 1.6665 15.9163 1.6665 14.9997V4.99967M18.3332 4.99967L9.99984 10.833L1.6665 4.99967" stroke="#0664d6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_1782_483)"><path d="M13.3333 6.66666V10.8333C13.3333 11.4964 13.5967 12.1323 14.0655 12.6011C14.5344 13.0699 15.1703 13.3333 15.8333 13.3333C16.4963 13.3333 17.1322 13.0699 17.6011 12.6011C18.0699 12.1323 18.3333 11.4964 18.3333 10.8333V9.99999C18.3332 8.11918 17.6968 6.29372 16.5277 4.82043C15.3586 3.34715 13.7254 2.31268 11.8938 1.88524C10.0622 1.4578 8.13991 1.66253 6.43942 2.46613C4.73894 3.26974 3.3603 4.62495 2.52768 6.31143C1.69507 7.9979 1.45744 9.91644 1.85344 11.7551C2.24944 13.5937 3.25578 15.2444 4.70883 16.4385C6.16187 17.6327 7.97616 18.3003 9.85669 18.3326C11.7372 18.365 13.5734 17.7602 15.0666 16.6167M13.3333 9.99999C13.3333 11.8409 11.8409 13.3333 9.99997 13.3333C8.15902 13.3333 6.66664 11.8409 6.66664 9.99999C6.66664 8.15904 8.15902 6.66666 9.99997 6.66666C11.8409 6.66666 13.3333 8.15904 13.3333 9.99999Z" stroke="#0664d6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_1782_483"><rect width="20" height="20" fill="white"/></clipPath></defs></svg>
                                     </div>
                                 </div>
                                 <div class="personal_info_container">
                                     <div class="personal_data_info_container">
-                                        <div class="personal_info_description">Date of Birth</div>
-                                        <div class="personal_info_data">{{data.user[0].bdate}}</div>
+                                        <div class="personal_info_description">Position</div>
+                                        <div class="personal_info_data">{{data.user.job_title}}</div>
                                     </div>
                                     <div class="personal_icon">
-                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="20" height="20" fill="transparent"/><path d="M13.3333 1.66699V5.00033M6.66667 1.66699V5.00033M2.5 8.33366H17.5M4.16667 3.33366H15.8333C16.7538 3.33366 17.5 4.07985 17.5 5.00033V16.667C17.5 17.5875 16.7538 18.3337 15.8333 18.3337H4.16667C3.24619 18.3337 2.5 17.5875 2.5 16.667V5.00033C2.5 4.07985 3.24619 3.33366 4.16667 3.33366Z" stroke="#0664d6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.3333 17.5V4.16667C13.3333 3.72464 13.1577 3.30072 12.8451 2.98816C12.5326 2.67559 12.1087 2.5 11.6666 2.5H8.33329C7.89127 2.5 7.46734 2.67559 7.15478 2.98816C6.84222 3.30072 6.66663 3.72464 6.66663 4.16667V17.5M3.33329 5.83333H16.6666C17.5871 5.83333 18.3333 6.57953 18.3333 7.5V15.8333C18.3333 16.7538 17.5871 17.5 16.6666 17.5H3.33329C2.41282 17.5 1.66663 16.7538 1.66663 15.8333V7.5C1.66663 6.57953 2.41282 5.83333 3.33329 5.83333Z" stroke="#0664d6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                     </div>
                                 </div>
                                 <div class="personal_info_container">
                                     <div class="personal_data_info_container">
                                         <div class="personal_info_description">Address</div>
-                                        <div class="personal_info_data">{{data.user[0].address}}</div>
+                                        <div class="personal_info_data">{{data.user.addres}}</div>
                                     </div>
                                     <div class="personal_icon">
                                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_1737_461)"><path d="M18.3332 10.0003C18.3332 14.6027 14.6022 18.3337 9.99984 18.3337M18.3332 10.0003C18.3332 5.39795 14.6022 1.66699 9.99984 1.66699M18.3332 10.0003H1.6665M9.99984 18.3337C5.39746 18.3337 1.6665 14.6027 1.6665 10.0003M9.99984 18.3337C12.0842 16.0517 13.2688 13.0903 13.3332 10.0003C13.2688 6.91035 12.0842 3.94895 9.99984 1.66699M9.99984 18.3337C7.91544 16.0517 6.73088 13.0903 6.6665 10.0003C6.73088 6.91035 7.91544 3.94895 9.99984 1.66699M1.6665 10.0003C1.6665 5.39795 5.39746 1.66699 9.99984 1.66699" stroke="#0664d6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_1737_461"><rect width="20" height="20" fill="white"/></clipPath></defs></svg>
@@ -190,13 +142,14 @@
                                 </div>
                                 <div class="personal_info_container">
                                     <div class="personal_data_info_container">
-                                        <div class="personal_info_description">Language</div>
-                                        <div class="personal_info_data">{{data.user[0].language}}</div>
+                                        <div class="personal_info_description">Phone</div>
+                                        <div class="personal_info_data">{{data.user.phone}}</div>
                                     </div>
                                     <div class="personal_icon">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22L11 19H4C3.45 19 2.97917 18.8042 2.5875 18.4125C2.19583 18.0208 2 17.55 2 17V4C2 3.45 2.19583 2.97917 2.5875 2.5875C2.97917 2.19583 3.45 2 4 2H10L10.875 5H20C20.5833 5 21.0625 5.1875 21.4375 5.5625C21.8125 5.9375 22 6.41667 22 7V20C22 20.55 21.8125 21.0208 21.4375 21.4125C21.0625 21.8042 20.5833 22 20 22H12ZM7.15 14.6C8.3 14.6 9.24583 14.2292 9.9875 13.4875C10.7292 12.7458 11.1 11.7833 11.1 10.6C11.1 10.4667 11.0958 10.3458 11.0875 10.2375C11.0792 10.1292 11.0583 10.0167 11.025 9.9H7.075V11.45H9.3C9.16667 11.9167 8.9125 12.2792 8.5375 12.5375C8.1625 12.7958 7.70833 12.925 7.175 12.925C6.525 12.925 5.96667 12.6917 5.5 12.225C5.03333 11.7583 4.8 11.1833 4.8 10.5C4.8 9.81667 5.03333 9.24167 5.5 8.775C5.96667 8.30833 6.525 8.075 7.175 8.075C7.475 8.075 7.75833 8.12917 8.025 8.2375C8.29167 8.34583 8.53333 8.50833 8.75 8.725L9.975 7.55C9.625 7.18333 9.20417 6.9 8.7125 6.7C8.22083 6.5 7.7 6.4 7.15 6.4C6.03333 6.4 5.07917 6.79583 4.2875 7.5875C3.49583 8.37917 3.1 9.35 3.1 10.5C3.1 11.65 3.49583 12.6208 4.2875 13.4125C5.07917 14.2042 6.03333 14.6 7.15 14.6ZM13.85 15.1L14.4 14.575C14.1667 14.2917 13.9542 14.0167 13.7625 13.75C13.5708 13.4833 13.3833 13.2 13.2 12.9L13.85 15.1ZM15.1 13.825C15.5667 13.275 15.9208 12.75 16.1625 12.25C16.4042 11.75 16.5667 11.3583 16.65 11.075H12.675L12.975 12.125H13.975C14.1083 12.375 14.2667 12.6458 14.45 12.9375C14.6333 13.2292 14.85 13.525 15.1 13.825ZM13 21H20C20.3 21 20.5417 20.9042 20.725 20.7125C20.9083 20.5208 21 20.2833 21 20V7C21 6.7 20.9083 6.45833 20.725 6.275C20.5417 6.09167 20.3 6 20 6H11.175L12.35 10.05H14.325V9H15.35V10.05H19V11.075H17.725C17.5583 11.7083 17.3083 12.325 16.975 12.925C16.6417 13.525 16.25 14.0833 15.8 14.6L18.525 17.275L17.8 18L15.1 15.3L14.2 16.225L15 19L13 21Z" fill="#0664d6"/></svg>
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_1782_467)"><path d="M12.5417 4.16665C13.3556 4.32545 14.1036 4.72353 14.69 5.30993C15.2764 5.89632 15.6745 6.64437 15.8333 7.45831M12.5417 0.833313C14.2327 1.02118 15.8096 1.77846 17.0135 2.98082C18.2174 4.18318 18.9767 5.75915 19.1667 7.44998M18.3333 14.1V16.6C18.3343 16.8321 18.2867 17.0618 18.1937 17.2744C18.1008 17.4871 17.9644 17.678 17.7934 17.8349C17.6224 17.9918 17.4205 18.1112 17.2006 18.1856C16.9808 18.2599 16.7478 18.2875 16.5167 18.2666C13.9523 17.988 11.4892 17.1118 9.32498 15.7083C7.31151 14.4289 5.60443 12.7218 4.32499 10.7083C2.91663 8.53432 2.04019 6.05914 1.76665 3.48331C1.74583 3.25287 1.77321 3.02061 1.84707 2.80133C1.92092 2.58205 2.03963 2.38055 2.19562 2.20966C2.35162 2.03877 2.54149 1.90224 2.75314 1.80875C2.9648 1.71526 3.1936 1.66686 3.42499 1.66665H5.92498C6.32941 1.66267 6.72148 1.80588 7.02812 2.06959C7.33476 2.3333 7.53505 2.69952 7.59165 3.09998C7.69717 3.90003 7.89286 4.68559 8.17499 5.44165C8.2871 5.73992 8.31137 6.06408 8.24491 6.37571C8.17844 6.68735 8.02404 6.97341 7.79998 7.19998L6.74165 8.25831C7.92795 10.3446 9.65536 12.072 11.7417 13.2583L12.8 12.2C13.0266 11.9759 13.3126 11.8215 13.6243 11.7551C13.9359 11.6886 14.26 11.7129 14.5583 11.825C15.3144 12.1071 16.0999 12.3028 16.9 12.4083C17.3048 12.4654 17.6745 12.6693 17.9388 12.9812C18.203 13.2931 18.3435 13.6913 18.3333 14.1Z" stroke="#0664d6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_1782_467"><rect width="20" height="20" fill="white"/></clipPath></defs></svg>
                                     </div>
                                 </div>
+
                             {% endif %}
                         </div>
                     </div>
@@ -207,23 +160,23 @@
                         </div>
                         <div class="letters_container">
                             <div class="sender_letter_container col-0">
-                                {% if "sender" in session %}
-                                    <div class="sender_letter_info">
+                                {% if "user" in session %}
+                                    <div class="sender_letter_info col-0">
                                         <div class="sender_date">{{data.sender[0].date}}</div>
-                                        <div class="to_do">Tap to open your message</div>
+                                        <div id="to_do" class="to_do col-0">{{data.sender[0].message}}</div>
                                         <div class="sender_small_info">
                                             <div class="sender_full_name_container">
                                                 <div class="sender_name">{{data.sender[0].name}}</div>
                                                 <div class="sender_second_name">{{data.sender[0].surname}}</div>
                                             </div>
-                                            {% if data.sender[0].photo in [None, '', 'none'] %}
+                                            {% if data.sender[0].url_image in [None, '', 'none'] %}
                                                 <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
                                             {% else %}
                                                 <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
                                             {% endif %}
                                             <div class="sender_popup">
                                                 <form id="sender_form" action="/action_page.php" class="senderform_container">
-                                                    {% if data.sender[0].photo in [None, '', 'none'] %}   
+                                                    {% if data.sender[0].url_image in [None, '', 'none'] %}   
                                                         <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
                                                     {% else %}
                                                         <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
@@ -240,25 +193,29 @@
                                     <div id="letter_text_container" class="letter_text_container col-0" style="display: none;">
                                         <div class="text_area_box">
                                             <textarea rows="7" colls="300" name="description" class="text_area_comment" placeholder="Your text here" readonly>{{data.sender[0].message}}</textarea>
+                                        </div>
+                                        <div class="letter_answer_container">
+                                            <input type="text" placeholder="Write your answer" class="letter_answer">
+                                            <svg class="send" type="button" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_1802_469)"><path d="M18.3333 1.66669L9.16663 10.8334M18.3333 1.66669L12.5 18.3334L9.16663 10.8334M18.3333 1.66669L1.66663 7.50002L9.16663 10.8334" stroke="#1E1E1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_1802_469"><rect width="20" height="20" fill="white"/></clipPath></defs></svg>
                                         </div>
                                     </div>
                                 {% else %}
-                                    <div class="sender_letter_info">
+                                    <div class="sender_letter_info col-0">
                                         <div class="sender_date">{{data.sender[0].date}}</div>
-                                        <div class="to_do">Tap to open your message</div>
+                                        <div id="to_do" class="to_do col-0">{{data.sender[0].message}}</div>
                                         <div class="sender_small_info">
                                             <div class="sender_full_name_container">
                                                 <div class="sender_name">{{data.sender[0].name}}</div>
                                                 <div class="sender_second_name">{{data.sender[0].surname}}</div>
                                             </div>
-                                            {% if data.sender[0].photo in [None, '', 'none'] %}
+                                            {% if data.sender[0].url_image in [None, '', 'none'] %}
                                                 <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
                                             {% else %}
                                                 <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
                                             {% endif %}
                                             <div class="sender_popup">
                                                 <form id="sender_form" action="/action_page.php" class="senderform_container">
-                                                    {% if data.sender[0].photo in [None, '', 'none'] %}   
+                                                    {% if data.sender[0].url_image in [None, '', 'none'] %}   
                                                         <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
                                                     {% else %}
                                                         <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
@@ -275,28 +232,32 @@
                                     <div id="letter_text_container" class="letter_text_container col-0" style="display: none;">
                                         <div class="text_area_box">
                                             <textarea rows="7" colls="300" name="description" class="text_area_comment" placeholder="Your text here" readonly>{{data.sender[0].message}}</textarea>
+                                        </div>
+                                        <div class="letter_answer_container">
+                                            <input type="text" placeholder="Write your answer" class="letter_answer">
+                                            <svg class="send" type="button" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_1802_469)"><path d="M18.3333 1.66669L9.16663 10.8334M18.3333 1.66669L12.5 18.3334L9.16663 10.8334M18.3333 1.66669L1.66663 7.50002L9.16663 10.8334" stroke="#1E1E1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_1802_469"><rect width="20" height="20" fill="white"/></clipPath></defs></svg>
                                         </div>
                                     </div>
                                 {% endif %}
                             </div>
                             <div class="sender_letter_container col-1">
                                 {% if "sender" in session %}
-                                    <div class="sender_letter_info">
+                                    <div class="sender_letter_info col-1">
                                         <div class="sender_date">{{data.sender[0].date}}</div>
-                                        <div class="to_do">Tap to open your message</div>
+                                        <div id="to_do" class="to_do col-1">{{data.sender[0].message}}</div>
                                         <div class="sender_small_info">
                                             <div class="sender_full_name_container">
                                                 <div class="sender_name">{{data.sender[0].name}}</div>
                                                 <div class="sender_second_name">{{data.sender[0].surname}}</div>
                                             </div>
-                                            {% if data.sender[0].photo in [None, '', 'none'] %}
+                                            {% if data.sender[0].url_image in [None, '', 'none'] %}
                                                 <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
                                             {% else %}
                                                 <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
                                             {% endif %}
                                             <div class="sender_popup">
                                                 <form id="sender_form" action="/action_page.php" class="senderform_container">
-                                                    {% if data.sender[0].photo in [None, '', 'none'] %}   
+                                                    {% if data.sender[0].url_image in [None, '', 'none'] %}   
                                                         <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
                                                     {% else %}
                                                         <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
@@ -313,25 +274,29 @@
                                     <div id="letter_text_container" class="letter_text_container col-1" style="display: none;">
                                         <div class="text_area_box">
                                             <textarea rows="7" colls="300" name="description" class="text_area_comment" placeholder="Your text here" readonly>{{data.sender[0].message}}</textarea>
+                                        </div>
+                                        <div class="letter_answer_container">
+                                            <input type="text" placeholder="Write your answer" class="letter_answer">
+                                            <svg class="send" type="button" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_1802_469)"><path d="M18.3333 1.66669L9.16663 10.8334M18.3333 1.66669L12.5 18.3334L9.16663 10.8334M18.3333 1.66669L1.66663 7.50002L9.16663 10.8334" stroke="#1E1E1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_1802_469"><rect width="20" height="20" fill="white"/></clipPath></defs></svg>
                                         </div>
                                     </div>
                                 {% else %}
-                                    <div class="sender_letter_info">
+                                    <div class="sender_letter_info col-1">
                                         <div class="sender_date">{{data.sender[0].date}}</div>
-                                        <div class="to_do">Tap to open your message</div>
+                                        <div id="to_do" class="to_do col-1">{{data.sender[0].message}}</div>
                                         <div class="sender_small_info">
                                             <div class="sender_full_name_container">
                                                 <div class="sender_name">{{data.sender[0].name}}</div>
                                                 <div class="sender_second_name">{{data.sender[0].surname}}</div>
                                             </div>
-                                            {% if data.sender[0].photo in [None, '', 'none'] %}
+                                            {% if data.sender[0].url_image in [None, '', 'none'] %}
                                                 <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
                                             {% else %}
                                                 <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
                                             {% endif %}
                                             <div class="sender_popup">
                                                 <form id="sender_form" action="/action_page.php" class="senderform_container">
-                                                    {% if data.sender[0].photo in [None, '', 'none'] %}   
+                                                    {% if data.sender[0].url_image in [None, '', 'none'] %}   
                                                         <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
                                                     {% else %}
                                                         <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
@@ -348,6 +313,10 @@
                                     <div id="letter_text_container" class="letter_text_container col-1" style="display: none;">
                                         <div class="text_area_box">
                                             <textarea rows="7" colls="300" name="description" class="text_area_comment" placeholder="Your text here" readonly>{{data.sender[0].message}}</textarea>
+                                        </div>
+                                        <div class="letter_answer_container">
+                                            <input type="text" placeholder="Write your answer" class="letter_answer">
+                                            <svg class="send" type="button" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_1802_469)"><path d="M18.3333 1.66669L9.16663 10.8334M18.3333 1.66669L12.5 18.3334L9.16663 10.8334M18.3333 1.66669L1.66663 7.50002L9.16663 10.8334" stroke="#1E1E1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_1802_469"><rect width="20" height="20" fill="white"/></clipPath></defs></svg>
                                         </div>
                                     </div>
                                 {% endif %}
@@ -372,14 +341,14 @@
                                             <div class="sender_name">{{data.sender[0].name}}</div>
                                             <div class="sender_second_name">{{data.sender[0].surname}}</div>
                                         </div>
-                                        {% if data.sender[0].photo in [None, '', 'none'] %}
+                                        {% if data.sender[0].url_image in [None, '', 'none'] %}
                                             <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
                                         {% else %}
                                             <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
                                         {% endif %}
                                         <div class="sender_popup">
                                             <form id="sender_form" action="/action_page.php" class="senderform_container">
-                                                {% if data.sender[0].photo in [None, '', 'none'] %}   
+                                                {% if data.sender[0].url_image in [None, '', 'none'] %}   
                                                     <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
                                                 {% else %}
                                                     <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
@@ -399,14 +368,14 @@
                                             <div class="sender_name">{{data.sender[0].name}}</div>
                                             <div class="sender_second_name">{{data.sender[0].surname}}</div>
                                         </div>
-                                        {% if data.sender[0].photo in [None, '', 'none'] %}
+                                        {% if data.sender[0].url_image in [None, '', 'none'] %}
                                             <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
                                         {% else %}
                                             <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
                                         {% endif %}
                                         <div class="sender_popup">
                                             <form id="sender_form" action="/action_page.php" class="senderform_container">
-                                                {% if data.sender[0].photo in [None, '', 'none'] %}   
+                                                {% if data.sender[0].url_image in [None, '', 'none'] %}   
                                                     <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
                                                 {% else %}
                                                     <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
@@ -433,14 +402,14 @@
                                             <div class="sender_name">{{data.sender[0].name}}</div>
                                             <div class="sender_second_name">{{data.sender[0].surname}}</div>
                                         </div>
-                                        {% if data.sender[0].photo in [None, '', 'none'] %}
+                                        {% if data.sender[0].url_image in [None, '', 'none'] %}
                                             <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
                                         {% else %}
                                             <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
                                         {% endif %}
                                         <div class="sender_popup">
                                             <form id="sender_form" action="/action_page.php" class="senderform_container">
-                                                {% if data.sender[0].photo in [None, '', 'none'] %}   
+                                                {% if data.sender[0].url_image in [None, '', 'none'] %}   
                                                     <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
                                                 {% else %}
                                                     <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
@@ -460,14 +429,14 @@
                                             <div class="sender_name">{{data.sender[0].name}}</div>
                                             <div class="sender_second_name">{{data.sender[0].surname}}</div>
                                         </div>
-                                        {% if data.sender[0].photo in [None, '', 'none'] %}
+                                        {% if data.sender[0].url_image in [None, '', 'none'] %}
                                             <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
                                         {% else %}
                                             <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
                                         {% endif %}
                                         <div class="sender_popup">
                                             <form id="sender_form" action="/action_page.php" class="senderform_container">
-                                                {% if data.sender[0].photo in [None, '', 'none'] %}   
+                                                {% if data.sender[0].url_image in [None, '', 'none'] %}   
                                                     <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
                                                 {% else %}
                                                     <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
@@ -494,14 +463,14 @@
                                             <div class="sender_name">{{data.sender[0].name}}</div>
                                             <div class="sender_second_name">{{data.sender[0].surname}}</div>
                                         </div>
-                                        {% if data.sender[0].photo in [None, '', 'none'] %}
+                                        {% if data.sender[0].url_image in [None, '', 'none'] %}
                                             <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
                                         {% else %}
                                             <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
                                         {% endif %}
                                         <div class="sender_popup">
                                             <form id="sender_form" action="/action_page.php" class="senderform_container">
-                                                {% if data.sender[0].photo in [None, '', 'none'] %}   
+                                                {% if data.sender[0].url_image in [None, '', 'none'] %}   
                                                     <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
                                                 {% else %}
                                                     <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
@@ -521,14 +490,14 @@
                                             <div class="sender_name">{{data.sender[0].name}}</div>
                                             <div class="sender_second_name">{{data.sender[0].surname}}</div>
                                         </div>
-                                        {% if data.sender[0].photo in [None, '', 'none'] %}
+                                        {% if data.sender[0].url_image in [None, '', 'none'] %}
                                             <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
                                         {% else %}
                                             <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
                                         {% endif %}
                                         <div class="sender_popup">
                                             <form id="sender_form" action="/action_page.php" class="senderform_container">
-                                                {% if data.sender[0].photo in [None, '', 'none'] %}   
+                                                {% if data.sender[0].url_image in [None, '', 'none'] %}   
                                                     <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
                                                 {% else %}
                                                     <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
@@ -555,14 +524,14 @@
                                             <div class="sender_name">{{data.sender[0].name}}</div>
                                             <div class="sender_second_name">{{data.sender[0].surname}}</div>
                                         </div>
-                                        {% if data.sender[0].photo in [None, '', 'none'] %}
+                                        {% if data.sender[0].url_image in [None, '', 'none'] %}
                                             <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
                                         {% else %}
                                             <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
                                         {% endif %}
                                         <div class="sender_popup">
                                             <form id="sender_form" action="/action_page.php" class="senderform_container">
-                                                {% if data.sender[0].photo in [None, '', 'none'] %}   
+                                                {% if data.sender[0].url_image in [None, '', 'none'] %}   
                                                     <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
                                                 {% else %}
                                                     <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
@@ -582,14 +551,14 @@
                                             <div class="sender_name">{{data.sender[0].name}}</div>
                                             <div class="sender_second_name">{{data.sender[0].surname}}</div>
                                         </div>
-                                        {% if data.sender[0].photo in [None, '', 'none'] %}
+                                        {% if data.sender[0].url_image in [None, '', 'none'] %}
                                             <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
                                         {% else %}
                                             <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
                                         {% endif %}
                                         <div class="sender_popup">
                                             <form id="sender_form" action="/action_page.php" class="senderform_container">
-                                                {% if data.sender[0].photo in [None, '', 'none'] %}   
+                                                {% if data.sender[0].url_image in [None, '', 'none'] %}   
                                                     <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
                                                 {% else %}
                                                     <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
@@ -616,14 +585,14 @@
                                             <div class="sender_name">{{data.sender[0].name}}</div>
                                             <div class="sender_second_name">{{data.sender[0].surname}}</div>
                                         </div>
-                                        {% if data.sender[0].photo in [None, '', 'none'] %}
+                                        {% if data.sender[0].url_image in [None, '', 'none'] %}
                                             <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
                                         {% else %}
                                             <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
                                         {% endif %}
                                         <div class="sender_popup">
                                             <form id="sender_form" action="/action_page.php" class="senderform_container">
-                                                {% if data.sender[0].photo in [None, '', 'none'] %}   
+                                                {% if data.sender[0].url_image in [None, '', 'none'] %}   
                                                     <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
                                                 {% else %}
                                                     <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
@@ -643,14 +612,14 @@
                                             <div class="sender_name">{{data.sender[0].name}}</div>
                                             <div class="sender_second_name">{{data.sender[0].surname}}</div>
                                         </div>
-                                        {% if data.sender[0].photo in [None, '', 'none'] %}
+                                        {% if data.sender[0].url_image in [None, '', 'none'] %}
                                             <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
                                         {% else %}
                                             <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
                                         {% endif %}
                                         <div class="sender_popup">
                                             <form id="sender_form" action="/action_page.php" class="senderform_container">
-                                                {% if data.sender[0].photo in [None, '', 'none'] %}   
+                                                {% if data.sender[0].url_image in [None, '', 'none'] %}   
                                                     <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
                                                 {% else %}
                                                     <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
