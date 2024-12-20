@@ -2,6 +2,10 @@ from flask import Flask, render_template, jsonify, redirect, flash, session, req
 from models import *
 from testing_db import *
 import json
+import mysql.connector
+# pip install mysql
+# pip install mysql-connector-python-rf
+# pip install MySQL-connector-python
 
 app = Flask(__name__)
 app.secret_key = 'Asdasd@E!d12'
@@ -36,7 +40,32 @@ def before_request():
 ''' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ '''
 '''   check login user before every request end   '''
 ''' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ '''
-                      
+            
+            
+''' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ '''
+'''   create context processor, with all session data start  '''
+''' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ '''
+from flask import session
+
+@app.context_processor
+def utility_processor():
+    session_data = {
+        "profile_info": {
+            "url_image": session["user"]["url_image"] if "user" in session and "url_image" in session["user"] else "",
+            "first_name": session["user"]["first_name"] if "user" in session and "first_name" in session["user"] else "",
+            "last_name": session["user"]["last_name"] if "user" in session and "last_name" in session["user"] else "",
+        },
+        "login": "user" in session, 
+    }
+    return {"session": session_data}
+
+            
+            
+''' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ '''
+'''   create context processor, with all session data end  '''
+''' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ '''
+
+            
 @app.route('/components')
 def components_view():
     return render_template('pages/components.html')
@@ -52,29 +81,35 @@ def create_user_view():
 
 @app.route('/', methods=['GET', 'POST'])
 def settings_view():
-    user = {
-        'image': 'https://taxcanada.accountants/static/images/base/full_logo.png',
-        'name': 'John', 
-        'surname': 'Doe',
-        'organization': 'Company A',
-        'email': 'john@example.com',
-        'phone': '123-456-7890',
-        'cur_password': '243514',
-        'personal_number': '65341367814355081',
-        'skills': ['JavaScript', 'HTML', 'CSS', 'Flask', 'Java'],
-    }
-    
-    full_name = user['name'] + ' ' + user['surname']
-    
-    data = {
-        # "callendar_data": callendar_data,
-        "user": user,
-        # "tasks": tasks,
-        # "unmess": unmess,
-        # "leads": leads,
-    }
+    if "login" in session and session["login"]:
+        user_session = session["user"]
 
-    return render_template('pages/settings.html', data=data)
+        with app.app_context():
+            user = User_details.query.filter_by(
+                firstname=user_session["first_name"], 
+                lastname=user_session["last_name"]
+            ).first()
+        
+        if user:
+            user_data = {
+                'url_image': user.url_image,
+                'name': user.firstname,
+                'surname': user.lastname,
+                'organization': user.job_title,
+                'email': user.email,
+                'phone': user.phone,
+                'cur_password': user.password,
+                'personal_number': 'EMPTY', 
+                'full_name' : user.firstname + " " + user.lastname
+            }
+
+            data = {
+                "user": user_data,
+            }
+            return render_template('pages/settings.html', data=data)
+        
+    return redirect(url_for('login_view'))
+
 
 @app.route('/login')
 def login_view():
@@ -95,7 +130,7 @@ def checkRegisterView():
             data_surname  = data_dict["reg-surname"]
             data_job      = data_dict["reg-job"]
             data_address  = data_dict["reg-address"]
-            data_phone    = "000000"
+            data_phone    = data_dict["reg-phone"]
             
             # перевірка чи email вже був зареєстрований
             with app.app_context():
@@ -114,7 +149,6 @@ def checkRegisterView():
                         job_title   = data_job,
                         phone       = data_phone,
                         addres      = data_address,
-                        url_image   = "",
                         password    = data_password,
                     )
                     db.session.add(new_user_details)
@@ -130,8 +164,9 @@ def checkRegisterView():
                     json_data = {'success': True, 'message': 'Working, all exist, all good', "url_to_redirect": "/"}
                     return jsonify(json_data), 200
             
-        except:
-            json_data = {'success': False, 'message': 'POST method not valid'}
+        except Exception as e:
+            print("Error:", str(e))
+            json_data = {'success': False, 'message': 'An error occurred: ' + str(e)}
 
             return jsonify(json_data), 500
     else:
@@ -149,7 +184,6 @@ def checkLoginView():
             data_password = data_dict.get("log-pass")
             
             with app.app_context():
-                # user = next((user for user in users_db if user.email == data_email), None)
                 user = User_details.query.filter_by(email=data_email).first()
                 
                 if not user:
@@ -243,10 +277,90 @@ def my_profile_view():
 
     return render_template('pages/my_profile.html', data=data)
 
-if __name__ == "__main__":
-    with  app.app_context():
+@app.route('/logout')
+def logout_view():
+    session.clear()
+    print("logout succesful")
+    return redirect(url_for('login_view'))
+
+
+
+''' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ '''
+'''   check DB is exist or create and insert DB start   '''
+''' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ '''
+
+
+def checkDBExist():
+    # Create a connection to the MySQL server
+    conn = mysql.connector.connect(
+        host=host,
+        user=user,
+        password=password,
+        auth_plugin='mysql_native_password'
+    )
+
+    # Create a cursor object to execute SQL statements
+    mycursor = conn.cursor()
+
+    mycursor.execute("SHOW DATABASES")
+    names_db = mycursor.fetchall()
+
+    database_exists = False
+    for name_db in names_db:
+        if database in name_db:
+            database_exists = True
+            break
+    
+    conn.close()
+    return database_exists
+
+def createDefaultDB():
+    # Create a connection to the MySQL server
+    conn = mysql.connector.connect(
+        host=host,
+        user=user,
+        password=password,
+        auth_plugin='mysql_native_password'
+    )
+
+    # Create a cursor object to execute SQL statements
+    mycursor = conn.cursor()
+
+    mycursor.execute("CREATE DATABASE tax_crm")
+    names_db = mycursor.fetchall()
+    conn.close()
+
+
+def is_database_empty():
+    tables_to_check = [User_details, Lead_details]
+    for table in tables_to_check:
+        if not db.session.query(table).first():
+            return True
+    return False
+
+def check_or_create_DB():
+    if not checkDBExist():
+        createDefaultDB()
         db.create_all()
+        
+    if is_database_empty():
+        print("FILLING DATABASE")
+        insertToAllTables()
+    else:
+        print("DATABASE ALREADY FILLED")
 
-    insertToAllTables()
 
-    app.run(debug=True, port=8088, host='0.0.0.0')
+
+''' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ '''
+'''   check DB is exist or create and insert DB end   '''
+''' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ '''
+
+
+
+if __name__ == "__main__":
+    with app.app_context():
+       check_or_create_DB()
+        
+
+    app.run(debug=True, port=8080, host='0.0.0.0')
+

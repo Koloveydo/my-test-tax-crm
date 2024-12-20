@@ -1,34 +1,31 @@
-/* @font-face {
-    font-family: 'Montserrat-ExtraLight';
-    src: url('../fonts/Montserrat/static/Montserrat-ExtraLight.ttf');
+@font-face {
+    font-family: 'JosefinSans-ExtraLight';
+    src: url('../fonts/Josefin_Sans/static/JosefinSans-ExtraLight.ttf');
 }
 @font-face {
-    font-family: 'Montserrat-Light';
-    src: url('../fonts/Montserrat/static/Montserrat-Light.ttf');
-} */
-/* @font-face {
+    font-family: 'JosefinSans-Light';
+    src: url('../fonts/Josefin_Sans/static/JosefinSans-Light.ttf');
+}
+@font-face {
     font-family: 'Josefin Sans';
-    src: url({{ url_for('static', filename='fonts/Josefin_Sans/static/JosefinSans-Regular.ttf'}});
-} */
-/* @font-face {
-    font-family: 'Montserrat-Medium';
-    src: url('../fonts/Montserrat/static/Montserrat-Medium.ttf');
+    src: url('../fonts/Josefin_Sans/static/JosefinSans-Regular.ttf');
 }
 @font-face {
-    font-family: 'Montserrat-SemiBold';
-    src: url('../fonts/Montserrat/static/Montserrat-SemiBold.ttf');
+    font-family: 'JosefinSans-Medium';
+    src: url('../fonts/Josefin_Sans/static/JosefinSans-Medium.ttf');
 }
 @font-face {
-    font-family: 'Montserrat-Bold';
-    src: url('../fonts/Montserrat/static/Montserrat-Bold.ttf');
+    font-family: 'JosefinSans-SemiBold';
+    src: url('../fonts/Josefin_Sans/static/JosefinSans-SemiBold.ttf');
 }
 @font-face {
-    font-family: 'Montserrat-ExtraBold';
-    src: url('../fonts/Montserrat/static/Montserrat-ExtraBold.ttf');
-} */
+    font-family: 'JosefinSans-Bold';
+    src: url('../fonts/Josefin_Sans/static/JosefinSans-Bold.ttf');
+}
+
 
 * {
-	font-family: 'Josefin Sans', 'Times New Roman', Times, serif;
+	font-family: 'Josefin Sans', sans-serif;
 	padding: 0;
 	margin: 0;
     text-decoration: none;

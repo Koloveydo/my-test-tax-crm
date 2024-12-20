@@ -32,7 +32,7 @@ header {
     position: relative;
     transition: all .3s ease-in-out;
     cursor: pointer;
-	padding: 4px 10px;
+	margin: 4px 10px;
 }
 .right_header_menu{
     list-style: none;
@@ -103,7 +103,7 @@ header {
 .phone_menu_content {
     position: absolute;
     top: 62px;
-    width: 200px;
+    width: 350px;
 	right: 0;
     height: calc(100vh - 62px);
     background-color: #F6F6F6;
@@ -114,6 +114,54 @@ header {
     transition: all .5s ease-in-out;
 	transform: translateX(100%);
 	z-index: 26;
+}
+.phone_menu_logo{
+    display: flex;
+    padding: 20px 20px 10px 20px;
+    justify-content: left;
+    width: 100%;
+    border-bottom: 1px solid #9c9c9c;
+}
+.menu_profile{
+    height: 60px;
+    width: 60px;
+}
+#MobileprofileInitials{
+    font-size: 20px;
+    font-weight: bold;
+}
+.phone_menu_profile .content{
+    display: flex;
+    align-items: center;
+    padding: 15px 0px 15px 15px;
+    gap: 20px;
+    border-bottom: 1px solid #9c9c9c;
+}
+
+.phone_menu_profile .txt{
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    gap: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 18px;
+}
+.phone_menu_profile .txcrm_txt{
+    color: #4B89D9;
+}
+.phone_menu_profile .about_txt{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: left;
+}
+.about_txt .job_title{
+    font-size: 12px;
+    color: #5d626c;
+}
+.about_txt .name{
+    font-weight: bold;
 }
 .header_menu_button.active {
     display: none;
@@ -139,12 +187,12 @@ header {
 }
 .phone_menu_content ul {
     display: flex;
-    padding: 50px 10px;
+    padding: 20px 10px;
     width: 100%;
     height: 100%;
     flex-direction: column;
     justify-content: flex-start;
-    gap: 15%;
+    gap: 5%;
 }
 .phone_menu_content ul li{
     display: flex;
@@ -152,7 +200,42 @@ header {
     align-items: center;
     justify-content: left;
 }
+.fall_down_options{
+    display: flex;
+    flex-direction: column;
+}
+.fall_down_options .options_menu {
+    display: none;
+    opacity: 0; 
+    pointer-events: none; 
+    padding: 0 0 0 30px;
+    gap: 10px;
+    transition: opacity 0.3s ease;
+}
 
+.fall_down_options .options_menu.active {
+    display: flex;
+    opacity: 1; 
+    pointer-events: auto; 
+}
+.fall_down_arrow{
+    transition: .3s;
+}
+.fall_down_arrow.active{
+    transform: rotate(180deg);
+}
+
+.fall_down_options .options_menu li a{
+    color: #868686;
+
+}
+.fall_down_options .fall_down_text{
+    display: flex;
+    width: 100%;
+    justify-content: left;
+    align-items: center;
+    gap: 5px;
+}
 .fall_down_menu:hover .fall_down_menu_content,
 .fall_down_menu:hover .contacts_fall_down_menu, 
 .fall_down_menu:active .fall_down_menu_content,
@@ -172,6 +255,10 @@ header {
 .contacts_fall_down_menu ul li:hover a {
     color: #ffffff;
 }
+
+body.dark-theme .name{
+    color: #e5e5e5;
+}
 body.dark-theme .header{
     box-shadow: 0 4px 4px 0 #3d3d3d;
 }
@@ -187,7 +274,9 @@ body.dark-theme .Dekstop_logo_svg,
 body.dark-theme .email_svg,
 body.dark-theme .phone_menu_content li a,
 body.dark-theme .header_menu_button,
-body.dark-theme .close_menu{
+body.dark-theme .close_menu,
+body.dark-theme .phone_menu_content li p,
+body.dark-theme .phone_menu_content li svg{
     color: #e5e5e5;
 }
 body.dark-theme .email_svg:hover,
@@ -206,6 +295,19 @@ body.dark-theme .fall_down_menu_content ul li:hover a,
 body.dark-theme .contacts_fall_down_menu ul li:hover a {
     color: #ffffff;
 }
+.phone_menu_logout{
+    padding-top: 10px;
+    border-top: 1px solid #9c9c9c;
+}
+
+
+.phone_menu_content ul .phone_menu_logout,
+.phone_menu_content ul .phone_menu_logout a,
+body.dark-theme .phone_menu_content .phone_menu_logout svg,
+body.dark-theme .phone_menu_content .phone_menu_logout a{
+    color: #ff3c3c;
+}
+
 @media screen and (max-width: 1400px){
     .Dekstop_logo{
         display: none;
@@ -272,3 +374,35 @@ body.dark-theme .contacts_fall_down_menu ul li:hover a {
 		height: calc(100vh - 45px);
 	}
 }
+
+
+/* ~~~ vadym changes start ~~~ */
+li.header_profile_svg a:has(img) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 40px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    overflow: hidden;
+}
+li.header_profile_svg a:has(img) img {
+    height: 100%;
+    width: auto;
+}
+.menu_profile {
+    height: 60px;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.menu_profile img {
+    width: 100%;
+    height: auto;
+}
+
+
+/* ~~~ vadym changes end ~~~ */
