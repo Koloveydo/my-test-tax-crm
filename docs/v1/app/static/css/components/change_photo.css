@@ -44,8 +44,8 @@ body.dark-theme .change_photo p {
 }
 @media (max-width: 768px){
     .change_photo{
-        padding: 5px 13px;
-        margin-left: 30px;
+        padding: 5px 38px;
+        margin-left: 40px;
     }
     .change_photo p{
         font-size: 12px;

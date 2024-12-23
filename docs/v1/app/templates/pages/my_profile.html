@@ -14,9 +14,9 @@
                     {% if data.user.url_image in [None, '', 'none'] %}
                         <span class="card_photo">{{ data.user.firstname[0].upper() }}{{ data.user.lastname[0].upper() }}</span>
                     {% else %}
-                        <img class="card_photo" src="{{ url_for('static', filename=data.user.photo) }}">
+                        <img class="card_photo" src="{{ data.user.url_image }}">
                     {% endif %}
-                    <button type="button" class="change_photo" id="change_photo">
+                    <button type="button" class="change_photo" id="change_photo" onclick="openPopup()">
                         <div class="inner_change_photo">
                             <p>change</p>
                         </div>
@@ -42,12 +42,39 @@
                                 <div class="add_skills_text">Choose your skills</div>
                                 <svg class="close_btn" onclick="closeFormSkills()" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.2882 2.77338C16.9628 2.44794 16.4351 2.44794 16.1097 2.77338L10.031 8.85204L3.95237 2.77338C3.62694 2.44794 3.0993 2.44794 2.77387 2.77338C2.44842 3.09881 2.44842 3.62645 2.77387 3.95189L8.8525 10.0305L2.77388 16.1091C2.44844 16.4346 2.44844 16.9622 2.77388 17.2877C3.09932 17.6131 3.62696 17.6131 3.95239 17.2877L10.031 11.209L16.1097 17.2877C16.4351 17.6131 16.9628 17.6131 17.2882 17.2877C17.6136 16.9622 17.6136 16.4346 17.2882 16.1092L11.2095 10.0305L17.2882 3.95189C17.6136 3.62645 17.6136 3.09881 17.2882 2.77338Z" fill="#6B6969"/></svg>
                             </div>
-                            <div class="checkbox-buttons">
-                                <button type="button" class="checkbox-btn" data-value="HTML">HTML</button>
-                                <button type="button" class="checkbox-btn" data-value="CSS">CSS</button>
-                                <button type="button" class="checkbox-btn" data-value="JS">JS</button>
-                                <button type="button" class="checkbox-btn" data-value="Flask">FLASK</button>
-                                <button type="button" class="checkbox-btn" data-value="MySQL">MYSQL</button>
+                            <div class="checkbox-buttons" id="skillsContainer">
+                                {% for skills in data.skills%}
+                                    {% if skills.title in ['HTML', 'html'] %}
+                                        <button type="button" class="checkbox-btn active" data-value="HTML">HTML</button>
+                                    {% else %}
+                                        <button type="button" class="checkbox-btn" data-value="HTML">HTML</button>
+                                    {% endif %}
+                                    {% if skills.title in ['CSS', 'css'] %}
+                                        <button type="button" class="checkbox-btn active" data-value="CSS">CSS</button>
+                                    {% else %}
+                                        <button type="button" class="checkbox-btn" data-value="CSS">CSS</button>
+                                    {% endif %}
+                                    {% if skills.title in ['Javascript', 'JS'] %}
+                                        <button type="button" class="checkbox-btn active" data-value="JS">JS</button>
+                                    {% else %}
+                                        <button type="button" class="checkbox-btn" data-value="JS">JS</button>
+                                    {% endif %}
+                                    {% if skills.title in ['Flask', 'flask'] %}
+                                        <button type="button" class="checkbox-btn active" data-value="Flask">FLASK</button>
+                                    {% else %}
+                                        <button type="button" class="checkbox-btn" data-value="Flask">FLASK</button>
+                                    {% endif %}
+                                    {% if skills.title in ['MySQL', 'MySql'] %}
+                                        <button type="button" class="checkbox-btn active" data-value="MySQL">MYSQL</button>
+                                    {% else %}
+                                        <button type="button" class="checkbox-btn" data-value="MySQL">MYSQL</button>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                            <div class="add_more">You can also add 5 more your skills</div>
+                            <div class="more_skills">
+                                <input type="text" class="name_new_skill" id="newSkillInput" placeholder="Name your skill">
+                                <input type="button" class="add_new_skill" value="+" onclick="addSkill()">
                             </div>
                             <input type="button" class="save_more_info" value="Save">
                         </form>
@@ -55,9 +82,9 @@
                 </div>
                 <div class="my_profile_menu">
                     <div class="tabs">
-                        <div class="head_tab_click tab-0 active" onclick="activateTab(0)"><h2>Personal Information</h2></div>
-                        <div class="head_tab_click tab-1" onclick="activateTab(1)"><h2>Communication</h2></div>
-                        <div class="head_tab_click tab-2" onclick="activateTab(2)"><h2>Activity</h2></div>
+                        <div class="head_tab_click tab-0 active" onclick="activateTab(0)">Personal Information</div>
+                        <div class="head_tab_click tab-1" onclick="activateTab(1)">Communication</div>
+                        <div class="head_tab_click tab-2" onclick="activateTab(2)">Activity</div>
                     </div>
                 </div>
             </div>
@@ -71,8 +98,7 @@
                     </div>
                     <hr>
                     <div class="changing_info_container_popup">
-                        <button type="button" class="change_profile_btn" onclick="toggleDropdown()">+</button>
-                        <div class="dropdown" id="dropdown" style="display: none;">
+                        <div class="dropdown" id="dropdown" style="display: flex;">
                             <label>
                                 <input type="radio" name="field_to_change" value="{{ data.user.lastname }} {{ data.user.firstname }}" onclick="updateInput('{{ data.user.lastname }} {{ data.user.firstname }}')"> Fullname
                             </label><br>
@@ -90,7 +116,7 @@
                             </label>
                         </div>
                     </div>
-                    <input type="text" id="field_value" class="profile_input" placeholder="Select field to change" name="updated_value">
+                    <input type="text" id="field_value" class="profile_input" placeholder="Select field to change" name="updated_value" readonly>
                     <input type="hidden" id="selected_field" name="selected_field">
                     <input type="submit" class="save_popup" value="SAVE">
                 </form>
@@ -149,7 +175,88 @@
                                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_1782_467)"><path d="M12.5417 4.16665C13.3556 4.32545 14.1036 4.72353 14.69 5.30993C15.2764 5.89632 15.6745 6.64437 15.8333 7.45831M12.5417 0.833313C14.2327 1.02118 15.8096 1.77846 17.0135 2.98082C18.2174 4.18318 18.9767 5.75915 19.1667 7.44998M18.3333 14.1V16.6C18.3343 16.8321 18.2867 17.0618 18.1937 17.2744C18.1008 17.4871 17.9644 17.678 17.7934 17.8349C17.6224 17.9918 17.4205 18.1112 17.2006 18.1856C16.9808 18.2599 16.7478 18.2875 16.5167 18.2666C13.9523 17.988 11.4892 17.1118 9.32498 15.7083C7.31151 14.4289 5.60443 12.7218 4.32499 10.7083C2.91663 8.53432 2.04019 6.05914 1.76665 3.48331C1.74583 3.25287 1.77321 3.02061 1.84707 2.80133C1.92092 2.58205 2.03963 2.38055 2.19562 2.20966C2.35162 2.03877 2.54149 1.90224 2.75314 1.80875C2.9648 1.71526 3.1936 1.66686 3.42499 1.66665H5.92498C6.32941 1.66267 6.72148 1.80588 7.02812 2.06959C7.33476 2.3333 7.53505 2.69952 7.59165 3.09998C7.69717 3.90003 7.89286 4.68559 8.17499 5.44165C8.2871 5.73992 8.31137 6.06408 8.24491 6.37571C8.17844 6.68735 8.02404 6.97341 7.79998 7.19998L6.74165 8.25831C7.92795 10.3446 9.65536 12.072 11.7417 13.2583L12.8 12.2C13.0266 11.9759 13.3126 11.8215 13.6243 11.7551C13.9359 11.6886 14.26 11.7129 14.5583 11.825C15.3144 12.1071 16.0999 12.3028 16.9 12.4083C17.3048 12.4654 17.6745 12.6693 17.9388 12.9812C18.203 13.2931 18.3435 13.6913 18.3333 14.1Z" stroke="#0664d6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_1782_467"><rect width="20" height="20" fill="white"/></clipPath></defs></svg>
                                     </div>
                                 </div>
-
+                                <div class="personal_info_container">
+                                    <div class="personal_data_info_container">
+                                        <div class="personal_info_description">Account create</div>
+                                        <div class="personal_info_data">{{data.user.datetime_create}}</div>
+                                    </div>
+                                    <div class="personal_icon">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.8333 1.66669H4.99998C4.55795 1.66669 4.13403 1.84228 3.82147 2.15484C3.50891 2.4674 3.33331 2.89133 3.33331 3.33335V16.6667C3.33331 17.1087 3.50891 17.5326 3.82147 17.8452C4.13403 18.1578 4.55795 18.3334 4.99998 18.3334H15C15.442 18.3334 15.8659 18.1578 16.1785 17.8452C16.4911 17.5326 16.6666 17.1087 16.6666 16.6667V7.50002M10.8333 1.66669L16.6666 7.50002M10.8333 1.66669L10.8333 7.50002H16.6666" stroke="#0664d6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    </div>
+                                </div>
+                                <div class="personal_info_container">
+                                    <div class="personal_data_info_container">
+                                        <div class="personal_info_description">Account update</div>
+                                        <div class="personal_info_data">{{data.user.datetime_update}}</div>
+                                    </div>
+                                    <div class="personal_icon">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_1806_470)"><path d="M0.833313 3.33331V8.33331M0.833313 8.33331H5.83331M0.833313 8.33331L4.69998 4.69998C5.5956 3.80391 6.70362 3.14932 7.92065 2.79729C9.13768 2.44527 10.4241 2.40727 11.6597 2.68686C12.8954 2.96645 14.0401 3.55451 14.9871 4.39616C15.934 5.23782 16.6523 6.30564 17.075 7.49998M19.1666 16.6666V11.6666M19.1666 11.6666H14.1666M19.1666 11.6666L15.3 15.3C14.4044 16.1961 13.2963 16.8506 12.0793 17.2027C10.8623 17.5547 9.5759 17.5927 8.34022 17.3131C7.10453 17.0335 5.95981 16.4455 5.01287 15.6038C4.06592 14.7621 3.34762 13.6943 2.92498 12.5" stroke="#0664d6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_1806_470"><rect width="20" height="20" fill="white"/></clipPath></defs></svg>
+                                    </div>
+                                </div>
+                            {% else %}
+                                <div class="personal_info_container">
+                                    <div class="personal_data_info_container">
+                                        <div class="personal_info_description">Full name</div>
+                                        <div class="personal_info_data">{{data.user.lastname}} {{data.user.firstname}}</div>
+                                    </div>
+                                    <div class="personal_icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12C10.9 12 9.95833 11.6083 9.175 10.825C8.39167 10.0417 8 9.1 8 8C8 6.9 8.39167 5.95833 9.175 5.175C9.95833 4.39167 10.9 4 12 4C13.1 4 14.0417 4.39167 14.825 5.175C15.6083 5.95833 16 6.9 16 8C16 9.1 15.6083 10.0417 14.825 10.825C14.0417 11.6083 13.1 12 12 12ZM4 20V17.2C4 16.6333 4.14583 16.1125 4.4375 15.6375C4.72917 15.1625 5.11667 14.8 5.6 14.55C6.63333 14.0333 7.68333 13.6458 8.75 13.3875C9.81667 13.1292 10.9 13 12 13C13.1 13 14.1833 13.1292 15.25 13.3875C16.3167 13.6458 17.3667 14.0333 18.4 14.55C18.8833 14.8 19.2708 15.1625 19.5625 15.6375C19.8542 16.1125 20 16.6333 20 17.2V20H4ZM6 18H18V17.2C18 17.0167 17.9542 16.85 17.8625 16.7C17.7708 16.55 17.65 16.4333 17.5 16.35C16.6 15.9 15.6917 15.5625 14.775 15.3375C13.8583 15.1125 12.9333 15 12 15C11.0667 15 10.1417 15.1125 9.225 15.3375C8.30833 15.5625 7.4 15.9 6.5 16.35C6.35 16.4333 6.22917 16.55 6.1375 16.7C6.04583 16.85 6 17.0167 6 17.2V18ZM12 10C12.55 10 13.0208 9.80417 13.4125 9.4125C13.8042 9.02083 14 8.55 14 8C14 7.45 13.8042 6.97917 13.4125 6.5875C13.0208 6.19583 12.55 6 12 6C11.45 6 10.9792 6.19583 10.5875 6.5875C10.1958 6.97917 10 7.45 10 8C10 8.55 10.1958 9.02083 10.5875 9.4125C10.9792 9.80417 11.45 10 12 10Z" fill="#0664d6"/></svg>
+                                    </div>
+                                </div>
+                                <div class="personal_info_container">
+                                    <div class="personal_data_info_container">
+                                        <div class="personal_info_description">Email address</div>
+                                        <div class="personal_info_data">{{data.user.email}}</div>
+                                    </div>
+                                    <div class="personal_icon">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_1782_483)"><path d="M13.3333 6.66666V10.8333C13.3333 11.4964 13.5967 12.1323 14.0655 12.6011C14.5344 13.0699 15.1703 13.3333 15.8333 13.3333C16.4963 13.3333 17.1322 13.0699 17.6011 12.6011C18.0699 12.1323 18.3333 11.4964 18.3333 10.8333V9.99999C18.3332 8.11918 17.6968 6.29372 16.5277 4.82043C15.3586 3.34715 13.7254 2.31268 11.8938 1.88524C10.0622 1.4578 8.13991 1.66253 6.43942 2.46613C4.73894 3.26974 3.3603 4.62495 2.52768 6.31143C1.69507 7.9979 1.45744 9.91644 1.85344 11.7551C2.24944 13.5937 3.25578 15.2444 4.70883 16.4385C6.16187 17.6327 7.97616 18.3003 9.85669 18.3326C11.7372 18.365 13.5734 17.7602 15.0666 16.6167M13.3333 9.99999C13.3333 11.8409 11.8409 13.3333 9.99997 13.3333C8.15902 13.3333 6.66664 11.8409 6.66664 9.99999C6.66664 8.15904 8.15902 6.66666 9.99997 6.66666C11.8409 6.66666 13.3333 8.15904 13.3333 9.99999Z" stroke="#0664d6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_1782_483"><rect width="20" height="20" fill="white"/></clipPath></defs></svg>
+                                    </div>
+                                </div>
+                                <div class="personal_info_container">
+                                    <div class="personal_data_info_container">
+                                        <div class="personal_info_description">Position</div>
+                                        <div class="personal_info_data">{{data.user.job_title}}</div>
+                                    </div>
+                                    <div class="personal_icon">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.3333 17.5V4.16667C13.3333 3.72464 13.1577 3.30072 12.8451 2.98816C12.5326 2.67559 12.1087 2.5 11.6666 2.5H8.33329C7.89127 2.5 7.46734 2.67559 7.15478 2.98816C6.84222 3.30072 6.66663 3.72464 6.66663 4.16667V17.5M3.33329 5.83333H16.6666C17.5871 5.83333 18.3333 6.57953 18.3333 7.5V15.8333C18.3333 16.7538 17.5871 17.5 16.6666 17.5H3.33329C2.41282 17.5 1.66663 16.7538 1.66663 15.8333V7.5C1.66663 6.57953 2.41282 5.83333 3.33329 5.83333Z" stroke="#0664d6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    </div>
+                                </div>
+                                <div class="personal_info_container">
+                                    <div class="personal_data_info_container">
+                                        <div class="personal_info_description">Address</div>
+                                        <div class="personal_info_data">{{data.user.addres}}</div>
+                                    </div>
+                                    <div class="personal_icon">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_1737_461)"><path d="M18.3332 10.0003C18.3332 14.6027 14.6022 18.3337 9.99984 18.3337M18.3332 10.0003C18.3332 5.39795 14.6022 1.66699 9.99984 1.66699M18.3332 10.0003H1.6665M9.99984 18.3337C5.39746 18.3337 1.6665 14.6027 1.6665 10.0003M9.99984 18.3337C12.0842 16.0517 13.2688 13.0903 13.3332 10.0003C13.2688 6.91035 12.0842 3.94895 9.99984 1.66699M9.99984 18.3337C7.91544 16.0517 6.73088 13.0903 6.6665 10.0003C6.73088 6.91035 7.91544 3.94895 9.99984 1.66699M1.6665 10.0003C1.6665 5.39795 5.39746 1.66699 9.99984 1.66699" stroke="#0664d6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_1737_461"><rect width="20" height="20" fill="white"/></clipPath></defs></svg>
+                                    </div>
+                                </div>
+                                <div class="personal_info_container">
+                                    <div class="personal_data_info_container">
+                                        <div class="personal_info_description">Phone</div>
+                                        <div class="personal_info_data">{{data.user.phone}}</div>
+                                    </div>
+                                    <div class="personal_icon">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_1782_467)"><path d="M12.5417 4.16665C13.3556 4.32545 14.1036 4.72353 14.69 5.30993C15.2764 5.89632 15.6745 6.64437 15.8333 7.45831M12.5417 0.833313C14.2327 1.02118 15.8096 1.77846 17.0135 2.98082C18.2174 4.18318 18.9767 5.75915 19.1667 7.44998M18.3333 14.1V16.6C18.3343 16.8321 18.2867 17.0618 18.1937 17.2744C18.1008 17.4871 17.9644 17.678 17.7934 17.8349C17.6224 17.9918 17.4205 18.1112 17.2006 18.1856C16.9808 18.2599 16.7478 18.2875 16.5167 18.2666C13.9523 17.988 11.4892 17.1118 9.32498 15.7083C7.31151 14.4289 5.60443 12.7218 4.32499 10.7083C2.91663 8.53432 2.04019 6.05914 1.76665 3.48331C1.74583 3.25287 1.77321 3.02061 1.84707 2.80133C1.92092 2.58205 2.03963 2.38055 2.19562 2.20966C2.35162 2.03877 2.54149 1.90224 2.75314 1.80875C2.9648 1.71526 3.1936 1.66686 3.42499 1.66665H5.92498C6.32941 1.66267 6.72148 1.80588 7.02812 2.06959C7.33476 2.3333 7.53505 2.69952 7.59165 3.09998C7.69717 3.90003 7.89286 4.68559 8.17499 5.44165C8.2871 5.73992 8.31137 6.06408 8.24491 6.37571C8.17844 6.68735 8.02404 6.97341 7.79998 7.19998L6.74165 8.25831C7.92795 10.3446 9.65536 12.072 11.7417 13.2583L12.8 12.2C13.0266 11.9759 13.3126 11.8215 13.6243 11.7551C13.9359 11.6886 14.26 11.7129 14.5583 11.825C15.3144 12.1071 16.0999 12.3028 16.9 12.4083C17.3048 12.4654 17.6745 12.6693 17.9388 12.9812C18.203 13.2931 18.3435 13.6913 18.3333 14.1Z" stroke="#0664d6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_1782_467"><rect width="20" height="20" fill="white"/></clipPath></defs></svg>
+                                    </div>
+                                </div>
+                                <div class="personal_info_container">
+                                    <div class="personal_data_info_container">
+                                        <div class="personal_info_description">Account create</div>
+                                        <div class="personal_info_data">{{data.user.datetime_create}}</div>
+                                    </div>
+                                    <div class="personal_icon">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.8333 1.66669H4.99998C4.55795 1.66669 4.13403 1.84228 3.82147 2.15484C3.50891 2.4674 3.33331 2.89133 3.33331 3.33335V16.6667C3.33331 17.1087 3.50891 17.5326 3.82147 17.8452C4.13403 18.1578 4.55795 18.3334 4.99998 18.3334H15C15.442 18.3334 15.8659 18.1578 16.1785 17.8452C16.4911 17.5326 16.6666 17.1087 16.6666 16.6667V7.50002M10.8333 1.66669L16.6666 7.50002M10.8333 1.66669L10.8333 7.50002H16.6666" stroke="#0664d6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    </div>
+                                </div>
+                                <div class="personal_info_container">
+                                    <div class="personal_data_info_container">
+                                        <div class="personal_info_description">Account update</div>
+                                        <div class="personal_info_data">{{data.user.datetime_update}}</div>
+                                    </div>
+                                    <div class="personal_icon">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_1806_470)"><path d="M0.833313 3.33331V8.33331M0.833313 8.33331H5.83331M0.833313 8.33331L4.69998 4.69998C5.5956 3.80391 6.70362 3.14932 7.92065 2.79729C9.13768 2.44527 10.4241 2.40727 11.6597 2.68686C12.8954 2.96645 14.0401 3.55451 14.9871 4.39616C15.934 5.23782 16.6523 6.30564 17.075 7.49998M19.1666 16.6666V11.6666M19.1666 11.6666H14.1666M19.1666 11.6666L15.3 15.3C14.4044 16.1961 13.2963 16.8506 12.0793 17.2027C10.8623 17.5547 9.5759 17.5927 8.34022 17.3131C7.10453 17.0335 5.95981 16.4455 5.01287 15.6038C4.06592 14.7621 3.34762 13.6943 2.92498 12.5" stroke="#0664d6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_1806_470"><rect width="20" height="20" fill="white"/></clipPath></defs></svg>
+                                    </div>
+                                </div>
                             {% endif %}
                         </div>
                     </div>
@@ -158,168 +265,137 @@
                             <div class="section_name">Communication</div>
                             <div class="section_description">Receive emails from other users, team leads, and directors and reply to them at any time and from anywhere in the world</div>
                         </div>
+                        <div class="sender_choose">
+                            <div class="sender_icon send-0 active" onclick="openMessages(0)">
+                                {% if "sender" in session %}
+                                    {% if data.sender[0].url_image in [None, '', 'none'] %}
+                                        <span class="circle_flname4">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
+                                    {% else %}
+                                        <img class="circle_flname4" src="{{ url_for('static', filename=data.sender[0].photo) }}">
+                                    {% endif %}
+                                    <div class="sender_icon_firstname">{{data.sender[0].name}} {{data.sender[0].surname}}</div>
+                                {% else %}
+                                    {% if data.sender[0].url_image in [None, '', 'none'] %}
+                                        <span class="circle_flname4">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
+                                    {% else %}
+                                        <img class="circle_flname4" src="{{ url_for('static', filename=data.sender[0].photo) }}">
+                                    {% endif %}
+                                    <div class="sender_icon_firstname">{{data.sender[0].name}} {{data.sender[0].surname}}</div>
+                                {% endif %}
+                            </div>
+                            <div class="sender_icon send-1" onclick="openMessages(1)">
+                                {% if "admin" in session %}
+                                    {% if data.admin[0].photo in [None, '', 'none'] %}
+                                        <span class="circle_flname4">{{ data.admin.name[0].upper() }}</span>
+                                    {% else %}
+                                        <img class="circle_flname4" src="{{ url_for('static', filename=data.admin[0].photo) }}">
+                                    {% endif %}
+                                    <div class="sender_icon_firstname">{{data.admin[0].name}}</div>
+                                {% else %}
+                                    {% if data.admin[0].photo in [None, '', 'none'] %}
+                                        <span class="circle_flname4">{{ data.admin[0].name[0].upper() }}</span>
+                                    {% else %}
+                                        <img class="circle_flname4" src="{{ url_for('static', filename=data.admin[0].photo) }}">
+                                    {% endif %}
+                                    <div class="sender_icon_firstname">{{data.admin[0].name}}</div>
+                                {% endif %}
+                            </div>
+                        </div>
                         <div class="letters_container">
-                            <div class="sender_letter_container col-0">
-                                {% if "user" in session %}
-                                    <div class="sender_letter_info col-0">
-                                        <div class="sender_date">{{data.sender[0].date}}</div>
-                                        <div id="to_do" class="to_do col-0">{{data.sender[0].message}}</div>
-                                        <div class="sender_small_info">
-                                            <div class="sender_full_name_container">
-                                                <div class="sender_name">{{data.sender[0].name}}</div>
-                                                <div class="sender_second_name">{{data.sender[0].surname}}</div>
-                                            </div>
+                            <div class="messages_container">
+                                {% if "sender" in session %}
+                                    <div class="letters" id="letter-0" style="display: none">
+                                        <div class="message">
                                             {% if data.sender[0].url_image in [None, '', 'none'] %}
-                                                <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
+                                                <span class="circle_flname5">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
                                             {% else %}
-                                                <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
+                                                <img class="circle_flname5" src="{{ url_for('static', filename=data.sender[0].photo) }}">
                                             {% endif %}
-                                            <div class="sender_popup">
-                                                <form id="sender_form" action="/action_page.php" class="senderform_container">
-                                                    {% if data.sender[0].url_image in [None, '', 'none'] %}   
-                                                        <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
-                                                    {% else %}
-                                                        <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
-                                                    {% endif %}
-                                                    <div class="sender_popup_info">
-                                                        <div class="sender_full_name">{{data.sender[0].name}} {{data.sender[0].surname}}</div>
-                                                        <div class="re_info">{{data.sender[0].email}}</div>
-                                                        <div class="sender_work">{{data.sender[0].work}}</div>
-                                                    </div>
-                                                </form>
+                                            <div class="full_message">
+                                                <div class="sender_message">{{ data.sender[0].message }}</div>
+                                                <div class="message_data"> {{ data.sender[0].date }}</div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div id="letter_text_container" class="letter_text_container col-0" style="display: none;">
-                                        <div class="text_area_box">
-                                            <textarea rows="7" colls="300" name="description" class="text_area_comment" placeholder="Your text here" readonly>{{data.sender[0].message}}</textarea>
-                                        </div>
-                                        <div class="letter_answer_container">
-                                            <input type="text" placeholder="Write your answer" class="letter_answer">
-                                            <svg class="send" type="button" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_1802_469)"><path d="M18.3333 1.66669L9.16663 10.8334M18.3333 1.66669L12.5 18.3334L9.16663 10.8334M18.3333 1.66669L1.66663 7.50002L9.16663 10.8334" stroke="#1E1E1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_1802_469"><rect width="20" height="20" fill="white"/></clipPath></defs></svg>
                                         </div>
                                     </div>
                                 {% else %}
-                                    <div class="sender_letter_info col-0">
-                                        <div class="sender_date">{{data.sender[0].date}}</div>
-                                        <div id="to_do" class="to_do col-0">{{data.sender[0].message}}</div>
-                                        <div class="sender_small_info">
-                                            <div class="sender_full_name_container">
-                                                <div class="sender_name">{{data.sender[0].name}}</div>
-                                                <div class="sender_second_name">{{data.sender[0].surname}}</div>
-                                            </div>
+                                    <div class="letters" id="letter-0" style="display: flex">
+                                        <div class="message">
                                             {% if data.sender[0].url_image in [None, '', 'none'] %}
-                                                <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
+                                                <span class="circle_flname5">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
                                             {% else %}
-                                                <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
+                                                <img class="circle_flname5" src="{{ url_for('static', filename=data.sender[0].photo) }}">
                                             {% endif %}
-                                            <div class="sender_popup">
-                                                <form id="sender_form" action="/action_page.php" class="senderform_container">
-                                                    {% if data.sender[0].url_image in [None, '', 'none'] %}   
-                                                        <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
-                                                    {% else %}
-                                                        <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
-                                                    {% endif %}
-                                                    <div class="sender_popup_info">
-                                                        <div class="sender_full_name">{{data.sender[0].name}} {{data.sender[0].surname}}</div>
-                                                        <div class="re_info">{{data.sender[0].email}}</div>
-                                                        <div class="sender_work">{{data.sender[0].work}}</div>
-                                                    </div>
-                                                </form>
+                                            <div class="full_message">
+                                                <div class="sender_message">{{ data.sender[0].message }}</div>
+                                                <div class="message_data"> {{ data.sender[0].date }}</div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="letter_text_container" class="letter_text_container col-0" style="display: none;">
-                                        <div class="text_area_box">
-                                            <textarea rows="7" colls="300" name="description" class="text_area_comment" placeholder="Your text here" readonly>{{data.sender[0].message}}</textarea>
+                                {% endif %}
+                                {% if "admin" in session %}
+                                    <div class="letters" id="letter-1" style="display: none">
+                                        <div class="message">
+                                            {% if data.admin[0].photo in [None, '', 'none'] %}
+                                                <span class="circle_flname5">{{ data.admin[0].name[0].upper() }}</span>
+                                            {% else %}
+                                                <img class="circle_flname5" src="{{ url_for('static', filename=data.admin[0].photo) }}">
+                                            {% endif %}
+                                            <div class="full_message">
+                                                <div class="sender_message">{{ data.admin[0].message }}</div>
+                                                <div class="message_data"> {{ data.admin[0].date }}</div>
+                                            </div>
                                         </div>
-                                        <div class="letter_answer_container">
-                                            <input type="text" placeholder="Write your answer" class="letter_answer">
-                                            <svg class="send" type="button" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_1802_469)"><path d="M18.3333 1.66669L9.16663 10.8334M18.3333 1.66669L12.5 18.3334L9.16663 10.8334M18.3333 1.66669L1.66663 7.50002L9.16663 10.8334" stroke="#1E1E1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_1802_469"><rect width="20" height="20" fill="white"/></clipPath></defs></svg>
+                                    </div>
+                                {% else %}
+                                    <div class="letters" id="letter-1" style="display: none">
+                                        <div class="message">
+                                            {% if data.admin[0].photo in [None, '', 'none'] %}
+                                                <span class="circle_flname5">{{ data.admin[0].name[0].upper() }}</span>
+                                            {% else %}
+                                                <img class="circle_flname5" src="{{ url_for('static', filename=data.admin[0].photo) }}">
+                                            {% endif %}
+                                            <div class="full_message">
+                                                <div class="sender_message">{{ data.admin[0].message }}</div>
+                                                <div class="message_data"> {{ data.admin[0].date }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                {% if "user" in session %}
+                                    <div class="letters" id="letter-2" style="display: none">
+                                        <div class="message_user">
+                                            {% if data.user.url_image in [None, '', 'none'] %}
+                                                <span class="circle_flname5">{{ data.user.firstname[0].upper() }}{{ data.user.lastname[0].upper() }}</span>
+                                            {% else %}
+                                                <img class="circle_flname5" src="{{ data.user.url_image }}">
+                                            {% endif %}
+                                            <div class="full_message">
+                                                <div class="sender_message">{{ data.admin[0].message }}</div>
+                                                <div class="message_data"> {{ data.admin[0].date }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    <div class="letters_user" style="display: none">
+                                        <div class="message_user">
+                                            {% if data.user.url_image in [None, '', 'none'] %}
+                                                <span class="circle_flname5">{{ data.user.firstname[0].upper() }}{{ data.user.lastname[0].upper() }}</span>
+                                            {% else %}
+                                                <img class="circle_flname5" src="{{ data.user.url_image }}">
+                                            {% endif %}
+                                            <div class="full_message">
+                                                <div class="sender_message"></div>
+                                                <div class="message_data"></div>
+                                            </div>
                                         </div>
                                     </div>
                                 {% endif %}
                             </div>
-                            <div class="sender_letter_container col-1">
-                                {% if "sender" in session %}
-                                    <div class="sender_letter_info col-1">
-                                        <div class="sender_date">{{data.sender[0].date}}</div>
-                                        <div id="to_do" class="to_do col-1">{{data.sender[0].message}}</div>
-                                        <div class="sender_small_info">
-                                            <div class="sender_full_name_container">
-                                                <div class="sender_name">{{data.sender[0].name}}</div>
-                                                <div class="sender_second_name">{{data.sender[0].surname}}</div>
-                                            </div>
-                                            {% if data.sender[0].url_image in [None, '', 'none'] %}
-                                                <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
-                                            {% else %}
-                                                <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
-                                            {% endif %}
-                                            <div class="sender_popup">
-                                                <form id="sender_form" action="/action_page.php" class="senderform_container">
-                                                    {% if data.sender[0].url_image in [None, '', 'none'] %}   
-                                                        <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
-                                                    {% else %}
-                                                        <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
-                                                    {% endif %}
-                                                    <div class="sender_popup_info">
-                                                        <div class="sender_full_name">{{data.sender[0].name}} {{data.sender[0].surname}}</div>
-                                                        <div class="re_info">{{data.sender[0].email}}</div>
-                                                        <div class="sender_work">{{data.sender[0].work}}</div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="letter_text_container" class="letter_text_container col-1" style="display: none;">
-                                        <div class="text_area_box">
-                                            <textarea rows="7" colls="300" name="description" class="text_area_comment" placeholder="Your text here" readonly>{{data.sender[0].message}}</textarea>
-                                        </div>
-                                        <div class="letter_answer_container">
-                                            <input type="text" placeholder="Write your answer" class="letter_answer">
-                                            <svg class="send" type="button" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_1802_469)"><path d="M18.3333 1.66669L9.16663 10.8334M18.3333 1.66669L12.5 18.3334L9.16663 10.8334M18.3333 1.66669L1.66663 7.50002L9.16663 10.8334" stroke="#1E1E1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_1802_469"><rect width="20" height="20" fill="white"/></clipPath></defs></svg>
-                                        </div>
-                                    </div>
-                                {% else %}
-                                    <div class="sender_letter_info col-1">
-                                        <div class="sender_date">{{data.sender[0].date}}</div>
-                                        <div id="to_do" class="to_do col-1">{{data.sender[0].message}}</div>
-                                        <div class="sender_small_info">
-                                            <div class="sender_full_name_container">
-                                                <div class="sender_name">{{data.sender[0].name}}</div>
-                                                <div class="sender_second_name">{{data.sender[0].surname}}</div>
-                                            </div>
-                                            {% if data.sender[0].url_image in [None, '', 'none'] %}
-                                                <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
-                                            {% else %}
-                                                <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
-                                            {% endif %}
-                                            <div class="sender_popup">
-                                                <form id="sender_form" action="/action_page.php" class="senderform_container">
-                                                    {% if data.sender[0].url_image in [None, '', 'none'] %}   
-                                                        <span class="circle_flname3">{{ session.sender.first_name[0].upper() }}{{ session.sender.last_name[0].upper() }}</span>
-                                                    {% else %}
-                                                        <img class="circle_flname3" src="{{ url_for('static', filename=data.sender[0].photo) }}">
-                                                    {% endif %}
-                                                    <div class="sender_popup_info">
-                                                        <div class="sender_full_name">{{data.sender[0].name}} {{data.sender[0].surname}}</div>
-                                                        <div class="re_info">{{data.sender[0].email}}</div>
-                                                        <div class="sender_work">{{data.sender[0].work}}</div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="letter_text_container" class="letter_text_container col-1" style="display: none;">
-                                        <div class="text_area_box">
-                                            <textarea rows="7" colls="300" name="description" class="text_area_comment" placeholder="Your text here" readonly>{{data.sender[0].message}}</textarea>
-                                        </div>
-                                        <div class="letter_answer_container">
-                                            <input type="text" placeholder="Write your answer" class="letter_answer">
-                                            <svg class="send" type="button" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_1802_469)"><path d="M18.3333 1.66669L9.16663 10.8334M18.3333 1.66669L12.5 18.3334L9.16663 10.8334M18.3333 1.66669L1.66663 7.50002L9.16663 10.8334" stroke="#1E1E1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_1802_469"><rect width="20" height="20" fill="white"/></clipPath></defs></svg>
-                                        </div>
-                                    </div>
-                                {% endif %}
+                            <div class="send_message">
+                                <input type="text" class="user_message" id="user_message" placeholder="Message">
+                                <div class="message_button" onclick="sendMessage()">
+                                    <svg class="send_icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_1802_469)"><path d="M18.3333 1.66669L9.16663 10.8334M18.3333 1.66669L12.5 18.3334L9.16663 10.8334M18.3333 1.66669L1.66663 7.50002L9.16663 10.8334" stroke="#1E1E1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_1802_469"><rect width="20" height="20" fill="white"/></clipPath></defs></svg>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -330,13 +406,13 @@
                         </div>
                         <div class="profile_details_container">
                             <div class="activity_type col-0">
-                                <div class="activity_date_ans_time">
+                                <div class="activity_date_ans_time item-0">
                                     <div class="activity_type_date">{{data.sender[0].date}}</div>
                                     <div class="activity_type_name">Project Update</div>
                                 </div>
                                 {% if "sender" in session %}
-                                    <div class="activity_description">{{data.sender[0].description}}</div>
-                                    <div class="sender_small_info">
+                                    <div class="activity_description item-1">{{data.sender[0].description}}</div>
+                                    <div class="sender_small_info item-2">
                                         <div class="sender_full_name_container">
                                             <div class="sender_name">{{data.sender[0].name}}</div>
                                             <div class="sender_second_name">{{data.sender[0].surname}}</div>
@@ -362,8 +438,8 @@
                                         </div>
                                     </div>
                                 {% else %}
-                                    <div class="activity_description">{{data.sender[0].description}}</div>
-                                    <div class="sender_small_info">
+                                    <div class="activity_description item-1">{{data.sender[0].description}}</div>
+                                    <div class="sender_small_info item-2">
                                         <div class="sender_full_name_container">
                                             <div class="sender_name">{{data.sender[0].name}}</div>
                                             <div class="sender_second_name">{{data.sender[0].surname}}</div>
@@ -391,13 +467,13 @@
                                 {% endif %}
                             </div>
                             <div class="activity_type col-1">
-                                <div class="activity_date_ans_time">
+                                <div class="activity_date_ans_time item-0">
                                     <div class="activity_type_date">{{data.sender[0].date}}</div>
-                                    <div class="activity_type_name">Create Contact</div>
+                                    <div class="activity_type_name">Create Community</div>
                                 </div>
                                 {% if "sender" in session %}
-                                    <div class="activity_description">{{data.sender[0].description}}</div>
-                                    <div class="sender_small_info">
+                                    <div class="activity_description item-1">{{data.sender[0].description}}</div>
+                                    <div class="sender_small_info item-2">
                                         <div class="sender_full_name_container">
                                             <div class="sender_name">{{data.sender[0].name}}</div>
                                             <div class="sender_second_name">{{data.sender[0].surname}}</div>
@@ -423,8 +499,8 @@
                                         </div>
                                     </div>
                                 {% else %}
-                                    <div class="activity_description">{{data.sender[0].description}}</div>
-                                    <div class="sender_small_info">
+                                    <div class="activity_description item-1">{{data.sender[0].description}}</div>
+                                    <div class="sender_small_info item-2">
                                         <div class="sender_full_name_container">
                                             <div class="sender_name">{{data.sender[0].name}}</div>
                                             <div class="sender_second_name">{{data.sender[0].surname}}</div>
@@ -452,13 +528,13 @@
                                 {% endif %}
                             </div>
                             <div class="activity_type col-2">
-                                <div class="activity_date_ans_time">
+                                <div class="activity_date_ans_time item-0">
                                     <div class="activity_type_date">{{data.sender[0].date}}</div>
-                                    <div class="activity_type_name">Create Notes</div>
+                                    <div class="activity_type_name">Create Contacts</div>
                                 </div>
                                 {% if "sender" in session %}
-                                    <div class="activity_description">{{data.sender[0].description}}</div>
-                                    <div class="sender_small_info">
+                                    <div class="activity_description item-1">{{data.sender[0].description}}</div>
+                                    <div class="sender_small_info item-2">
                                         <div class="sender_full_name_container">
                                             <div class="sender_name">{{data.sender[0].name}}</div>
                                             <div class="sender_second_name">{{data.sender[0].surname}}</div>
@@ -484,8 +560,8 @@
                                         </div>
                                     </div>
                                 {% else %}
-                                    <div class="activity_description">{{data.sender[0].description}}</div>
-                                    <div class="sender_small_info">
+                                    <div class="activity_description item-1">{{data.sender[0].description}}</div>
+                                    <div class="sender_small_info item-2">
                                         <div class="sender_full_name_container">
                                             <div class="sender_name">{{data.sender[0].name}}</div>
                                             <div class="sender_second_name">{{data.sender[0].surname}}</div>
@@ -513,13 +589,13 @@
                                 {% endif %}
                             </div>
                             <div class="activity_type col-3">
-                                <div class="activity_date_ans_time">
+                                <div class="activity_date_ans_time item-0">
                                     <div class="activity_type_date">{{data.sender[0].date}}</div>
-                                    <div class="activity_type_name">Send Message</div>
+                                    <div class="activity_type_name">Create Notes</div>
                                 </div>
                                 {% if "sender" in session %}
-                                    <div class="activity_description">{{data.sender[0].description}}</div>
-                                    <div class="sender_small_info">
+                                    <div class="activity_description item-1">{{data.sender[0].description}}</div>
+                                    <div class="sender_small_info item-2">
                                         <div class="sender_full_name_container">
                                             <div class="sender_name">{{data.sender[0].name}}</div>
                                             <div class="sender_second_name">{{data.sender[0].surname}}</div>
@@ -545,8 +621,8 @@
                                         </div>
                                     </div>
                                 {% else %}
-                                    <div class="activity_description">{{data.sender[0].description}}</div>
-                                    <div class="sender_small_info">
+                                    <div class="activity_description item-1">{{data.sender[0].description}}</div>
+                                    <div class="sender_small_info item-2">
                                         <div class="sender_full_name_container">
                                             <div class="sender_name">{{data.sender[0].name}}</div>
                                             <div class="sender_second_name">{{data.sender[0].surname}}</div>
@@ -574,13 +650,13 @@
                                 {% endif %}
                             </div>
                             <div class="activity_type col-4">
-                                <div class="activity_date_ans_time">
+                                <div class="activity_date_ans_time item-0">
                                     <div class="activity_type_date">{{data.sender[0].date}}</div>
-                                    <div class="activity_type_name">Create Community</div>
+                                    <div class="activity_type_name">Send Messages</div>
                                 </div>
                                 {% if "sender" in session %}
-                                    <div class="activity_description">{{data.sender[0].description}}</div>
-                                    <div class="sender_small_info">
+                                    <div class="activity_description item-1">{{data.sender[0].description}}</div>
+                                    <div class="sender_small_info item-2">
                                         <div class="sender_full_name_container">
                                             <div class="sender_name">{{data.sender[0].name}}</div>
                                             <div class="sender_second_name">{{data.sender[0].surname}}</div>
@@ -606,8 +682,8 @@
                                         </div>
                                     </div>
                                 {% else %}
-                                    <div class="activity_description">{{data.sender[0].description}}</div>
-                                    <div class="sender_small_info">
+                                    <div class="activity_description item-1">{{data.sender[0].description}}</div>
+                                    <div class="sender_small_info item-2">
                                         <div class="sender_full_name_container">
                                             <div class="sender_name">{{data.sender[0].name}}</div>
                                             <div class="sender_second_name">{{data.sender[0].surname}}</div>
@@ -637,13 +713,55 @@
                         </div>
                     </div>
                 </div>
+                <div class="background_popup">
+                    <div class="popup_container">
+                        <div class="your_image_popup">
+                            <div class="close_name">
+                                <div class="upload_description"><h1>Upload New Image File</h1></div>
+                                <svg class="close_btn" onclick="closePopup()" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.2882 2.77338C16.9628 2.44794 16.4351 2.44794 16.1097 2.77338L10.031 8.85204L3.95237 2.77338C3.62694 2.44794 3.0993 2.44794 2.77387 2.77338C2.44842 3.09881 2.44842 3.62645 2.77387 3.95189L8.8525 10.0305L2.77388 16.1091C2.44844 16.4346 2.44844 16.9622 2.77388 17.2877C3.09932 17.6131 3.62696 17.6131 3.95239 17.2877L10.031 11.209L16.1097 17.2877C16.4351 17.6131 16.9628 17.6131 17.2882 17.2877C17.6136 16.9622 17.6136 16.4346 17.2882 16.1092L11.2095 10.0305L17.2882 3.95189C17.6136 3.62645 17.6136 3.09881 17.2882 2.77338Z" fill="#6B6969"/></svg>
+                            </div>
+                            <div class="drop_img_container">
+                                <div class="drop_img_container_txt">
+                                    <h1>Drop Your Image Here</h1>
+                                    <p>For the best result, upload a 360x360 PNG, JPG or GIF.</p>
+                                </div>
+                                <div class="drop_img_input">
+                                    <label for="input-file" id="drop-area">
+                                        <div class="drop_img_button">
+                                            <p>CHOOSE FILE</p>
+                                        </div>
+                                        <input type="file" accept="image/*" id="input-file" hidden>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="bottom_content_popup">
+                    
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 {% else %}
                     <img class="error_img" src="{{ url_for('static', filename=sad_cat.png) }}">
                     <div class="error_session">Sorry, something went wrong</div>
                 {% endif %}
             </div>
+            <div class="bottom-nav">
+                <a href="javascript:void(0)" class="nav-item active" onclick="activateTab(0)">Personal Information</a>
+                <a href="javascript:void(0)" class="nav-item" onclick="activateTab(1)">Communication</a>
+                <a href="javascript:void(0)" class="nav-item" onclick="activateTab(2)">Activity</a>
+            </div>
         </div>
     </section>
 
     <script src="{{ url_for('static', filename='js/pages/my_profile.js') }}"></script>
+
+    </script>
+    <script>
+    const userData = {
+        firstname: "{{ data.user.firstname }}",
+        lastname: "{{ data.user.lastname }}",
+        email: "{{ data.user.email }}",
+        url_image: "{{ data.user.url_image }}"
+    };
+    </script>
 {% endblock %}

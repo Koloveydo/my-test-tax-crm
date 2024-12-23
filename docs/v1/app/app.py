@@ -265,6 +265,13 @@ def my_profile_view():
         'datetime_update':user.datetime_update,
         'datetime_create':user.datetime_create,
     }
+    skills = [
+        {'id' : '1', 'title' : 'HTML'}
+    ]
+
+    admin =  [
+        {'id' : '1', 'name' : 'Admin' , 'date' : '12.12.2024', 'message' : 'You completed full register on our platfotm, thanks!', 'photo' : ''}
+    ]
 
     sender = [
         {'id' : '1', 'name' : 'Vadim', 'surname' : 'Romanyuk', 'date' : '30.11.2024', 'work' : 'Team-lead', 'phone' : '0676776767', 'email' : 'vadim@dot.com', 're' : 'Please sign/Tax Company', 'photo' : 'images/sender_picture.png', 'message' : 'Your adaptation is dogshit. Cthulhu is a fictional cosmic entity created by writer H. P. Lovecraft. It was introduced in his short story "The Call of Cthulhu",[2] published by the American pulp magazine Weird Tales in 1928. Considered a Great Old One within the pantheon of Lovecraftian cosmic entities, this creature has since been featured in numerous pop culture references. Lovecraft depicts it as a gigantic entity worshipped by cultists, in the shape of a green octopus, dragon, and a caricature of human form. It is the namesake of the Lovecraft-inspired Cthulhu Mythos.', 'description' : 'Changed logs'}
@@ -273,6 +280,8 @@ def my_profile_view():
     data = {
         "user": user_mydetails,
         "sender": sender,
+        "skills": skills,
+        "admin" : admin,
     }
 
     return render_template('pages/my_profile.html', data=data)
@@ -362,5 +371,5 @@ if __name__ == "__main__":
        check_or_create_DB()
         
 
-    app.run(debug=True, port=8080, host='0.0.0.0')
+    app.run(debug=True, port=8088, host='0.0.0.0')
 
