@@ -303,6 +303,10 @@ section#my_profile_page {
     margin-left: 20px;
     box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.09);
 }
+.messages_container{
+    display: flex;
+    flex-direction: column-reverse;
+}
 .letters{
     display: flex;
     flex-direction: column;
