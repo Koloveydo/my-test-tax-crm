@@ -211,7 +211,7 @@ def checkLoginView():
         json_data = {'success': False, 'message': 'Method not allowed'}
         return jsonify(json_data), 405
 
-@app.route('/')
+@app.route('/index')
 def indexView():
     callendar_data = [
         {'name':'','photo':''},
@@ -371,5 +371,5 @@ if __name__ == "__main__":
        check_or_create_DB()
         
 
-    app.run(debug=True, port=8088, host='0.0.0.0')
+    app.run(debug=True, port=8080, host='0.0.0.0')
 
