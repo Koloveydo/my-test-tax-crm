@@ -79,7 +79,7 @@ def create_user_view():
 
     return render_template('pages/components.html')
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/setting', methods=['GET', 'POST'])
 def settings_view():
     if "login" in session and session["login"]:
         user_session = session["user"]
@@ -211,7 +211,7 @@ def checkLoginView():
         json_data = {'success': False, 'message': 'Method not allowed'}
         return jsonify(json_data), 405
 
-@app.route('/index')
+@app.route('/')
 def indexView():
     callendar_data = [
         {'name':'','photo':''},
@@ -249,7 +249,7 @@ def indexView():
     
     return render_template('pages/index.html', data=data)
 
-@app.route('/my_profile', methods=["GET", "POST"])
+@app.route('/info', methods=["GET", "POST"])
 def my_profile_view():
     user = User_details.query.filter_by(firstname=session["user"]["first_name"], lastname=session["user"]["last_name"]).first()
     print(user.email)

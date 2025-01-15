@@ -13,11 +13,17 @@
 	<section class="row-new-component">
 		<div class="inr-ct-st">{% include 'components/base/header.html' %}</div>
 	</section>
-
-		{% block body %} 
-		{% endblock %}
-	
-	</section>
+	<div class="full_page">
+		<div class="full_navbar">
+			<section class="row-new-component">
+				<div class="inr-ct-st">{% include 'components/base/main_navbar.html' %}</div>
+			</section>
+		</div>
+		<div class="full_current_page">
+			{% block body %} 
+			{% endblock %}		
+		</div>
+	</div>
 
 	<script src="{{ url_for('static', filename='js/pages/base.js') }}"></script>
 </body>
