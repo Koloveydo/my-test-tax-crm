@@ -6,13 +6,12 @@ const targetElementContent = document.querySelector('.left_nav_content');
 triggerElement.addEventListener('mouseover', () => {
     targetElement.classList.add('hover');
     targetElementContent.classList.add('hover');
-    triggerElement.classList.add('hover');
 });
 
-triggerElement.addEventListener('mouseout', () => {
+targetElement.addEventListener('mouseleave', () => {
     targetElement.classList.remove('hover');
     targetElementContent.classList.remove('hover');
-    triggerElement.classList.remove('hover');
+
 });
 
 

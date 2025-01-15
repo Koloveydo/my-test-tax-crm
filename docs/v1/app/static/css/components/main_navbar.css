@@ -41,7 +41,6 @@
     opacity: 1;
     top: 0;
     left: 0;
-    z-index: 5;
 }
 
 #left_nav_content.active {
