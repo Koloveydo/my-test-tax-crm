@@ -32,24 +32,11 @@ section#index-page {
     display: flex;
     flex-direction: row;
 }
-.greetings_text_variety{
-    font-size: 14px;
-    border: none;
-    cursor: default;
-    width:auto;
-    outline: none;
-    background-color: transparent;
-
-}
-.greetings_text_variety:focus{
-    outline: none;
-}
 .greetings_text{
     font-size: 14px;
     border: none;
     cursor: default;
-    width:90px;
-    outline: none;
+    width:auto;
     background-color: transparent;
 }
 .greetings_text:focus{
@@ -101,17 +88,17 @@ section#index-page {
     display: flex;
     flex-direction: row;
     padding: 20px;
+    justify-content: end;
 }
 .left_homepage{
     display: flex;
     flex-direction: column;
-    width: auto;
+    width: 100%;
     background-color: #cdcdcd;
     border-radius: 8px;
     padding: 20px;
     height: 100%;
     min-height: 520px;
-    width: 60%;
 }
 .right_homepage{
     display: flex;
@@ -119,7 +106,7 @@ section#index-page {
     width: auto;
     background-color: transparent;
     padding-left: 20px;
-    gap: 10px;
+    gap: 20px;
 }
 .visited, .unmess{
     display: flex;
@@ -167,4 +154,55 @@ section#index-page {
     font-size: 14px;
     display: flex;
     align-self: center;
+}
+.progress_bar{
+    width: 250px;
+    border-radius: 10px;
+    background-color: #2D64AB ;
+    height: 20px;
+    position: center;
+    align-self: center;
+    margin-bottom: 5px;
+}
+.mid_rh_button{
+    display: flex;
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    background-color: transparent;
+    border: 1px solid #6f6f6f;
+    font-size: 16px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.mid_rh_button:hover{
+    backdrop-filter: blur(30px);
+    background-color: rgba(255, 255, 255, 0.3);
+}
+.pre_bottom_text{
+    font-size: 16px;
+    font-weight: bold;
+}
+.bottom_rh_first, .bottom_rh_second{
+    display: flex;
+    flex-direction: row;
+    border: none;
+    border-radius: 8px;
+    background-color: #CDCDCD;
+    padding: 15px;
+    gap: 15px;
+    cursor: pointer;
+}
+.brf_text_container, .brs_text_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.boost_text_first, .help_text_first{
+    font-weight: bold;
+}
+.bottom_rh_first:hover, .bottom_rh_second:hover{
+    background-color: #b4b4b4;
 }

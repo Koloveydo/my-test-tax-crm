@@ -15,6 +15,6 @@ function updateGreetings(){
 		greetingsText = "Good night,";
 	}
 
-	inputElement.value = greetingsText;
+	inputElement.textContent = greetingsText;
 }
 document.addEventListener('DOMContentLoaded', updateGreetings);
