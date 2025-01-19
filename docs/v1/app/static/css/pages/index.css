@@ -99,6 +99,7 @@ section#index-page {
     padding: 20px;
     height: 100%;
     min-height: 520px;
+    gap: 20px;
 }
 .right_homepage{
     display: flex;
@@ -121,6 +122,233 @@ section#index-page {
     align-self: center;
     align-items: center;
     height: 28px;
+}
+.unmess_arrow_container, .visited_arrow_container{
+    background-color: transparent;
+    border: none;
+}
+#visited_arrow, #unmess_arrow{
+    cursor:pointer;
+    transform: rotate(0deg);
+    transition: transform 0.3s ease-in-out;
+
+}
+#visited_arrow.active, #unmess_arrow.active{
+    transform: rotate(90deg);
+}
+.workspace, .inbox{
+    display: none;
+}
+#workspace.active, #inbox.active{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+}
+.workspaces_container {
+    display: flex;
+    background-color: transparent;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    gap: 25px;
+}
+.workspace_table_btn{
+    background-color: transparent;
+    border: 1px solid #dadada;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-basis: calc( 100% / 3 - 60px);
+    min-width: 270px;
+    flex-grow: 1;
+    cursor: pointer;
+}
+.workspace_table_btn:hover{
+    display: flex;
+    backdrop-filter: blur(30px);
+    background-color: rgba(255, 255, 255, 0.3);
+}
+.workspace_table_text{
+    display: flex;
+    margin: 10px;
+    flex-direction: row;
+    width: calc( 100% - 20px);
+    height: auto;
+    justify-content: space-between;
+}
+.workspace_table_info{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.wtable_name{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+.wtable_name_text{
+    font-size: 16px;
+    font-weight: bold;
+}
+.wtable_crm{
+    font-size: 14px;
+    color: #6f6f6f
+}
+.wtable_fav_icon{
+    cursor: pointer;
+}
+.wtable_fav_icon:hover{
+    fill: rgba(29, 71, 154, 0.271);
+}
+.show_more_workspaces{
+    width: auto;
+    height: 15px;
+}
+.show_more_text{
+    cursor: pointer;
+    font-size: 14px;
+    border: none;
+    background-color: transparent;
+}
+.show_more_text:hover{
+    border: 1px solid #dadada;
+    backdrop-filter: blur(30px);
+    background-color: rgba(255, 255, 255, 0.3);
+}
+.inbox_container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    border: 1px solid #dadada;
+    border-radius: 5px;
+    align-items: center;
+}
+.inbox_message{
+    display: flex;
+    flex-direction: row;
+    width: calc( 100% - 30px);
+    height: auto;
+    justify-content: space-between;
+    padding: 15px;
+    align-items: center;
+}
+.message_time{
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    height: auto;
+    gap: 10px;
+    align-items: center;
+    margin-right: 10px;
+}
+.message_sender{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.sender_info_letter{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.line{
+    background-color: #dadada;
+    width: calc(100% - 30px);
+    height: 1px;
+}
+.sender_icon{
+    display: flex;
+    height: auto;
+    width: auto;
+}
+.sender_sminf{
+    font-size: 14px;
+}
+.sender_letter{
+    font-size: 14px;
+}
+.card_photo {
+    width: 50px;
+    height: 50px;
+    background-color: #D9D9D9;
+    border-radius: 50%;
+    float: left;
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+}
+.card_photo img {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.unmess_invite{
+    display: flex;
+    flex-direction: row;
+    padding: 15px;
+    width: calc(100% - 30px);
+    align-items: center;
+    justify-content: space-between;
+}
+.invite_img_text{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+}
+.invite_picture{
+    border-radius: 50px;
+    background-color: #6f6f6f;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.invite_text{
+    font-size: 14px;
+    font-weight: bold;
+}
+.invite_btns{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: auto;
+    height: auto;
+}
+.no_invite_btn{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 14px;
+    width: 80px;
+}
+.no_invite_btn:hover{
+    border: none;
+    backdrop-filter: blur(30px);
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+.go_invite_btn{
+    cursor: pointer;
+    padding: 8px;
+    width: auto;
+    height: auto;
+    border: none;
+    background-color: #2D64AB;
+    border-radius: 5px;
+}
+.go_invite_btn:hover{
+    background-color: #285897;
 }
 .top_rh, .mid_rh{
     display: flex;

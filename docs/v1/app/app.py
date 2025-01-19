@@ -218,7 +218,7 @@ def indexView():
         {'name2':'','photo2':''},
     ]
     user = [
-        {'id' : '1','name' :'Vlad', 'surname' : 'Koloveydo', 'work' : 'Developer', 'company' : 'none', 'photo' : 'images/avatar.png'},
+        {'id' : '1','name' :'Vlad', 'surname' : 'Koloveydo', 'work' : 'Developer', 'company' : 'none', 'photo' : 'images/avatar.png', 'message' : 'Test letter for page', 'time' : '5d'},
     ]
     tasks = [
         {'id' : '1','name' :'Vadim Romaniyk'},

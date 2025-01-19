@@ -18,6 +18,7 @@ targetElement.addEventListener('mouseleave', () => {
 document.addEventListener("DOMContentLoaded", function () {
     const navButton = document.getElementById("left_nav_button");
     const navContent = document.getElementById("left_nav_content");
+    const navSvg = document.getElementById("left_nav_svg");
     const navLeft = document.getElementById("left_nav");
     const navDople = document.getElementById("nav_dople")
 
@@ -25,6 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
         navContent.classList.toggle("active");
         navLeft.classList.toggle("active");
         navDople.classList.toggle("active");
+        navSvg.classList.toggle("active");
     });
 });
 

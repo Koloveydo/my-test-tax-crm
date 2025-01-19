@@ -12,6 +12,13 @@
 #left_nav.active{
     width: 200px;
 }
+.left_nav_svg{
+    transform: rotate(0deg);
+    transition: transform 0.3s ease-in-out;
+}
+.left_nav_svg.active, #left_nav_svg.active{
+    transform: rotate(180deg);
+}
 #left_nav.hover{
     width: 200px;
     box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.09);
@@ -117,5 +124,4 @@
     top: 0;
     left: 0;
     z-index: 4;
-    box-shadow: 1px 2px 2px 2px rgba( 0,0,0,0);
 }
