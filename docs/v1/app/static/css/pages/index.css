@@ -131,7 +131,6 @@ section#index-page {
     cursor:pointer;
     transform: rotate(0deg);
     transition: transform 0.3s ease-in-out;
-
 }
 #visited_arrow.active, #unmess_arrow.active{
     transform: rotate(90deg);
@@ -158,7 +157,7 @@ section#index-page {
 }
 .workspace_table_btn{
     background-color: transparent;
-    border: 1px solid #dadada;
+    border: 1px solid #494C67;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -166,6 +165,9 @@ section#index-page {
     min-width: 270px;
     flex-grow: 1;
     cursor: pointer;
+}
+hr{
+    border: 1px solid #ccc;
 }
 .workspace_table_btn:hover{
     display: flex;
@@ -431,6 +433,181 @@ section#index-page {
 .boost_text_first, .help_text_first{
     font-weight: bold;
 }
+.feedback_text{
+    color: #000000;
+}
+.mid_rh_text{
+    color: #000000;
+}
+.help_text_second{
+    color: #000000;
+}
 .bottom_rh_first:hover, .bottom_rh_second:hover{
     background-color: #b4b4b4;
 }
+body.dark-theme .index-page-inner{
+    background-color: #1C1F3B;
+}
+body.dark-theme .left_homepage{
+    background-color: #30324E;
+}
+body.dark-theme .top_rh{
+    background-color: #30324E;
+}
+body.dark-theme .mid_rh{
+    background-color: #30324E;
+}
+body.dark-theme .bottom_rh_first{
+    background-color: #30324E;
+}
+body.dark-theme .bottom_rh_second{
+    background-color: #30324E;
+}
+body.dark-theme hr{
+    border: 1px solid #494C67;
+}
+body.dark-theme .greetings_text{
+    color:#d5d8df;
+}
+body.dark-theme .greetings_user{
+    color:#d5d8df;
+}
+body.dark-theme .homepage_start_text{
+    color:#d5d8df;
+}
+body.dark-theme .feedback_text{
+    color:#d5d8df;
+}
+body.dark-theme .quick_search_btn{
+    color:#d5d8df;
+}
+body.dark-theme .visited_text{
+    color:#d5d8df;
+}
+body.dark-theme .unmess_text{
+    color:#d5d8df;
+}
+body.dark-theme .compl_profile{
+    color:#d5d8df;
+}
+body.dark-theme .progress_text{
+    color:#d5d8df;
+}
+body.dark-theme .mid_rh_text{
+    color:#d5d8df;
+}
+body.dark-theme .mid_rh_button{
+    color:#d5d8df;
+}
+body.dark-theme .boost_text_first{
+    color:#d5d8df;
+}
+body.dark-theme .boost_text_second{
+    color:#d5d8df;
+}
+body.dark-theme .help_text_first{
+    color:#d5d8df;
+}
+body.dark-theme .help_text_second{
+    color:#d5d8df;
+}
+body.dark-theme .pre_bottom_text{
+    color:#d5d8df;
+}
+body.dark-theme .wtable_name_text{
+    color:#d5d8df;
+}
+body.dark-theme .show_more_text{
+    color:#d5d8df;
+}
+body.dark-theme .sender_sminf{
+    color:#d5d8df;
+}
+body.dark-theme .sender_letter{
+    color:#d5d8df;
+}
+body.dark-theme .sended_time{
+    color:#d5d8df;
+}
+body.dark-theme .invite_text{
+    color:#d5d8df;
+}
+body.dark-theme .no_invite_btn{
+    color:#d5d8df;
+}
+body.dark-theme .go_invite_btn{
+    color:#d5d8df;
+}
+body.dark-theme .feedback_svg{
+    color:#d5d8df;
+    fill: #d5d8df;
+}
+body.dark-theme .visited_arrow path {
+    stroke: #d5d8df;
+}
+body.dark-theme .unmess_arrow path {
+    stroke: #d5d8df;
+}
+body.dark-theme .progress_svg path {
+    stroke: #d5d8df;
+}
+body.dark-theme .wtable_svg path {
+    stroke: #d5d8df;
+}
+body.dark-theme .wtable_fav_icon path {
+    stroke: #d5d8df;
+}
+body.dark-theme .time_svg path {
+    stroke: #d5d8df;
+}
+body.dark-theme .show_more_text:hover{
+    border: none;
+}
+body.dark-theme .workspace_table_btn:hover .wtable_crm{
+    color: #2D64AB;
+}
+body.dark-theme .bottom_rh_first:hover{
+    background-color: #5b7aa2;
+}
+body.dark-theme .bottom_rh_second:hover{
+    background-color: #5b7aa2;
+}
+body.dark-theme .feedback_text:hover{
+    color: #2D64AB;
+}
+.feedback_text:hover{
+    color: #2D64AB;
+}
+@media (max-width:768px){
+    .main_homepage{
+        flex-direction: column;
+        gap: 20px;
+    }
+    .header_of_homepage{
+        flex-direction: column;
+        gap: 10px;
+        padding: 20px;
+        margin-bottom: 15px;
+    }
+    .left_homepage{
+        width: calc( 100% - 40px);
+    }
+    .right_homepage{
+        align-items: center;
+        padding: 0px;
+    }
+    .homepage_header_info{
+        align-items: center;
+    }
+    .homepage_start_text{
+        text-align: center;
+    }
+    .visited{
+        width: 300px;
+    }
+    .unmess{
+        width: 300px;
+    }
+}
+
+

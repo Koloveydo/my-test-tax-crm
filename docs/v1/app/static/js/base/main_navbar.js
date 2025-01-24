@@ -40,3 +40,30 @@ element.addEventListener('mouseout', () => {
     element.classList.remove('active');
 });
 
+function updateActiveNavItem() {
+    const navItems = document.querySelectorAll('.left_nav_text_container');
+    const currentPath = window.location.pathname;
+
+    navItems.forEach(item => {
+        const href = item.getAttribute('data-href');
+
+        if (href === currentPath) {
+            item.classList.add('active');
+        } else {
+            item.classList.remove('active');
+        }
+    });
+}
+
+const navItems = document.querySelectorAll('.left_nav_text_container');
+navItems.forEach(item => {
+    item.addEventListener('click', () => {
+        const href = item.getAttribute('data-href');
+        if (href) {
+            window.location.href = href;
+        }
+    });
+});
+
+document.addEventListener('DOMContentLoaded', updateActiveNavItem);
+

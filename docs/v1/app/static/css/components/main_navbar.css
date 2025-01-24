@@ -3,7 +3,7 @@
     width: 30px;
     margin-right: 10px;
     transition: width 0.3s ease;
-    background-color: #FFFFFF;
+    background: linear-gradient(to bottom, #FFFFFF , #F5F5F7);
     border-radius: 8px;
     position: fixed;
     z-index: 11;
@@ -11,16 +11,18 @@
 
 #left_nav.active{
     width: 200px;
+    background: linear-gradient(to bottom, #FFFFFF , #F5F5F7);
 }
 .left_nav_svg{
     transform: rotate(0deg);
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.5s ease-in-out;
 }
 .left_nav_svg.active, #left_nav_svg.active{
     transform: rotate(180deg);
 }
 #left_nav.hover{
     width: 200px;
+    background: linear-gradient(to bottom, #FFFFFF , #F5F5F7);
     box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.09);
 }
 .nav_dople{
@@ -70,11 +72,27 @@
     gap: 5px;
     padding: 5px;
     width: 160px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease 0.5s, transform 0.5s ease 0.5s, visibility 0s linear 0.5s;
+}
+.left_nav_text_container.active{
+    background-color: #CDCDCD;
 }
 .left_nav_text_container:hover{
     background-color:#DDDDDD;
 }
-.t-1:hover{
+#left_nav.hover .left_nav_text_container{
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0.5s;
+}
+#left_nav.active .left_nav_text_container{
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0.5s;
+}
+.t-1{
     width: 140px;
 }
 .left_nav_text{
@@ -124,4 +142,39 @@
     top: 0;
     left: 0;
     z-index: 4;
+}
+body.dark-theme .left_nav{
+    background: linear-gradient( to bottom , #1C1F3B, #292F4C);
+}
+body.dark-theme #left_nav.active{
+    background: linear-gradient( to bottom , #1C1F3B, #292F4C);
+}
+body.dark-theme #left_nav.hover{
+    background: linear-gradient( to bottom , #1C1F3B, #292F4C);
+}
+body.dark-theme .lnav_svg path{
+    stroke: #d5d8df;
+}
+body.dark-theme .left_nav_button{
+    background-color: #30324E;
+}
+body.dark-theme .left_nav_text{
+    color: #d5d8df;
+}
+body.dark-theme .left_nav_text_container:hover{
+    background-color: #33354D;
+}
+body.dark-theme .left_nav_button:hover{
+    background-color: #464862;
+}
+body.dark-theme .left_nav_text_container.active{
+    background-color: #5B7AA2; 
+}
+body.dark-theme .t-1{
+    width: 140px;
+}
+@media (max-width:768px){
+    .left_nav{
+        display: none;
+    }
 }

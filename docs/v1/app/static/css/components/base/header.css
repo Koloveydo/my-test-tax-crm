@@ -278,13 +278,13 @@ body.dark-theme .name{
     color: #e5e5e5;
 }
 body.dark-theme .header{
-    box-shadow: 0 4px 4px 0 #3d3d3d;
+    background-color: #292F4C;
 }
 body.dark-theme .header,
 body.dark-theme .fall_down_menu_content,
 body.dark-theme .phone_menu_content,
 body.dark-theme .contacts_fall_down_menu{
-    background-color: #222222;
+    background-color: #292F4C;
 }
 body.dark-theme .right_header_menu li a,
 body.dark-theme .Tablet_logo_svg,
