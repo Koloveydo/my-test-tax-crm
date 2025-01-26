@@ -1,0 +1,16 @@
+section#index-page {
+    max-width: min(1920px, calc(100%));
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 5px;
+    height: 100%;
+}
+.index-page-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    min-width: 280px;
+    align-self: center;
+    overflow: hidden;
+}

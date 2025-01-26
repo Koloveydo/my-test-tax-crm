@@ -292,7 +292,28 @@ def logout_view():
     print("logout succesful")
     return redirect(url_for('login_view'))
 
+@app.route('/leads', methods=["GET", "POST"])
+def my_leads_view():
+    lead = Lead_details.query.first()
 
+    lead_hisdetails = {
+        'id':lead.id,
+        'firstname':lead.firstname,
+        'lastname':lead.lastname,
+        'email':lead.email,
+        'organization':lead.ORGANIZATION,
+        'phone':lead.phone_number,
+        'comments':lead.comments,
+        'url_image':lead.url_image,
+        'datetime_update':lead.datetime_update,
+        'datetime_create':lead.datetime_create,
+    }
+
+    data = {
+        "lead" : lead_hisdetails,
+    }
+
+    return render_template('pages/leads.html', data=data)
 
 ''' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ '''
 '''   check DB is exist or create and insert DB start   '''

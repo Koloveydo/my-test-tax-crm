@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let timer = false;
 
-    // Перевірка стану теми при завантаженні сторінки
     const darkThemeEnabled = localStorage.getItem('dark-theme') === 'true';
     if (darkThemeEnabled) {
         body_element.classList.add('dark-theme');
@@ -19,14 +18,11 @@ document.addEventListener("DOMContentLoaded", function () {
             btn.addEventListener('click', () => {
                 if (timer) return;
 
-                // Перемикаємо тему
                 body_element.classList.toggle('dark-theme');
 
-                // Зберігаємо стан теми в Local Storage
                 const isDarkTheme = body_element.classList.contains('dark-theme');
                 localStorage.setItem('dark-theme', isDarkTheme);
 
-                // Додаємо або видаляємо клас для кнопок
                 if (isDarkTheme) {
                     dark_mode[i].classList.add('dark_mode_active');
                 } else {

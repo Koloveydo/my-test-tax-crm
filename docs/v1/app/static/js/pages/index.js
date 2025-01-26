@@ -37,3 +37,13 @@ document.addEventListener("DOMContentLoaded", function () {
         unmessArrow.classList.toggle("active");
     });
 });
+
+const navWorkspace = document.querySelectorAll('.workspace_table_btn');
+navWorkspace.forEach(item => {
+    item.addEventListener('click', () => {
+        const href = item.getAttribute('data-href');
+        if (href) {
+            window.location.href = href;
+        }
+    });
+});
