@@ -216,11 +216,13 @@ hr{
     font-size: 14px;
     border: none;
     background-color: transparent;
+    padding: 0px 5px 0px 5px;
 }
 .show_more_text:hover{
     border: 1px solid #dadada;
     backdrop-filter: blur(30px);
     background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
 }
 .inbox_container{
     display: flex;

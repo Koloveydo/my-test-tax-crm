@@ -304,6 +304,7 @@ def my_leads_view():
         'organization':lead.ORGANIZATION,
         'phone':lead.phone_number,
         'comments':lead.comments,
+        'address':lead.addres,
         'url_image':lead.url_image,
         'datetime_update':lead.datetime_update,
         'datetime_create':lead.datetime_create,
