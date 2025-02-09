@@ -93,9 +93,22 @@
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
-                                    <div class="current_lead_name">{{data.lead.firstname}} {{data.lead.lastname}}</div>
-                                    <div class="more leadinf_btn"></div>
-                                    <div class="board current_status"></div>
+                                    <div class="current_lead_name">
+                                        <input type="text" class="board_input" value="{{data.lead.firstname}} {{data.lead.lastname}}">
+                                    </div>
+                                    <div class="board current_status">
+                                        <div class="status_btn" id="status_btn">
+                                            <div class="variant vnew">New Lead</div>
+                                        </div>
+                                        <div class="status_popup" id="status_popup">
+                                            <div class="status_variant">
+                                                <div class="variant vnew">New Lead</div>
+                                                <div class="variant vcontacted">Contacted</div>
+                                                <div class="variant vuncontacted">Uncontacted</div>
+                                                <div class="variant vblocked">Blocked</div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="board current_organization">
                                         <input type="text" class="board_input" value="{{ data.lead.organization}}">
                                     </div>
@@ -122,7 +135,7 @@
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
-                                    <div class="new_lead">+Add lead</div>
+                                    <div class="new_lead" id="create_row">+Add lead</div>
                                 </div>
                             </div>
                             <div class="new_table_btn">

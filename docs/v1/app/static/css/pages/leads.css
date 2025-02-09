@@ -349,6 +349,9 @@ section#index-page {
     z-index: 2;
     font-size: 14px;
 }
+.tname{
+    top:0;
+}
 .new_lead{
     display: flex;
     align-items: center;
@@ -360,6 +363,7 @@ section#index-page {
     border-bottom: 1px solid #aaa;
     border-top: 1px solid #aaa;
     border-left: 1px solid #aaa;
+    cursor: pointer;
 }
 .board{
     display: flex;
@@ -399,6 +403,77 @@ section#index-page {
 }
 .taddress, .current_address{
     width: 170px;
+}
+.current_status, .status_btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.status_btn{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    transition: clip-path 0.3s ease-in-out;
+    transition: filter 0.3s ease-in-out;
+    cursor: pointer;
+}
+.status_btn:hover{
+    clip-path: polygon(0 0, 90% 0, 100% 20%, 100% 100%, 0 100%);
+    filter: brightness(90%);
+}
+.variant{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+.vnew{
+    background-color: #FDBC64;
+}
+.vnew:hover{
+    filter: brightness(90%);
+}
+.vcontacted{
+    background-color: #50C878;
+}
+.vcontacted:hover{
+    filter: brightness(90%);
+}
+.vuncontacted{
+    background-color: #FF8358;
+}
+.vuncontacted:hover{
+    filter: brightness(90%);
+}
+.vblocked{
+    background-color: #EB4C42;
+}
+.vblocked:hover{
+    filter: brightness(90%);
+}
+.status_popup{
+    display: none;
+    background-color: #2D64AB;
+    position: absolute;
+    width: 130px;
+    align-items: center;
+    justify-content: center;
+    height: 160px;
+    top:36px;
+    z-index: 20;
+}
+.status_variant{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: calc( 100% - 20px);
+    padding: 10px;
+    gap: 10px;
 }
 .new_table_btn{
     display: flex;
