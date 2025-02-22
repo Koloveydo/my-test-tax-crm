@@ -7,7 +7,7 @@ section#index-page {
 }
 .index-page-inner {
     width: calc( 100% - 20px);
-    height: 100vh;
+    height: calc( 100vh - 58px);
     display: flex;
     flex-direction: column;
     min-width: 280px;
@@ -223,18 +223,50 @@ section#index-page {
     display: flex;
     gap: 10px;
     flex-direction: row;
+    align-items: center;
+    position: sticky;
+    padding: 10px 0 10px 0;
+    left:0;
+    width: 1000px;
+    height: auto;
+    z-index: 2;
+}
+#leads_top.active{
+    background-color: #CDCDCD;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    width: 900px;
+    position: sticky;
+    left: 0;
 }
 .leads_top_name{
     font-size: 18px;
     color:#2D64AB;
     display: flex;
     align-items: center;
+    background-color: transparent;
+    width: auto;
+    border: none;
+}
+.leads_top_name:focus{
+    outline:#2D64AB;
 }
 .lead_amount{
     font-size: 14px;
     color:#b1b1b1;
     display: flex;
     align-items: center;
+}
+.arr_lead{
+    cursor: pointer;
+    display: flex;
+}
+#arrow_open_lead{
+    transform: rotate(0deg);
+    transition: transform 0.3s ease-in-out;
+}
+#arrow_open_lead.active{
+    transform: rotate(-90deg);
 }
 .arr_lead path{
     stroke: #2D64AB;
@@ -302,21 +334,34 @@ section#index-page {
     flex-grow: 1;
     white-space: nowrap;
     overflow-x:auto;
-    min-height: 0;
-    height: 100%;
+    height: max-content;
+    gap: 20px;
+    min-height: 400px;
+    position: relative;
 }
 .leads_table{
     display: flex;
     flex-direction: column;
-    background-color: #CDCDCD;
-    max-height: 400px;
+    max-height: auto;
+    overflow-y: visible;
     min-width: 600px;
     width: fit-content;
-    border: 1px solid #aaa;
     border-radius: 5px;
+    position: sticky;
+    left:0;
+    overflow-x: visible;
+}
+.ltable_all{
+    background-color: #CDCDCD;
+    border: 1px solid #aaa;
     border-left: 5px solid #2D64AB;
-    position: relative;
-    overflow: visible;
+    border-radius: 5px;
+}
+#ltable_all.active{
+    display: none;
+}
+.ltable_all.active{
+    display: none;
 }
 .ltable_body, .ltable_create, .ltable_head{
     display: flex;
@@ -349,6 +394,9 @@ section#index-page {
     z-index: 2;
     font-size: 14px;
 }
+.checked_row .current_lead_name{
+    background: #2D64AB;
+}
 .tname{
     top:0;
 }
@@ -360,7 +408,6 @@ section#index-page {
     font-size: 14px;
     position: sticky;
     left: 35px;
-    border-bottom: 1px solid #aaa;
     border-top: 1px solid #aaa;
     border-left: 1px solid #aaa;
     cursor: pointer;
@@ -477,10 +524,15 @@ section#index-page {
 }
 .new_table_btn{
     display: flex;
-    justify-content: left;
+    justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 160px;
     height: auto;
+    position: fixed;
+    align-self: flex-end;
+    bottom: 0;
+    z-index: 7;
+    margin-bottom: 24px;
 }
 .add_table{
     background-color: transparent;
@@ -490,17 +542,16 @@ section#index-page {
     width: 140px;
     height: 35px;
     font-size: 16px;
-    margin-top: 20px;
-    margin-left: 20px;
     position: sticky;
-    left:20px;
     cursor: pointer;
 }
 .add_table:hover{
     backdrop-filter: blur(30px);
     background-color: rgba(255, 255, 255, 0.3);
 }
-
+.checked_row{
+    background-color: #2D64AB;
+}
 
 
 body.dark-theme .index-page-inner{
@@ -509,7 +560,7 @@ body.dark-theme .index-page-inner{
 body.dark-theme .page_name_text{
     color: #d5d8df;
 }
-body.dark-theme .arrow_svg path{
+body.dark-theme .arr_main path, .arr_choose path{
     stroke: #d5d8df;
 }
 body.dark-theme .nav_lt_text{
@@ -559,4 +610,40 @@ body.dark-theme .person_text{
 }
 body.dark-theme .add_table{
     color:#d5d8df;
+}
+body.dark-theme .board{
+    color:#d5d8df;
+}
+body.dark-theme .board_input{
+    color:#d5d8df;
+}
+body.dark-theme .new_lead{
+    color:#d5d8df;
+}
+body.dark-theme .checkmark{
+    border: 2px solid #aaa;
+}
+body.dark-theme .current_status{
+    color:#2D64AB;
+}
+body.dark-theme .ltable_all{
+    background-color: #30324E ;
+}
+body.dark-theme .check_current_lead{
+    background:#30324E  ;
+}
+body.dark-theme .current_lead_name{
+    background: #30324E;
+}
+body.dark-theme .tname{
+    background: #30324E;
+}
+body.dark-theme .check_all_leads{
+    background: #30324E;
+}
+body.dark-theme .checked_row .current_lead_name{
+    background: #2D64AB;
+}
+body.dark-theme #leads_top.active{
+    background-color: #30324E;
 }

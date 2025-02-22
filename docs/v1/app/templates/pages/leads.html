@@ -10,7 +10,7 @@
             <div class="leads_page_head">
                 <div class="page_name">
                     <div class="page_name_text">Leads</div>
-                    <svg class="arrow_svg" width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 12L16 20L24 12" stroke="#1E1E1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <svg class="arrow_svg arr_main" width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 12L16 20L24 12" stroke="#1E1E1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </div>
                 <div class="page_head_menu">
                     <div class="import">
@@ -48,7 +48,7 @@
                     <div class="new_lead_button_container">
                         <div class="new_lead_btn_left">New lead</div>
                         <hr class="new_lead_line">
-                        <svg class="arrow_svg" width="22" height="22" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 12L16 20L24 12" stroke="#1E1E1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <svg class="arrow_svg arr_choose" width="22" height="22" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 12L16 20L24 12" stroke="#1E1E1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     </div>
                     <div class="search_btn_lcont">
                         <svg class="head_svg pic-4" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="#1E1E1E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -63,84 +63,88 @@
             <div class="leads_main_page_container">
                 <div class="leads_main_page">
                     <div class="table_container" id="table-container">
-                        <div class="leads_top">
-                            <svg class="arrow_svg arr_lead" width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 12L16 20L24 12" stroke="#1E1E1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                            <div class="leads_top_name">New Leads</div>
-                            <div class="lead_amount"> {{data.lead | length}} Leads</div>
-                        </div>
                         <div class="leads_bottom">
-                            <div class="leads_table">
-                                <div class="ltable_head">
-                                    <div class="check_all_leads">
-                                        <label class="custom_checkbox">
-                                            <input type="checkbox">
-                                            <span class="checkmark"></span>
-                                        </label>
+                            <div id="leads_table" class="leads_table">
+                                <div id="leads_top" class="leads_top">
+                                    <svg id="arrow_open_lead" class="arrow_svg arr_lead" width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 12L16 20L24 12" stroke="#1E1E1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    <div class="leads_top_name_container">
+                                        <input type="text" class="leads_top_name" value="New Leads">
                                     </div>
-                                    <div class="board tname">Lead</div>
-                                    <div class="board tstatus">Status</div>
-                                    <div class="board torg">Organization</div>
-                                    <div class="board temail">Email</div>
-                                    <div class="board tphone">Phone</div>
-                                    <div class="board taddress">Address</div>
-                                    <div class="board ttitle">Title</div>
-                                    <div class="board tcomment">Comment</div>
+                                    <div class="lead_amount"> {{data.lead | length}} Leads</div>
                                 </div>
-                                <div class="ltable_body">
-                                    <div class="check_current_lead">
-                                        <label class="custom_checkbox">
-                                            <input type="checkbox">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </div>
-                                    <div class="current_lead_name">
-                                        <input type="text" class="board_input" value="{{data.lead.firstname}} {{data.lead.lastname}}">
-                                    </div>
-                                    <div class="board current_status">
-                                        <div class="status_btn" id="status_btn">
-                                            <div class="variant vnew">New Lead</div>
+                                <div id="ltable_all" class="ltable_all">
+                                    <div class="ltable_head">
+                                        <div class="check_all_leads">
+                                            <label class="custom_checkbox all_rows">
+                                                <input type="checkbox">
+                                                <span class="checkmark"></span>
+                                            </label>
                                         </div>
-                                        <div class="status_popup" id="status_popup">
-                                            <div class="status_variant">
+                                        <div class="board tname">Lead</div>
+                                        <div class="board tstatus">Status</div>
+                                        <div class="board torg">Organization</div>
+                                        <div class="board temail">Email</div>
+                                        <div class="board tphone">Phone</div>
+                                        <div class="board taddress">Address</div>
+                                        <div class="board ttitle">Title</div>
+                                        <div class="board tcomment">Comment</div>
+                                    </div>
+                                    <div class="ltable_body">
+                                        <div class="check_current_lead">
+                                            <label class="custom_checkbox">
+                                                <input type="checkbox">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </div>
+                                        <div class="current_lead_name">
+                                            <input type="text" class="board_input" value="{{data.lead.firstname}} {{data.lead.lastname}}">
+                                        </div>
+                                        <div class="board current_status">
+                                            <div class="status_btn" id="status_btn">
                                                 <div class="variant vnew">New Lead</div>
-                                                <div class="variant vcontacted">Contacted</div>
-                                                <div class="variant vuncontacted">Uncontacted</div>
-                                                <div class="variant vblocked">Blocked</div>
+                                            </div>
+                                            <div class="status_popup" id="status_popup">
+                                                <div class="status_variant">
+                                                    <div class="variant vnew">New Lead</div>
+                                                    <div class="variant vcontacted">Contacted</div>
+                                                    <div class="variant vuncontacted">Uncontacted</div>
+                                                    <div class="variant vblocked">Blocked</div>
+                                                </div>
                                             </div>
                                         </div>
+                                        <div class="board current_organization">
+                                            <input type="text" class="board_input" value="{{ data.lead.organization}}">
+                                        </div>
+                                        <div class="board current_email">
+                                            <input type="text" class="board_input" value="{{data.lead.email}}">
+                                        </div>
+                                        <div class="board current_phone">
+                                            <input type="text" class="board_input" value="{{data.lead.phone}}">
+                                        </div>
+                                        <div class="board current_address">
+                                            <input type="text" class="board_input" value="{{data.lead.address}}">
+                                        </div>
+                                        <div class="board current_title">
+                                            <input type="text" class="board_input" value="">
+                                        </div>
+                                        <div class="board current_comment">
+                                            <input type="text" class="board_input" value="">
+                                        </div>
                                     </div>
-                                    <div class="board current_organization">
-                                        <input type="text" class="board_input" value="{{ data.lead.organization}}">
-                                    </div>
-                                    <div class="board current_email">
-                                        <input type="text" class="board_input" value="{{data.lead.email}}">
-                                    </div>
-                                    <div class="board current_phone">
-                                        <input type="text" class="board_input" value="{{data.lead.phone}}">
-                                    </div>
-                                    <div class="board current_address">
-                                        <input type="text" class="board_input" value="{{data.lead.address}}">
-                                    </div>
-                                    <div class="board current_title">
-                                        <input type="text" class="board_input" value="">
-                                    </div>
-                                    <div class="board current_comment">
-                                        <input type="text" class="board_input" value="">
+                                    <div class="ltable_create">
+                                        <div class="check_current_lead unactive">
+                                            <label class="custom_checkbox unactive">
+                                                <input type="checkbox">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </div>
+                                        <div class="new_lead" id="create_row">+Add lead</div>
                                     </div>
                                 </div>
-                                <div class="ltable_create">
-                                    <div class="check_current_lead unactive">
-                                        <label class="custom_checkbox unactive">
-                                            <input type="checkbox">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </div>
-                                    <div class="new_lead" id="create_row">+Add lead</div>
-                                </div>
                             </div>
-                            <div class="new_table_btn">
-                                <button type="button" class="add_table">+ Add new group</button>
-                            </div>
+                        </div>
+                        <div class="new_table_btn">
+                            <button type="button" class="add_table" id="plus_table">+ Add new group</button>
                         </div>
                     </div>
                 </div>
