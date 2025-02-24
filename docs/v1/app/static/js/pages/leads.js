@@ -1,3 +1,4 @@
+
 //статус ліда у таблиці
 
 const leadTable = document.querySelector('.leads_bottom')
@@ -83,7 +84,7 @@ createNewRow.addEventListener("click", function(event) {
 })
 
 
-//чекбокс у таблиці для вибору одного ліда
+//чекбокс у таблиці для вибору одного ліда або всіх
 
 document.addEventListener("change", function (event) {
     if (event.target.matches(".custom_checkbox input")) {
@@ -113,7 +114,8 @@ document.addEventListener("change", function (event) {
 //Створити таблицю
 
 document.getElementById('plus_table').addEventListener('click', function() {
-    const mainTable = document.querySelector('.leads_bottom')
+    const mainTable = document.querySelector('.leads_bottom');
+    const invisTable = document.getElementById('invisible_table');
     const newTable = document.createElement('div');
     
     newTable.classList.add('leads_table');
@@ -121,7 +123,7 @@ document.getElementById('plus_table').addEventListener('click', function() {
         <div id="leads_top" class="leads_top">
             <svg id="arrow_open_lead" class="arrow_svg arr_lead" width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 12L16 20L24 12" stroke="#1E1E1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
             <div class="leads_top_name_container">
-                <input type="text" class="leads_top_name" value="New Leads">
+                <input type="text" class="leads_top_name" value="" placeholder="Type name of your table">
             </div>
             <div class="lead_amount"> 0 Leads</div>
         </div>
@@ -195,12 +197,22 @@ document.getElementById('plus_table').addEventListener('click', function() {
             </div>
         </div>
 `;
+    mainTable.insertBefore(newTable, invisTable);
+    //mainTable.appendChild(newTable); 
 
-    mainTable.appendChild(newTable); 
-
-    const inputField = newTable.querySelector(".board_input");
+    const inputField = newTable.querySelector(".leads_top_name");
+    const inputArrow = newTable.querySelector("#arrow_open_lead path");
+    const borderColor = newTable.querySelector("#ltable_all");
     inputField.focus();
-})
+
+    const colors = ["#2D64AB", "#D9534F", "#5CB85C", "#F0AD4E", "#2D64AB", "#800080", "#FFFFFF", "#FF69B4", "#40E0D0", "#FFA500" ];
+
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+
+    inputField.style.color = randomColor;
+    inputArrow.style.stroke = randomColor;
+    borderColor.style.borderLeft = `5px solid ${randomColor}`;
+});
 
 //Сховати таблицю
 
@@ -220,5 +232,51 @@ document.addEventListener("click", function (event) {
         }
     }
 });
+
+//Пошук у таблиці на моїй сторінці
+const searchIcon = document.querySelector(".pic-4");
+const searchBtn = document.querySelector(".search_btn_lcont");
+const searchInput = document.getElementById("search_input");
+const searchText = document.querySelector(".search_text");
+
+function toggleSearch() {
+    searchInput.classList.toggle("active");
+    searchText.classList.toggle("active");
+    searchInput.focus();
+}
+
+searchIcon.addEventListener("click", toggleSearch);
+searchText.addEventListener("click", toggleSearch);
+document.getElementById("search_input").addEventListener("input", function () {
+    const searchText = this.value.trim().toLowerCase();
+    const leadsBottom = document.querySelector(".leads_bottom");
+    const allElements = leadsBottom.querySelectorAll(".board_input");
+
+    allElements.forEach(element => {
+        let text = element.innerText.toLowerCase();
+        if (element.tagName === "INPUT") {
+            text = element.value.toLowerCase();
+        }
+
+        if (searchText && text.includes(searchText)) {
+            element.style.backgroundColor = "#0E435D";
+            element.style.color = "#fff";
+        } else {
+            element.style.backgroundColor = "";
+            element.style.color = "";
+        }
+    });
+});
+
+// Кнопка коли клікаю фільтр за персоною
+
+document.getElementById("person_container").addEventListener("click", function() {
+    const personPop = document.getElementById("person_popup");
+    personPop.classList.toggle("pop");
+});
+
+
+
+
 
 
