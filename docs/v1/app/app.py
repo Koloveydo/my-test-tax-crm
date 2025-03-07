@@ -295,7 +295,19 @@ def logout_view():
 @app.route('/leads', methods=["GET", "POST"])
 def my_leads_view():
     lead = Lead_details.query.first()
-
+    user = User_details.query.filter_by(firstname=session["user"]["first_name"], lastname=session["user"]["last_name"]).first()
+    user_mydetails = {
+        'id':user.id,
+        'firstname':user.firstname,
+        'lastname':user.lastname,
+        'email':user.email,
+        'job_title':user.job_title,
+        'phone':user.phone,
+        'addres':user.addres,
+        'url_image':user.url_image,
+        'datetime_update':user.datetime_update,
+        'datetime_create':user.datetime_create,
+    }
     lead_hisdetails = {
         'id':lead.id,
         'firstname':lead.firstname,
@@ -312,6 +324,7 @@ def my_leads_view():
 
     data = {
         "lead" : lead_hisdetails,
+        "user" : user_mydetails,
     }
 
     return render_template('pages/leads.html', data=data)

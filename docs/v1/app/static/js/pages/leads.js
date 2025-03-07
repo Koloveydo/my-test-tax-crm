@@ -87,27 +87,103 @@ createNewRow.addEventListener("click", function(event) {
 //чекбокс у таблиці для вибору одного ліда або всіх
 
 document.addEventListener("change", function (event) {
-    if (event.target.matches(".custom_checkbox input")) {
-        const selectAll = event.target.closest(".all_rows");
+    if (!event.target.matches(".custom_checkbox input")) return;
 
-        if (selectAll) {
-            const table = event.target.closest(".leads_table");
-            const allCheckboxes = table.querySelectorAll(".custom_checkbox input:not(.all_rows input)"); 
+    const selectAll = event.target.closest(".all_rows");
+    const mainRowPopup = document.getElementById("main_row_popup");
+    const chosenAmountText = document.getElementById("chosen_amount_text");
 
-            allCheckboxes.forEach(checkbox => {
-                checkbox.checked = event.target.checked;
-                const row = checkbox.closest(".ltable_body");
-                if (row) {
-                    row.classList.toggle("checked_row", checkbox.checked);
-                }
-            });
-        } else {
-            const selectedRow = event.target.closest(".ltable_body");
-            if (selectedRow) {
-                selectedRow.classList.toggle("checked_row", event.target.checked);
-            }
-        }
+    if (selectAll) {
+        const table = event.target.closest(".leads_table");
+        const allCheckboxes = table.querySelectorAll(".custom_checkbox input:not(.all_rows input)");
+
+        allCheckboxes.forEach(checkbox => {
+            checkbox.checked = event.target.checked;
+            checkbox.closest(".ltable_body")?.classList.toggle("checked_row", checkbox.checked);
+        });
+    } else {
+        const selectedRow = event.target.closest(".ltable_body");
+        selectedRow?.classList.toggle("checked_row", event.target.checked);
     }
+
+    const checkedRows = document.querySelectorAll(".ltable_body.checked_row");
+    chosenAmountText.textContent = checkedRows.length;
+    mainRowPopup.style.display = checkedRows.length > 0 ? "flex" : "none";
+});
+
+// Копіювати рядок, або рядки у таблиці
+
+document.getElementById("duplicate_row_btn").addEventListener("click", function () {
+    const checkedRows = document.querySelectorAll(".ltable_body.checked_row");
+    if (checkedRows.length === 0) return;
+
+    const fragment = document.createDocumentFragment();
+    checkedRows.forEach(row => {
+        const clonedElement = row.cloneNode(true);
+        clonedElement.classList.add("cloned");
+        fragment.appendChild(clonedElement);
+    });
+
+    const parentContainer = checkedRows[0].closest(".leads_table");
+    if (!parentContainer) return;
+
+    const pasteContainer = parentContainer.querySelector("#ltable_all");
+    const duplicatePosition = parentContainer.querySelector(".ltable_create");
+
+    if (pasteContainer && duplicatePosition) {
+        pasteContainer.insertBefore(fragment, duplicatePosition);
+    }
+});
+
+// Видалити рядок, або рядки у таблиці
+
+document.getElementById("delete_row_btn").addEventListener("click", function () {
+    const checkedRows = document.querySelectorAll(".ltable_body.checked_row");
+    if (checkedRows.lengsth === 0) return;
+
+    checkedRows.forEach(row => row.remove());
+
+    const chosenAmountText = document.getElementById("chosen_amount_text");
+    chosenAmountText.textContent = 0;
+
+    document.getElementById("main_row_popup").style.display = "none";
+});
+
+// Закрити попап для таблиці
+
+document.getElementById("close_popup_btn").addEventListener("click", function () {
+    const checkedRows = document.querySelectorAll(".ltable_body.checked_row");
+
+    checkedRows.forEach(row => {
+        row.classList.remove("checked_row");
+        const checkbox = row.querySelector(".custom_checkbox input"); 
+        if (checkbox) {
+            checkbox.checked = false;
+        }
+    });
+
+    const selectAllCheckbox = document.querySelector(".custom_checkbox.all_rows input");
+    if (selectAllCheckbox) {
+        selectAllCheckbox.checked = false;
+    }
+
+    document.getElementById("main_row_popup").style.display = "none";
+});
+
+// Експорт таблиці
+
+document.getElementById("export_row_btn").addEventListener("click", function () {
+    const exportPopup = document.getElementById("export_popup");
+
+    exportPopup.style.display = "flex";
+});
+
+// Закрити попап експорту таблиці
+
+document.getElementById("close_export_container").addEventListener("click", function () {
+    const exportPopup = document.getElementById("export_popup");
+
+    exportPopup.style.display = "none";
 });
 
 
@@ -125,7 +201,10 @@ document.getElementById('plus_table').addEventListener('click', function() {
             <div class="leads_top_name_container">
                 <input type="text" class="leads_top_name" value="" placeholder="Type name of your table">
             </div>
-            <div class="lead_amount"> 0 Leads</div>
+            <div class="lead_amount_container">
+                <div class="lead_amount" id="lead_amount"></div>
+                <div class="lead_amount_text">Leads</div>
+            </div>
         </div>
         <div id="ltable_all" class="ltable_all">
             <div class="ltable_head">
@@ -273,7 +352,50 @@ document.getElementById("search_input").addEventListener("input", function () {
 document.getElementById("person_container").addEventListener("click", function() {
     const personPop = document.getElementById("person_popup");
     personPop.classList.toggle("pop");
+
+    setTimeout(() => {
+        personPop.classList.remove("pop");
+    }, 4000);
 });
+
+// Кількість лідів у таблиці 
+
+// Доробити завтра в першу чергу, у нових таблицях які я створюю не рахує скільки лідів є зараз, треба буде для них зробити closest 
+
+document.addEventListener("DOMContentLoaded", function () {
+    const leadsTable = document.getElementById("leads_table");
+
+    function updateLeadAmount() {
+        const allTables = document.querySelectorAll("#leads_table");
+        allTables.forEach(table => {
+            const leadAmount = table.querySelector(".lead_amount");
+            const rowsAmount = table.querySelectorAll(".ltable_body");
+            if (leadAmount) {
+                leadAmount.textContent = rowsAmount.length;
+            }
+        });
+    }
+
+    updateLeadAmount();
+
+    const observer = new MutationObserver(updateLeadAmount);
+    observer.observe(leadsTable, { childList: true, subtree: true });
+});
+
+// Кнопка інвайт
+
+document.getElementById("invite_btn_head").addEventListener("click", function () {
+    const invitePopup = document.getElementById("invite_lead_popup");
+
+    invitePopup.style.display = "flex";
+});
+
+document.getElementById("close_invite_container").addEventListener("click", function () {
+    const invitePopup = document.getElementById("invite_lead_popup");
+
+    invitePopup.style.display = "none";
+});
+
 
 
 
