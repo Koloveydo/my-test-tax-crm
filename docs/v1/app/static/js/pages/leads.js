@@ -313,19 +313,23 @@ document.addEventListener("click", function (event) {
 });
 
 //Пошук у таблиці на моїй сторінці
+
 const searchIcon = document.querySelector(".pic-4");
 const searchBtn = document.querySelector(".search_btn_lcont");
 const searchInput = document.getElementById("search_input");
 const searchText = document.querySelector(".search_text");
 
-function toggleSearch() {
-    searchInput.classList.toggle("active");
-    searchText.classList.toggle("active");
+searchBtn.addEventListener("click", function () {
+    searchText.style.display = "none";
+    searchInput.style.display = "flex";
     searchInput.focus();
-}
+});
 
-searchIcon.addEventListener("click", toggleSearch);
-searchText.addEventListener("click", toggleSearch);
+searchInput.addEventListener("blur", function () {
+    searchInput.style.display = "none";
+    searchText.style.display = "flex";
+});
+
 document.getElementById("search_input").addEventListener("input", function () {
     const searchText = this.value.trim().toLowerCase();
     const leadsBottom = document.querySelector(".leads_bottom");
@@ -360,26 +364,36 @@ document.getElementById("person_container").addEventListener("click", function()
 
 // Кількість лідів у таблиці 
 
-// Доробити завтра в першу чергу, у нових таблицях які я створюю не рахує скільки лідів є зараз, треба буде для них зробити closest 
-
 document.addEventListener("DOMContentLoaded", function () {
-    const leadsTable = document.getElementById("leads_table");
+    function updateLeadAmount(table) {
+        const leadAmount = table.querySelector(".lead_amount");
+        const rowsAmount = table.querySelectorAll(".ltable_body");
+        if (leadAmount) {
+            leadAmount.textContent = rowsAmount.length;
+        }
+    }
 
-    function updateLeadAmount() {
-        const allTables = document.querySelectorAll("#leads_table");
-        allTables.forEach(table => {
-            const leadAmount = table.querySelector(".lead_amount");
-            const rowsAmount = table.querySelectorAll(".ltable_body");
-            if (leadAmount) {
-                leadAmount.textContent = rowsAmount.length;
+    function observeTable(table) {
+        const observer = new MutationObserver(() => updateLeadAmount(table));
+        observer.observe(table, { childList: true, subtree: true });
+
+        updateLeadAmount(table);
+    }
+
+    function observeNewTables() {
+        const tables = document.querySelectorAll(".leads_table");
+        tables.forEach(table => {
+            if (!table.dataset.observed) {
+                observeTable(table);
+                table.dataset.observed = "true";
             }
         });
     }
 
-    updateLeadAmount();
+    const tableObserver = new MutationObserver(observeNewTables);
+    tableObserver.observe(document.body, { childList: true, subtree: true });
 
-    const observer = new MutationObserver(updateLeadAmount);
-    observer.observe(leadsTable, { childList: true, subtree: true });
+    observeNewTables();
 });
 
 // Кнопка інвайт
@@ -395,6 +409,79 @@ document.getElementById("close_invite_container").addEventListener("click", func
 
     invitePopup.style.display = "none";
 });
+
+// Пошук у попапі Інвайт
+
+const searchInviteInput = document.getElementById("invite_search_text");
+const searchDisplay = document.getElementById("search_display_container");
+
+searchInviteInput.addEventListener("focus", function () {
+    searchDisplay.style.display = "flex";
+});
+
+searchInviteInput.addEventListener("blur", function () {
+    searchDisplay.style.display = "none";
+});
+
+//Створення ліда у першій таблиці синьою кнопкою
+
+document.getElementById("new_lead_btn_left").addEventListener("click", function () {
+    const selectedTable = document.querySelector(".leads_table");
+    const leadTable = selectedTable.querySelector("#ltable_all");
+    const creationPosition = selectedTable.querySelector(".ltable_create");
+
+    const newRow = document.createElement('div');
+    newRow.classList.add("ltable_body");
+    newRow.innerHTML = `
+                <div class="check_current_lead">
+            <label class="custom_checkbox">
+                <input type="checkbox">
+                <span class="checkmark"></span>
+            </label>
+        </div>
+        <div class="current_lead_name">
+            <input type="text" class="board_input" value="" placeholder="Type lead name">
+        </div>
+        <div class="board current_status">
+            <div class="status_btn">
+                <div class="variant vnew">New Lead</div>
+            </div>
+            <div class="status_popup">
+                <div class="status_variant">
+                    <div class="variant vnew">New Lead</div>
+                    <div class="variant vcontacted">Contacted</div>
+                    <div class="variant vuncontacted">Uncontacted</div>
+                    <div class="variant vblocked">Blocked</div>
+                </div>
+            </div>
+        </div>
+        <div class="board current_organization">
+            <input type="text" class="board_input" value="">
+        </div>
+        <div class="board current_email">
+            <input type="text" class="board_input" value="">
+        </div>
+        <div class="board current_phone">
+            <input type="text" class="board_input" value="">
+        </div>
+        <div class="board current_address">
+            <input type="text" class="board_input" value="">
+        </div>
+        <div class="board current_title">
+            <input type="text" class="board_input" value="">
+        </div>
+        <div class="board current_comment">
+            <input type="text" class="board_input" value="">
+        </div>
+    `;
+
+    leadTable.insertBefore(newRow, creationPosition);
+
+    const inputField = newRow.querySelector(".board_input");
+    inputField.focus();
+});
+
+// Зробити мессенджер для сторінки(той що коло кнопки інвайт кнопка)
 
 
 

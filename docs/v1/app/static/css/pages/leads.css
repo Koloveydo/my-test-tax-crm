@@ -842,10 +842,18 @@ section#index-page {
 .lead_amount_container{
     display: flex;
     flex-direction: row;
+    position: sticky;
+    left: 269px;
+    z-index: 2;
     gap: 5px;
 }
 .lead_amount_text{
     font-size: 14px;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    left: 289px;
+    z-index: 2;
 }
 .invite_container{
     display: flex;
@@ -880,6 +888,7 @@ section#index-page {
 .main_invite_container{
     display:flex;
     flex-direction: column;
+    position: relative;
     gap: 25px;
 }
 .invite_search_text{
@@ -939,8 +948,134 @@ section#index-page {
     gap:10px;
     align-items: center;
 }
+.search_display_container{
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 50px;
+    width: 480px;
+    height: auto;
+    padding: 10px;
+    background-color: #d5d8df;
+    gap: 5px;
+    box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.09);
+    border: 1px solid #aaa;
+    border-radius: 8px;
+    
+}
+.people_invite_description_container{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    gap: 5px;
+}
+.people_invite_description{
+    font-size: 14px;
+    color: #aaa;
+    cursor: default;
+}
+.people_invite_container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    cursor: pointer;
+    gap: 5px;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+}
+.people_invite_container:hover{
+    background-color: #CDCDCD;
+}
+.people_invite_name{
+    font-size: 14px;
+    color: #000000;
+}
+.team_invite_text_container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    gap: 5px;
+}
+.team_invite_text{
+    font-size: 14px;
+    color: #aaa;
+    cursor: default;
+}
+.team_invite_container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    cursor: pointer;
+    gap: 5px;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+}
+.team_invite_container:hover{
+    background-color: #CDCDCD;
+}
+.team_invite_description{
+    font-size: 14px;
+    color:#000000;
+}
+.invite_btn_popup{
+    cursor:pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    gap: 5px;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+}
+.invite_btn_popup:hover{
+    background-color:#CDCDCD ;
+}
+.invite_btn_text{
+    font-size: 14px;
+    color:#2D64AB;
+}
+.invite_btn_popup_svg path{
+    stroke:#2D64AB;
+}
+.page_messager_container{
+    display: none;
+}
 
+/* ------------------------------------ Чорна тема сторінки ------------------------------------------------*/
 
+body.dark-theme .people_invite_container:hover{
+    background-color:#30324E ;
+}
+body.dark-theme .team_invite_container:hover{
+    background-color:#30324E ;
+}
+body.dark-theme .invite_btn_popup:hover{
+    background-color:#30324E ;
+}
+body.dark-theme .team_invite_description{
+    color:#d5d8df;
+}
+body.dark-theme .team_invite_container_svg path{
+    stroke:#d5d8df;
+}
+body.dark-theme .people_invite_name{
+    color:#d5d8df;
+}
+body.dark-theme .search_display_container{
+    background-color: #181B34;
+}
+body.dark-theme .invite_search_text{
+    background-color: #181B34;
+    border: 1px solid #aaa;
+    color: #aaa;
+}
 body.dark-theme .invite_container{
     background-color: #30324E;
 }
