@@ -481,7 +481,50 @@ document.getElementById("new_lead_btn_left").addEventListener("click", function 
     inputField.focus();
 });
 
-// Зробити мессенджер для сторінки(той що коло кнопки інвайт кнопка)
+// Відкрити месенджер для обговорення таблиці на сторінці
+
+document.getElementById("head_help").addEventListener("click", function () {
+    const messangerDisplay = document.getElementById("page_messager_container");
+    messangerDisplay.classList.toggle("active");
+});
+
+// Закрити месенджер для обговорення таблиці
+
+document.getElementById("close_message_popup").addEventListener("click", function () {
+    const messangerDisplay = document.getElementById("page_messager_container");
+    messangerDisplay.classList.remove("active");
+});
+
+// чорна і біла теми для месенджера для обговорення таблиці
+
+if (document.body.classList.contains("dark-theme")) {
+    document.getElementById("editor").classList.add("dark-theme");
+} else {
+    document.getElementById("editor").classList.remove("dark-theme");
+}
+
+// Скрипти для мессенджера на сторінці
+
+function sendMessage() {
+    const messageText = document.querySelector(".ql-editor").innerHTML;
+    const noDiscus = document.getElementById("no_discussion_container");
+    const yesDiscus = document.getElementById("yes_discussion_container");
+    const messageRadar = document.querySelectorAll(".ally_message");
+    const myMessage = document.querySelector(".my_message");
+
+    if (messageText === "") return; 
+}
+
+
+// Ідеї як зробити цей скрипт: 
+// 1) Зробити перевірку чи є хоть якісь повідомлення, щоб був дисплей для повідомлень чи без повідомлень    
+// 2) Цю перевірку зробити іф є мій клас, клас для моїх і чужих повідомлень завжди буде однаковим
+// 3) Текст який взяло з мого едітора вставити у нове моє повідомлення 
+// 4) Створити повідомлення через креате елемент і іннер штмл, і не забути про місце вставки повязане з часом надсилання повідомлень(моїх у чіжих)
+// 5) Не забувати про делегацію подій на всякий випадок
+// 6) Створити у штмл приклад повідомлення іншого корстувача і його стилі, не забути написати для нього час надсилання для майбутнього скрипта
+// 7) Прописати стилі для мною створених повідомлень і для контейнера, щоб усе ставилось правильно
+// 8) Написати сортизацію повідомлень(на майбутнє), щоб вони сортувалися в залежності від часу відправки  
 
 
 
