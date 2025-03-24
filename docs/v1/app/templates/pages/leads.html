@@ -325,7 +325,13 @@
                         </div>
                     </div>
                     <div class="yes_discussion_container" id="yes_discussion_container">
-
+                        <div class="my_message from_sender">
+                            <img class="card_photo mess_photo" src="{{ data.lead.url_image }}">
+                            <div class="message_text_container">
+                                <div class="message_text">There is you can discuss quastions with your partners and thats your partner message</div>
+                                <div class="message_time">2025-03-25 00:15</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -339,5 +345,13 @@
         theme: 'snow' // Світла тема
         });
     </script>
+        <script>
+            const leadData = {
+                firstname: "{{ data.lead.firstname }}",
+                lastname: "{{ data.lead.lastname }}",
+                email: "{{ data.lead.email }}",
+                url_image: "{{ data.lead.url_image }}"
+            };
+            </script>
 
 {% endblock %}

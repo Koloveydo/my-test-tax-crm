@@ -1056,7 +1056,7 @@ section#index-page {
     background-color: #e9e9e9;
     z-index: 20;
     box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.09);
-    overflow-y:visible;
+    overflow-y:auto;
     opacity: 0;
     visibility: hidden;
     transform: translateX(100%);
@@ -1219,6 +1219,8 @@ section#index-page {
     flex-direction: column;
     width: auto;
     height: auto;
+    overflow-y: auto;
+    margin-top: 10px;
 }
 .no_discussion_container{
     display: flex;
@@ -1248,6 +1250,51 @@ section#index-page {
     font-size: 16px;
     font-weight: bold;
 }
+.yes_discussion_container{
+    display: none;
+    flex-direction: column;
+    gap: 15px;
+}
+.my_message{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    background-color: transparent;
+    gap: 10px;
+}
+.from_sender{
+    flex-direction: row-reverse;
+}
+.message_text_container{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background-color: #7e7e7e;
+    border: none;
+    border-radius: 10px;
+    width: calc( 100% - 50px );
+    box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.09);
+    padding: 7px;
+    position: relative;
+}
+.message_text{
+    display: flex;
+    flex-direction: row;
+    color: #000000;
+}
+.message_time{
+    display: flex;
+    color: #2D64AB;
+    text-align:right;
+    justify-content: flex-end;
+}
+.mess_photo{
+    align-self: flex-end;
+    position: relative;
+    width: 35px;
+    height: 35px;
+}
 
 /* ------------------------------------ Чорна тема сторінки ------------------------------------------------*/
 
@@ -1268,6 +1315,12 @@ body.dark-theme .ql-stroke {
     stroke: #ddd;
 }
 /*editor dark end style*/
+body.dark-theme .message_text{
+    color:#d5d8df;
+}
+body.dark-theme .message_text_container{
+    background-color:#30324E;
+}
 body.dark-theme .no_dis_bot, body.dark-theme .no_dis_head{
     color:#d5d8df;
 }
@@ -1506,4 +1559,32 @@ body.dark-theme .delete_row_svg path{
 }
 body.dark-theme .close_main_popup path{
     stroke: #d5d8df;
+}
+
+/* Адаптація сторінки*/
+
+@media (max-width: 831px) {
+    .page_messager_container{
+        width: 60%;
+    }
+}
+@media (max-width: 768px) {
+    .page_messager_container{
+        width: 90%;
+    }
+}
+@media (max-width: 600px) {
+    .leads_page_head{
+        flex-direction: column;
+        gap: 10px;
+    }
+    .page_head_menu{
+        gap: 5px;
+    }
+    .arr_main{
+        display: none;
+    }
+    .tname, .current_lead_name, .new_lead{
+        width: 150px;
+    }
 }

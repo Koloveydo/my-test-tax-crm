@@ -505,20 +505,61 @@ if (document.body.classList.contains("dark-theme")) {
 
 // Скрипти для мессенджера на сторінці
 
+const noDiscus = document.getElementById("no_discussion_container");
+const yesDiscus = document.getElementById("yes_discussion_container");
+function checkMessages() {
+    const hasMessages = yesDiscus.querySelector(".ally_message, .my_message");
+
+    if (hasMessages) {
+        yesDiscus.style.display = "flex";
+        noDiscus.style.display = "none";
+    } else {
+        yesDiscus.style.display = "none";
+        noDiscus.style.display = "flex";
+    }
+}
+checkMessages();
+const observer = new MutationObserver(checkMessages);
+observer.observe(yesDiscus, { childList: true, subtree: true });
+
 function sendMessage() {
     const messageText = document.querySelector(".ql-editor").innerHTML;
     const noDiscus = document.getElementById("no_discussion_container");
     const yesDiscus = document.getElementById("yes_discussion_container");
     const messageRadar = document.querySelectorAll(".ally_message");
     const myMessage = document.querySelector(".my_message");
+    
+    function getCurrentTime() {
+        const now = new Date();
+        return now.getFullYear() + '-' +
+            String(now.getMonth() + 1).padStart(2, '0') + '-' +
+            String(now.getDate()).padStart(2, '0') + ' ' +
+            String(now.getHours()).padStart(2, '0') + ':' +
+            String(now.getMinutes()).padStart(2, '0');
+    }
 
     if (messageText === "") return; 
+
+    const createMessage = document.createElement("div");
+    createMessage.className = "my_message";
+    createMessage.classList.add("chat_message");
+    createMessage.setAttribute("data-time", getCurrentTime());
+
+    createMessage.innerHTML = `
+                            <div class="my_message">
+                                <img class="card_photo mess_photo" src="${leadData.url_image}" alt="User">
+                                <div class="message_text_container">
+                                    <div class="message_text"></div>
+                                    <div class="message_time">${getCurrentTime()}</div>
+                                </div>
+                            </div>
+    `;
+    yesDiscus.appendChild(createMessage);
+    const messageValue = createMessage.querySelector(".message_text");
+    messageValue.innerHTML = messageText;
 }
 
-
-// Ідеї як зробити цей скрипт: 
-// 1) Зробити перевірку чи є хоть якісь повідомлення, щоб був дисплей для повідомлень чи без повідомлень    
-// 2) Цю перевірку зробити іф є мій клас, клас для моїх і чужих повідомлень завжди буде однаковим
+// Ідеї як зробити цей скрипт(уточнення я уже витягнув текст з едітора цим messageText, щоб зберегти розміри і тд, потрібно так):  
 // 3) Текст який взяло з мого едітора вставити у нове моє повідомлення 
 // 4) Створити повідомлення через креате елемент і іннер штмл, і не забути про місце вставки повязане з часом надсилання повідомлень(моїх у чіжих)
 // 5) Не забувати про делегацію подій на всякий випадок
@@ -526,7 +567,8 @@ function sendMessage() {
 // 7) Прописати стилі для мною створених повідомлень і для контейнера, щоб усе ставилось правильно
 // 8) Написати сортизацію повідомлень(на майбутнє), щоб вони сортувалися в залежності від часу відправки  
 
-
+// не правильно вставляє текст, виправити, не правильно створює повідомлення(не прописав стилі), не вставляє зображення з бд юзера треба виправити
+// скрипт сортування повідомлень також щось не дуже працює, коли його функцію втсавляю у функцію кліку, перестає все працювати, дослідити помилку 
 
 
 
