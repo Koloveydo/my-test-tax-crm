@@ -1597,3 +1597,18 @@ body.dark-theme .close_main_popup path{
 .contacts_arr path{
     stroke:#50C878;
 }
+
+/* Deals deal.css*/
+
+.vdnew{
+    background-color: #777AE5;
+}
+.vproposal{
+    background-color: #84D4FD ;
+}
+.vdiscovery{
+    background-color: #6389C6;
+}
+.vwon{
+    background-color: #33D190;
+}

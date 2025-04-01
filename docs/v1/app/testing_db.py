@@ -16,6 +16,8 @@ def insertToAllTables():
             Lead_details.query.delete()
             User.query.delete()
             User_details.query.delete()
+        #    Client_projects.query.delete()
+        #    Clients_project_details.query.delete()
 
             db.session.commit()
             
@@ -235,6 +237,17 @@ def insertToAllTables():
             db.session.add(tags_8)
             db.session.add(tags_9)
             db.session.commit()
+
+
+#            test_projects = [
+#                Clients_project_details(title="Deal 1", priority="high", status="open"),
+#                Clients_project_details(title="Deal 2", priority="medium", status="in_progress"),
+#                Clients_project_details(title="Deal 3", priority="low", status="closed"),
+#                Clients_project_details(title="Deal 4", priority="high", status="open"),
+#            ]
+#
+#            db.session.add_all(test_projects)
+#            db.session.commit()
             
     except Exception as e:
         print(f'Inserting data error.\nError: {e}')

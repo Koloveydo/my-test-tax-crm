@@ -41,15 +41,15 @@ createNewRow.addEventListener("click", function(event) {
                 </label>
             </div>
             <div class="current_lead_name">
-                <input type="text" class="board_input" value="" placeholder="Type lead name">
+                <input type="text" class="board_input" value="" placeholder="Type contact name">
             </div>
             <div class="board current_status">
                 <div class="status_btn">
-                    <div class="variant vnew">New Lead</div>
+                    <div class="variant vnew">New Contact</div>
                 </div>
-                <div class="status_popup">
+                <div class="status_popup" id="status_popup">
                     <div class="status_variant">
-                        <div class="variant vnew">New Lead</div>
+                        <div class="variant vnew">New Contact</div>
                         <div class="variant vcontacted">Contacted</div>
                         <div class="variant vuncontacted">Uncontacted</div>
                         <div class="variant vblocked">Blocked</div>
@@ -60,6 +60,9 @@ createNewRow.addEventListener("click", function(event) {
                 <input type="text" class="board_input" value="">
             </div>
             <div class="board current_email">
+                <input type="text" class="board_input" value="">
+            </div>
+            <div class="board current_projects">
                 <input type="text" class="board_input" value="">
             </div>
             <div class="board current_phone">
@@ -203,7 +206,7 @@ document.getElementById('plus_table').addEventListener('click', function() {
             </div>
             <div class="lead_amount_container">
                 <div class="lead_amount" id="lead_amount"></div>
-                <div class="lead_amount_text">Leads</div>
+                <div class="lead_amount_text">Contacts</div>
             </div>
         </div>
         <div id="ltable_all" class="ltable_all">
@@ -214,10 +217,11 @@ document.getElementById('plus_table').addEventListener('click', function() {
                         <span class="checkmark"></span>
                     </label>
                 </div>
-                <div class="board tname">Lead</div>
+                <div class="board tname">Contact</div>
                 <div class="board tstatus">Status</div>
                 <div class="board torg">Organization</div>
                 <div class="board temail">Email</div>
+                <div class="board tprojects">Projects</div>
                 <div class="board tphone">Phone</div>
                 <div class="board taddress">Address</div>
                 <div class="board ttitle">Title</div>
@@ -231,15 +235,15 @@ document.getElementById('plus_table').addEventListener('click', function() {
                     </label>
                 </div>
                 <div class="current_lead_name">
-                    <input type="text" class="board_input" value="">
+                    <input type="text" class="board_input" value="" placeholder="Type contact name">
                 </div>
                 <div class="board current_status">
                     <div class="status_btn" id="status_btn">
-                        <div class="variant vnew">New Lead</div>
+                        <div class="variant vnew">New Contact</div>
                     </div>
                     <div class="status_popup" id="status_popup">
                         <div class="status_variant">
-                            <div class="variant vnew">New Lead</div>
+                            <div class="variant vnew">New Contact</div>
                             <div class="variant vcontacted">Contacted</div>
                             <div class="variant vuncontacted">Uncontacted</div>
                             <div class="variant vblocked">Blocked</div>
@@ -250,6 +254,9 @@ document.getElementById('plus_table').addEventListener('click', function() {
                     <input type="text" class="board_input" value="">
                 </div>
                 <div class="board current_email">
+                    <input type="text" class="board_input" value="">
+                </div>
+                <div class="board current_projects">
                     <input type="text" class="board_input" value="">
                 </div>
                 <div class="board current_phone">
@@ -272,7 +279,7 @@ document.getElementById('plus_table').addEventListener('click', function() {
                         <span class="checkmark"></span>
                     </label>
                 </div>
-                <div class="new_lead" id="create_row">+Add lead</div>
+                <div class="new_lead" id="create_row">+Add contact</div>
             </div>
         </div>
 `;
@@ -440,15 +447,15 @@ document.getElementById("new_lead_btn_left").addEventListener("click", function 
             </label>
         </div>
         <div class="current_lead_name">
-            <input type="text" class="board_input" value="" placeholder="Type lead name">
+            <input type="text" class="board_input" value="" placeholder="Type contact name">
         </div>
         <div class="board current_status">
-            <div class="status_btn">
-                <div class="variant vnew">New Lead</div>
+            <div class="status_btn" id="status_btn">
+                <div class="variant vnew">New Contact</div>
             </div>
-            <div class="status_popup">
+            <div class="status_popup" id="status_popup">
                 <div class="status_variant">
-                    <div class="variant vnew">New Lead</div>
+                    <div class="variant vnew">New Contact</div>
                     <div class="variant vcontacted">Contacted</div>
                     <div class="variant vuncontacted">Uncontacted</div>
                     <div class="variant vblocked">Blocked</div>
@@ -459,6 +466,9 @@ document.getElementById("new_lead_btn_left").addEventListener("click", function 
             <input type="text" class="board_input" value="">
         </div>
         <div class="board current_email">
+            <input type="text" class="board_input" value="">
+        </div>
+        <div class="board current_projects">
             <input type="text" class="board_input" value="">
         </div>
         <div class="board current_phone">

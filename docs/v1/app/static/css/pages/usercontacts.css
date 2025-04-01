@@ -1597,3 +1597,15 @@ body.dark-theme .close_main_popup path{
 .contacts_arr path{
     stroke:#50C878;
 }
+.uncontacts_name{
+    color:#EB4C42;
+}
+.uncontacts_arr path{
+    stroke:#EB4C42;
+}
+.tprojects{
+    width: 180px;
+}
+.current_projects{
+    width: 180px;
+}
