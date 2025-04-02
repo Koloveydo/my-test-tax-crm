@@ -1,4 +1,10 @@
+// Зміна назви ліда
 
+function updateInputValues() {
+    document.querySelectorAll(".current_lead_name .board_input").forEach((input, index) => {
+        input.value = `Deal ${index + 1}`;
+    });
+}
 //статус ліда у таблиці
 
 const leadTable = document.querySelector('.leads_bottom')
@@ -41,32 +47,30 @@ createNewRow.addEventListener("click", function(event) {
                 </label>
             </div>
             <div class="current_lead_name">
-                <input type="text" class="board_input" value="" placeholder="Type lead name">
+                <input type="text" class="board_input" value="" placeholder="Type deal name" readonly>
             </div>
             <div class="board current_status">
-                <div class="status_btn">
-                    <div class="variant vnew">New Lead</div>
+                <div class="status_btn" id="status_btn">
+                    <div class="variant vdnew">New</div>
                 </div>
-                <div class="status_popup">
+                <div class="status_popup" id="status_popup">
                     <div class="status_variant">
-                        <div class="variant vnew">New Lead</div>
-                        <div class="variant vcontacted">Contacted</div>
-                        <div class="variant vuncontacted">Uncontacted</div>
-                        <div class="variant vblocked">Blocked</div>
+                        <div class="variant vdnew">New</div>
+                        <div class="variant vproposal">Proposal</div>
+                        <div class="variant vdiscovery">Discovery</div>
+                        <div class="variant vwon">Won</div>
                     </div>
                 </div>
             </div>
-            <div class="board current_organization">
+            <div class="board current_value">
+                <input type="text" class="board_input" id="custom_input" value="">
+            </div>
+            <div class="board current_contacts">
                 <input type="text" class="board_input" value="">
             </div>
-            <div class="board current_email">
-                <input type="text" class="board_input" value="">
-            </div>
-            <div class="board current_phone">
-                <input type="text" class="board_input" value="">
-            </div>
-            <div class="board current_address">
-                <input type="text" class="board_input" value="">
+            <div class="board current_close_date">
+                <button class="close_date_btn" id="dateButton">Виберіть дату</button>
+                <input type="text" class="close_date_picker" id="datePicker" style="display: none;">
             </div>
             <div class="board current_title">
                 <input type="text" class="board_input" value="">
@@ -79,7 +83,7 @@ createNewRow.addEventListener("click", function(event) {
         leadTable.insertBefore(newRow, creationPosition);
     
         const inputField = newRow.querySelector(".board_input");
-        inputField.focus();
+        updateInputValues();
     }
 })
 
@@ -203,10 +207,10 @@ document.getElementById('plus_table').addEventListener('click', function() {
             </div>
             <div class="lead_amount_container">
                 <div class="lead_amount" id="lead_amount"></div>
-                <div class="lead_amount_text">Leads</div>
+                <div class="lead_amount_text">Deals</div>
             </div>
         </div>
-        <div id="ltable_all" class="ltable_all">
+        <div id="ltable_all" class="ltable_all active_table">
             <div class="ltable_head">
                 <div class="check_all_leads">
                     <label class="custom_checkbox all_rows">
@@ -214,12 +218,11 @@ document.getElementById('plus_table').addEventListener('click', function() {
                         <span class="checkmark"></span>
                     </label>
                 </div>
-                <div class="board tname">Lead</div>
-                <div class="board tstatus">Status</div>
-                <div class="board torg">Organization</div>
-                <div class="board temail">Email</div>
-                <div class="board tphone">Phone</div>
-                <div class="board taddress">Address</div>
+                <div class="board tname">Deal</div>
+                <div class="board tstage">Stage</div>
+                <div class="board tvalue">Deal Value</div>
+                <div class="board tcontact">Contacts</div>
+                <div class="board tclosedate">Expected Close Date</div>
                 <div class="board ttitle">Title</div>
                 <div class="board tcomment">Comment</div>
             </div>
@@ -231,32 +234,30 @@ document.getElementById('plus_table').addEventListener('click', function() {
                     </label>
                 </div>
                 <div class="current_lead_name">
-                    <input type="text" class="board_input" value="">
+                    <input type="text" class="board_input" value="" readonly>
                 </div>
                 <div class="board current_status">
                     <div class="status_btn" id="status_btn">
-                        <div class="variant vnew">New Lead</div>
+                        <div class="variant vdnew">New</div>
                     </div>
                     <div class="status_popup" id="status_popup">
                         <div class="status_variant">
-                            <div class="variant vnew">New Lead</div>
-                            <div class="variant vcontacted">Contacted</div>
-                            <div class="variant vuncontacted">Uncontacted</div>
-                            <div class="variant vblocked">Blocked</div>
+                            <div class="variant vdnew">New</div>
+                            <div class="variant vproposal">Proposal</div>
+                            <div class="variant vdiscovery">Discovery</div>
+                            <div class="variant vwon">Won</div>
                         </div>
                     </div>
                 </div>
-                <div class="board current_organization">
+                <div class="board current_value">
+                    <input type="text" class="board_input" id="custom_input" value="">
+                </div>
+                <div class="board current_contacts">
                     <input type="text" class="board_input" value="">
                 </div>
-                <div class="board current_email">
-                    <input type="text" class="board_input" value="">
-                </div>
-                <div class="board current_phone">
-                    <input type="text" class="board_input" value="">
-                </div>
-                <div class="board current_address">
-                    <input type="text" class="board_input" value="">
+                <div class="board current_close_date">
+                    <button class="close_date_btn" id="dateButton">Виберіть дату</button>
+                    <input type="text" class="close_date_picker" id="datePicker" style="display: none;">
                 </div>
                 <div class="board current_title">
                     <input type="text" class="board_input" value="">
@@ -272,11 +273,12 @@ document.getElementById('plus_table').addEventListener('click', function() {
                         <span class="checkmark"></span>
                     </label>
                 </div>
-                <div class="new_lead" id="create_row">+Add lead</div>
+                <div class="new_lead" id="create_row">+Add deal</div>
             </div>
         </div>
 `;
     mainTable.insertBefore(newTable, invisTable);
+    updateInputValues();
     //mainTable.appendChild(newTable); 
 
     const inputField = newTable.querySelector(".leads_top_name");
@@ -439,46 +441,44 @@ document.getElementById("new_lead_btn_left").addEventListener("click", function 
                 <span class="checkmark"></span>
             </label>
         </div>
-        <div class="current_lead_name">
-            <input type="text" class="board_input" value="" placeholder="Type lead name">
-        </div>
-        <div class="board current_status">
-            <div class="status_btn">
-                <div class="variant vnew">New Lead</div>
+            <div class="current_lead_name">
+                <input type="text" class="board_input" value="" placeholder="Type deal name" readonly>
             </div>
-            <div class="status_popup">
-                <div class="status_variant">
-                    <div class="variant vnew">New Lead</div>
-                    <div class="variant vcontacted">Contacted</div>
-                    <div class="variant vuncontacted">Uncontacted</div>
-                    <div class="variant vblocked">Blocked</div>
+            <div class="board current_status">
+                <div class="status_btn" id="status_btn">
+                    <div class="variant vdnew">New</div>
+                </div>
+                <div class="status_popup" id="status_popup">
+                    <div class="status_variant">
+                        <div class="variant vdnew">New</div>
+                        <div class="variant vproposal">Proposal</div>
+                        <div class="variant vdiscovery">Discovery</div>
+                        <div class="variant vwon">Won</div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="board current_organization">
-            <input type="text" class="board_input" value="">
-        </div>
-        <div class="board current_email">
-            <input type="text" class="board_input" value="">
-        </div>
-        <div class="board current_phone">
-            <input type="text" class="board_input" value="">
-        </div>
-        <div class="board current_address">
-            <input type="text" class="board_input" value="">
-        </div>
-        <div class="board current_title">
-            <input type="text" class="board_input" value="">
-        </div>
-        <div class="board current_comment">
-            <input type="text" class="board_input" value="">
-        </div>
+            <div class="board current_value">
+                <input type="text" class="board_input" id="custom_input" value="">
+            </div>
+            <div class="board current_contacts">
+                <input type="text" class="board_input" value="">
+            </div>
+            <div class="board current_close_date">
+                <button class="close_date_btn" id="dateButton">Виберіть дату</button>
+                <input type="text" class="close_date_picker" id="datePicker" style="display: none;">
+            </div>
+            <div class="board current_title">
+                <input type="text" class="board_input" value="">
+            </div>
+            <div class="board current_comment">
+                <input type="text" class="board_input" value="">
+            </div>
     `;
 
     leadTable.insertBefore(newRow, creationPosition);
 
     const inputField = newRow.querySelector(".board_input");
-    inputField.focus();
+    updateInputValues();
 });
 
 // Відкрити месенджер для обговорення таблиці на сторінці
@@ -556,6 +556,56 @@ function sendMessage() {
     messageValue.innerHTML = messageText;
 }
 
+/* Видалення не цифр або символів у Deal Value*/
+
+document.getElementById("custom_input").addEventListener("input", function(event) {
+    this.value = this.value.replace(/[^0-9$?.,]/g, "");
+});
+
+/* Правильна поява календаря з показуванням часу з бд*/
+
+document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("click", function (event) {
+        if (event.target.classList.contains("close_date_btn")) {
+            let button = event.target;
+            let dateFromDB = button.getAttribute("data-date");
+
+            let input = button.nextElementSibling;
+            if (!input || !input.classList.contains("datePicker")) {
+                input = document.createElement("input");
+                input.type = "text";
+                input.classList.add("datePicker");
+                input.style.display = "none";
+                button.after(input);
+
+                flatpickr(input, {
+                    defaultDate: dateFromDB,
+                    onChange: function (selectedDates, dateStr) {
+                        button.innerText = dateStr;
+                    }
+                });
+            }
+
+            input.click();
+        }
+    });
+});
+
+/* Назви для всіх імпутів deal (deal 1, deal 2, ... deal N) */
+
+document.addEventListener("DOMContentLoaded", function () {
+    function updateInputValues() {
+        document.querySelectorAll(".current_lead_name .board_input").forEach((input, index) => {
+            input.value = `Deal ${index + 1}`;
+        });
+    }
+
+    updateInputValues();
+});
+
+/* Таски для цієї сторінки:
+
+4) Наповнити даними кілька рядків(витягувати дані із бд, це буде модель Activity) */
 
 
 

@@ -1609,3 +1609,9 @@ body.dark-theme .close_main_popup path{
 .current_projects{
     width: 180px;
 }
+.unactive_table{
+    border-left: 5px solid #EB4C42;
+}
+.active_table{
+    border-left: 5px solid #50C878;
+}

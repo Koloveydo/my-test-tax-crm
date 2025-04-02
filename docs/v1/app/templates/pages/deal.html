@@ -3,6 +3,10 @@
 {% block head %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/pages/deal.css') }}">
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <link id="flatpickr-theme" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/light.css">
+
 {% endblock %}
 
 {% block body %}
@@ -74,16 +78,16 @@
                         <div class="leads_bottom">
                             <div id="leads_table" class="leads_table">
                                 <div id="leads_top" class="leads_top">
-                                    <svg id="arrow_open_lead" class="arrow_svg arr_lead" width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 12L16 20L24 12" stroke="#1E1E1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    <svg id="arrow_open_lead" class="arrow_svg arr_deal" width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 12L16 20L24 12" stroke="#1E1E1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                     <div class="leads_top_name_container">
-                                        <input type="text" class="leads_top_name" value="Active Deals">
+                                        <input type="text" class="deals_top_name" value="Active Deals">
                                     </div>
                                     <div class="lead_amount_container">
                                         <div class="lead_amount" id="lead_amount"></div>
                                         <div class="lead_amount_text">Deals</div>
                                     </div>
                                 </div>
-                                <div id="ltable_all" class="ltable_all">
+                                <div id="ltable_all" class="ltable_all active_table">
                                     <div class="ltable_head">
                                         <div class="check_all_leads">
                                             <label class="custom_checkbox all_rows">
@@ -92,10 +96,10 @@
                                             </label>
                                         </div>
                                         <div class="board tname">Deal</div>
-                                        <div class="board tstatus">Stage</div>
-                                        <div class="board torg">Deal Value</div>
-                                        <div class="board temail">Contacts</div>
-                                        <div class="board tphone">Expected Close Date</div>
+                                        <div class="board tstage">Stage</div>
+                                        <div class="board tvalue">Deal Value</div>
+                                        <div class="board tcontact">Contacts</div>
+                                        <div class="board tclosedate">Expected Close Date</div>
                                         <div class="board ttitle">Title</div>
                                         <div class="board tcomment">Comment</div>
                                     </div>
@@ -107,7 +111,47 @@
                                             </label>
                                         </div>
                                         <div class="current_lead_name">
-                                            <input type="text" class="board_input" value="">
+                                            <input type="text" class="board_input" value="" readonly>
+                                        </div>
+                                        <div class="board current_status">
+                                            <div class="status_btn" id="status_btn">
+                                                <div class="variant vproposal">Proposal</div>
+                                            </div>
+                                            <div class="status_popup" id="status_popup">
+                                                <div class="status_variant">
+                                                    <div class="variant vdnew">New</div>
+                                                    <div class="variant vproposal">Proposal</div>
+                                                    <div class="variant vdiscovery">Discovery</div>
+                                                    <div class="variant vwon">Won</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="board current_value">
+                                            <input type="text" class="board_input" id="custom_input" value="30,000 $">
+                                        </div>
+                                        <div class="board current_contacts">
+                                            <input type="text" class="board_input" value="{{ data.activity[0].conected_user}}">
+                                        </div>
+                                        <div class="board current_close_date">
+                                            <button class="close_date_btn" data-date="{{ data.activity[0].date_update.strftime('%Y-%m-%d') }}" id="dateButton">{{ data.activity[0].date_update.strftime('%Y-%m-%d') }}</button>
+                                            <input type="text" class="close_date_picker" id="datePicker" style="display: none;">
+                                        </div>
+                                        <div class="board current_title">
+                                            <input type="text" class="board_input" value="{{ data.activity[0].title}}">
+                                        </div>
+                                        <div class="board current_comment">
+                                            <input type="text" class="board_input" value="{{ data.activity[0].activity_type}}">
+                                        </div>
+                                    </div>
+                                    <div class="ltable_body">
+                                        <div class="check_current_lead">
+                                            <label class="custom_checkbox">
+                                                <input type="checkbox">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </div>
+                                        <div class="current_lead_name">
+                                            <input type="text" class="board_input" value="" readonly>
                                         </div>
                                         <div class="board current_status">
                                             <div class="status_btn" id="status_btn">
@@ -122,20 +166,99 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="board current_organization">
-                                            <input type="text" class="board_input" value="">
+                                        <div class="board current_value">
+                                            <input type="text" class="board_input" id="custom_input" value="50,000 $">
                                         </div>
-                                        <div class="board current_email">
-                                            <input type="text" class="board_input" value="">
+                                        <div class="board current_contacts">
+                                            <input type="text" class="board_input" value="{{ data.activity[4].conected_user}}">
                                         </div>
-                                        <div class="board current_address">
-                                            <input type="text" class="board_input" value="">
+                                        <div class="board current_close_date">
+                                            <button class="close_date_btn" data-date="{{ data.activity[4].date_update.strftime('%Y-%m-%d') }}" id="dateButton">{{ data.activity[4].date_update.strftime('%Y-%m-%d') }}</button>
+                                            <input type="text" class="close_date_picker" id="datePicker" style="display: none;">
                                         </div>
                                         <div class="board current_title">
-                                            <input type="text" class="board_input" value="">
+                                            <input type="text" class="board_input" value="{{ data.activity[4].title}}">
                                         </div>
                                         <div class="board current_comment">
-                                            <input type="text" class="board_input" value="">
+                                            <input type="text" class="board_input" value="{{ data.activity[4].activity_type}}">
+                                        </div>
+                                    </div>
+                                    <div class="ltable_create">
+                                        <div class="check_current_lead unactive">
+                                            <label class="custom_checkbox unactive">
+                                                <input type="checkbox">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </div>
+                                        <div class="new_lead" id="create_row">+Add deal</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="leads_table" class="leads_table">
+                                <div id="leads_top" class="leads_top">
+                                    <svg id="arrow_open_lead" class="arrow_svg arr_deal_won" width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 12L16 20L24 12" stroke="#1E1E1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    <div class="leads_top_name_container">
+                                        <input type="text" class="deals_top_name_won" value="Closed Won">
+                                    </div>
+                                    <div class="lead_amount_container">
+                                        <div class="lead_amount" id="lead_amount"></div>
+                                        <div class="lead_amount_text">Deals</div>
+                                    </div>
+                                </div>
+                                <div id="ltable_all" class="ltable_all closed_table">
+                                    <div class="ltable_head">
+                                        <div class="check_all_leads">
+                                            <label class="custom_checkbox all_rows">
+                                                <input type="checkbox">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </div>
+                                        <div class="board tname">Deal</div>
+                                        <div class="board tstage">Stage</div>
+                                        <div class="board tvalue">Deal Value</div>
+                                        <div class="board tcontact">Contacts</div>
+                                        <div class="board tclosedate">Expected Close Date</div>
+                                        <div class="board ttitle">Title</div>
+                                        <div class="board tcomment">Comment</div>
+                                    </div>
+                                    <div class="ltable_body">
+                                        <div class="check_current_lead">
+                                            <label class="custom_checkbox">
+                                                <input type="checkbox">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </div>
+                                        <div class="current_lead_name">
+                                            <input type="text" class="board_input" value="" readonly>
+                                        </div>
+                                        <div class="board current_status">
+                                            <div class="status_btn" id="status_btn">
+                                                <div class="variant vwon">Won</div>
+                                            </div>
+                                            <div class="status_popup" id="status_popup">
+                                                <div class="status_variant">
+                                                    <div class="variant vdnew">New</div>
+                                                    <div class="variant vproposal">Proposal</div>
+                                                    <div class="variant vdiscovery">Discovery</div>
+                                                    <div class="variant vwon">Won</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="board current_value">
+                                            <input type="text" class="board_input" id="custom_input" value="100,000 $">
+                                        </div>
+                                        <div class="board current_contacts">
+                                            <input type="text" class="board_input" value="{{data.activity[6].conected_user}}">
+                                        </div>
+                                        <div class="board current_close_date">
+                                            <button class="close_date_btn" id="dateButton" data-date="{{ data.activity[4].date_update.strftime('%Y-%m-%d') }}">{{ data.activity[4].date_update.strftime('%Y-%m-%d') }}</button>
+                                            <input type="text" class="close_date_picker" id="datePicker" style="display: none;">
+                                        </div>
+                                        <div class="board current_title">
+                                            <input type="text" class="board_input" value="{{data.activity[6].title}}">
+                                        </div>
+                                        <div class="board current_comment">
+                                            <input type="text" class="board_input" value="{{data.activity[6].activity_type}}">
                                         </div>
                                     </div>
                                     <div class="ltable_create">
@@ -163,7 +286,7 @@
                         <div class="chosen_amount_text" id="chosen_amount_text"></div>
                     </div>
                     <div class="row_selected_container">
-                        <div class="row_selected_text">Lead Selected</div>
+                        <div class="row_selected_text">Deal Selected</div>
                     </div>
                     <div class="mass_email_container" id="mass_email_btn">
                         <svg class="mass_email_svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 20C3.45 20 2.97917 19.8042 2.5875 19.4125C2.19583 19.0208 2 18.55 2 18V6C2 5.45 2.19583 4.97917 2.5875 4.5875C2.97917 4.19583 3.45 4 4 4H20C20.55 4 21.0208 4.19583 21.4125 4.5875C21.8042 4.97917 22 5.45 22 6V18C22 18.55 21.8042 19.0208 21.4125 19.4125C21.0208 19.8042 20.55 20 20 20H4ZM12 13L4 8V18H20V8L12 13ZM12 11L20 6H4L12 11ZM4 8V6V18V8Z" fill="#1D1B20"/></svg>
@@ -341,13 +464,30 @@
         theme: 'snow'
         });
     </script>
-        <script>
-            const leadData = {
-                firstname: "{{ data.user.firstname }}",
-                lastname: "{{ data.user.lastname }}",
-                email: "{{ data.user.email }}",
-                url_image: "{{ data.user.url_image }}"
-            };
-            </script>
+    <script>
+        const leadData = {
+            firstname: "{{ data.user.firstname }}",
+            lastname: "{{ data.user.lastname }}",
+            email: "{{ data.user.email }}",
+            url_image: "{{ data.user.url_image }}"
+        };
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll(".close_date_picker").forEach(function (input) {
+                flatpickr(input, {
+                    onChange: function (selectedDates, dateStr) {
+                        input.previousElementSibling.innerText = dateStr;
+                    }
+                });
+            });
+            document.addEventListener("click", function (event) {
+                if (event.target.classList.contains("close_date_btn")) {
+                    let input = event.target.nextElementSibling; 
+                    input.click();
+                }
+            });
+        });
+    </script>
 
 {% endblock %}

@@ -389,6 +389,68 @@ def my_deals_view():
     #lead = Lead_details.query.first()
     user = User_details.query.filter_by(firstname=session["user"]["first_name"], lastname=session["user"]["last_name"]).first()
 
+    activities = db.session.query(Activity_details).join(Activity).filter(
+    Activity.activity_details == Activity_details.id
+    ).all()
+
+    leads = db.session.query(Lead_details).join(Lead).filter(
+    Lead.lead_details == Lead_details.id
+    ).all()
+    
+    user_mydetails = {
+        'id':user.id,
+        'firstname':user.firstname,
+        'lastname':user.lastname,
+        'email':user.email,
+        'job_title':user.job_title,
+        'phone':user.phone,
+        'addres':user.addres,
+        'url_image':user.url_image,
+        'datetime_update':user.datetime_update,
+        'datetime_create':user.datetime_create,
+    }
+    lead_details_list = [
+        {
+            'id': lead.id,
+            'firstname': lead.firstname,
+            'lastname': lead.lastname,
+            'email': lead.email,
+            'organization': lead.ORGANIZATION,
+            'phone': lead.phone_number,
+            'comments': lead.comments,
+            'address': lead.addres,
+            'url_image': lead.url_image,
+            'datetime_update': lead.datetime_update,
+            'datetime_create': lead.datetime_create,
+        }
+        for lead in leads
+    ]
+
+    activity_details_list = [
+        {
+            'id' : activity.id,
+            'title' : activity.title,
+            'activity_type' : activity.activity_type,
+            'conected_user' : activity.user,
+            'date_update' : activity.datetime_update,
+            'date_creation' : activity.datetime_create,
+
+        } for activity in activities
+    ]
+
+    data = {
+        "lead" : lead_details_list,
+        "user" : user_mydetails,
+        "activity" : activity_details_list,
+    }
+
+    return render_template('pages/deal.html', data=data)
+
+@app.route('/mass_email', methods=["GET", "POST"])
+def my_mass_email_view():
+    #lead = Lead_details.query.first()
+    user = User_details.query.filter_by(firstname=session["user"]["first_name"], lastname=session["user"]["last_name"]).first()
+
     leads = db.session.query(Lead_details).join(Lead).filter(
     Lead.lead_details == Lead_details.id
     ).all()
@@ -423,9 +485,9 @@ def my_deals_view():
     ]
 
     data = {
-        "lead" : lead_details_list,
-        "user" : user_mydetails,
-    }
+    "lead" : lead_details_list,
+    "user" : user_mydetails,
+}
 
     return render_template('pages/deal.html', data=data)
 
