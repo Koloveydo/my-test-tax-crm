@@ -62,6 +62,7 @@
     flex-direction: column;
     padding: 5px 10px 5px 10px;
     z-index: 5;
+    gap: 5px;
 }
 .left_nav_text_container{
     display: flex;
@@ -142,6 +143,52 @@
     top: 0;
     left: 0;
     z-index: 4;
+}
+.left_nav_workspace_cont{
+    display: flex;
+    flex-direction: row;
+    background-color: transparent;
+    border-radius: 5px;
+    gap: 5px;
+    padding: 5px;
+    width: 160px;
+    transition: opacity 0.5s ease 0.5s, transform 0.5s ease 0.5s, visibility 0s linear 0.5s;
+}
+.left_nav_crm_btn{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: transparent;
+    border: 1px solid #292F4C;
+    border-radius: 5px;
+    cursor: pointer;
+    justify-content: space-between;
+    padding: 5px;
+    width: 160px;
+}
+.left_nav_crm_btn:hover{
+    background-color: #dfdfdf;
+}
+.left_nav_crm_text_container{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.left_nav_crm_text{
+    font-weight: bold;
+}
+.lnav_nav_crm_arrow{
+    rotate: 90deg;
+}
+
+body.dark-theme .left_nav_crm_btn:hover{
+    background-color: #33354D;
+}
+body.dark-theme .lnav_nav_crm_arrow path{
+    stroke:#d5d8df;
+}
+body.dark-theme .left_nav_crm_text{
+    color:#d5d8df;
 }
 body.dark-theme .left_nav{
     background: linear-gradient( to bottom , #1C1F3B, #292F4C);

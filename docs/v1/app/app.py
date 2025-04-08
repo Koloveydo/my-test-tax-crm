@@ -489,7 +489,7 @@ def my_mass_email_view():
     "user" : user_mydetails,
 }
 
-    return render_template('pages/deal.html', data=data)
+    return render_template('pages/mass_email.html', data=data)
 
 ''' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ '''
 '''   check DB is exist or create and insert DB start   '''
