@@ -64,6 +64,11 @@ section.main-page {
     overflow-x:auto;
     min-height: 0;
 }
+body.login-page .full_current_page {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+}
 body.dark-theme .full_page{
     background-color: #292F4C;
 }
@@ -107,6 +112,9 @@ body.dark-theme ::-webkit-scrollbar-thumb{
 }
 body.dark-theme ::-webkit-scrollbar-corner {
     background: transparent;
+}
+body.dark-theme .full_current_page{
+    background-color: #292F4C;
 }
 
 @media (max-width: 768px){

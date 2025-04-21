@@ -5,6 +5,9 @@
 header{
     display: none;
 }
+nav{
+    display: none;
+}
 
 .register,
 .login_page{
@@ -131,9 +134,10 @@ header{
 .register_btn{
     width: 100%;
     padding: 10px;
-    background-color: #000000;
-    border: none;
-    color: white;
+    background-color: transparent;
+    border: 1px solid #b1b1b1;
+    border-radius: 5px;
+    color: #000000;
     font-size: 16px;
     cursor: pointer;
     position: relative;
@@ -143,7 +147,8 @@ header{
 }
 .login_page_btn:hover,
 .register_btn:hover{
-    background-color: #1d1d1d;
+    backdrop-filter: blur(30px);
+    background-color: rgba(196, 196, 196, 0.3);
 }
 .login_page_btn:active,
 .register_btn:active{
@@ -182,7 +187,7 @@ header{
 
 body.dark-theme .login_page_content,
 body.dark-theme .register_page_content{
-    background-color: #1a1a1a;
+    background-color: #181B34;
 }
 body.dark-theme .login_register_page .main_txt p{
     color: #ebebeb;
@@ -198,6 +203,11 @@ body.dark-theme .login_register_page .form_group input{
 body.dark-theme .login_register_page .form_group input:focus{
     border-color: #a1a1a1;
 }
+body.dark-theme .login_page_btn,
+body.dark-theme .register_btn{
+    color: #d5d8df;
+}
+
 
 @media screen and (max-width: 450px) {
     .login_page_content,

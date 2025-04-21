@@ -6,100 +6,101 @@
 {% endblock %}
 
 {% block body %}
-    <section class="login_register_page">
-        <div class="change_mod_login_register">
-            {%include 'components/base/change_mod.html'%}
-        </div>
-
-        <section class="login_page active">
-            <div class="login_page_logo">
-                <svg class="logo_svg" width="120px" height="120px" viewBox="0 0 53 53" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M26.5 53C41.1355 53 53 41.1355 53 26.5C53 25.9276 52.9819 25.3595 52.9461 24.7961C51.3263 26.319 49.8137 27.7707 48.3806 29.1462C36.4586 40.5888 30.0289 46.7601 13 44.7459C6.80873 43.8702 4.00018 37.7469 4 32.7459C3.99983 28.122 25.4606 6.01603 44.5053 7.05611C39.7785 2.67688 33.4518 0 26.5 0C11.8645 0 0 11.8645 0 26.5C0 41.1355 11.8645 53 26.5 53Z" fill="url(#paint0_linear_979_445)"/><path d="M52.4222 6.96777C52.4394 20.3748 19.0856 48.7395 8.86186 42.6135C-1.36189 36.4875 1.7781 37.9152 12.3615 46.1279C22.945 54.3406 56.0172 22.7554 52.4222 6.96777Z" fill="currentColor"/><path d="M10.8867 28.1972C11.6695 26.3433 13.0947 25.5146 16.7323 24.3867V41.1528C15.2111 42.496 13.547 42.4523 10.8867 42.677V28.1972Z" fill="#D9D9D9"/><path d="M18.29 23.2619C19.0519 20.9908 20.5238 20.0475 24.1356 18.7256V37.9381C22.7021 39.2337 21.3541 40.3298 18.29 40.4998V23.2619Z" fill="#1F60B3" fill-opacity="0.5"/><path d="M25.6934 19.0611C26.626 16.9612 28.0923 16.0833 31.5389 14.8066V30.3661C31.4846 31.4608 30.9169 35.7823 25.6934 36.1453V19.0611Z" fill="#D9D9D9"/><path d="M33.0977 15.0673C34.0646 13.556 35.3783 12.7789 38.9357 11.7578V23.1198C39.0911 25.4969 36.8428 31.0351 33.0977 30.9172V15.0673Z" fill="#1F60B3" fill-opacity="0.5"/><path d="M40.5 11.8868C41.3169 10.6331 41.8085 9.79278 44.6625 8.91146C48.9532 7.09231 48.8794 18.0088 40.5 24.8229V11.8868Z" fill="#D9D9D9"/><path d="M9.54785 42.6729C7.59932 42.478 6.62506 39.1655 6.62506 39.1655C5.06623 35.853 4.48168 36.6324 9.54785 29.4229L9.54785 42.6729Z" fill="#1F60B3" fill-opacity="0.5"/><defs><linearGradient id="paint0_linear_979_445" x1="16.7574" y1="4.28676" x2="41.5037" y2="41.6985" gradientUnits="userSpaceOnUse"><stop stop-color="#1F60B3"/><stop offset="1" stop-color="#7E7E7E"/></linearGradient><linearGradient id="paint1_linear_979_445" x1="18.4476" y1="10.2435" x2="35.54" y2="42.1968" gradientUnits="userSpaceOnUse"><stop stop-color="#161615"/><stop offset="1" stop-color="#383838"/></linearGradient></defs></svg>
+    <body class="login-page">
+        <section class="login_register_page">
+            <div class="change_mod_login_register">
+                {%include 'components/base/change_mod.html'%}
             </div>
+
+            <section class="login_page active">
+                <div class="login_page_logo">
+                    <svg class="logo_svg" width="120px" height="120px" viewBox="0 0 53 53" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M26.5 53C41.1355 53 53 41.1355 53 26.5C53 25.9276 52.9819 25.3595 52.9461 24.7961C51.3263 26.319 49.8137 27.7707 48.3806 29.1462C36.4586 40.5888 30.0289 46.7601 13 44.7459C6.80873 43.8702 4.00018 37.7469 4 32.7459C3.99983 28.122 25.4606 6.01603 44.5053 7.05611C39.7785 2.67688 33.4518 0 26.5 0C11.8645 0 0 11.8645 0 26.5C0 41.1355 11.8645 53 26.5 53Z" fill="url(#paint0_linear_979_445)"/><path d="M52.4222 6.96777C52.4394 20.3748 19.0856 48.7395 8.86186 42.6135C-1.36189 36.4875 1.7781 37.9152 12.3615 46.1279C22.945 54.3406 56.0172 22.7554 52.4222 6.96777Z" fill="currentColor"/><path d="M10.8867 28.1972C11.6695 26.3433 13.0947 25.5146 16.7323 24.3867V41.1528C15.2111 42.496 13.547 42.4523 10.8867 42.677V28.1972Z" fill="#D9D9D9"/><path d="M18.29 23.2619C19.0519 20.9908 20.5238 20.0475 24.1356 18.7256V37.9381C22.7021 39.2337 21.3541 40.3298 18.29 40.4998V23.2619Z" fill="#1F60B3" fill-opacity="0.5"/><path d="M25.6934 19.0611C26.626 16.9612 28.0923 16.0833 31.5389 14.8066V30.3661C31.4846 31.4608 30.9169 35.7823 25.6934 36.1453V19.0611Z" fill="#D9D9D9"/><path d="M33.0977 15.0673C34.0646 13.556 35.3783 12.7789 38.9357 11.7578V23.1198C39.0911 25.4969 36.8428 31.0351 33.0977 30.9172V15.0673Z" fill="#1F60B3" fill-opacity="0.5"/><path d="M40.5 11.8868C41.3169 10.6331 41.8085 9.79278 44.6625 8.91146C48.9532 7.09231 48.8794 18.0088 40.5 24.8229V11.8868Z" fill="#D9D9D9"/><path d="M9.54785 42.6729C7.59932 42.478 6.62506 39.1655 6.62506 39.1655C5.06623 35.853 4.48168 36.6324 9.54785 29.4229L9.54785 42.6729Z" fill="#1F60B3" fill-opacity="0.5"/><defs><linearGradient id="paint0_linear_979_445" x1="16.7574" y1="4.28676" x2="41.5037" y2="41.6985" gradientUnits="userSpaceOnUse"><stop stop-color="#1F60B3"/><stop offset="1" stop-color="#7E7E7E"/></linearGradient><linearGradient id="paint1_linear_979_445" x1="18.4476" y1="10.2435" x2="35.54" y2="42.1968" gradientUnits="userSpaceOnUse"><stop stop-color="#161615"/><stop offset="1" stop-color="#383838"/></linearGradient></defs></svg>
+                </div>
+                
+                <div class="login_page_content">
+                    <div class="main_txt">
+                        <p>Sign Up and Simplify Your Tax Workflow</p>
+                        <p class="description">No credit card required. Cancel anytime.</p>
+                    </div>
+                    <form class="login_form">
+                        <div class="form_group">
+                            <input type="text" id="reg-name" placeholder="Name" value="">
+                            <p class="error"></p>
+                        </div>
+                        <div class="form_group">
+                            <input type="text" id="reg-surname" placeholder="Surname" value="">
+                            <p class="error"></p>
+                        </div>
+                        <div class="form_group">
+                            <input type="email" id="reg-email" placeholder="Email" value="">
+                            <p class="error"></p>
+                        </div>
+                        <div class="form_group">
+                            <input type="text" id="reg-job" placeholder="Job title">
+                            <p class="error"></p>
+                        </div>
+                        <div class="form_group">
+                            <input type="number" id="reg-phone" placeholder="Phone number">
+                            <p class="error"></p>
+                        </div>
+                        <div class="form_group">
+                            <input type="text" id="reg-address" placeholder="Addres">
+                            <p class="error"></p>
+                        </div>
+                        <div class="form_group">
+                            <div class="input_content">
+                                <input class="password_input" id="reg-pass" type="password" placeholder="Password">
+                                <svg class="eye_svg eye" width="18" height="18" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.2125 12.2125C11.1441 13.0269 9.84319 13.478 8.5 13.5C4.125 13.5 1.625 8.5 1.625 8.5C2.40243 7.05118 3.48071 5.78538 4.7875 4.7875M7.1875 3.65C7.61771 3.5493 8.05816 3.49896 8.5 3.5C12.875 3.5 15.375 8.5 15.375 8.5C14.9956 9.20975 14.5432 9.87796 14.025 10.4937M9.825 9.825C9.65334 10.0092 9.44634 10.157 9.21634 10.2595C8.98635 10.3619 8.73806 10.417 8.48631 10.4215C8.23455 10.4259 7.98448 10.3796 7.75101 10.2853C7.51754 10.191 7.30545 10.0506 7.1274 9.8726C6.94936 9.69455 6.809 9.48246 6.71469 9.24899C6.62039 9.01552 6.57408 8.76545 6.57852 8.51369C6.58296 8.26194 6.63807 8.01365 6.74055 7.78365C6.84303 7.55366 6.99078 7.34666 7.175 7.175M1.625 1.625L15.375 15.375" stroke="#868686" stroke-opacity="0.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                <svg class="close_eye_svg eye" width="18" height="18" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.625 6.5C0.625 6.5 3.125 1.5 7.5 1.5C11.875 1.5 14.375 6.5 14.375 6.5C14.375 6.5 11.875 11.5 7.5 11.5C3.125 11.5 0.625 6.5 0.625 6.5Z" stroke="#868686" stroke-opacity="0.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.5 8.375C8.53553 8.375 9.375 7.53553 9.375 6.5C9.375 5.46447 8.53553 4.625 7.5 4.625C6.46447 4.625 5.625 5.46447 5.625 6.5C5.625 7.53553 6.46447 8.375 7.5 8.375Z" stroke="#868686" stroke-opacity="0.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>       
+                                <p class="error"></p>
+                            </div>
+                        </div>
+        
+                        <button class="login_page_btn" type="submit" placeholder="Click to Login">Register</button>
+                    </form>
+        
+                    <div class="login_option">
+                        <p>Already have an accaunt?</p>
+                        <a class="login_txt" onclick="open_register()">Log In</a>
+                    </div>
+                </div>
+            </section>
+
+        
+            <section class="register">
+                <div class="register_page_logo">
+                    <svg class="logo_svg" width="120" height="120" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M15.5 31C24.0604 31 31 24.0604 31 15.5C31 15.1652 30.9894 14.8329 30.9685 14.5034C30.021 15.3941 29.1363 16.2432 28.2981 17.0477C21.3248 23.7406 17.564 27.3502 7.60377 26.1721C3.98247 25.6599 2.33973 22.0783 2.33962 19.1532C2.33952 16.4487 14.892 3.5188 26.0314 4.12711C23.2666 1.5657 19.5661 0 15.5 0C6.93959 0 0 6.93959 0 15.5C0 24.0604 6.93959 31 15.5 31Z" fill="url(#paint0_linear_1029_452)"/><path d="M30.6618 4.0752C30.6719 11.917 11.1631 28.5077 5.18315 24.9246C-0.796777 21.3414 1.03982 22.1765 7.23014 26.9802C13.4205 31.7838 32.7646 13.3095 30.6618 4.0752Z" fill="currentColor"/><path d="M6.36816 16.4924C6.826 15.4081 7.6596 14.9234 9.78728 14.2637V24.0703C8.89754 24.8559 7.9242 24.8303 6.36816 24.9618V16.4924Z" fill="#D9D9D9"/><path d="M10.6982 13.6064C11.1439 12.278 12.0048 11.7263 14.1174 10.9531V22.1906C13.2789 22.9484 12.4904 23.5896 10.6982 23.689V13.6064Z" fill="#1F60B3" fill-opacity="0.49"/><path d="M15.0283 11.1486C15.5738 9.92035 16.4315 9.40688 18.4474 8.66016V17.761C18.4156 18.4013 18.0836 20.9289 15.0283 21.1413V11.1486Z" fill="#D9D9D9"/><path d="M19.3594 8.81268C19.9249 7.92872 20.6933 7.47419 22.7741 6.87695V13.5226C22.865 14.913 21.5499 18.1524 19.3594 18.0834V8.81268Z" fill="#1F60B3" fill-opacity="0.49"/><path d="M23.6885 6.95288C24.1663 6.21956 24.4538 5.72808 26.1232 5.21259C28.6328 4.14855 28.5897 10.5337 23.6885 14.5193V6.95288Z" fill="#D9D9D9"/><path d="M5.58496 24.96C4.44526 24.846 3.8754 22.9085 3.8754 22.9085C2.96364 20.971 2.62173 21.4269 5.58496 17.21L5.58496 24.96Z" fill="#1F60B3" fill-opacity="0.49"/><defs><linearGradient id="paint0_linear_1029_452" x1="9.80147" y1="2.50735" x2="24.2757" y2="24.3897" gradientUnits="userSpaceOnUse"><stop stop-color="#1F60B3"/><stop offset="1" stop-color="#7E7E7E"/></linearGradient><linearGradient id="paint1_linear_1029_452" x1="10.7899" y1="5.99119" x2="20.7874" y2="24.6809" gradientUnits="userSpaceOnUse"><stop stop-color="#161615"/><stop offset="1" stop-color="#383838"/></linearGradient></defs></svg>
+                        
+                </div>
+        
+                <div class="register_page_content">
+                    <div class="main_txt">
+                        <p>Welcome back!</p>
+                    </div>
+                    <form>
+                        <div class="form_group">
+                            <input  type="email" id="log-email" placeholder="Email" value="">
+                            <p class="error"></p>
+                        </div>
+                        <div class="form_group">
+                            <div class="input_content">
+                                <input class="password_input" id="log-pass" type="password" placeholder="Password">
+                                <svg class="eye_svg" width="18" height="18" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.2125 12.2125C11.1441 13.0269 9.84319 13.478 8.5 13.5C4.125 13.5 1.625 8.5 1.625 8.5C2.40243 7.05118 3.48071 5.78538 4.7875 4.7875M7.1875 3.65C7.61771 3.5493 8.05816 3.49896 8.5 3.5C12.875 3.5 15.375 8.5 15.375 8.5C14.9956 9.20975 14.5432 9.87796 14.025 10.4937M9.825 9.825C9.65334 10.0092 9.44634 10.157 9.21634 10.2595C8.98635 10.3619 8.73806 10.417 8.48631 10.4215C8.23455 10.4259 7.98448 10.3796 7.75101 10.2853C7.51754 10.191 7.30545 10.0506 7.1274 9.8726C6.94936 9.69455 6.809 9.48246 6.71469 9.24899C6.62039 9.01552 6.57408 8.76545 6.57852 8.51369C6.58296 8.26194 6.63807 8.01365 6.74055 7.78365C6.84303 7.55366 6.99078 7.34666 7.175 7.175M1.625 1.625L15.375 15.375" stroke="#868686" stroke-opacity="0.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                <svg class="close_eye_svg" width="18" height="18" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.625 6.5C0.625 6.5 3.125 1.5 7.5 1.5C11.875 1.5 14.375 6.5 14.375 6.5C14.375 6.5 11.875 11.5 7.5 11.5C3.125 11.5 0.625 6.5 0.625 6.5Z" stroke="#868686" stroke-opacity="0.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.5 8.375C8.53553 8.375 9.375 7.53553 9.375 6.5C9.375 5.46447 8.53553 4.625 7.5 4.625C6.46447 4.625 5.625 5.46447 5.625 6.5C5.625 7.53553 6.46447 8.375 7.5 8.375Z" stroke="#868686" stroke-opacity="0.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>       
+                                <p class="error"></p>
+                            </div>
+                        </div>
             
-            <div class="login_page_content">
-                <div class="main_txt">
-                    <p>Sign Up and Simplify Your Tax Workflow</p>
-                    <p class="description">No credit card required. Cancel anytime.</p>
+                        <button class="register_btn" type="submit" placeholder="Click to Login">Log in</button>
+                    </form>
+            
+                    <div class="register_option">
+                        <p>Don`t have an accaunt?</p>
+                        <a class="register_txt" onclick="open_login()">Create one</a>
+                    </div>
                 </div>
-                <form class="login_form">
-                    <div class="form_group">
-                        <input type="text" id="reg-name" placeholder="Name" value="">
-                        <p class="error"></p>
-                    </div>
-                    <div class="form_group">
-                        <input type="text" id="reg-surname" placeholder="Surname" value="">
-                        <p class="error"></p>
-                    </div>
-                    <div class="form_group">
-                        <input type="email" id="reg-email" placeholder="Email" value="">
-                        <p class="error"></p>
-                    </div>
-                    <div class="form_group">
-                        <input type="text" id="reg-job" placeholder="Job title">
-                        <p class="error"></p>
-                    </div>
-                    <div class="form_group">
-                        <input type="number" id="reg-phone" placeholder="Phone number">
-                        <p class="error"></p>
-                    </div>
-                    <div class="form_group">
-                        <input type="text" id="reg-address" placeholder="Addres">
-                        <p class="error"></p>
-                    </div>
-                    <div class="form_group">
-                        <div class="input_content">
-                            <input class="password_input" id="reg-pass" type="password" placeholder="Password">
-                            <svg class="eye_svg eye" width="18" height="18" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.2125 12.2125C11.1441 13.0269 9.84319 13.478 8.5 13.5C4.125 13.5 1.625 8.5 1.625 8.5C2.40243 7.05118 3.48071 5.78538 4.7875 4.7875M7.1875 3.65C7.61771 3.5493 8.05816 3.49896 8.5 3.5C12.875 3.5 15.375 8.5 15.375 8.5C14.9956 9.20975 14.5432 9.87796 14.025 10.4937M9.825 9.825C9.65334 10.0092 9.44634 10.157 9.21634 10.2595C8.98635 10.3619 8.73806 10.417 8.48631 10.4215C8.23455 10.4259 7.98448 10.3796 7.75101 10.2853C7.51754 10.191 7.30545 10.0506 7.1274 9.8726C6.94936 9.69455 6.809 9.48246 6.71469 9.24899C6.62039 9.01552 6.57408 8.76545 6.57852 8.51369C6.58296 8.26194 6.63807 8.01365 6.74055 7.78365C6.84303 7.55366 6.99078 7.34666 7.175 7.175M1.625 1.625L15.375 15.375" stroke="#868686" stroke-opacity="0.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                            <svg class="close_eye_svg eye" width="18" height="18" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.625 6.5C0.625 6.5 3.125 1.5 7.5 1.5C11.875 1.5 14.375 6.5 14.375 6.5C14.375 6.5 11.875 11.5 7.5 11.5C3.125 11.5 0.625 6.5 0.625 6.5Z" stroke="#868686" stroke-opacity="0.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.5 8.375C8.53553 8.375 9.375 7.53553 9.375 6.5C9.375 5.46447 8.53553 4.625 7.5 4.625C6.46447 4.625 5.625 5.46447 5.625 6.5C5.625 7.53553 6.46447 8.375 7.5 8.375Z" stroke="#868686" stroke-opacity="0.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>       
-                            <p class="error"></p>
-                        </div>
-                    </div>
-    
-                    <button class="login_page_btn" type="submit" placeholder="Click to Login">Register</button>
-                </form>
-    
-                <div class="login_option">
-                    <p>Already have an accaunt?</p>
-                    <a class="login_txt" onclick="open_register()">Log In</a>
-                </div>
-            </div>
+            </section>
         </section>
-
-    
-        <section class="register">
-            <div class="register_page_logo">
-                <svg class="logo_svg" width="120" height="120" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M15.5 31C24.0604 31 31 24.0604 31 15.5C31 15.1652 30.9894 14.8329 30.9685 14.5034C30.021 15.3941 29.1363 16.2432 28.2981 17.0477C21.3248 23.7406 17.564 27.3502 7.60377 26.1721C3.98247 25.6599 2.33973 22.0783 2.33962 19.1532C2.33952 16.4487 14.892 3.5188 26.0314 4.12711C23.2666 1.5657 19.5661 0 15.5 0C6.93959 0 0 6.93959 0 15.5C0 24.0604 6.93959 31 15.5 31Z" fill="url(#paint0_linear_1029_452)"/><path d="M30.6618 4.0752C30.6719 11.917 11.1631 28.5077 5.18315 24.9246C-0.796777 21.3414 1.03982 22.1765 7.23014 26.9802C13.4205 31.7838 32.7646 13.3095 30.6618 4.0752Z" fill="currentColor"/><path d="M6.36816 16.4924C6.826 15.4081 7.6596 14.9234 9.78728 14.2637V24.0703C8.89754 24.8559 7.9242 24.8303 6.36816 24.9618V16.4924Z" fill="#D9D9D9"/><path d="M10.6982 13.6064C11.1439 12.278 12.0048 11.7263 14.1174 10.9531V22.1906C13.2789 22.9484 12.4904 23.5896 10.6982 23.689V13.6064Z" fill="#1F60B3" fill-opacity="0.49"/><path d="M15.0283 11.1486C15.5738 9.92035 16.4315 9.40688 18.4474 8.66016V17.761C18.4156 18.4013 18.0836 20.9289 15.0283 21.1413V11.1486Z" fill="#D9D9D9"/><path d="M19.3594 8.81268C19.9249 7.92872 20.6933 7.47419 22.7741 6.87695V13.5226C22.865 14.913 21.5499 18.1524 19.3594 18.0834V8.81268Z" fill="#1F60B3" fill-opacity="0.49"/><path d="M23.6885 6.95288C24.1663 6.21956 24.4538 5.72808 26.1232 5.21259C28.6328 4.14855 28.5897 10.5337 23.6885 14.5193V6.95288Z" fill="#D9D9D9"/><path d="M5.58496 24.96C4.44526 24.846 3.8754 22.9085 3.8754 22.9085C2.96364 20.971 2.62173 21.4269 5.58496 17.21L5.58496 24.96Z" fill="#1F60B3" fill-opacity="0.49"/><defs><linearGradient id="paint0_linear_1029_452" x1="9.80147" y1="2.50735" x2="24.2757" y2="24.3897" gradientUnits="userSpaceOnUse"><stop stop-color="#1F60B3"/><stop offset="1" stop-color="#7E7E7E"/></linearGradient><linearGradient id="paint1_linear_1029_452" x1="10.7899" y1="5.99119" x2="20.7874" y2="24.6809" gradientUnits="userSpaceOnUse"><stop stop-color="#161615"/><stop offset="1" stop-color="#383838"/></linearGradient></defs></svg>
-                    
-            </div>
-    
-            <div class="register_page_content">
-                <div class="main_txt">
-                    <p>Welcome back!</p>
-                </div>
-                <form>
-                    <div class="form_group">
-                        <input  type="email" id="log-email" placeholder="Email" value="">
-                        <p class="error"></p>
-                    </div>
-                    <div class="form_group">
-                        <div class="input_content">
-                            <input class="password_input" id="log-pass" type="password" placeholder="Password">
-                            <svg class="eye_svg" width="18" height="18" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.2125 12.2125C11.1441 13.0269 9.84319 13.478 8.5 13.5C4.125 13.5 1.625 8.5 1.625 8.5C2.40243 7.05118 3.48071 5.78538 4.7875 4.7875M7.1875 3.65C7.61771 3.5493 8.05816 3.49896 8.5 3.5C12.875 3.5 15.375 8.5 15.375 8.5C14.9956 9.20975 14.5432 9.87796 14.025 10.4937M9.825 9.825C9.65334 10.0092 9.44634 10.157 9.21634 10.2595C8.98635 10.3619 8.73806 10.417 8.48631 10.4215C8.23455 10.4259 7.98448 10.3796 7.75101 10.2853C7.51754 10.191 7.30545 10.0506 7.1274 9.8726C6.94936 9.69455 6.809 9.48246 6.71469 9.24899C6.62039 9.01552 6.57408 8.76545 6.57852 8.51369C6.58296 8.26194 6.63807 8.01365 6.74055 7.78365C6.84303 7.55366 6.99078 7.34666 7.175 7.175M1.625 1.625L15.375 15.375" stroke="#868686" stroke-opacity="0.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                            <svg class="close_eye_svg" width="18" height="18" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.625 6.5C0.625 6.5 3.125 1.5 7.5 1.5C11.875 1.5 14.375 6.5 14.375 6.5C14.375 6.5 11.875 11.5 7.5 11.5C3.125 11.5 0.625 6.5 0.625 6.5Z" stroke="#868686" stroke-opacity="0.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.5 8.375C8.53553 8.375 9.375 7.53553 9.375 6.5C9.375 5.46447 8.53553 4.625 7.5 4.625C6.46447 4.625 5.625 5.46447 5.625 6.5C5.625 7.53553 6.46447 8.375 7.5 8.375Z" stroke="#868686" stroke-opacity="0.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>       
-                            <p class="error"></p>
-                        </div>
-                    </div>
-        
-                    <button class="register_btn" type="submit" placeholder="Click to Login">Log in</button>
-                </form>
-        
-                <div class="register_option">
-                    <p>Don`t have an accaunt?</p>
-                    <a class="register_txt" onclick="open_login()">Create one</a>
-                </div>
-            </div>
-        </section>
-    </section>
-
+    </body>
     <script src="{{ url_for('static', filename='js/pages/login.js') }}"></script>
 {% endblock %}
