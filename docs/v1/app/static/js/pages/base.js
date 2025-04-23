@@ -15,7 +15,9 @@ async function openSettings() {
     const response = await fetch("/setting");
     const html = await response.text();
     document.body.insertAdjacentHTML("beforeend", html);
+    attachMenuListeners();
 }
+
 
 document.addEventListener("click", (e) => {
     const elSetting = e.target.closest("[data_open_settings]");
@@ -35,3 +37,27 @@ document.addEventListener("click", (e) => {
         }
     }
 });
+
+/* ------ change setting page popup --------- */
+
+function attachMenuListeners() {
+    const settingMenu = document.querySelectorAll('.setting_menu_text_container');
+    const settingPage = document.querySelectorAll('.setting_list_page_container');
+
+    settingMenu.forEach(menuItem => {
+        menuItem.addEventListener('click', () => {
+            const index = menuItem.getAttribute('data-index');
+
+            settingMenu.forEach(el => el.classList.remove('active'));
+            settingPage.forEach(page => page.classList.remove('active'));
+
+            menuItem.classList.add('active');
+
+            const matchingPage = document.querySelector(`.setting_list_page_container[data-index="${index}"]`); // виправлено
+            if (matchingPage) {
+                matchingPage.classList.add('active');
+            }
+        });
+    });
+}
+
