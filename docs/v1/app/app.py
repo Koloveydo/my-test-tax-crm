@@ -102,6 +102,7 @@ def settings_view():
                 'phone': user.phone,
                 'cur_password': user.password,
                 'personal_number': 'EMPTY', 
+                'location': 'EMPTY', 
                 'full_name' : user.firstname + " " + user.lastname
             }
 

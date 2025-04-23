@@ -18,7 +18,6 @@ async function openSettings() {
     attachMenuListeners();
 }
 
-
 document.addEventListener("click", (e) => {
     const elSetting = e.target.closest("[data_open_settings]");
     if (elSetting) {
