@@ -101,8 +101,12 @@ def settings_view():
                 'email': user.email,
                 'phone': user.phone,
                 'cur_password': user.password,
-                'personal_number': 'EMPTY', 
-                'location': 'EMPTY', 
+                'personal_number': '', 
+                'location': '',
+                'facebook': '',
+                'birthday': '',
+                'work_anniversary': '',
+                'job_title': '', 
                 'full_name' : user.firstname + " " + user.lastname
             }
 
