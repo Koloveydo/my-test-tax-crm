@@ -73,21 +73,41 @@ function attachInputListeners() {
         const currentUserSetting = document.getElementById("current_user_setting");
         const changedSettingName = document.getElementById("changed_setting_name");
 
-        const value = this.dataset.value;
-        const field = this.dataset.field;
         if (changePopup) changePopup.style.display = 'flex';
         if (changeHeadText) changeHeadText.textContent = "Change job title";
         if (currentSettingName) currentSettingName.textContent = "Current job title";
         if (changedSettingName) changedSettingName.textContent = "New job title";
+
         if (currentUserSetting) {
-            currentUserSetting.value = value;
-            currentUserSetting.setAttribute("data-field", field);
+            const textFromButton = this.textContent.trim();
+            currentUserSetting.value = textFromButton;
         }
+
         const inputSettingChange = document.getElementById("changed_user_setting");
         if (inputSettingChange){
             inputSettingChange.value = "";
         }
     });
+    document.querySelectorAll(".pi_page_first_small_info_input").forEach(button => {
+        button.addEventListener("click", function () {
+            const changeHeadText = document.getElementById("change_head_text");
+            const currentSettingName = document.getElementById("current_setting_name");
+            const currentUserSetting = document.getElementById("current_user_setting");
+            const changedSettingName = document.getElementById("changed_setting_name");
+    
+            if (changePopup) changePopup.style.display = 'flex';
+    
+            if (changeHeadText) changeHeadText.textContent = this.dataset.changeHead || "Change setting"; 
+            if (currentSettingName) currentSettingName.textContent = this.dataset.settingName || "Current setting";
+            if (changedSettingName) changedSettingName.textContent = this.dataset.changeName || "New setting"; 
+    
+            if (currentUserSetting) {
+                const textFromButton = this.textContent.trim();
+                currentUserSetting.value = textFromButton;
+            }
+        });
+    });
+    
 }
 
 /* ------------    close setting change popup ----------- */
@@ -113,6 +133,3 @@ function checkInput() {
     }
     });
 }
-
-/*   завтра розібратись чому не загружає з бд дані про юзера через джс(чат джпт якусь хню висирає, потрібно буде опшукати в інеті)
-/* доробити для всіх інпутів, щоб наповнювало під кожного з них унікальним текстом попап   */

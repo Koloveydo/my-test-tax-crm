@@ -257,7 +257,8 @@ section#setting-popup {
     border-radius: 5px;
     background-color: transparent;
     color: #6C6C6E;
-    cursor: pointer
+    cursor: pointer;
+    margin-left: 20px;
 }
 .pi_page_first_small_info_input:hover{
     border: 1px solid #3f4771;
@@ -319,6 +320,8 @@ section#setting-popup {
     background-color: #CDCDCD;
     border: none;
     border-radius: 8px;
+    width: auto;
+    min-width: 300px;
 }
 .close_setting_popup{
     display: flex;
@@ -326,9 +329,14 @@ section#setting-popup {
     justify-content: flex-end;
 }
 .change_head{
-    font-size: 24px;
+    font-size: 18px;
     font-weight: bold;
     margin-bottom: 10px;
+}
+.current_setting_full_container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 .current_setting_container{
     display: flex;
@@ -347,9 +355,12 @@ section#setting-popup {
     font-size: 14px;
     color: #6C6C6E;
     padding: 3px 4px;
+    width: 225px;
+    text-align: center;
+    border: 1px solid #3f4771;
 }
 .current_user_setting:focus{
-    border: 1px solid #3f4771;
+    box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.09);
     outline: none;
 }
 .change_setting_buttons{

@@ -68,9 +68,9 @@
                                         <div class="pi_page_first_small_info_text">Email</div>
                                     </div>
                                     {% if data.user.email in [None, '', 'none'] %}
-                                        <div class="pi_page_first_small_info_input">Type your email</div>
+                                        <div class="pi_page_first_small_info_input" data-setting-name="Current email" data-change-head="Change your email" data-change-name="New email">Type your email</div>
                                     {% else %}
-                                        <div class="pi_page_first_small_info_input">{{ data.user.email }}</div>
+                                        <div class="pi_page_first_small_info_input" data-setting-name="Current email" data-change-head="Change your email" data-change-name="New email">{{ data.user.email }}</div>
                                     {% endif %}
                                 </div>
                                 <div class="pi_page_first_small_info_container">
@@ -79,9 +79,9 @@
                                         <div class="pi_page_first_small_info_text">Phone</div>
                                     </div>
                                     {% if data.user.phone in [None, '', 'none'] %}
-                                        <div class="pi_page_first_small_info_input">Type your phone number</div>
+                                        <div class="pi_page_first_small_info_input" data-setting-name="Current phone" data-change-head="Change your phone number" data-change-name="New phone">Type your phone number</div>
                                     {% else %}
-                                        <div class="pi_page_first_small_info_input">{{ data.user.phone }}</div>
+                                        <div class="pi_page_first_small_info_input" data-setting-name="Current phone" data-change-head="Change your phone number" data-change-name="New phone">{{ data.user.phone }}</div>
                                     {% endif %}
                                 </div>
                                 <div class="pi_page_first_small_info_container">
@@ -90,9 +90,9 @@
                                         <div class="pi_page_first_small_info_text">Mobile Phone</div>
                                     </div>
                                     {% if data.user.personal_number in [None, '', 'none'] %}
-                                        <div class="pi_page_first_small_info_input">Type your mobile phone number</div>
+                                        <div class="pi_page_first_small_info_input" data-setting-name="Current mobile phone" data-change-head="Change your mobile phone" data-change-name="New mobile phone">Type your mobile phone number</div>
                                     {% else %}
-                                        <div class="pi_page_first_small_info_input">{{ data.user.personal_number }}</div>
+                                        <div class="pi_page_first_small_info_input" data-setting-name="Current mobile phone" data-change-head="Change your mobile phone" data-change-name="New mobile phone">{{ data.user.personal_number }}</div>
                                     {% endif %}
                                 </div>
                                 <div class="pi_page_first_small_info_container">
@@ -101,9 +101,9 @@
                                         <div class="pi_page_first_small_info_text">Location</div>
                                     </div>
                                     {% if data.user.location in [None, '', 'none'] %}
-                                        <div class="pi_page_first_small_info_input">Add a location</div>
+                                        <div class="pi_page_first_small_info_input" data-setting-name="Current location" data-change-head="Change your location" data-change-name="New location">Add a location</div>
                                     {% else %}
-                                        <div class="pi_page_first_small_info_input">{{ data.user.location }}</div>
+                                        <div class="pi_page_first_small_info_input" data-setting-name="Current location" data-change-head="Change your location" data-change-name="New location">{{ data.user.location }}</div>
                                     {% endif %}
                                 </div>
                             </div>
@@ -115,9 +115,9 @@
                                     <div class="pi_page_first_small_info_text">Facebook</div>
                                 </div>
                                 {% if data.user.facebook in [None, '', 'none'] %}
-                                    <div class="pi_page_first_small_info_input">Add a facebook</div>
+                                    <div class="pi_page_first_small_info_input" data-setting-name="Current facebook" data-change-head="Change facebook" data-change-name="New facebook">Add a facebook</div>
                                 {% else %}
-                                    <div class="pi_page_first_small_info_input">{{ data.user.facebook }}</div>
+                                    <div class="pi_page_first_small_info_input" data-setting-name="Current facebook" data-change-head="Change facebook" data-change-name="New facebook">{{ data.user.facebook }}</div>
                                 {% endif %}
                             </div>
                             <div class="pi_page_first_small_info_container">
@@ -126,9 +126,9 @@
                                     <div class="pi_page_first_small_info_text">Birthday</div>
                                 </div>
                                 {% if data.user.birthday in [None, '', 'none'] %}
-                                    <div class="pi_page_first_small_info_input">Add a birthday</div>
+                                    <div class="pi_page_first_small_info_input" data-setting-name="Current birthday" data-change-head="Change birthday" data-change-name="New birthday">Add a birthday</div>
                                 {% else %}
-                                    <div class="pi_page_first_small_info_input">{{ data.user.birthday }}</div>
+                                    <div class="pi_page_first_small_info_input" data-setting-name="Current birthday" data-change-head="Change birthday" data-change-name="New birthday">{{ data.user.birthday }}</div>
                                 {% endif %}
                             </div>
                             <div class="pi_page_first_small_info_container">
@@ -137,9 +137,9 @@
                                     <div class="pi_page_first_small_info_text">Work anniversary</div>
                                 </div>
                                 {% if data.user.work_anniversary in [None, '', 'none'] %}
-                                    <div class="pi_page_first_small_info_input">Add a work anniversary</div>
+                                    <div class="pi_page_first_small_info_input" data-setting-name="Current work anniversary" data-change-head="Change work anniversary" data-change-name="New work anniversary">Add a work anniversary</div>
                                 {% else %}
-                                    <div class="pi_page_first_small_info_input">{{ data.user.work_anniversary }}</div>
+                                    <div class="pi_page_first_small_info_input" data-setting-name="Current work anniversary" data-change-head="Change work anniversary" data-change-name="New work anniversary">{{ data.user.work_anniversary }}</div>
                                 {% endif %}
                             </div>
                         </div>
@@ -172,13 +172,15 @@
                 <svg class="close_setting_popup_svg" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 5L5 15M5 5L15 15" stroke="#1E1E1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
             <div class="change_head" id="change_head_text"></div>
-            <div class="current_setting_container">
-                <div class="current_setting_name" id="current_setting_name"></div>
-                <input type="text" class="current_user_setting" id="current_user_setting" value="" readonly>
-            </div>
-            <div class="current_setting_container">
-                <div class="current_setting_name" id="changed_setting_name"></div>
-                <input type="text" class="current_user_setting" id="changed_user_setting" placeholder="" value="">
+            <div class="current_setting_full_container">
+                <div class="current_setting_container">
+                    <div class="current_setting_name" id="current_setting_name"></div>
+                    <input type="text" class="current_user_setting" id="current_user_setting" value="" readonly>
+                </div>
+                <div class="current_setting_container">
+                    <div class="current_setting_name" id="changed_setting_name"></div>
+                    <input type="text" class="current_user_setting" id="changed_user_setting" placeholder="" value="">
+                </div>
             </div>
             <div class="change_setting_buttons">
                 <div class="change_setting_cancel_btn">Cancel</div>
