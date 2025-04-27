@@ -433,9 +433,31 @@ section#setting-popup {
 .upload_description{
     width: calc( 50% - 20px)
 }
+.pi_page_icon{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.change_photo{
+    padding: 3px 16px;
+    display: flex;
+    text-align: center;
+    border: 1px solid #d8d5df;
+    border-radius: 10px;
+    box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.09);
+    cursor: pointer;
+    background-color: transparent;
+}
+.change_photo:hover{
+    backdrop-filter: blur(30px);
+    background-color: rgba(196, 196, 196, 0.3);
+}
 
 /* ----- dark-theme -------*/
 
+body.dark-theme .change_photo{
+    color: #d8d5df;
+}
 body.dark-theme .change_setting_confirm_btn.active{
     color: #d8d5df;
 }

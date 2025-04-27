@@ -47,3 +47,10 @@ navWorkspace.forEach(item => {
         }
     });
 });
+
+document.querySelector(".no_invite_btn").addEventListener("click", function(){
+	const inviteTable = document.querySelector(".unmess_invite");
+	const inviteLine = document.querySelector(".line");
+	inviteTable.style.display = 'none';
+	inviteLine.style.display = 'none';
+});

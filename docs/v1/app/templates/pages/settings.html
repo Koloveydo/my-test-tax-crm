@@ -41,11 +41,7 @@
                             <div class="pi_page_first_left">
                                 <div class="pi_page_icon">
                                     <img class="card_photo_ajax" src="{{ data.user.url_image }}">
-                                    <button type="button" class="change_photo" id="change_photo" onclick="openPopup()">
-                                        <div class="inner_change_photo">
-                                            <p>change</p>
-                                        </div>
-                                    </button>
+                                    <button type="button" class="change_photo" id="change_photo" onclick="openPopup()">Change your image</button>
                                 </div>
                                 <div class="pi_page_main_info_container">
                                     <div class="pi_page_main_info">
@@ -151,7 +147,7 @@
                         <div class="pi_personal_info_page_third">
                             <div class="pi_create_team_text">Create and join teams</div>
                             <div class="pi_create_team_more_text">Collaborate better with temmates and track of projects you are interested in</div>
-                            <div class="pi_create_team_text_btn">Create team</div>
+                            <div class="pi_create_team_text_btn" onclick="globalDemoPopup()">Create team</div>
                         </div>
                     </div>
                 </div>

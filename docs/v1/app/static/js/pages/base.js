@@ -132,14 +132,13 @@ function checkInput() {
 function openPopup() {
     console.log('WorkPOPUP');
     document.querySelector('.background_popup').classList.add('active');
-    document.body.style.overflow = 'hidden';
 }
 
 function closePopup() {
     document.querySelector('.background_popup').classList.remove('active');
 }
 
-// DROPIMAGE
+/* ---------------- DROPIMAGE ------------------- */
 const imageView =document.querySelector('.drop_img_container');
 const inputFile = document.getElementById('input-file');
 const drop_imageButton = document.querySelector('.drop_img_input')
@@ -154,8 +153,19 @@ function uploadImage(){
     drop_image_txt.style.display = 'none';
 }
 
-/*  зробити попап, який буде показувати що кнопка не працює у демо версії*/
-/* добавити попапи вище до неробочих кнопок*/
+/* -------------- demo popup ------------*/
+
+const demoContainer = document.getElementById("global_demo_popup");
+const closeDemoContainer = document.getElementById("global_demo_close_btn");
+
+function globalDemoPopup() {
+    demoContainer.style.display = 'flex';
+}
+
+closeDemoContainer.addEventListener("click", function(){
+    demoContainer.style.display = 'none';
+});
+
 /* доробити решту сторінок налаштування*/
 /* зробити фідбек сторінку */
 /* добавити фідбек сторінку інпутам */

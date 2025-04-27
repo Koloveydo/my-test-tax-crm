@@ -21,7 +21,7 @@
 		</div>
 		<div class="full_current_page">
 			{% block body %} 
-			{% endblock %}		
+			{% endblock %}	
 		</div>
 	</div>
 
@@ -52,6 +52,13 @@
             </div>
         </div>
     </div>
+
+	<div id="global_demo_popup" class="global_demo_popup">
+		<div class="global_demo_container">
+			<div class="global_demo_text">This feature is not available in the demo version</div>
+			<div id="global_demo_close_btn" class="global_demo_close_btn">Close</div>
+		</div>
+	</div>	
 
 	<script src="{{ url_for('static', filename='js/pages/base.js') }}"></script>
 </body>
