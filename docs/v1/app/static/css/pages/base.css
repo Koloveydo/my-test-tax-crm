@@ -96,6 +96,75 @@ body.dark-theme .full_page{
 ::-webkit-scrollbar-corner {
     background: #e0e0e0;
 }
+
+/* IMAGEDROP */
+
+.your_image_popup{
+    display: flex;
+    flex-direction: column;
+    width: 55%;
+    height: 70%;
+    background-color: #F6F6F6;
+    min-width: 600px;
+    max-height: 500px;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-shrink: 1;
+    padding: 20px;
+}
+.your_image_popup h1{
+    text-align: left;
+    font-size: 30px;
+    width: 100%; 
+}
+.drop_img_container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    height: 80%;
+    width: 80%;
+    border: 1px dashed #000000;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.drop_img_container_txt{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+    color: #7E7E7E;
+}
+.drop_img_container_txt H1{
+    text-align: center;
+    font-weight: 500;
+}
+.drop_img_button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 30px;
+    background-color: #F6F6F6;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.13);
+    cursor: pointer;
+}
+.close_btn{
+    padding: 5px;
+    margin-top: 3px;
+    cursor: pointer;
+}
+@media (max-width: 768px){
+    .your_image_popup{
+        width: 80%;
+        min-width: 280px;
+    }
+}
+
 body.dark-theme ::-webkit-scrollbar {
     background-color: transparent;
     border: 2px solid #e0e0e0;

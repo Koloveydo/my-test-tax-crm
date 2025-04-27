@@ -41,14 +41,19 @@
                             <div class="pi_page_first_left">
                                 <div class="pi_page_icon">
                                     <img class="card_photo_ajax" src="{{ data.user.url_image }}">
+                                    <button type="button" class="change_photo" id="change_photo" onclick="openPopup()">
+                                        <div class="inner_change_photo">
+                                            <p>change</p>
+                                        </div>
+                                    </button>
                                 </div>
                                 <div class="pi_page_main_info_container">
                                     <div class="pi_page_main_info">
                                         <div class="pi_page_name">{{ data.user.full_name }}</div>
                                         {% if data.user.job_title in [None, '', 'none'] %}
-                                            <div class="pi_page_job_title" data-field="job_title" data-value="{{ data.user.job_title }}">Add a job title</div>
+                                            <div class="pi_page_first_small_info_input job_input" data-setting-name="Current job title" data-change-head="Change your job title" data-change-name="New job title">Add a job title</div>
                                         {% else %}
-                                            <div class="pi_page_job_title" data-field="job_title" data-value="{{ data.user.job_title }}">{{ data.user.job_title }}</div>
+                                            <div class="pi_page_first_small_info_input job_input" data-setting-name="Current job title" data-change-head="Change your job title" data-change-name="New job title">{{ data.user.job_title }}</div>
                                         {% endif %}
                                         <div class="pi_page_status">Admin</div>
                                     </div>
@@ -184,9 +189,10 @@
             </div>
             <div class="change_setting_buttons">
                 <div class="change_setting_cancel_btn">Cancel</div>
-                <div class="change_setting_confirm_btn">Confirm</div>
+                <div class="change_setting_confirm_btn" id="change_setting_confirm_btn">Confirm</div>
             </div>
         </div>
     </div>
+</div>
 
 </section>

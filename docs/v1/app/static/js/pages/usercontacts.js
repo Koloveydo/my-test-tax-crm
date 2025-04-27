@@ -83,6 +83,7 @@ createNewRow.addEventListener("click", function(event) {
     
         const inputField = newRow.querySelector(".board_input");
         inputField.focus();
+        updateLeadAmount(selectedTable);
     }
 })
 
@@ -290,6 +291,7 @@ document.getElementById('plus_table').addEventListener('click', function() {
     const inputArrow = newTable.querySelector("#arrow_open_lead path");
     const borderColor = newTable.querySelector("#ltable_all");
     inputField.focus();
+    updateLeadAmount(newTable);
 
     const colors = ["#2D64AB", "#D9534F", "#5CB85C", "#F0AD4E", "#2D64AB", "#800080", "#FFFFFF", "#FF69B4", "#40E0D0", "#FFA500" ];
 
@@ -371,37 +373,17 @@ document.getElementById("person_container").addEventListener("click", function()
 
 // Кількість лідів у таблиці -----------------------------не працює, багає вся сторінка, утворюється безконечний цикл
 
-//document.addEventListener("DOMContentLoaded", function () {
-//    function updateLeadAmount(table) {
-//        const leadAmount = table.querySelector(".lead_amount");
-//        const rowsAmount = table.querySelectorAll(".ltable_body");
-//        if (leadAmount) {
-//            leadAmount.textContent = rowsAmount.length;
-//        }
-//    }
-//
-//    function observeTable(table) {
-//        const observer = new MutationObserver(() => updateLeadAmount(table));
-//        observer.observe(table, { childList: true, subtree: true });
-//
-//        updateLeadAmount(table);
-//    }
-//
-//    function observeNewTables() {
-//        const tables = document.querySelectorAll(".leads_table");
-//        tables.forEach(table => {
-//            if (!table.dataset.observed) {
-//                observeTable(table);
-//                table.dataset.observed = "true";
-//            }
-//        });
-//    }
-//
-//    const tableObserver = new MutationObserver(observeNewTables);
-//    tableObserver.observe(document.body, { childList: true, subtree: true });
-//
-//    observeNewTables();
-//});
+function updateLeadAmount(table) {
+    const leadAmount = table.querySelector(".lead_amount");
+    const rowsAmount = table.querySelectorAll(".ltable_body");
+    if (leadAmount) {
+        leadAmount.textContent = rowsAmount.length;
+    }
+}
+
+document.querySelectorAll(".leads_table").forEach(table => {
+    updateLeadAmount(table);
+});
 
 // Кнопка інвайт
 
@@ -489,6 +471,7 @@ document.getElementById("new_lead_btn_left").addEventListener("click", function 
 
     const inputField = newRow.querySelector(".board_input");
     inputField.focus();
+    updateLeadAmount(selectedTable);
 });
 
 // Відкрити месенджер для обговорення таблиці на сторінці
@@ -561,7 +544,7 @@ function sendMessage() {
                                 </div>
                             </div>
     `;
-    yesDiscus.appendChild(createMessage);
+    yesDiscus.prepend(createMessage);
     const messageValue = createMessage.querySelector(".message_text");
     messageValue.innerHTML = messageText;
 }

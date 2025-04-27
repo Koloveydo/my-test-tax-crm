@@ -398,8 +398,41 @@ section#setting-popup {
     color: #6C6C6E;
     padding: 6px 8px;
 }
+.job_input{
+    margin: 0;
+}
 
-/* потрібно змінити код усіх інпутів, це майть бути кнопки які відкривають маленький поап для зміни налаштувань, є фото */
+/* -------  image dropdown popup  ------- */ 
+.background_popup {
+    display: none;
+    background-color: rgba(255, 255, 255, 0);
+    transition: 0.5s ease-in-out;
+}
+.background_popup.active {
+    display: flex;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+}
+.popup_container{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.close_name{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+.upload_description{
+    width: calc( 50% - 20px)
+}
 
 /* ----- dark-theme -------*/
 
@@ -458,5 +491,21 @@ body.dark-theme .setting-popup-inner{
     background-color: #181B34;
 }
 body.dark-theme .setting_head{
+    color: #d8d5df;
+}
+body.dark-theme .your_image_popup{
+    background-color: #262626;
+}
+body.dark-theme .drop_img_button{
+    background-color: #494949;
+    color: #F1F1F1;
+}
+body.dark-theme .drop_img_button:hover{
+    background-color: #5d5d5d;
+}
+body.dark-theme .drop_img_button:active{
+    background-color: #646464;
+}
+body.dark-theme .upload_description{
     color: #d8d5df;
 }

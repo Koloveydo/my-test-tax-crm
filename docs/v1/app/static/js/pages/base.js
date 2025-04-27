@@ -60,41 +60,22 @@ function attachMenuListeners() {
             }
         });
     });
-}
+};
 
 /* -----------   change user setting popup  ------------- */
 
 function attachInputListeners() {
+    let selectedButton = null;
     const changePopup = document.getElementById("change_setting_popup");
-    document.querySelector(".pi_page_job_title").addEventListener("click", function() {
-
-        const changeHeadText = document.getElementById("change_head_text");
-        const currentSettingName = document.getElementById("current_setting_name");
-        const currentUserSetting = document.getElementById("current_user_setting");
-        const changedSettingName = document.getElementById("changed_setting_name");
-
-        if (changePopup) changePopup.style.display = 'flex';
-        if (changeHeadText) changeHeadText.textContent = "Change job title";
-        if (currentSettingName) currentSettingName.textContent = "Current job title";
-        if (changedSettingName) changedSettingName.textContent = "New job title";
-
-        if (currentUserSetting) {
-            const textFromButton = this.textContent.trim();
-            currentUserSetting.value = textFromButton;
-        }
-
-        const inputSettingChange = document.getElementById("changed_user_setting");
-        if (inputSettingChange){
-            inputSettingChange.value = "";
-        }
-    });
+    const inputSettingChange = document.getElementById("changed_user_setting");
     document.querySelectorAll(".pi_page_first_small_info_input").forEach(button => {
         button.addEventListener("click", function () {
             const changeHeadText = document.getElementById("change_head_text");
             const currentSettingName = document.getElementById("current_setting_name");
             const currentUserSetting = document.getElementById("current_user_setting");
             const changedSettingName = document.getElementById("changed_setting_name");
-    
+            
+            selectedButton = this;
             if (changePopup) changePopup.style.display = 'flex';
     
             if (changeHeadText) changeHeadText.textContent = this.dataset.changeHead || "Change setting"; 
@@ -105,17 +86,29 @@ function attachInputListeners() {
                 const textFromButton = this.textContent.trim();
                 currentUserSetting.value = textFromButton;
             }
+            if (inputSettingChange){
+                inputSettingChange.value = "";
+            }
+        });
+        document.getElementById("change_setting_confirm_btn").addEventListener("click", function(){
+            if (selectedButton) {
+                selectedButton.textContent = inputSettingChange.value.trim();
+                changePopup.style.display = 'none';
+                selectedButton = null;
+            }
         });
     });
     
-}
+};
 
 /* ------------    close setting change popup ----------- */
 
 document.addEventListener("click", (e) => {
     if (e.target.closest(".close_setting_popup_svg") || e.target.closest(".change_setting_cancel_btn")) {
         const changePopup = document.getElementById("change_setting_popup");
+        const buttonSettingChange = document.querySelector(".change_setting_confirm_btn");
         changePopup.style.display = 'none';
+        buttonSettingChange.classList.remove('active');
     }
 });
 
@@ -133,3 +126,37 @@ function checkInput() {
     }
     });
 }
+
+/*  --------- change photo script  ------------  */
+
+function openPopup() {
+    console.log('WorkPOPUP');
+    document.querySelector('.background_popup').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closePopup() {
+    document.querySelector('.background_popup').classList.remove('active');
+}
+
+// DROPIMAGE
+const imageView =document.querySelector('.drop_img_container');
+const inputFile = document.getElementById('input-file');
+const drop_imageButton = document.querySelector('.drop_img_input')
+const drop_image_txt = document.querySelector('.drop_img_container_txt')
+
+inputFile.addEventListener("change", uploadImage);
+
+function uploadImage(){
+    let imgLink = URL.createObjectURL(inputFile.files[0]);
+    imageView.style.backgroundImage = `url(${imgLink})`;
+    drop_imageButton.style.display = 'none';
+    drop_image_txt.style.display = 'none';
+}
+
+/*  зробити попап, який буде показувати що кнопка не працює у демо версії*/
+/* добавити попапи вище до неробочих кнопок*/
+/* доробити решту сторінок налаштування*/
+/* зробити фідбек сторінку */
+/* добавити фідбек сторінку інпутам */
+/* полагодити анімацію навбару */

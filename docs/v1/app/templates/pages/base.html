@@ -25,6 +25,34 @@
 		</div>
 	</div>
 
+	<div class="background_popup">
+        <div class="popup_container">
+            <div class="your_image_popup">
+                <div class="close_name">
+                    <div class="upload_description"><h1>Upload New Image File</h1></div>
+                    <svg class="close_btn" onclick="closePopup()" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.2882 2.77338C16.9628 2.44794 16.4351 2.44794 16.1097 2.77338L10.031 8.85204L3.95237 2.77338C3.62694 2.44794 3.0993 2.44794 2.77387 2.77338C2.44842 3.09881 2.44842 3.62645 2.77387 3.95189L8.8525 10.0305L2.77388 16.1091C2.44844 16.4346 2.44844 16.9622 2.77388 17.2877C3.09932 17.6131 3.62696 17.6131 3.95239 17.2877L10.031 11.209L16.1097 17.2877C16.4351 17.6131 16.9628 17.6131 17.2882 17.2877C17.6136 16.9622 17.6136 16.4346 17.2882 16.1092L11.2095 10.0305L17.2882 3.95189C17.6136 3.62645 17.6136 3.09881 17.2882 2.77338Z" fill="#6B6969"/></svg>
+                </div>
+                <div class="drop_img_container">
+                    <div class="drop_img_container_txt">
+                        <h1>Drop Your Image Here</h1>
+                        <p>For the best result, upload a 360x360 PNG, JPG or GIF.</p>
+                    </div>
+                    <div class="drop_img_input">
+                        <label for="input-file" id="drop-area">
+                            <div class="drop_img_button">
+                                <p>CHOOSE FILE</p>
+                            </div>
+                            <input type="file" accept="image/*" id="input-file" hidden>
+                        </label>
+                    </div>
+                </div>
+                <div class="bottom_content_popup">
+        
+                </div>
+            </div>
+        </div>
+    </div>
+
 	<script src="{{ url_for('static', filename='js/pages/base.js') }}"></script>
 </body>
 </html>
