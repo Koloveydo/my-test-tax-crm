@@ -103,13 +103,13 @@
 												<p id="MobileprofileInitials" >{{ session.profile_info.first_name[0].upper() }}{{ session.profile_info.last_name[0].upper() }}</p>
 											{% else %}
 												{% if "http" in session.profile_info.url_image %}
-													<img class="card_photo" src="{{ session.profile_info.url_image }}">
+													<img class="card_photo_menu" src="{{ session.profile_info.url_image }}">
 												{% else %}
-													<img class="card_photo" src="{{ url_for('static', filename=session.profile_info.url_image) }}">
+													<img class="card_photo_menu" src="{{ url_for('static', filename=session.profile_info.url_image) }}">
 												{% endif %}
 											{% endif %}
 										{% else %}
-											<svg class="profile_svg" width="40" height="40" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="22.5" cy="22.5" r="22.5" fill="currentColor"/><path d="M12.2805 16.186L16.5645 26.95L15.5745 26.752L19.6425 16.186H21.6765L15.9345 29.794L10.2105 16.186H12.2805ZM26.046 21.424L25.992 22.072L26.226 21.748L31.554 16.186H33.804L28.422 21.766L34.11 29.2H31.896L27.144 22.882L26.046 23.944V29.2H24.282V16.186H26.046V21.424Z" fill="black"/></svg>
+											<svg class="profile_svg" width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="22.5" cy="22.5" r="22.5" fill="currentColor"/><path d="M12.2805 16.186L16.5645 26.95L15.5745 26.752L19.6425 16.186H21.6765L15.9345 29.794L10.2105 16.186H12.2805ZM26.046 21.424L25.992 22.072L26.226 21.748L31.554 16.186H33.804L28.422 21.766L34.11 29.2H31.896L27.144 22.882L26.046 23.944V29.2H24.282V16.186H26.046V21.424Z" fill="black"/></svg>
 										{% endif %}
 									{% endif %}
 
@@ -128,7 +128,7 @@
 						<ul>
 							<li>
 								<svg width="22" height="24" viewBox="0 0 22 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 22V12H14V22M2 9L11 2L20 9V20C20 20.5304 19.7893 21.0391 19.4142 21.4142C19.0391 21.7893 18.5304 22 18 22H4C3.46957 22 2.96086 21.7893 2.58579 21.4142C2.21071 21.0391 2 20.5304 2 20V9Z" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>									
-								<a href="">Home</a>
+								<a href="/">Home</a>
 							</li>
 							<li class="fall_down_options " onclick="drop_txt_options(event)">
 								<div class="Contacts fall_down_text">
@@ -137,9 +137,9 @@
 									<svg class="fall_down__arrow" width="12" height="12" viewBox="0 0 12 10" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M6 6.27498L10.6 0.333313L12 2.14165L6 9.89165L0 2.14165L1.4 0.333313L6 6.27498Z" fill="currentColor"></path></svg>
 								</div>
 								<ul class="options_menu">
-									<li><a href="">Contacts</a></li>
-									<li><a href="">Leads</a></li>
-									<li><a href="">Clients</a></li>
+									<li><a href="/contacts">Contacts</a></li>
+									<li><a href="/leads">Leads</a></li>
+									<li><a href="/deal">Deals</a></li>
 								</ul>
 							</li>
 							<li class="fall_down_options settings"  onclick="drop_txt_options(event)">
@@ -149,8 +149,8 @@
 									<svg class="fall_down_arrow" width="12" height="12" viewBox="0 0 12 10" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M6 6.27498L10.6 0.333313L12 2.14165L6 9.89165L0 2.14165L1.4 0.333313L6 6.27498Z" fill="currentColor"></path></svg>
 								</div>
 								<ul class="options_menu">
-									<li><a href="">My accoutnn</a></li>
-									<li><a href="">Company</a></li>
+									<li><a href="/mass_email">Mass email</a></li>
+									<li><a data_open_settings>Account</a></li>
 								</ul>
 							</li>
 							<li class="phone_menu_logout">

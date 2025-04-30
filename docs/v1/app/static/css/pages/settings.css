@@ -401,6 +401,90 @@ section#setting-popup {
 .job_input{
     margin: 0;
 }
+.working_status_container{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 30px;
+}
+.working_status_head{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.working_status_main_name, .language_region_head{
+    font-size: 32px;
+    font-weight: bold;
+}
+.working_status_name_description, .see_status_description{
+    font-size: 16px;
+}
+label{
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: nowrap;
+    text-wrap: nowrap;
+    cursor: pointer;
+}
+.working_status_main{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.choose_working_status_container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-right: 100px;
+    width: calc( 100% - 100px);
+    height: auto;
+    gap: 20px;
+}
+.status_btns_container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex-basis: calc( 100% / 4);
+    max-width: 200px;
+    min-width: 150px;
+}
+.see_working_status_container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.language_region_container{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+}
+.language_region_main{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.language_container, .region_container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.choose_label{
+    width: 200px;
+}
+#region, #language{
+    width: 200px;
+    background-color: #e5e5e5;
+    padding: 6px 8px;
+    border: 1px solid #3f4771;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#region:focus, #language:focus{
+    box-shadow: 1px 1px 3px 1px rgba(45, 100, 171, 0.227);
+}
 
 /* -------  image dropdown popup  ------- */ 
 .background_popup {
@@ -455,6 +539,29 @@ section#setting-popup {
 
 /* ----- dark-theme -------*/
 
+body.dark-theme #language{
+    color: #d8d5df;
+    background-color: #30324E;
+}
+body.dark-theme #region{
+    color: #d8d5df;
+    background-color: #30324E;
+}
+body.dark-theme .language_region_head{
+    color: #d8d5df;
+}
+body.dark-theme label{
+    color: #d8d5df;
+}
+body.dark-theme .see_status_description{
+    color: #d8d5df;
+}
+body.dark-theme .working_status_name_description{
+    color: #d8d5df;
+}
+body.dark-theme .working_status_main_name{
+    color:#d8d5df;
+}
 body.dark-theme .change_photo{
     color: #d8d5df;
 }
@@ -530,4 +637,44 @@ body.dark-theme .drop_img_button:active{
 }
 body.dark-theme .upload_description{
     color: #d8d5df;
+}
+
+/* ------------  adaptation  ---------*/
+
+@media (max-width: 1000px) {
+    .setting_menu_container{
+        padding: 0;
+        min-width: 210px;
+    }
+    .setting_menu_text_container{
+        width: 200px;
+    }
+    .pi_page_work_shedules_btn_text{
+        display: flex;
+        text-align: center;
+    }
+}
+@media (max-width: 850px) {
+    .setting_page_container{
+        width: 100%;
+        overflow: auto;
+        padding: 0;
+    }
+    .setting_main_container{
+        flex-direction: column;
+    }
+    .setting_menu_container{
+        flex-direction: row;
+        height: 40px;
+        gap: 0px;
+    }
+    .personal_info_page_first{
+        flex-direction: column;
+    }
+    .setting_menu_svg{
+        display: none;
+    }
+    .personal_info_page_first, .personal_info_page_second, .pi_personal_info_page_third{
+        min-width: 340px;
+    }
 }

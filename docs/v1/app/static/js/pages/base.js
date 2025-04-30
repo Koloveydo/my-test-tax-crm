@@ -90,11 +90,16 @@ function attachInputListeners() {
                 inputSettingChange.value = "";
             }
         });
-        document.getElementById("change_setting_confirm_btn").addEventListener("click", function(){
+        document.getElementById("change_setting_confirm_btn").addEventListener("click", function() {
+            if (!this.classList.contains("active")) {
+                return; // Якщо немає класу active — просто вийти і нічого не робити
+            }
+            
             if (selectedButton) {
                 selectedButton.textContent = inputSettingChange.value.trim();
                 changePopup.style.display = 'none';
                 selectedButton = null;
+                this.classList.remove("active");
             }
         });
     });
@@ -167,6 +172,8 @@ closeDemoContainer.addEventListener("click", function(){
 });
 
 /* доробити решту сторінок налаштування*/
-/* зробити фідбек сторінку */
+/* зробити фідбек сторінку with ajax */
 /* добавити фідбек сторінку інпутам */
 /* полагодити анімацію навбару */
+/* адаптацію доробити для масс емейлу, чат джпт порадив як ( оверфлоф видний + скрол)
+/* не забути у налаштуваннях в останньому пункті добавити лог аут, він є у мобільному меню хедера, там є підказка */

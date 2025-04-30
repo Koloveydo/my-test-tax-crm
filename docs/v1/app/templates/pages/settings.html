@@ -152,13 +152,130 @@
                     </div>
                 </div>
                 <div class="setting_list_page_container" data-index="1">
-
+                    <div class="working_status_container">
+                        <div class="working_status_head">
+                            <div class="working_status_main_name">Working status</div>
+                            <div class="working_status_name_description">Let everyone know your status</div>
+                        </div>
+                        <div class="working_status_main">
+                            <div class="choose_working_status_container">
+                                <div class="status_btns_container">
+                                    <label>
+                                        <input type="radio" class="working_status_radbtn" name="status" value="1"> In the office
+                                    </label>                            
+                                    <label>
+                                        <input type="radio" class="working_status_radbtn" name="status" value="2"> Out of office
+                                    </label>                            
+                                    <label>
+                                        <input type="radio" class="working_status_radbtn" name="status" value="3"> Do not disturb
+                                    </label>
+                                </div>
+                                <div class="status_btns_container">
+                                    <label>
+                                        <input type="radio" class="working_status_radbtn" name="status" value="4"> Working from home
+                                    </label>
+                                    <label>
+                                        <input type="radio" class="working_status_radbtn" name="status" value="5"> Working outside
+                                    </label>
+                                </div>
+                                <div class="status_btns_container">
+                                    <label>
+                                        <input type="radio" class="working_status_radbtn" name="status" value="6"> Out sick
+                                    </label>
+                                    <label>
+                                        <input type="radio" class="working_status_radbtn" name="status" value="7"> Family time
+                                    </label>
+                                </div>
+                                <div class="status_btns_container">
+                                    <label>
+                                        <input type="radio" class="working_status_radbtn" name="status" value="8"> On break
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="see_working_status_container">
+                                <div class="see_status_description">User Activity Indication Control</div>
+                                <label>
+                                    <input type="checkbox" class="status_checkbox"> Disable online indication (you also won`t see if others are online)
+                                </label>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="setting_list_page_container" data-index="2">
-                    
+                    <div class="language_region_container">
+                        <div class="language_region_head">Language & region</div>
+                        <div class="language_region_main">
+                            <div class="language_container">
+                                <label class="choose_label" for="region">Your region</label>
+                                <select id="region" name="region" class="select_input">
+                                    <option value="ua">Україна</option>
+                                    <option value="pl">Polska</option>
+                                    <option value="de">Deutschland</option>
+                                    <option value="us">United States</option>
+                                    <option value="fr">France</option>
+                                    <option value="es">España</option>
+                                    <option value="it">Italia</option>
+                                    <option value="jp">日本 (Nihon)</option>
+                                    <option value="cn">中国 (Zhōngguó)</option>
+                                    <option value="kr">대한민국 (Daehan Minguk)</option>
+                                    <option value="br">Brasil</option>
+                                    <option value="ar">Argentina</option>
+                                    <option value="ca">Canada</option>
+                                    <option value="gb">United Kingdom</option>
+                                    <option value="in">भारत (Bhārat)</option>
+                                    <option value="tr">Türkiye</option>
+                                    <option value="nl">Nederland</option>
+                                    <option value="se">Sverige</option>
+                                    <option value="no">Norge</option>
+                                    <option value="cz">Česko</option>
+                                    <option value="sk">Slovensko</option>
+                                    <option value="ro">România</option>
+                                    <option value="bg">България</option>
+                                    <option value="gr">Ελλάδα</option>
+                                    <option value="fi">Suomi</option>
+                                    <option value="lt">Lietuva</option>
+                                    <option value="lv">Latvija</option>
+                                    <option value="ee">Eesti</option>
+                                    <option value="hu">Magyarország</option>
+                                    <option value="rs">Srbija</option>
+                                    <option value="hr">Hrvatska</option>
+                                    <option value="pt">Portugal</option>
+                                    
+                                </select>
+                            </div>
+                            <div class="region_container">
+                                <label class="choose_label" for="language">Your language</label>
+                                <select id="language" name="language" class="select_input">
+                                  <option value="uk">Українська</option>
+                                  <option value="en">English</option>
+                                  <option value="pl">Polski</option>
+                                  <option value="de">Deutsch</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="setting_list_page_container" data-index="3">
-                    
+                    <div class="password_page">
+                        <div class="password_head">Password</div>
+                        <div class="password_main">
+                            <div class="current_password_container">
+                                <div class="input_content">
+                                    <input class="password_input" id="log-pass" type="password">
+                                    <svg class="eye_svg" width="18" height="18" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.2125 12.2125C11.1441 13.0269 9.84319 13.478 8.5 13.5C4.125 13.5 1.625 8.5 1.625 8.5C2.40243 7.05118 3.48071 5.78538 4.7875 4.7875M7.1875 3.65C7.61771 3.5493 8.05816 3.49896 8.5 3.5C12.875 3.5 15.375 8.5 15.375 8.5C14.9956 9.20975 14.5432 9.87796 14.025 10.4937M9.825 9.825C9.65334 10.0092 9.44634 10.157 9.21634 10.2595C8.98635 10.3619 8.73806 10.417 8.48631 10.4215C8.23455 10.4259 7.98448 10.3796 7.75101 10.2853C7.51754 10.191 7.30545 10.0506 7.1274 9.8726C6.94936 9.69455 6.809 9.48246 6.71469 9.24899C6.62039 9.01552 6.57408 8.76545 6.57852 8.51369C6.58296 8.26194 6.63807 8.01365 6.74055 7.78365C6.84303 7.55366 6.99078 7.34666 7.175 7.175M1.625 1.625L15.375 15.375" stroke="#868686" stroke-opacity="0.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    <svg class="close_eye_svg" width="18" height="18" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.625 6.5C0.625 6.5 3.125 1.5 7.5 1.5C11.875 1.5 14.375 6.5 14.375 6.5C14.375 6.5 11.875 11.5 7.5 11.5C3.125 11.5 0.625 6.5 0.625 6.5Z" stroke="#868686" stroke-opacity="0.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.5 8.375C8.53553 8.375 9.375 7.53553 9.375 6.5C9.375 5.46447 8.53553 4.625 7.5 4.625C6.46447 4.625 5.625 5.46447 5.625 6.5C5.625 7.53553 6.46447 8.375 7.5 8.375Z" stroke="#868686" stroke-opacity="0.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>       
+                                    <p class="error"></p>
+                                </div>
+                            </div>
+                            <div class="new_password_container">
+
+                            </div>
+                            <div class="confirm_password_container">
+
+                            </div>
+                            <div class="save_password_btn">Save</div>
+                        </div>
+                    </div>
                 </div>
                 <div class="setting_list_page_container" data-index="4">
                     
