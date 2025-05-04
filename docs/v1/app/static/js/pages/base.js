@@ -18,6 +18,10 @@ async function openSettings() {
     attachMenuListeners();
     attachInputListeners();
     checkInput();
+    getLocation();
+    getLocalIP();
+    getUserDate();
+    showSessionDuration()
 }
 
 document.addEventListener("click", (e) => {
@@ -227,7 +231,7 @@ function confirmPassBtn() {
         confirmErrorText.textContent = "Invalid Password";
         confirmErrorText.style.color = "#ba0000";
     }
-}
+};
 
 /* checking user devise */
 
@@ -259,15 +263,79 @@ function detectDeviceInfo() {
     if (deviceBlock) {
         deviceBlock.textContent = deviceText;
     }
+};
+
+/* ----------- checking user location  ----------------- */
+
+function getLocation() {
+    fetch('https://ipapi.co/json/')
+  .then(response => response.json())
+  .then(data => {
+    const location = `${data.city}, ${data.country}`;
+    document.querySelector(".session_location").textContent = location;
+  })
+  .catch(error => {
+    console.error("Geo error:", error);
+  });
+
+};
+
+/* -------------- checking user ip address -------------- */
+
+function getLocalIP() {
+    fetch('https://api.ipify.org?format=json')
+  .then(response => response.json())
+  .then(data => {
+    const ip = data.ip;
+    console.log("IP Address:", ip);
+    document.querySelector(".session_ip").textContent = ip;
+  });
+};
+
+/* ---------------- checking date ---------------------- */
+
+function getUserDate() {
+    const now = new Date();
+
+    const formattedDate = now.getFullYear() + '-' +
+        String(now.getMonth() + 1).padStart(2, '0') + '-' +
+        String(now.getDate()).padStart(2, '0');
+
+    document.querySelector(".session_last_usage").textContent = formattedDate;
+
+    return formattedDate;
+};
+
+/* ------------------  checking login time ----------------- */
+
+function showSessionDuration() {
+    const loginTimeString = sessionStorage.getItem("login_time");
+
+    if (!loginTimeString) return;
+
+    const loginTime = new Date(loginTimeString);
+    const now = new Date();
+
+    const diffMs = now - loginTime;
+    const diffMinutes = Math.floor(diffMs / 60000);
+
+    document.querySelector(".session_time").textContent = `${diffMinutes} minutes ago`;
 }
 
+/* -------------------  log out ---------------- */
 
+document.addEventListener("click", function (e) {
+    const container = e.target.closest(".session_btn_container");
+    if (container) {
+        window.location.href = container.dataset.url;
+    }
+});
 
-
-
-/* доробити решту сторінок налаштування*/
 /* зробити фідбек сторінку with ajax */
 /* добавити фідбек сторінку інпутам */
 /* полагодити анімацію навбару */
-/* адаптацію доробити для масс емейлу, чат джпт порадив як ( оверфлоф видний + скрол)
-/* не забути у налаштуваннях в останньому пункті добавити лог аут, він є у мобільному меню хедера, там є підказка */
+/* адаптацію доробити для масс емейлу, чат джпт порадив як ( оверфлоф видний + скрол) */
+
+/*------------------  + task ---------------------------*/
+
+/* зробити аякс запит, який буде догружати контент сторінки при прокрутці до самого низу, корисний + */

@@ -218,6 +218,7 @@ document.addEventListener("DOMContentLoaded", function () {
         e.preventDefault();
         if (validateLoginForm()) {
             addDynamicValidation(loginForm);
+            sessionStorage.setItem("login_time", new Date().toISOString());
         }
     });
 })
