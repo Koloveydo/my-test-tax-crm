@@ -54,7 +54,7 @@ function attachMenuListeners() {
 
             menuItem.classList.add('active');
 
-            const matchingPage = document.querySelector(`.setting_list_page_container[data-index="${index}"]`); // виправлено
+            const matchingPage = document.querySelector(`.setting_list_page_container[data-index="${index}"]`);
             if (matchingPage) {
                 matchingPage.classList.add('active');
             }
@@ -92,7 +92,7 @@ function attachInputListeners() {
         });
         document.getElementById("change_setting_confirm_btn").addEventListener("click", function() {
             if (!this.classList.contains("active")) {
-                return; // Якщо немає класу active — просто вийти і нічого не робити
+                return;
             }
             
             if (selectedButton) {
@@ -170,6 +170,100 @@ function globalDemoPopup() {
 closeDemoContainer.addEventListener("click", function(){
     demoContainer.style.display = 'none';
 });
+
+/* ---------------  checking input password  ---------------*/
+
+document.addEventListener("input", function (e) {
+    if (e.target && e.target.id === "log-pass") {
+        const passwordInput = e.target.value;
+        const newPass = document.getElementById("new_pass");
+        const confirmPass = document.getElementById("confirm_pass");
+        const savePassBtn = document.getElementById("save_password_btn");
+        const outputDiv = document.querySelector(".pass_error");
+
+        fetch("/settings/check-password", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ password: passwordInput })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.match) {
+                newPass?.removeAttribute('readonly');
+                confirmPass?.removeAttribute('readonly');
+                savePassBtn?.classList.add('active');
+                outputDiv.textContent = "Correct password";
+                outputDiv.style.color = "#06a600";
+            } else {
+                newPass?.setAttribute('readonly', true);
+                newPass.value = '';
+                confirmPass?.setAttribute('readonly', true);
+                confirmPass.value = '';
+                savePassBtn?.classList.remove('active');
+                outputDiv.textContent = "Incorrect password";
+                outputDiv.style.color = "#ba0000";
+            }
+        })
+        .catch(error => {
+            outputDiv.textContent = "Помилка: " + error;
+        });
+    }
+});
+
+/* checking that new pass = confirm pass */
+
+function confirmPassBtn() {
+    const confirmErrorText = document.querySelector(".new_pass_error");
+    const newPass = document.getElementById("new_pass");
+    const confirmPass = document.getElementById("confirm_pass");
+
+    if (newPass.value === confirmPass.value && newPass.value.length >= 8 &&  newPass.value.trim() !== "" ) {
+        confirmErrorText.textContent = "Valid Password";
+        confirmErrorText.style.color = "#06a600";
+        globalDemoPopup();
+    } else {
+        confirmErrorText.textContent = "Invalid Password";
+        confirmErrorText.style.color = "#ba0000";
+    }
+}
+
+/* checking user devise */
+
+function detectDeviceInfo() {
+    const userAgent = navigator.userAgent;
+    let os = "Unknown OS";
+    let browser = "Unknown Browser";
+
+    if (userAgent.includes("Win")) os = "Windows";
+    else if (userAgent.includes("Mac")) os = "macOS";
+    else if (userAgent.includes("Linux")) os = "Linux";
+    else if (userAgent.includes("Android")) os = "Android";
+    else if (userAgent.includes("iPhone") || userAgent.includes("iPad")) os = "iOS";
+
+    if (userAgent.includes("Chrome") && !userAgent.includes("Edg") && !userAgent.includes("OPR")) {
+        browser = "Chrome";
+    } else if (userAgent.includes("Firefox")) {
+        browser = "Firefox";
+    } else if (userAgent.includes("Safari") && !userAgent.includes("Chrome")) {
+        browser = "Safari";
+    } else if (userAgent.includes("Edg")) {
+        browser = "Edge";
+    } else if (userAgent.includes("OPR") || userAgent.includes("Opera")) {
+        browser = "Opera";
+    }
+
+    const deviceText = `${os}, ${browser}`;
+    const deviceBlock = document.querySelector('.session_device');
+    if (deviceBlock) {
+        deviceBlock.textContent = deviceText;
+    }
+}
+
+
+
+
 
 /* доробити решту сторінок налаштування*/
 /* зробити фідбек сторінку with ajax */

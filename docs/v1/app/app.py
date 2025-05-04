@@ -66,7 +66,6 @@ def utility_processor():
 ''' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ '''
 '''   create context processor, with all session data end  '''
 ''' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ '''
-
             
 @app.route('/components')
 def components_view():
@@ -217,6 +216,42 @@ def checkLoginView():
     else:
         json_data = {'success': False, 'message': 'Method not allowed'}
         return jsonify(json_data), 405
+
+
+# checkin for setting page password is true
+
+@app.route('/settings/check-password', methods=['POST'])
+def check_password():
+    if "login" in session and session["login"]:
+        user_session = session["user"]
+        try:
+            data = request.get_json()
+            input_password = data.get("password")
+
+            with app.app_context():
+                user = User_details.query.filter_by(
+                    firstname=user_session["first_name"], 
+                    lastname=user_session["last_name"]
+                ).first()
+
+            if user and user.password == input_password:
+                return jsonify({"match": True}), 200
+            else:
+                return jsonify({"match": False}), 200
+
+        except Exception as e:
+            return jsonify({"match": False, "error": str(e)}), 500
+    return jsonify({"match": False, "error": "Unauthorized"}), 401
+
+# checking user device
+
+@app.route('/session-device', methods=['POST'])
+def session_device():
+    data = request.get_json()
+    user_agent = data.get('user_agent')
+
+    session['device_info'] = user_agent
+    return jsonify({"status": "ok"}), 200
 
 @app.route('/')
 def indexView():

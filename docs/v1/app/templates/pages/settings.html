@@ -29,7 +29,7 @@
                     <svg class="setting_menu_svg" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.83333 9.16663V5.83329C5.83333 4.72822 6.27232 3.66842 7.05372 2.88701C7.83512 2.10561 8.89493 1.66663 10 1.66663C11.1051 1.66663 12.1649 2.10561 12.9463 2.88701C13.7277 3.66842 14.1667 4.72822 14.1667 5.83329V9.16663M4.16667 9.16663H15.8333C16.7538 9.16663 17.5 9.91282 17.5 10.8333V16.6666C17.5 17.5871 16.7538 18.3333 15.8333 18.3333H4.16667C3.24619 18.3333 2.5 17.5871 2.5 16.6666V10.8333C2.5 9.91282 3.24619 9.16663 4.16667 9.16663Z" stroke="#1E1E1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     <div class="setting_menu_text">Password</div>
                 </div>
-                <div class="setting_menu_text_container" data-index="4">
+                <div class="setting_menu_text_container" onclick="detectDeviceInfo()" data-index="4">
                     <svg class="setting_menu_svg" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_1959_570)"><path d="M5.00008 4.99996H5.00841M5.00008 15H5.00841M3.33341 1.66663H16.6667C17.5872 1.66663 18.3334 2.41282 18.3334 3.33329V6.66663C18.3334 7.5871 17.5872 8.33329 16.6667 8.33329H3.33341C2.41294 8.33329 1.66675 7.5871 1.66675 6.66663V3.33329C1.66675 2.41282 2.41294 1.66663 3.33341 1.66663ZM3.33341 11.6666H16.6667C17.5872 11.6666 18.3334 12.4128 18.3334 13.3333V16.6666C18.3334 17.5871 17.5872 18.3333 16.6667 18.3333H3.33341C2.41294 18.3333 1.66675 17.5871 1.66675 16.6666V13.3333C1.66675 12.4128 2.41294 11.6666 3.33341 11.6666Z" stroke="#1E1E1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_1959_570"><rect width="20" height="20" fill="white"/></clipPath></defs></svg>
                     <div class="setting_menu_text">Session history</div>
                 </div>
@@ -258,27 +258,66 @@
                 <div class="setting_list_page_container" data-index="3">
                     <div class="password_page">
                         <div class="password_head">Password</div>
-                        <div class="password_main">
+                        <form class="password_main">
                             <div class="current_password_container">
-                                <div class="input_content">
-                                    <input class="password_input" id="log-pass" type="password">
-                                    <svg class="eye_svg" width="18" height="18" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.2125 12.2125C11.1441 13.0269 9.84319 13.478 8.5 13.5C4.125 13.5 1.625 8.5 1.625 8.5C2.40243 7.05118 3.48071 5.78538 4.7875 4.7875M7.1875 3.65C7.61771 3.5493 8.05816 3.49896 8.5 3.5C12.875 3.5 15.375 8.5 15.375 8.5C14.9956 9.20975 14.5432 9.87796 14.025 10.4937M9.825 9.825C9.65334 10.0092 9.44634 10.157 9.21634 10.2595C8.98635 10.3619 8.73806 10.417 8.48631 10.4215C8.23455 10.4259 7.98448 10.3796 7.75101 10.2853C7.51754 10.191 7.30545 10.0506 7.1274 9.8726C6.94936 9.69455 6.809 9.48246 6.71469 9.24899C6.62039 9.01552 6.57408 8.76545 6.57852 8.51369C6.58296 8.26194 6.63807 8.01365 6.74055 7.78365C6.84303 7.55366 6.99078 7.34666 7.175 7.175M1.625 1.625L15.375 15.375" stroke="#868686" stroke-opacity="0.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                                    <svg class="close_eye_svg" width="18" height="18" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.625 6.5C0.625 6.5 3.125 1.5 7.5 1.5C11.875 1.5 14.375 6.5 14.375 6.5C14.375 6.5 11.875 11.5 7.5 11.5C3.125 11.5 0.625 6.5 0.625 6.5Z" stroke="#868686" stroke-opacity="0.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.5 8.375C8.53553 8.375 9.375 7.53553 9.375 6.5C9.375 5.46447 8.53553 4.625 7.5 4.625C6.46447 4.625 5.625 5.46447 5.625 6.5C5.625 7.53553 6.46447 8.375 7.5 8.375Z" stroke="#868686" stroke-opacity="0.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>       
-                                    <p class="error"></p>
+                                <div class="password_name">Current password</div>
+                                <div class="input_reser_forgot_container">
+                                    <div class="input_content">
+                                        <input class="password_check_input" id="log-pass" type="password">      
+                                        <p class="pass_error"></p>
+                                    </div>
+                                    <div class="forgot_reset_container">
+                                        <div class="forgot_text">Forgot your password?</div>
+                                        <div class="reset_text" id="reset_text">Reset password via email</div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="new_password_container">
-
+                                <div class="password_name">New password</div>
+                                <div class="input_content">
+                                    <input class="password_input" id="new_pass" type="password" readonly>   
+                                </div>
                             </div>
                             <div class="confirm_password_container">
-
+                                <div class="password_name">Confirm your password</div>
+                                <div class="input_content">
+                                    <input class="password_input" id="confirm_pass" type="password" readonly>    
+                                    <p class="new_pass_error"></p>
+                                </div>
                             </div>
-                            <div class="save_password_btn">Save</div>
-                        </div>
+                            <div class="save_password_btn" id="save_password_btn" onclick="confirmPassBtn()">Save</div>
+                        </form>
                     </div>
                 </div>
                 <div class="setting_list_page_container" data-index="4">
-                    
+                    <div class="session_page">
+                        <div class="session_head">Session history</div>
+                        <div class="session_main">
+                            <div class="session_emount">1 Session</div>
+                            <div class="session_table">
+                                <div class="session_table_head">
+                                    <div class="session_item_head">Device</div>
+                                    <div class="session_item_head">Location</div>
+                                    <div class="session_item_head">IP</div>
+                                    <div class="session_item_head">Last usage</div>
+                                    <div class="session_item_head">Time</div>
+                                    <div class="session_empty_place_head"></div>
+                                </div>
+                                <div class="session_table_main">
+                                    <div class="user_session_container">
+                                        <div class="session_device"></div>
+                                        <div class="session_location"></div>
+                                        <div class="session_ip"></div>
+                                        <div class="session_last_usage"></div>
+                                        <div class="session_time"></div>
+                                        <div class="session_btn_container">
+                                            <div class="log_out_btn">Log Out</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
