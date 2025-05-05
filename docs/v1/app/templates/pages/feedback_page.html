@@ -1,7 +1,70 @@
 <link rel="stylesheet" href="{{url_for('static',filename='css/pages/feedback_page.css')}}" />
 
-<section id="setting-popup" class="setting-popup">
-    <div class="setting-popup-inner">
-        
+<section id="feedback-popup" class="feedback-popup">
+    <div class="feedback-popup-inner">
+        <nav class="feedback_nav_container">
+            <div class="feedback_nav_head">
+                <div class="feedback_name_container">
+                    <div class="feedback_name">Update feed</div>
+                    <div class="info_container">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_1924_487)"><path d="M10 13.3334V10M10 6.66669H10.0084M18.3334 10C18.3334 14.6024 14.6024 18.3334 10 18.3334C5.39765 18.3334 1.66669 14.6024 1.66669 10C1.66669 5.39765 5.39765 1.66669 10 1.66669C14.6024 1.66669 18.3334 5.39765 18.3334 10Z" stroke="#1E1E1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_1924_487"><rect width="20" height="20" fill="white"/></clipPath></defs></svg>
+                    </div>
+                </div>
+                <div class="feedback_description_container">
+                    <div class="feedback_description_text">What goes on my feed?</div>
+                    <div class="feedback_description_btn">See more</div>
+                </div>
+                <div class="feedback_feelter_text">Filter by board</div>
+            </div>
+            <div class="feedback_nav_main">
+                <div class="feedback_nav_text" data-feedback-index="0">All updates</div>
+                <div class="feedback_nav_text" data-feedback-index="1">I was mentioned</div>
+                <div class="feedback_nav_text" data-feedback-index="2">All account updates</div>
+            </div>
+        </nav>
+        <div class="feedback_main_container">
+            <div class="feedback_main_close_container">
+                <div class="close_feedback" id="close_feedback">
+                    <svg class="close_feedback_svg" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 5L5 15M5 5L15 15" stroke="#1E1E1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+            </div>
+            <div class="feedback_page_container" data-feedback-index="0">
+                <div class="feedback_updates_head">
+                    <div class="feedback_show_container">
+                        <div class="feedback_show_text">Show Unread updates</div>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 7.5L10 12.5L15 7.5" stroke="#1E1E1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <div class="feedback_mark_container">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.6666 5L7.49992 14.1667L3.33325 10" stroke="#1E1E1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <div class="feedback_mark_text">Mark all as read</div>
+                    </div>
+                </div>
+                <div class="feedback_updates_main">
+                    <div class="feedback_message_update_container">
+                        <div class="feedback_message_update_head">
+                            <div class="fmuh_left">
+                                <img class="card_photo_ajax" src="{{ data.user.url_image }}">
+                                <div class="sender_name_ajax">{{ data.user.full_name}}</div>
+                            </div>
+                            <div class="fmuh_right">
+                                <div class="read_mark">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.6666 5L7.49992 14.1667L3.33325 10" stroke="#1E1E1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feedback_message_update_main">
+                            <div class="feedback_message_update_text"></div>
+                            <div class="feedback_message_update_more">...See more</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="feedback_page_container" data-feedback-index="1">
+
+            </div>
+            <div class="feedback_page_container" data-feedback-index="2">
+
+            </div>
+        </div>
     </div>
 </section>

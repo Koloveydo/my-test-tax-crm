@@ -116,6 +116,35 @@ def settings_view():
         
     return redirect(url_for('login_view'))
 
+@app.route('/feedback', methods = ['GET', 'POST'] )
+def fedback_viev():
+    if "login" in session and session["login"]:
+        user_session = session["user"]
+
+        with app.app_context():
+            user = User_details.query.filter_by(
+                firstname=user_session["first_name"], 
+                lastname=user_session["last_name"]
+            ).first()
+
+        if user:
+            user_data = {
+                'url_image': user.url_image,
+                'name': user.firstname,
+                'surname': user.lastname,
+                'organization': user.job_title,
+                'email': user.email,
+                'phone': user.phone,
+                'full_name' : user.firstname + " " + user.lastname
+            }
+
+            data = {
+                "user": user_data,
+            }
+            return render_template('pages/feedback_page.html', data=data)
+        
+    return redirect(url_for('login_view'))
+
 
 @app.route('/login')
 def login_view():

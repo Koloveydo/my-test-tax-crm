@@ -331,10 +331,61 @@ document.addEventListener("click", function (e) {
     }
 });
 
+/* -----------------  open feedback page  --------------------- */
+
+async function openFeedback() {
+    const response = await fetch ("/feedback")
+    const html = await response.text();
+    document.body.insertAdjacentHTML("beforeend", html);
+
+}
+
+document.addEventListener("click", (e) => {
+    const elFeedback = e.target.closest("[data_open_feedback]");
+    if (elFeedback) {
+        e.preventDefault();
+        openFeedback();
+        feedbackNavbar()
+    }
+});
+
+/* ------- close feedback page --------- */
+
+document.addEventListener("click", (e) => {
+    if (e.target.closest(".close_feedback_svg")) {
+        const modal = document.getElementById("feedback-popup");
+        if (modal) {
+            modal.remove();
+        }
+    }
+});
+
+/* --------- change feedback nav page ---------- */    /* ------  доробити  ------ */
+
+function feedbackNavbar() {
+    const feedbackMenu = document.querySelectorAll('.feedback_nav_text');
+    const feedbackPage = document.querySelectorAll('.feedback_page_container');
+
+    feedbackMenu.forEach(feedbackItem => {
+        feedbackItem.addEventListener('click', () => {
+            const index = feedbackItem.getAttribute('data-feedback-index');
+
+            feedbackMenu.forEach(el => el.classList.remove('active'));
+            feedbackPage.forEach(page => page.classList.remove('active'));
+
+            feedbackItem.classList.add('active');
+
+            const chosenPage = document.querySelector(`.feedback_page_container[data-index="${index}"]`);
+            if (chosenPage) {
+                chosenPage.classList.add('active');
+            }
+        });
+    });
+};
+
 /* зробити фідбек сторінку with ajax */
-/* добавити фідбек сторінку інпутам */
 /* полагодити анімацію навбару */
-/* адаптацію доробити для масс емейлу, чат джпт порадив як ( оверфлоф видний + скрол) */
+/* доробити скрипт обраної сторінки, тобто треба зробити класи актив для тих елементів, по ідеї має працювати */
 
 /*------------------  + task ---------------------------*/
 
