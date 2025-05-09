@@ -516,8 +516,11 @@ const observer = new MutationObserver(checkMessages);
 observer.observe(yesDiscus, { childList: true, subtree: true });
 
 function sendMessage() {
-    const messageText = document.querySelector(".ql-editor").innerHTML;
+    const fatherMessageContainer = document.querySelector(".write_message_main_container");
+    const messageEditor = fatherMessageContainer.querySelector(".ql-editor");
+    const messageText = messageEditor.innerHTML;
     const yesDiscus = document.getElementById("yes_discussion_container");
+    const messagePlainText = messageEditor.innerText.trim();
     
     function getCurrentTime() {
         const now = new Date();
@@ -528,7 +531,7 @@ function sendMessage() {
             String(now.getMinutes()).padStart(2, '0');
     }
 
-    if (messageText === "") return; 
+    if (messagePlainText === "") return; 
 
     const createMessage = document.createElement("div");
     createMessage.className = "my_message";

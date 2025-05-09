@@ -337,15 +337,19 @@ async function openFeedback() {
     const response = await fetch ("/feedback")
     const html = await response.text();
     document.body.insertAdjacentHTML("beforeend", html);
-
-}
+    feedbackNavbar();
+    expandMessage();
+    allReadMessages();
+    initQuillEditor();
+    quillDark();
+    checkFeedback();
+};
 
 document.addEventListener("click", (e) => {
     const elFeedback = e.target.closest("[data_open_feedback]");
     if (elFeedback) {
         e.preventDefault();
         openFeedback();
-        feedbackNavbar()
     }
 });
 
@@ -364,28 +368,138 @@ document.addEventListener("click", (e) => {
 
 function feedbackNavbar() {
     const feedbackMenu = document.querySelectorAll('.feedback_nav_text');
-    const feedbackPage = document.querySelectorAll('.feedback_page_container');
+    const feedbackPage = document.querySelectorAll('.feedback_page_main');
+    const feedbackNamePage = document.querySelector('.feedback_page_name');
 
     feedbackMenu.forEach(feedbackItem => {
         feedbackItem.addEventListener('click', () => {
             const index = feedbackItem.getAttribute('data-feedback-index');
 
-            feedbackMenu.forEach(el => el.classList.remove('active'));
-            feedbackPage.forEach(page => page.classList.remove('active'));
+            feedbackMenu.forEach(feedline => feedline.classList.remove('active'));
+            feedbackPage.forEach(feedpage => feedpage.classList.remove('active'));
 
             feedbackItem.classList.add('active');
 
-            const chosenPage = document.querySelector(`.feedback_page_container[data-index="${index}"]`);
+            const chosenPage = document.querySelector(`.feedback_page_main[data-feedback-index="${index}"]`);
             if (chosenPage) {
                 chosenPage.classList.add('active');
+                feedbackNamePage.textContent = feedbackItem.textContent;
             }
         });
     });
 };
 
-/* зробити фідбек сторінку with ajax */
+/* ---------------- script to see all message -------------- */
+
+function expandMessage() {
+    document.addEventListener("click", function(event) {
+
+        const expandBtn = event.target.closest(".feedback_message_update_more");
+
+        if (!expandBtn) return;
+
+        const messageContainer = expandBtn.closest(".feedback_message_container");
+
+        if (!messageContainer) return;
+
+        const expandedMessage = messageContainer.querySelector(".feedback_message_update_text");
+        const readMessageMark = messageContainer.querySelector(".read_mark");
+
+        if (expandedMessage) {
+            expandedMessage.style.maxHeight = "none";
+            expandedMessage.classList.add("expanded");
+            expandBtn.style.display = "none";
+        }
+
+        if (readMessageMark) {
+            readMessageMark.classList.add("read");
+        }
+    });
+}
+
+/* ------------  mark all messages as read  ---------------- */
+
+function allReadMessages() {
+    document.querySelector(".feedback_mark_container").addEventListener("click", function() {
+        const readMessageMarks = document.querySelectorAll(".read_mark");
+        readMessageMarks.forEach(readMessageMark => readMessageMark.classList.add("read"));
+    });
+};
+
+/* --------------  dark-theme for editor ----------------- */
+function quillDark() {
+    if (document.body.classList.contains("dark-theme")) {
+        document.getElementById("feedback_editor").classList.add("dark-theme");
+    } else {
+        document.getElementById("feedback_editor").classList.remove("dark-theme");
+    }
+};
+
+/* ----------- initiation quil editor ---------------- */
+
+function initQuillEditor() {
+    const editorElement = document.querySelector('#feedback_editor');
+    if (editorElement) {
+        new Quill('#feedback_editor', {
+            theme: 'snow'
+        });
+    }
+};
+
+/* --------------- send message script for feedback page ----------------- */
+
+function checkFeedback() {
+    const noFeedback = document.getElementById("zero_feedback_message");
+    const yesFeedback = document.getElementById("user_feedback_message_container");
+    function checkFeedbackMessages() {
+        const hasFeedback = yesFeedback.querySelector(".feedback_message_container");
+
+        if (hasFeedback) {
+            yesFeedback.style.display = "flex";
+            noFeedback.style.display = "none";
+        } else {
+            yesFeedback.style.display = "none";
+            noFeedback.style.display = "flex";
+        }
+    }
+    checkFeedbackMessages();
+    const observerFeedback = new MutationObserver(checkFeedbackMessages);
+    observerFeedback.observe(yesFeedback, { childList: true, subtree: true });
+};
+
+function sendFeedback() {
+    const fatherContainer = document.querySelector(".write_message_main_feedback_container");
+    const quillEditor = fatherContainer.querySelector(".ql-editor");
+    const feedbackText = quillEditor.innerHTML;
+    const feedbackPlainText = quillEditor.innerText.trim();
+    const yesFeedback = document.getElementById("user_feedback_message_container");
+
+    if (feedbackPlainText === "") return; 
+
+    const createFeedback = document.createElement("div");
+    createFeedback.className = "feedback_message_container";
+
+    createFeedback.innerHTML = `
+                                <div class="feedback_message_update_main">
+                                    <div class="feedback_message_update_text"></div>
+                                    <div class="feedback_message_update_more_container">
+                                    <div class="feedback_message_update_more">...See more</div>
+                                </div>
+    
+    `;
+
+    yesFeedback.prepend(createFeedback);
+    const feedbackValue = createFeedback.querySelector(".feedback_message_update_text");
+    feedbackValue.innerHTML = feedbackText;
+};
+
+
 /* полагодити анімацію навбару */
-/* доробити скрипт обраної сторінки, тобто треба зробити класи актив для тих елементів, по ідеї має працювати */
+/* зробити чорну тему для фідбек сторінки */
+/* зробити адаптацію ( просто дисплй на колумн поміняю, щоб меню було вгорі) */
+/* зробити останню фідбек сторінку all account update */
+/* зробити хедер для інфо кнопки */
+/* добавити демо попап до кнопок які не працюють і не будуть працювати */
 
 /*------------------  + task ---------------------------*/
 

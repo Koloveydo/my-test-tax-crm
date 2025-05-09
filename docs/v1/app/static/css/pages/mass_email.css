@@ -165,7 +165,6 @@ section#index-page {
     border: 1px solid #494C67;
     border-radius: 5px;
     margin-top:20px;
-    overflow-x: auto;
 }
 .mass_email_sent_table_container.active{
     display:flex;
@@ -329,8 +328,13 @@ body.dark-theme .mass_email_hover_svg path{
         width: 120px;
     }
 }
-@media(max-width:100px){
+@media(max-width:1000px){
     .mass_email_sent_table_container, .mass_email_sheduled_table_container{
-        overflow-x:scroll;
+        overflow-x:auto;
+    }
+    .mass_email_table_line{
+        width: max-content;
+        height: 1px;
+        background-color: #494C67;
     }
 }
