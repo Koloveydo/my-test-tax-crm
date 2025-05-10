@@ -80,6 +80,11 @@ section#index-page {
     opacity: 1;
     visibility: visible;
 }
+.info_container_feedback_svg{
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
 .feedback_hover:hover .mass_email_hover_description_feedback{
     opacity: 1;
     visibility: visible;

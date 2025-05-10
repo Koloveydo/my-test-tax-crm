@@ -7,13 +7,14 @@
                 <div class="feedback_nav_head">
                     <div class="feedback_name_container">
                         <div class="feedback_name">Update feed</div>
-                        <div class="info_container">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_1924_487)"><path d="M10 13.3334V10M10 6.66669H10.0084M18.3334 10C18.3334 14.6024 14.6024 18.3334 10 18.3334C5.39765 18.3334 1.66669 14.6024 1.66669 10C1.66669 5.39765 5.39765 1.66669 10 1.66669C14.6024 1.66669 18.3334 5.39765 18.3334 10Z" stroke="#1E1E1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_1924_487"><rect width="20" height="20" fill="white"/></clipPath></defs></svg>
+                        <div class="info_container info_hover">
+                            <svg class="info_container_feedback_svg" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_1924_487)"><path d="M10 13.3334V10M10 6.66669H10.0084M18.3334 10C18.3334 14.6024 14.6024 18.3334 10 18.3334C5.39765 18.3334 1.66669 14.6024 1.66669 10C1.66669 5.39765 5.39765 1.66669 10 1.66669C14.6024 1.66669 18.3334 5.39765 18.3334 10Z" stroke="#1E1E1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_1924_487"><rect width="20" height="20" fill="white"/></clipPath></defs></svg>
+                            <div class="feedback_info_hover_description_info">Share your feedback or see your messages</div>
                         </div>
                     </div>
                     <div class="feedback_description_container">
                         <div class="feedback_description_text">What goes on my feed?</div>
-                        <div class="feedback_description_btn">See more</div>
+                        <div class="feedback_description_btn" onclick="globalDemoPopup()" >See more</div>
                     </div>
                     <div class="feedback_feelter_text">Filter by board</div>
                 </div>
@@ -136,7 +137,40 @@
                     </div>
                     <div class="feedback_page_main" data-feedback-index="2">
                         <div class="feedback_message_container">
-
+                            <div class="feedback_message_update_head">
+                                <div class="fmuh_left">
+                                    <img class="card_photo_ajax" src="{{ data.user.url_image }}">
+                                    <div class="sender_name_ajax">CEO</div>
+                                </div>
+                                <div class="fmuh_right">
+                                    <div class="read_mark">
+                                        <svg class="read_mark_svg" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.6666 5L7.49992 14.1667L3.33325 10" stroke="#1E1E1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="feedback_message_update_main">
+                                <div class="feedback_message_update_text">
+                                    <p>Hi there, <strong>{{ data.user.full_name }}</strong>,</p>
+                                    <p>We're thrilled to welcome you to <strong>Tax-Company</strong> — and even more excited to see your team taking its first steps here. This is just the beginning, and we’re confident it will be the start of something powerful.</p>
+                                
+                                    <p>With Tax-Company, your team can:</p>
+                                    <br>
+                                    <ol>
+                                        <li>📊 <strong>Work efficiently with tables</strong> — create, edit, and manage them with ease using our intuitive tools.</li>
+                                        <li>⚙️ <strong>Customize your experience</strong> — explore a wide range of settings designed to simplify your workflows and adapt to your needs.</li>
+                                        <li>🗓️ <strong>Plan and prioritize tasks</strong> — organize your projects, set goals, and keep your team aligned with clear responsibilities.</li>
+                                        <li>💬 <strong>Communicate seamlessly</strong> — each table comes with a dedicated chat to keep discussions focused and relevant.</li>
+                                        <li>🤝 <strong>Collaborate effortlessly</strong> — everything is designed to support smooth teamwork, whether you're a duo or a growing team.</li>
+                                    </ol>
+                                
+                                    <p>We’re here to help you every step of the way. On behalf of the entire Tax-Company team, we wish you success, clarity, and great results in everything you build together.</p>
+                                
+                                    <p style="margin-top: 30px;">Warm regards,<br><strong>CEO, Tax-Company</strong></p>
+                                </div>
+                                <div class="feedback_message_update_more_container">
+                                    <div class="feedback_message_update_more">...See more</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

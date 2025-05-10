@@ -94,7 +94,7 @@ section#index-page {
     display: flex;
     flex-direction: column;
     width: 100%;
-    background-color: #cdcdcd;
+    background-color: #F5F5F7;
     border-radius: 8px;
     padding: 20px;
     height: 100%;
@@ -358,7 +358,7 @@ hr{
     display: flex;
     flex-direction: column;
     padding: 10px;
-    background-color: #cdcdcd;
+    background-color: #F5F5F7;
     border: none;
     border-radius: 8px;
     height: auto;
@@ -422,7 +422,7 @@ hr{
     flex-direction: row;
     border: none;
     border-radius: 8px;
-    background-color: #CDCDCD;
+    background-color: #F5F5F7;
     padding: 15px;
     gap: 15px;
     cursor: pointer;
