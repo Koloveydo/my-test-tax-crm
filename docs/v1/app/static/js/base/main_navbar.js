@@ -3,12 +3,20 @@ const triggerElement = document.querySelector('.under_button');
 const targetElement = document.querySelector('.left_nav');
 const targetElementContent = document.querySelector('.left_nav_content');
 
+let showTimeout;
+
 triggerElement.addEventListener('mouseover', () => {
+    clearTimeout(showTimeout);
     targetElement.classList.add('hover');
-    targetElementContent.classList.add('hover');
+    showTimeout = setTimeout(() => {
+        requestAnimationFrame(() => {
+            targetElementContent.classList.add('hover');
+        });
+    }, 100); 
 });
 
 targetElement.addEventListener('mouseleave', () => {
+    clearTimeout(showTimeout);
     targetElement.classList.remove('hover');
     targetElementContent.classList.remove('hover');
 
@@ -22,11 +30,17 @@ document.addEventListener("DOMContentLoaded", function () {
     const navLeft = document.getElementById("left_nav");
     const navDople = document.getElementById("nav_dople")
 
+    let showTimeout;
+
     navButton.addEventListener("click", function () {
-        navContent.classList.toggle("active");
         navLeft.classList.toggle("active");
         navDople.classList.toggle("active");
         navSvg.classList.toggle("active");
+        showTimeout = setTimeout(() => {
+            requestAnimationFrame(() => {
+                navContent.classList.toggle("active");
+            });
+        }, 100); 
     });
 });
 
