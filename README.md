@@ -28,7 +28,13 @@ git clone https://github.com/Koloveydo/my-test-tax-crm
 cd \extra-db\tax-crm\docs\v1\app
 ```
 
-### 2.Створення віртуального середовища
+### 2. Зайти на потрібну папку для запуску
+
+```bash
+cd \extra-db\tax-crm\docs\v1\app
+```
+
+### 3.Створення віртуального середовища
 
 ``` bash
 python -m venv venv
@@ -36,7 +42,7 @@ source venv/bin/activate  # для Linux/macOS
 venv\Scripts\activate     # для Windows
 ```
 
-### 3. Запуск
+### 4. Запуск
 
 ```bash
 python app.py
