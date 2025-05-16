@@ -24,8 +24,8 @@
 ### 1. Клонування репозиторію
 
 ```bash
-git clone https://github.com/GoldSatan/tax-crm
-cd yourproject
+git clone https://github.com/Koloveydo/my-test-tax-crm
+cd \extra-db\tax-crm\docs\v1\app
 ```
 
 ### 2.Створення віртуального середовища
