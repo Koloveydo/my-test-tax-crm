@@ -25,7 +25,6 @@
 
 ```bash
 git clone https://github.com/Koloveydo/my-test-tax-crm
-cd \extra-db\tax-crm\docs\v1\app
 ```
 
 ### 2. Зайти на потрібну папку для запуску
