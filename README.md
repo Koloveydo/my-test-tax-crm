@@ -57,7 +57,7 @@ python app.py
 - [Vadym Romaniuk](https://github.com/GoldSatan)
 
 ## Redesign Author(student)
-- [koloveydo](https://github.com/Koloveydo)
+- [Koloveydo](https://github.com/Koloveydo)
 - redesign repositorie https://github.com/Koloveydo/my-test-tax-crm.git
 
 ## License
